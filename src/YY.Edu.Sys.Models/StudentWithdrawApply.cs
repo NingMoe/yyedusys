@@ -4,7 +4,7 @@ namespace YY.Edu.Sys.Models
 	/// <summary>
 	/// StudentWithdrawApply:实体类(属性说明自动提取数据库字段的描述信息)
 	/// </summary>
-	[Serializable]
+	//[Serializable]
 	public partial class StudentWithdrawApply
 	{
 		public StudentWithdrawApply()
@@ -100,8 +100,8 @@ namespace YY.Edu.Sys.Models
 			set{ _orderid=value;}
 			get{return _orderid;}
 		}
-		#endregion Model
-
-	}
+        #endregion Model
+        public System.Collections.Generic.List<StudentWithdrawApply_Sub> sublisst { get; set; }
+    }
 }
 

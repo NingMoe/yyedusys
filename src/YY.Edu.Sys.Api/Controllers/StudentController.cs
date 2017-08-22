@@ -93,7 +93,7 @@ namespace YY.Edu.Sys.Api.Controllers
 
 
         [HttpGet]
-        public IHttpActionResult Page4Venue()
+        public IHttpActionResult Page4Venue(string query)
         {
             try
             {
@@ -101,49 +101,39 @@ namespace YY.Edu.Sys.Api.Controllers
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                System.Web.HttpContextBase context = (System.Web.HttpContextBase)Request.Properties["MS_HttpContext"];//获取传统context
-                System.Web.HttpRequestBase request = context.Request;//定义传统request对象
-                string UserName = Comm.Helper.ParamHelper<string>.GetParam(request["UserName"], "");
-                string ParentMobile = Comm.Helper.ParamHelper<string>.GetParam(request["ParentMobile"], "");
-                string FullName = Comm.Helper.ParamHelper<string>.GetParam(request["FullName"], "");
-                string ParentFullName = Comm.Helper.ParamHelper<string>.GetParam(request["ParentFullName"], "");
-                int start = Comm.Helper.ParamHelper<int>.GetParam(request["start"], 0);
-                start += 1;//adminlte 加载的datatable起始页为0
-                int length = Comm.Helper.ParamHelper<int>.GetParam(request["length"], 0);
-                int venueId = Comm.Helper.ParamHelper<int>.GetParam(request["venueId"], 0);
+                Comm.RequestModel.RequestModelBase<Sys.Models.Student> oData = Newtonsoft.Json.JsonConvert.DeserializeObject<Comm.RequestModel.RequestModelBase<Sys.Models.Student>>(query);
 
-                if (venueId <= 0 || start < 0 || length <= 0)
+                if (oData.SearchCondition.VenueID <= 0 || oData.PageIndex < 0 || oData.PageSize <= 0)
                     return BadRequest();
 
                 PageCriteria criteria = new PageCriteria();
                 criteria.Condition = "1=1";
 
-                criteria.Condition += string.Format(" and v.VenueID = {0}", venueId);
+                criteria.Condition += string.Format(" and v.VenueID = {0}", oData.SearchCondition.VenueID);
 
-                if (!string.IsNullOrEmpty(UserName))
-                    criteria.Condition += string.Format(" and s.UserName = '{0}'", UserName);
-                if (!string.IsNullOrEmpty(ParentMobile))
-                    criteria.Condition += string.Format(" and s.ParentMobile = '{0}'", ParentMobile);
-                if (!string.IsNullOrEmpty(FullName))
-                    criteria.Condition += string.Format(" and s.FullName like '%{0}%'", FullName);
-                if (!string.IsNullOrEmpty(ParentFullName))
-                    criteria.Condition += string.Format(" and s.ParentFullName like '%{0}%'", ParentFullName);
+                if (!string.IsNullOrEmpty(oData.SearchCondition.UserName))
+                    criteria.Condition += string.Format(" and s.UserName = '{0}'", oData.SearchCondition.UserName);
+                if (!string.IsNullOrEmpty(oData.SearchCondition.ParentMobile))
+                    criteria.Condition += string.Format(" and s.ParentMobile = '{0}'", oData.SearchCondition.ParentMobile);
+                if (!string.IsNullOrEmpty(oData.SearchCondition.FullName))
+                    criteria.Condition += string.Format(" and s.FullName like '%{0}%'", oData.SearchCondition.FullName);
+                if (!string.IsNullOrEmpty(oData.SearchCondition.ParentFullName))
+                    criteria.Condition += string.Format(" and s.ParentFullName like '%{0}%'", oData.SearchCondition.ParentFullName);
 
-                criteria.CurrentPage = start;
+                criteria.CurrentPage = oData.PageIndex + 1;//adminlte 加载的datatable起始页为0
                 criteria.Fields = "s.StudentID,s.UserName,s.[Address],s.HeadUrl,s.Mobile,s.FullName,s.ParentFullName,s.ParentMobile,v.VenueName,v.LinkMan,v.LinkManMobile";
-                criteria.PageSize = length;
+                criteria.PageSize = oData.PageSize;
                 criteria.TableName = "Student as s join Student_Venue as sv on s.StudentID=sv.StudentID join Venue as v on sv.VenueID=v.VenueID";
                 criteria.PrimaryKey = "s.StudentID";
 
-                var r = Comm.Helper.DapperHelper.GetPageData<Models.QueryModel.StudentQuery>(criteria);
+                var r = Comm.Helper.DapperHelper.GetPageData<Models.Response.StudentResponse>(criteria);
 
-                return Ok(new Comm.ResponseModel.ResponseModel4Page<Models.QueryModel.StudentQuery>()
+                return Ok(new Comm.ResponseModel.ResponseModel4Page<Models.Response.StudentResponse>()
                 {
                     data = r.Items,
                     recordsFiltered = r.TotalNum,
                     recordsTotal = r.TotalNum,
                 });
-
             }
             catch (Exception ex)
             {

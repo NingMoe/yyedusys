@@ -11,6 +11,8 @@ namespace YY.Edu.Sys.Admin.Controllers
         // GET: Campus
         public ActionResult Index()
         {
+            //todo 
+            ViewBag.VenueId = 1;// Session["venue"].ToString();
             return View();
         }
 
@@ -23,6 +25,8 @@ namespace YY.Edu.Sys.Admin.Controllers
         // GET: Campus/Create
         public ActionResult Create()
         {
+            //todo 
+            ViewBag.VenueId = 1;// Session["venue"].ToString();
             return View();
         }
 
@@ -32,8 +36,6 @@ namespace YY.Edu.Sys.Admin.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-
                 return RedirectToAction("Index");
             }
             catch
@@ -45,6 +47,9 @@ namespace YY.Edu.Sys.Admin.Controllers
         // GET: Campus/Edit/5
         public ActionResult Edit(int id)
         {
+            //todo 
+            ViewBag.VenueId = 1;// Session["venue"].ToString();
+            ViewBag.CampusID = id;
             return View();
         }
 

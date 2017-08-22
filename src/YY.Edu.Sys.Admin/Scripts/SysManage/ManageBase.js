@@ -3,10 +3,11 @@ var ApiUrl = "http://localhost:53262/";
 var oTable;
 
 
-function bindTable(table, form, action, columns_data) {
-   
+function bindTable(table, form, action, columns_data, show_all) {
+
+    show_all = show_all || false;
     oTable = $('#' + table).dataTable({
-        "paging": true,
+        "paging": !show_all,
         "lengthChange": true,
         "searching": false,
         "ordering": true,
@@ -41,15 +42,22 @@ function bindTable(table, form, action, columns_data) {
             dataType: 'json',
             type: 'get',
             data: function (query_data) {
+                if (show_all) {
 
-                query = JSON.stringify({
-                    'SearchCondition': $('#' + form).serializeJSON(),
-                    'draw': query_data.draw,
-                    'PageIndex': query_data.start,
-                    'PageSize': query_data.length
-                });
-                console.log(query);
-                return 'query=' + query;
+                    query = $('#' + form).serializeJSON();
+                    console.log(query);
+                    return query;
+                } else {
+
+                    query = JSON.stringify({
+                        'SearchCondition': $('#' + form).serializeJSON(),
+                        'draw': query_data.draw,
+                        'PageIndex': query_data.start,
+                        'PageSize': query_data.length
+                    });
+                    console.log(query);
+                    return 'query=' + query;
+                }
             }
         },
         "columns": columns_data,
@@ -72,6 +80,7 @@ function bindTable(table, form, action, columns_data) {
         },
     });
 }
+
 
 function create_base() {
 

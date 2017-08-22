@@ -27,17 +27,18 @@ namespace YY.Edu.Sys.Comm.Helper
         {
             get
             {
-                if (instance == null)
-                {
-                    lock (syncInstance)
-                    {
-                        if (instance == null)
-                        {
-                            instance = CreateInstance();
-                        }
-                    }
-                }
-                return instance;
+                return CreateInstance();
+                //if (instance == null)
+                //{
+                //    lock (syncInstance)
+                //    {
+                //        if (instance == null)
+                //        {
+                //            instance = CreateInstance();
+                //        }
+                //    }
+                //}
+                //return instance;
             }
             set
             {

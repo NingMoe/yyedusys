@@ -16,7 +16,7 @@ namespace YY.Edu.Sys.Comm.ResponseModel
         /// <summary>
         /// 单条信息返回
         /// </summary>
-        public T info { get; set; }
+        public T Info { get; set; }
 
         public ResponseModel4Res()
         {

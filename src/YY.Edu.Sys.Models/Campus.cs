@@ -4,7 +4,7 @@ namespace YY.Edu.Sys.Models
 	/// <summary>
 	/// Campus:实体类(属性说明自动提取数据库字段的描述信息)
 	/// </summary>
-	[Serializable]
+	//[Serializable]
 	public partial class Campus
 	{
 		public Campus()
@@ -73,8 +73,12 @@ namespace YY.Edu.Sys.Models
 			set{ _campusstatus=value;}
 			get{return _campusstatus;}
 		}
-		#endregion Model
+        #endregion Model
 
-	}
+        /// <summary>
+        /// 校区地址
+        /// </summary>
+        public string Address { get; set; }
+    }
 }
 

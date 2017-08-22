@@ -4,75 +4,73 @@ namespace YY.Edu.Sys.Models
 	/// <summary>
 	/// VenueInfo:实体类(属性说明自动提取数据库字段的描述信息)
 	/// </summary>
-	[Serializable]
+	//[Serializable]
 	public partial class VenueInfo
 	{
 		public VenueInfo()
 		{}
 		#region Model
-		private int _vinfoid;
-		private string _introduce;
-		private string _businesstime;
-		private DateTime? _addtime= DateTime.Now;
-		private int? _adduserid;
-		private DateTime? _modifytime;
-		private int? _modifyuserid;
+		//private int _vinfoid;
+		//private string _introduce;
+		//private string _businesstime;
+		//private DateTime? _addtime= DateTime.Now;
+		//private int? _adduserid;
+		//private DateTime? _modifytime;
+		//private int? _modifyuserid;
 		/// <summary>
 		/// 
 		/// </summary>
 		public int VInfoID
 		{
-			set{ _vinfoid=value;}
-			get{return _vinfoid;}
+            get;set;
 		}
-		/// <summary>
-		/// 场地介绍
-		/// </summary>
-		public string Introduce
+
+        /// <summary>
+        /// 场馆编号
+        /// </summary>
+        public int VenueID { get; set; }
+        /// <summary>
+        /// 场地介绍
+        /// </summary>
+        public string Introduce
 		{
-			set{ _introduce=value;}
-			get{return _introduce;}
-		}
+            get; set;
+        }
 		/// <summary>
 		/// 营业时间介绍
 		/// </summary>
 		public string BusinessTime
 		{
-			set{ _businesstime=value;}
-			get{return _businesstime;}
-		}
+            get; set;
+        }
 		/// <summary>
 		/// 添加时间
 		/// </summary>
 		public DateTime? AddTime
 		{
-			set{ _addtime=value;}
-			get{return _addtime;}
-		}
+            get; set;
+        }
 		/// <summary>
 		/// 添加人ID
 		/// </summary>
 		public int? AddUserID
 		{
-			set{ _adduserid=value;}
-			get{return _adduserid;}
-		}
+            get; set;
+        }
 		/// <summary>
 		/// 修改时间
 		/// </summary>
 		public DateTime? ModifyTime
 		{
-			set{ _modifytime=value;}
-			get{return _modifytime;}
-		}
+            get; set;
+        }
 		/// <summary>
 		/// 修改人ID
 		/// </summary>
 		public int? ModifyUserID
 		{
-			set{ _modifyuserid=value;}
-			get{return _modifyuserid;}
-		}
+            get; set;
+        }
 		#endregion Model
 
 	}

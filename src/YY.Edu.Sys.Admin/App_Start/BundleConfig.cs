@@ -228,6 +228,12 @@ namespace YY.Edu.Sys.Admin
             bundles.Add(new ScriptBundle("~/Scripts/SysManage/Venue").Include(
                 "~/Scripts/SysManage/Venue.js"));
 
+            bundles.Add(new ScriptBundle("~/Scripts/SysManage/VenueInfo").Include(
+              "~/Scripts/SysManage/VenueInfo.js"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/SysManage/Campus").Include(
+             "~/Scripts/SysManage/Campus.js"));
+
             bundles.Add(new ScriptBundle("~/Scripts/SysManage/Student").Include(
               "~/Scripts/SysManage/Student.js"));
             

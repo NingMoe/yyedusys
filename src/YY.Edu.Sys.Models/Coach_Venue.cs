@@ -4,7 +4,7 @@ namespace YY.Edu.Sys.Models
 	/// <summary>
 	/// Coach_Venue:实体类(属性说明自动提取数据库字段的描述信息)
 	/// </summary>
-	[Serializable]
+	//[Serializable]
 	public partial class Coach_Venue
 	{
 		public Coach_Venue()

@@ -38,11 +38,12 @@ namespace YY.Edu.Sys.Api.Controllers
             //3 return NotFound<obj>;
             //4 return Content<HttpStatusCode.OK,obj>;
             //5 return BadRequest(); 返回400错误
-            var query = Comm.Helper.DapperHelper.Instance.Query<YY.Edu.Sys.Models.City>("select * from city where 1=1");
+            var query = Comm.Helper.DapperHelper.Instance.Query<YY.Edu.Sys.Models.City>("select CityID,CityName from city where 1=1");
 
-            //链表直接写sql传参
-
-            return Ok(query);
+            return Ok(new Comm.ResponseModel.ResponseModel4Res<YY.Edu.Sys.Models.City>()
+            {
+                data = query.AsList(),
+            });
         }
 
         [HttpGet]

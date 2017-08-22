@@ -11,6 +11,8 @@ namespace YY.Edu.Sys.Admin.Controllers
         // GET: VenueInfo
         public ActionResult Index()
         {
+            //todo 
+            ViewBag.VenueId = 1;// Session["venue"].ToString();
             return View();
         }
 
@@ -42,6 +44,7 @@ namespace YY.Edu.Sys.Admin.Controllers
             }
         }
 
+        [ValidateAntiForgeryToken]
         // GET: VenueInfo/Edit/5
         public ActionResult Edit(int id)
         {
@@ -55,6 +58,7 @@ namespace YY.Edu.Sys.Admin.Controllers
             try
             {
                 // TODO: Add update logic here
+
 
                 return RedirectToAction("Index");
             }

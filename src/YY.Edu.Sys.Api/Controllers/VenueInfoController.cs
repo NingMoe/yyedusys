@@ -33,14 +33,33 @@ namespace YY.Edu.Sys.Api.Controllers
             if (id < 0)
                 return BadRequest();
 
-            //查询
-            var predicate = Predicates.Field<YY.Edu.Sys.Models.VenueInfo>(f => f.VInfoID, Operator.Eq, id);
-            IEnumerable<YY.Edu.Sys.Models.VenueInfo> list = Comm.Helper.DapperHelper.Instance.GetList<YY.Edu.Sys.Models.VenueInfo>(predicate);
+            //IList<IPredicate> predList = new List<IPredicate>();
+            //predList.Add(Predicates.Field<YY.Edu.Sys.Models.VenueInfo>(f => f.VenueID, Operator.Eq, id));
+
+            YY.Edu.Sys.Models.VenueInfo venueInfo = Comm.Helper.DapperHelper.Instance.Get<YY.Edu.Sys.Models.VenueInfo>(id);
 
             return Ok(new Comm.ResponseModel.ResponseModel4Res<YY.Edu.Sys.Models.VenueInfo>()
             {
-                data = list.AsList(),
+                Info = venueInfo
             });
+
+        }
+
+        [HttpPost]
+        public IHttpActionResult Save(YY.Edu.Sys.Models.VenueInfo venueInfo)
+        {
+
+            //todo 实体验证
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            IPredicate predList = Predicates.Field<YY.Edu.Sys.Models.VenueInfo>(
+                f => f.VenueID, Operator.Eq, venueInfo.VenueID
+            );
+
+            int count = Comm.Helper.DapperHelper.Instance.Count<YY.Edu.Sys.Models.VenueInfo>(predList);
+
+            return count > 0 ? Edit(venueInfo) : Create(venueInfo);
 
         }
 
@@ -54,7 +73,7 @@ namespace YY.Edu.Sys.Api.Controllers
 
             try
             {
-
+                venueInfo.AddTime = DateTime.Now;
                 var result = Comm.Helper.DapperHelper.Instance.Insert(venueInfo);
 
                 if (result > 0)
@@ -73,7 +92,6 @@ namespace YY.Edu.Sys.Api.Controllers
             }
         }
 
-
         [HttpPost]
         public IHttpActionResult Edit(YY.Edu.Sys.Models.VenueInfo venueInfo)
         {
@@ -84,7 +102,7 @@ namespace YY.Edu.Sys.Api.Controllers
             try
             {
                 //Models.VenueInfo venueInfo = Comm.Helper.DapperHelper.Instance.Get<Models.VenueInfo>(cityId);
-
+                venueInfo.ModifyTime = DateTime.Now;
                 var result = Comm.Helper.DapperHelper.Instance.Update(venueInfo);
 
                 if (result)

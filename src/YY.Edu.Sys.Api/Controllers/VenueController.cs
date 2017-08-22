@@ -75,7 +75,7 @@ namespace YY.Edu.Sys.Api.Controllers
 
                     return Ok(new Comm.ResponseModel.ResponseModel4Res<string>()
                     {
-                        info = venue.VenueCode,
+                        Info = venue.VenueCode,
                     });
                 }
                 else

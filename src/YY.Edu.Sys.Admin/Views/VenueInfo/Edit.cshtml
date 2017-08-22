@@ -1,17 +1,43 @@
-﻿
-@{
-    Layout = null;
+﻿@{
+    ViewBag.Title = "场馆系统";
+    ViewBag.SubTitle = "城市管理";
 }
 
-<!DOCTYPE html>
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-</head>
-<body>
-    <div> 
+@Styles.Render("~/AdminLTE/plugins/datatables/css")
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">添加城市</h3>
+            </div>
+            <form id="cityfrom" class="form-horizontal">
+                @Html.AntiForgeryToken()
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="CityName" class="col-sm-2 control-label">城市名称</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="CityName" name="CityName" placeholder="城市名称">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-default">取消</button>
+                    <button type="button" class="btn btn-info pull-right" onclick="return create();">查询</button>
+                </div>
+            </form>
+        </div>
     </div>
-</body>
-</html>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/AdminLTE/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")
+    @Scripts.Render("~/Scripts/SysManage/VenueInfo")
+    @Scripts.Render("~/Scripts/SysManage/jquery.serializejson.min")
+
+}

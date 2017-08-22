@@ -40,6 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AspNetRoles.cs" />
+    <Compile Include="AspNetUserClaims.cs" />
+    <Compile Include="AspNetUserLogins.cs" />
+    <Compile Include="AspNetUserRoles.cs" />
+    <Compile Include="AspNetUsers.cs" />
     <Compile Include="Campus.cs" />
     <Compile Include="City.cs" />
     <Compile Include="Class1.cs" />
