@@ -127,9 +127,9 @@ namespace YY.Edu.Sys.Api.Controllers
                 criteria.TableName = "Student as s join Student_Venue as sv on s.StudentID=sv.StudentID join Venue as v on sv.VenueID=v.VenueID";
                 criteria.PrimaryKey = "s.StudentID";
 
-                var r = Comm.Helper.DapperHelper.GetPageData<Models.Response.StudentResponse>(criteria);
+                var r = Comm.Helper.DapperHelper.GetPageData<StudentResponse>(criteria);
 
-                return Ok(new Comm.ResponseModel.ResponseModel4Page<Models.Response.StudentResponse>()
+                return Ok(new Comm.ResponseModel.ResponseModel4Page<StudentResponse>()
                 {
                     data = r.Items,
                     recordsFiltered = r.TotalNum,
@@ -319,9 +319,9 @@ namespace YY.Edu.Sys.Api.Controllers
                 criteria.TableName = "TeachingSchedule t with(nolock) inner join Venue v with(nolock) on t.VenueID = v.VenueID left join Campus c with(nolock) on t.CampusID = t.CampusID inner join Curriculum cu with(nolock) on t.PKID = cu.PKID";
                 criteria.PrimaryKey = "PKID";
 
-                var r = Comm.Helper.DapperHelper.GetPageData<Models.Response.TeachingScheduleResponse>(criteria);
+                var r = Comm.Helper.DapperHelper.GetPageData<TeachingScheduleResponse>(criteria);
 
-                return Ok(new Comm.ResponseModel.ResponseModel4Page<Models.Response.TeachingScheduleResponse>()
+                return Ok(new Comm.ResponseModel.ResponseModel4Page<TeachingScheduleResponse>()
                 {
                     data = r.Items,
                     recordsFiltered = r.TotalNum,

@@ -8,7 +8,6 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
-using YY.Edu.Sys.Api.Models.Response;
 using YY.Edu.Sys.Api.Models.ResponseModel;
 using YY.Edu.Sys.Comm.Helper;
 
@@ -37,20 +36,22 @@ namespace YY.Edu.Sys.Api.Controllers
 
                 var sql = @"select c.CoachID,c.FullName,c.UserName,c.State,c.Introduce,c.NickName,c.HeadUrl,c.Address,c.Mobile,c.Sex,v.VenueName,cv.Wage,cv.Price 
                     from Coach as c join Venue as v on c.VenueID = v.VenueID left join Coach_Venue as cv on c.CoachID = cv.CoachID where c.CoachID = @CoachID";
-                return Ok();
-                //var result = DapperHelper.Instance.Query<Sys.Models.Coach, Sys.Models.Coach_Venue, Sys.Models.Venue, Sys.Models.Coach>(sql,
-                //                        splitOn: "CityName",
-                //                        param: new { CoachID = id },
-                //                        map: (coach, coach_venue, venue) =>
-                //                        {
-                //                            coach.CityName = city.CityName; return campus;
-                //                        });
 
+                var result = DapperHelper.Instance.Query<Models.ResponseModel.CoachResponse, Sys.Models.Coach_Venue, Sys.Models.Venue, Sys.Models.Coach>(sql,
+                                        splitOn: "VenueName",
+                                        param: new { CoachID = id },
+                                        map: (coach, coach_venue, venue) =>
+                                        {
+                                            coach.VenueName = venue.VenueName;
+                                            coach.Price = coach_venue.Price;
+                                            coach.Wage = coach_venue.Wage;
+                                            return coach;
+                                        });
 
-                //return Ok(new Comm.ResponseModel.ResponseModel4Res<YY.Edu.Sys.Models.Coach>()
-                //{
-                //    Info = result.AsList().FirstOrDefault()
-                //});
+                return Ok(new Comm.ResponseModel.ResponseModel4Res<YY.Edu.Sys.Models.Coach>()
+                {
+                    Info = result.AsList().FirstOrDefault()
+                });
             }
             catch (Exception ex)
             {

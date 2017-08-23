@@ -5,12 +5,14 @@ using System.Web;
 
 namespace YY.Edu.Sys.Api.Models.ResponseModel
 {
-    public class StudentResponse : YY.Edu.Sys.Models.Student
+    public class CoachResponse : Sys.Models.Coach
     {
+
         public string VenueName { get; set; }
 
-        public string LinkMan { get; set; }
+        public decimal? Wage { get; set; }
 
-        public string LinkManMobile { get; set; }
+        public decimal? Price { get; set; }
+
     }
 }

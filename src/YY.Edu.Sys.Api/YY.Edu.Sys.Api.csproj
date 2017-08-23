@@ -259,6 +259,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ResponseModel\CampusResponse.cs" />
     <Compile Include="Models\ResponseModel\ClassHoursOrderResponse.cs" />
+    <Compile Include="Models\ResponseModel\CoachResponse.cs" />
     <Compile Include="Models\ResponseModel\CoachWagesResponse.cs" />
     <Compile Include="Models\ResponseModel\StudentCurriculumResponse.cs" />
     <Compile Include="Models\ResponseModel\StudentResponse.cs" />
