@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace YY.Edu.Sys.Api.Controllers
 {
-    [RoutePrefix("api/Venue")]
+    [RoutePrefix("api/VenueInfo")]
     public class VenueInfoController : ApiController
     {
 

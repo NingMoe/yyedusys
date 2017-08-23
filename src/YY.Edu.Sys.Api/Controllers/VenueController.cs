@@ -9,6 +9,7 @@ using DapperExtensions;
 
 namespace YY.Edu.Sys.Api.Controllers
 {
+    [RoutePrefix("api/Venue")]
     public class VenueController : ApiController
     {
 

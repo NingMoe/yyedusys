@@ -136,8 +136,8 @@ namespace YY.Edu.Sys.Models
 			set{ _venueid=value;}
 			get{return _venueid;}
 		}
-		#endregion Model
+        #endregion Model
 
-	}
+    }
 }
 

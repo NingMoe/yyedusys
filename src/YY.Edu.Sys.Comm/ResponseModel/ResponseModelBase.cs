@@ -28,6 +28,16 @@ namespace YY.Edu.Sys.Comm.ResponseModel
             return Res[ResponseModelErrorEnum.Success];
         }
 
+        public static ResponseModelBase SysError()
+        {
+            return Res[ResponseModelErrorEnum.SystemError];
+        }
+
+        public static ResponseModelBase GetRes(string msg)
+        {
+            return new ResponseModelBase() { Error = true, Code = 1002, Msg = msg };
+        }
+
         public static ResponseModelBase GetRes(ResponseModelErrorEnum resType)
         {
 
@@ -42,6 +52,7 @@ namespace YY.Edu.Sys.Comm.ResponseModel
         {
             { ResponseModelErrorEnum.Success , new ResponseModelBase() {  Error = false, Code = 1001, Msg = "成功"} },
             { ResponseModelErrorEnum.SystemError , new ResponseModelBase() {  Error = true, Code = 1000, Msg = "系统错误"} },
+            { ResponseModelErrorEnum.OperationError , new ResponseModelBase() {  Error = true, Code = 1002, Msg = "错误"} },
         };
 
 

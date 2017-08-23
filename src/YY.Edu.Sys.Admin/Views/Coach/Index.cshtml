@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "场馆系统";
+    ViewBag.SubTitle = "教练管理";
+}
+
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+}
+
+@Styles.Render("~/AdminLTE/plugins/datatables/css")
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">教练列表</h3>
+            </div>
+
+            <form id="coachform" class="form-horizontal">
+                <input type="hidden" id="VenueID" name="VenueID" value="@ViewBag.venueId" />
+            </form>
+            <div class="box-body" id="demo">
+                <table id="coachtable" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>编号</th>
+                            <th>姓名</th>
+                            <th>用户名</th>
+                            <th>昵称</th>
+                            <th>住址</th>
+                            <th>性别</th>
+                            <th>介绍</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/AdminLTE/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")
+    @Scripts.Render("~/Scripts/SysManage/ManageBase")
+    @Scripts.Render("~/Scripts/SysManage/Campus")
+    @Scripts.Render("~/Scripts/SysManage/jquery.serializejson.min")
+    <script>
+        $(function () {
+            bind_data();
+        });
+    </script>
+}

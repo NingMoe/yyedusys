@@ -11,5 +11,6 @@ namespace YY.Edu.Sys.Comm.ResponseModel
         None,
         Success,
         SystemError,
+        OperationError,
     }
 }

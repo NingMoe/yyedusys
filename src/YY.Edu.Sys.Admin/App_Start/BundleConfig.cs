@@ -236,7 +236,13 @@ namespace YY.Edu.Sys.Admin
 
             bundles.Add(new ScriptBundle("~/Scripts/SysManage/Student").Include(
               "~/Scripts/SysManage/Student.js"));
-            
+
+            bundles.Add(new ScriptBundle("~/Scripts/SysManage/TeachingSchedule").Include(
+              "~/Scripts/SysManage/TeachingSchedule.js"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/SysManage/Coach").Include(
+              "~/Scripts/SysManage/Coach.js"));
+
             bundles.Add(new ScriptBundle("~/Scripts/SysManage/jquery.serializejson.min").Include(
                 "~/Scripts/SysManage/jquery.serializejson.min.js"));
         }

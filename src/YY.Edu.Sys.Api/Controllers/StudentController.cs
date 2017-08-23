@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using YY.Edu.Sys.Comm.Helper;
 using System.Text;
+using YY.Edu.Sys.Api.Models.ResponseModel;
 
 namespace YY.Edu.Sys.Api.Controllers
 {
@@ -189,11 +190,11 @@ namespace YY.Edu.Sys.Api.Controllers
                 if (StudentID <= 0 || start < 0 || length <= 0)
                     return BadRequest();
 
-                PageCriteria criteria = new PageCriteria();              
+                PageCriteria criteria = new PageCriteria();
 
                 criteria.Condition += string.Format("  StudentID= {0}", StudentID);
 
-             
+
                 criteria.CurrentPage = start;
                 criteria.Fields = "*";
                 criteria.PageSize = length;
@@ -214,7 +215,7 @@ namespace YY.Edu.Sys.Api.Controllers
             {
                 logs.Error("学生成长查询失败", ex);
                 return BadRequest();
-            }         
+            }
         }
 
         [HttpPost]
@@ -318,9 +319,9 @@ namespace YY.Edu.Sys.Api.Controllers
                 criteria.TableName = "TeachingSchedule t with(nolock) inner join Venue v with(nolock) on t.VenueID = v.VenueID left join Campus c with(nolock) on t.CampusID = t.CampusID inner join Curriculum cu with(nolock) on t.PKID = cu.PKID";
                 criteria.PrimaryKey = "PKID";
 
-                var r = Comm.Helper.DapperHelper.GetPageData<YY.Edu.Sys.Models.TeachingSchedule>(criteria);
+                var r = Comm.Helper.DapperHelper.GetPageData<Models.Response.TeachingScheduleResponse>(criteria);
 
-                return Ok(new Comm.ResponseModel.ResponseModel4Page<YY.Edu.Sys.Models.TeachingSchedule>()
+                return Ok(new Comm.ResponseModel.ResponseModel4Page<Models.Response.TeachingScheduleResponse>()
                 {
                     data = r.Items,
                     recordsFiltered = r.TotalNum,
@@ -338,16 +339,16 @@ namespace YY.Edu.Sys.Api.Controllers
 
 
         //购买课时
-        public IHttpActionResult BuyCurriculum(int StudentID,int CoachID,int number)
+        public IHttpActionResult BuyCurriculum(int StudentID, int CoachID, int number)
         {
             StringBuilder sql = new StringBuilder();
             sql.Append("declare @id int;");
-            sql.Append(" select @id = CHNID from ClassHoursNumber with(nolock) where [StudentID] = @StudentID and CoachID = '"+CoachID+"' ");
+            sql.Append(" select @id = CHNID from ClassHoursNumber with(nolock) where [StudentID] = @StudentID and CoachID = '" + CoachID + "' ");
             sql.Append(" if (@id > 0)   begin ");
-            sql.Append("  update ClassHoursNumber set ClassNumber = ClassNumber +"+number+" where CHNID = @id ");
+            sql.Append("  update ClassHoursNumber set ClassNumber = ClassNumber +" + number + " where CHNID = @id ");
             sql.Append(" end else begin ");
-            sql.Append(" insert into ClassHoursNumber(StudentID, CoachID, ClassNumber) values('"+StudentID+"', '"+CoachID+"', '"+number+"')");
-            sql.Append(" end ");          
+            sql.Append(" insert into ClassHoursNumber(StudentID, CoachID, ClassNumber) values('" + StudentID + "', '" + CoachID + "', '" + number + "')");
+            sql.Append(" end ");
 
             if (!ModelState.IsValid)
                 return BadRequest();
@@ -373,7 +374,7 @@ namespace YY.Edu.Sys.Api.Controllers
                 return BadRequest();
             }
 
-           
+
         }
         /// <summary>
         /// 取的学生现有课时次数明细
@@ -396,14 +397,14 @@ namespace YY.Edu.Sys.Api.Controllers
         /// <returns></returns>
         public IHttpActionResult GetBuyBuyCurriculumDetail(int StudentID)
         {
-            var query = Comm.Helper.DapperHelper.Instance.Query<YY.Edu.Sys.Models.ClassHoursOrder>("select o.*,'CoachFullName'=c.FullName from  ClassHoursOrder o with(nolock) inner join Coach c with(nolock) on o.CoachID=c.CoachID order by OrderID desc ");
+            var query = Comm.Helper.DapperHelper.Instance.Query<ClassHoursOrderResponse>("select o.*,'CoachFullName'=c.FullName from  ClassHoursOrder o with(nolock) inner join Coach c with(nolock) on o.CoachID=c.CoachID order by OrderID desc ");
 
             //链表直接写sql传参
 
             return Ok(query);
         }
         /// <summary>
-        /// 预约课时
+        /// 预约课时d
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
@@ -488,13 +489,13 @@ namespace YY.Edu.Sys.Api.Controllers
             List<YY.Edu.Sys.Models.StudentWithdrawApply_Sub> list = cp.sublisst;
             foreach (YY.Edu.Sys.Models.StudentWithdrawApply_Sub s in list)
             {
-                sql.Append(" INSERT INTO [StudentWithdrawApply_Sub]([CoachID],[ClassNumber],[Price],[ApplyID])  values('"+s.CoachID+"', '"+s.ClassNumber+"','"+s.Price+"', @id) ");
+                sql.Append(" INSERT INTO [StudentWithdrawApply_Sub]([CoachID],[ClassNumber],[Price],[ApplyID])  values('" + s.CoachID + "', '" + s.ClassNumber + "','" + s.Price + "', @id) ");
             }
 
             try
             {
 
-                var result = Comm.Helper.DapperHelper.Instance.Execute(sql.ToString(),new { StudentID=cp.StudentID, KSNumber=cp.KSNumber, Remark=cp.Remark, RefundablePrice=cp.RefundablePrice, RealRetreat =cp.RealRetreat});
+                var result = Comm.Helper.DapperHelper.Instance.Execute(sql.ToString(), new { StudentID = cp.StudentID, KSNumber = cp.KSNumber, Remark = cp.Remark, RefundablePrice = cp.RefundablePrice, RealRetreat = cp.RealRetreat });
 
                 if (result > 0)
                 {

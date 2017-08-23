@@ -183,6 +183,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\CampusController.cs" />
+    <Compile Include="Controllers\CoachController.cs" />
+    <Compile Include="Controllers\TeachingScheduleController.cs" />
     <Compile Include="Controllers\VenueInfoController.cs" />
     <Compile Include="Filters\SessionUserParameterAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -1089,9 +1091,11 @@
     <Content Include="Scripts\Shared\_Layout.js" />
     <Content Include="Scripts\SysManage\Campus.js" />
     <Content Include="Scripts\SysManage\City.js" />
+    <Content Include="Scripts\SysManage\Coach.js" />
     <Content Include="Scripts\SysManage\jquery.serializejson.min.js" />
     <Content Include="Scripts\SysManage\ManageBase.js" />
     <Content Include="Scripts\SysManage\Student.js" />
+    <Content Include="Scripts\SysManage\TeachingSchedule.js" />
     <Content Include="Scripts\SysManage\Venue.js" />
     <Content Include="Scripts\SysManage\VenueInfo.js" />
     <Content Include="Scripts\Tables\Data-menu.js" />
@@ -1176,6 +1180,9 @@
     <Content Include="Views\VenueInfo\Index.cshtml" />
     <Content Include="Views\Campus\Create.cshtml" />
     <Content Include="Views\Campus\Edit.cshtml" />
+    <Content Include="Views\TeachingSchedule\Index.cshtml" />
+    <Content Include="Views\TeachingSchedule\Create.cshtml" />
+    <Content Include="Views\Coach\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
