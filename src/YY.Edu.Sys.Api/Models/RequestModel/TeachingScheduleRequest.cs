@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace YY.Edu.Sys.Api.Models.RequestModel
+{
+    public class TeachingScheduleRequest : Sys.Models.TeachingSchedule
+    {
+
+        /// <summary>
+        /// 上课日期 2017-08-25 to 2017-09-25
+        /// </summary>
+        public string CurriculumDateStr { get; set; }
+        
+        /// <summary>
+        /// 上午是否有课
+        /// </summary>
+        public bool TimepickerAMCheckd { get; set; }
+
+        /// <summary>
+        /// 下午是否有课
+        /// </summary>
+        public bool TimepickerPMCheckd { get; set; }
+        /// <summary>
+        /// 上午上课时间
+        /// </summary>
+        public string CurriculumAMTime { get; set; }
+
+        /// <summary>
+        /// 下午上课时间
+        /// </summary>
+        public string CurriculumPMTime { get; set; }
+
+        /// <summary>
+        /// 上课时长
+        /// </summary>
+        public int ClassLength { get; set; }
+        /// <summary>
+        /// 休息时长
+        /// </summary>
+        public int RestLength { get; set; }
+
+    }
+}

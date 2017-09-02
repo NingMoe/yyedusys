@@ -184,8 +184,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\CampusController.cs" />
     <Compile Include="Controllers\CoachController.cs" />
+    <Compile Include="Controllers\FeedBackLogController.cs" />
     <Compile Include="Controllers\TeachingScheduleController.cs" />
     <Compile Include="Controllers\VenueInfoController.cs" />
+    <Compile Include="Controllers\VenueNoticeController.cs" />
+    <Compile Include="Controllers\WidgetsController.cs" />
     <Compile Include="Filters\SessionUserParameterAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
@@ -201,7 +204,6 @@
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TablesController.cs" />
     <Compile Include="Controllers\VenueController.cs" />
-    <Compile Include="Controllers\WidgetsController.cs" />
     <Compile Include="Extensions\ClaimsExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1089,15 +1091,20 @@
     <Content Include="Scripts\Mailbox\Inbox.js" />
     <Content Include="Scripts\Mailbox\Read-menu.js" />
     <Content Include="Scripts\Shared\_Layout.js" />
+    <Content Include="Scripts\SysManage\AdvancedDate.js" />
     <Content Include="Scripts\SysManage\Campus.js" />
     <Content Include="Scripts\SysManage\City.js" />
     <Content Include="Scripts\SysManage\Coach.js" />
+    <Content Include="Scripts\SysManage\FeedBackLog.js" />
     <Content Include="Scripts\SysManage\jquery.serializejson.min.js" />
     <Content Include="Scripts\SysManage\ManageBase.js" />
+    <Content Include="Scripts\SysManage\StateTranstion.js" />
     <Content Include="Scripts\SysManage\Student.js" />
     <Content Include="Scripts\SysManage\TeachingSchedule.js" />
     <Content Include="Scripts\SysManage\Venue.js" />
     <Content Include="Scripts\SysManage\VenueInfo.js" />
+    <Content Include="Scripts\SysManage\VenueNotice.js" />
+    <Content Include="Scripts\SysManage\Widgets.js" />
     <Content Include="Scripts\Tables\Data-menu.js" />
     <Content Include="Scripts\Tables\Data.js" />
     <Content Include="Scripts\Tables\Simple-menu.js" />
@@ -1105,7 +1112,9 @@
     <Content Include="Styles\Elements\General.css" />
     <Content Include="Styles\Elements\Icons.css" />
     <Content Include="Styles\Elements\Modals.css" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1183,12 +1192,24 @@
     <Content Include="Views\TeachingSchedule\Index.cshtml" />
     <Content Include="Views\TeachingSchedule\Create.cshtml" />
     <Content Include="Views\Coach\Index.cshtml" />
+    <Content Include="Views\Coach\Details.cshtml" />
+    <Content Include="Views\VenueNotice\Index.cshtml" />
+    <Content Include="Views\FeedBackLog\Index.cshtml" />
+    <Content Include="Views\VenueNotice\Create.cshtml" />
+    <Content Include="Views\VenueNotice\Edit.cshtml" />
+    <Content Include="Views\TeachingSchedule\Details.cshtml" />
+    <Content Include="Views\FeedBackLog\Create.cshtml" />
+    <Content Include="Views\Student\Import.cshtml" />
+    <Content Include="Views\Coach\Import.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="Template\学生.xls" />
+    <Content Include="Template\教练.xls" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>

@@ -48,3 +48,32 @@ $(function () {
 
 });
 
+$("#import").on('click', function () {
+
+    var fd = new FormData();
+    fd.append("venueID", $("#VenueID").val());
+    fd.append("file", $("#file").get(0).files[0]);
+    $.ajax({
+        url: ApiUrl + "api/Student/Import",
+        type: "POST",
+        processData: false,
+        contentType: false,
+        data: fd,
+        success: function (data, status) {
+            if (status == "success") {
+                if (data.Error) {
+                    alert(data.Msg);
+                } else {
+                    alert("导入成功");
+                }
+            } else {
+                alert("导入异常");
+            }
+            //if (data.Msg != null && data.Msg.length > 0) {
+            //    alert("导入成功," + data.Msg + "已经添加");
+            //} else {
+            //    alert("导入成功");
+            //}
+        }
+    });
+});

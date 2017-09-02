@@ -19,6 +19,8 @@ namespace YY.Edu.Sys.Admin.Controllers
         // GET: TeachingSchedule/Details/5
         public ActionResult Details(int id)
         {
+            ViewBag.pkId = id;// Session["venue"].ToString();
+            ViewBag.VenueId = 1;// Session["venue"].ToString();
             return View();
         }
 

@@ -55,8 +55,9 @@ namespace YY.Edu.Sys.Models
 			set{ _addtime=value;}
 			get{return _addtime;}
 		}
-		#endregion Model
+        #endregion Model
 
-	}
+        public int StarLevel { get; set; }
+    }
 }
 

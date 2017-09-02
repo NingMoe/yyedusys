@@ -210,7 +210,9 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CoashController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -225,11 +227,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\amazeui.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\iscroll.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\font_1474352518_1483889.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\2-icon.png" />
+    <Content Include="images\2icon1.png" />
+    <Content Include="images\2icon2.png" />
+    <Content Include="images\2icon3.png" />
+    <Content Include="images\about.jpg" />
+    <Content Include="images\adv.jpg" />
+    <Content Include="images\banner.jpg" />
+    <Content Include="images\gsyh.png" />
+    <Content Include="images\icon01.png" />
+    <Content Include="Scripts\amazeui.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -251,10 +268,22 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\font_1474352518_1483889.eot" />
+    <Content Include="fonts\font_1474352518_1483889.ttf" />
+    <Content Include="fonts\font_1474352518_1483889.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Coash\CoashCurriculum.js" />
+    <Content Include="Scripts\Coash\CurriculumStudent.js" />
+    <Content Include="Scripts\Coash\MyComment.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -262,6 +291,11 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Student\MyEvaluate.js" />
+    <Content Include="Scripts\Student\BuyHourClass.js" />
+    <Content Include="Scripts\Student\StudentCurriculum.js" />
+    <Content Include="Scripts\Student\SubscribeCurriculum.js" />
+    <Content Include="Views\Student\Index.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -277,6 +311,14 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Student\MyCurriculum.cshtml" />
+    <Content Include="Views\Student\MyEvaluate.cshtml" />
+    <Content Include="Views\Coash\MyCurriculum.cshtml" />
+    <Content Include="Views\Coash\MyComment.cshtml" />
+    <Content Include="Views\Coash\CurriculumStudent.cshtml" />
+    <Content Include="Views\Student\BuyHourClass.cshtml" />
+    <Content Include="Views\Student\SubscribeCurriculum.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

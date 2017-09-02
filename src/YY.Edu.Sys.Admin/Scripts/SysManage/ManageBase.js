@@ -3,9 +3,11 @@ var ApiUrl = "http://localhost:53262/";
 var oTable;
 
 
-function bindTable(table, form, action, columns_data, show_all) {
+function bindTable(table, form, action, columns_data, show_all,form_data) {
 
     show_all = show_all || false;
+    form_data = form_data || null;
+
     oTable = $('#' + table).dataTable({
         "paging": !show_all,
         "lengthChange": true,
@@ -18,14 +20,14 @@ function bindTable(table, form, action, columns_data, show_all) {
         "processing": true,
         "serverSide": true,    //true代表后台处理分页，false代表前台处理分页 
         //"draw":false,
-        "aLengthMenu": [1, 3, 4],
+        "aLengthMenu": [50],
         "paginationType": "full_numbers", //详细分页组，可以支持直接跳转到某页  
         "deferRender": true,//当处理大数据时，延迟渲染数据，有效提高Datatables处理能力 
         "ajax": {
             //contentType: "application/json",
             url: ApiUrl + action,
             dataSrc: function (data) {
-                //console.log(data);
+                console.log(data.data);
                 //setTimeout('oTable.fnDraw(false)', 3000); //重新加载bc_Table.ajax.reload()
                 if (data.callbackCount == null) {
                     data.callbackCount = 0;
@@ -43,8 +45,11 @@ function bindTable(table, form, action, columns_data, show_all) {
             type: 'get',
             data: function (query_data) {
                 if (show_all) {
-
-                    query = $('#' + form).serializeJSON();
+                    if (form_data!=null) {
+                        query = form_data;
+                    } else {
+                        query = $('#' + form).serializeJSON();
+                    }
                     console.log(query);
                     return query;
                 } else {
@@ -81,6 +86,17 @@ function bindTable(table, form, action, columns_data, show_all) {
     });
 }
 
+function bindStaticTable(table, data, columns_data) {
+    console.log(data);
+    oTable = $('#' + table).dataTable({
+        "paging": false,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": false,
+        "data": data.data,
+        "columns": columns_data,
+    });
+}
 
 function create_base() {
 
@@ -111,4 +127,20 @@ function create_base() {
         }
     });
 
+}
+
+Date.prototype.Format = function (fmt) { //author: meizz  
+    var o = {
+        "M+": this.getMonth() + 1, //月份  
+        "d+": this.getDate(), //日  
+        "h+": this.getHours(), //小时  
+        "m+": this.getMinutes(), //分  
+        "s+": this.getSeconds(), //秒  
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度  
+        "S": this.getMilliseconds() //毫秒  
+    };
+    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
 }

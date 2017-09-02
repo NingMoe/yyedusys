@@ -3,12 +3,17 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Dapper;
 using DapperExtensions;
 using System.Collections.Generic;
+using NPOI.HSSF.UserModel;
+using System.IO;
+using NPOI.SS.UserModel;
+using System.Data;
 
 namespace YY.Edu.Sys.Test
 {
     [TestClass]
     public class UnitTest1
     {
+
         public void TestMethod1()
         {
 
@@ -61,7 +66,6 @@ namespace YY.Edu.Sys.Test
             }
         }
 
-        [TestMethod]
         public void TestMethod2()
         {
 
@@ -80,8 +84,114 @@ namespace YY.Edu.Sys.Test
             Console.WriteLine(result);
 
         }
+
+        public void TestMethon3()
+        {
+
+            NewCity n = new NewCity()
+            {
+                CityID = 1,
+                CityName = "保定",
+                NewName = "新北京"
+            };
+
+            City c = new City();
+            c = n;
+
+            Console.WriteLine(c.CityName);
+
+            //string _connectionString = "Data Source=.;Initial Catalog=SportsDB;Persist Security Info=True;User ID=sa;Password=11111111;Integrated Security=True";
+            //System.Data.IDbConnection connection = new System.Data.SqlClient.SqlConnection(_connectionString);
+
+            System.Data.IDbConnection connection = Comm.Helper.DapperHelper.Instance;
+            connection.Open();
+            System.Data.IDbTransaction transaction = connection.BeginTransaction();
+
+            List<M_User> user = new List<M_User>()
+            {
+                new M_User() {  UserName="小赵",Pwd="111111" },
+                new M_User() {  UserName="小赵1",Pwd="11111111111111111111111111111111" },
+            };
+            try
+            {
+                connection.Insert<M_User>(user, transaction);
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+            }
+        }
+
+        [TestMethod]
+        public void TestMethod4()
+        {
+            DataTable dt = new DataTable();
+
+            string strFileName = @"D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Admin\App_Data\学生.xls";
+            HSSFWorkbook hssfworkbook;
+
+            using (FileStream file = new FileStream(strFileName, FileMode.Open, FileAccess.Read))
+            {
+                hssfworkbook = new HSSFWorkbook(file);
+            }
+            ISheet sheet = hssfworkbook.GetSheetAt(0);
+            System.Collections.IEnumerator rows = sheet.GetRowEnumerator();
+
+            IRow headerRow = sheet.GetRow(0);
+            int cellCount = headerRow.LastCellNum;
+
+            for (int j = 0; j < cellCount; j++)
+            {
+                ICell cell = headerRow.GetCell(j);
+                dt.Columns.Add(cell.ToString());
+            }
+
+            for (int i = (sheet.FirstRowNum + 1); i <= sheet.LastRowNum; i++)
+            {
+                IRow row = sheet.GetRow(i);
+                DataRow dataRow = dt.NewRow();
+
+                for (int j = row.FirstCellNum; j < cellCount; j++)
+                {
+                    if (row.GetCell(j) != null)
+                    {
+                        if (row.GetCell(j).ToString().Contains("/"))
+                        {
+                            string[] a = row.GetCell(j).ToString().Split('/');
+
+                            dataRow[j] = "20" + a[2] + "-" + a[0] + "-" + a[1];
+                        }
+                        else
+                        {
+                            dataRow[j] = row.GetCell(j).ToString();
+                        }
+                    }
+                    else
+                    {
+                        dataRow[j] = null;
+                    }
+                }
+
+                dt.Rows.Add(dataRow);
+            }
+
+        }
     }
 
+    public class M_User
+    {
+
+        public string UserName { get; set; }
+
+        public string Pwd { get; set; }
+
+    }
+
+    public class NewCity : City
+    {
+        public string NewName { get; set; }
+    }
 
     public class City
     {

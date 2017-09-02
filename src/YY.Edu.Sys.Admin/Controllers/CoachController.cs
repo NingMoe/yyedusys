@@ -19,6 +19,13 @@ namespace YY.Edu.Sys.Admin.Controllers
         // GET: Coach/Details/5
         public ActionResult Details(int id)
         {
+            ViewBag.CoachID = id;// Session["venue"].ToString();
+            return View();
+        }
+
+        public ActionResult Import()
+        {
+            ViewBag.VenueId = 1;
             return View();
         }
 

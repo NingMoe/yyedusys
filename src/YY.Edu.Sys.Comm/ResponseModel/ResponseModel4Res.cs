@@ -23,7 +23,7 @@ namespace YY.Edu.Sys.Comm.ResponseModel
             ResponseModelBase res = Comm.ResponseModel.ResponseModelBase.Success();
             Code = res.Code;
             Msg = res.Msg;
-            Error = true;
+            Error = false;
         }
     }
 }

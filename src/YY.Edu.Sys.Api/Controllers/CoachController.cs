@@ -34,19 +34,10 @@ namespace YY.Edu.Sys.Api.Controllers
             {
                 //查询
 
-                var sql = @"select c.CoachID,c.FullName,c.UserName,c.State,c.Introduce,c.NickName,c.HeadUrl,c.Address,c.Mobile,c.Sex,v.VenueName,cv.Wage,cv.Price 
-                    from Coach as c join Venue as v on c.VenueID = v.VenueID left join Coach_Venue as cv on c.CoachID = cv.CoachID where c.CoachID = @CoachID";
+                var sql = @"select c.CoachID,c.FullName,c.UserName,c.State,c.Introduce,c.NickName,c.HeadUrl,c.Address,c.Mobile,c.Sex,v.VenueID,v.VenueName,cv.Wage,cv.Price 
+                    from Coach as c left join Coach_Venue as cv on c.CoachID = cv.CoachID left join Venue as v on v.VenueID = cv.VenueID where c.CoachID = @CoachID";
 
-                var result = DapperHelper.Instance.Query<Models.ResponseModel.CoachResponse, Sys.Models.Coach_Venue, Sys.Models.Venue, Sys.Models.Coach>(sql,
-                                        splitOn: "VenueName",
-                                        param: new { CoachID = id },
-                                        map: (coach, coach_venue, venue) =>
-                                        {
-                                            coach.VenueName = venue.VenueName;
-                                            coach.Price = coach_venue.Price;
-                                            coach.Wage = coach_venue.Wage;
-                                            return coach;
-                                        });
+                var result = DapperHelper.Instance.Query<CoachResponse>(sql, new { CoachID = id });
 
                 return Ok(new Comm.ResponseModel.ResponseModel4Res<YY.Edu.Sys.Models.Coach>()
                 {
@@ -77,17 +68,13 @@ namespace YY.Edu.Sys.Api.Controllers
                 if (venueId <= 0)
                     return BadRequest();
 
-                IList<ISort> sort = new List<ISort>();
-                sort.Add(new Sort { PropertyName = "CoachID", Ascending = false });
+                var sql = @"select c.CoachID,c.FullName,c.UserName,c.State,c.Introduce,c.NickName,c.HeadUrl,c.Address,c.Mobile,c.Sex,v.VenueID,v.VenueName,cv.Wage,cv.Price 
+                    from Coach as c left join Coach_Venue as cv on c.CoachID = cv.CoachID left join Venue as v on v.VenueID = cv.VenueID
+                    where v.VenueID = @VenueID and c.state=1 ";
 
-                IList<IPredicate> predList = new List<IPredicate>();
+                var result = DapperHelper.Instance.Query<CoachResponse>(sql, new { VenueID = venueId });
 
-                predList.Add(Predicates.Field<YY.Edu.Sys.Models.Coach>(f => f.VenueID, Operator.Eq, venueId));
-                predList.Add(Predicates.Field<YY.Edu.Sys.Models.Coach>(f => f.State, Operator.Eq, 1));
-
-                var result = Comm.Helper.DapperHelper.Instance.GetList<YY.Edu.Sys.Models.Coach>(predList, sort);
-
-                return Ok(new Comm.ResponseModel.ResponseModel4Res<YY.Edu.Sys.Models.Coach>()
+                return Ok(new Comm.ResponseModel.ResponseModel4Res<CoachResponse>()
                 {
                     data = result.AsList(),
                 });
@@ -100,6 +87,82 @@ namespace YY.Edu.Sys.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// 导入教练
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public async System.Threading.Tasks.Task<IHttpActionResult> Import()
+        {
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            if (!Request.Content.IsMimeMultipartContent())
+                return BadRequest();
+
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            string root = System.Web.HttpContext.Current.Server.MapPath("~/App_Data");
+            var provider = new MultipartFormDataStreamProvider(root);
+            try
+            {
+                await Request.Content.ReadAsMultipartAsync(provider);
+
+                System.Data.DataTable dt;
+                try
+                {
+                    dt = Comm.Helper.ExcelHelper.Import(provider.FileData[0].LocalFileName);
+                }
+                catch (Exception ex)
+                {
+                    logs.Error("导入教练信息表格解析失败", ex);
+                    return Ok(new Comm.ResponseModel.ResponseModel4Res<string>() { Error = false, Info = "导入教练信息失败", });
+                }
+
+                List<string> containStudents = new List<string>();
+
+                foreach (System.Data.DataRow item in dt.Rows)
+                {
+                    Sys.Models.Coach coach = new Sys.Models.Coach()
+                    {
+                        UserName = item["手机号"].ToString(),
+                        FullName = item["姓名"].ToString(),
+                        VenueID = Convert.ToInt32(provider.FormData["venueID"]),
+                        Pwd = "888888",
+                        Mobile = item["手机号"].ToString(),
+                        State = 1,
+                        Sex = item["性别"].ToString() == "男" ? 1 : 0,
+                    };
+
+                    try
+                    {
+                        Services.CoachService.Create(coach);
+                    }
+                    catch (Comm.YYException.YYException ex)
+                    {
+                        return Ok(Comm.ResponseModel.ResponseModelBase.GetRes(ex.Message));
+                    }
+                    catch (Exception ex)
+                    {
+                        logs.Error("导入教练信息表格入库失败", ex);
+                    }
+                }
+
+
+                return Ok(Comm.ResponseModel.ResponseModelBase.Success());
+            }
+            catch (Exception ex)
+            {
+                logs.Error("教练信息导入失败", ex);
+                return BadRequest();
+            }
+            finally
+            {
+                System.IO.File.Delete(provider.FileData[0].LocalFileName);
+            }
+        }
+
+
         [HttpPost]
         public IHttpActionResult Create(YY.Edu.Sys.Models.Coach coach)
         {
@@ -110,16 +173,9 @@ namespace YY.Edu.Sys.Api.Controllers
             try
             {
 
-                var result = Comm.Helper.DapperHelper.Instance.Insert(coach);
+                bool flag = Services.CoachService.Create(coach);
 
-                if (result > 0)
-                {
-                    return Ok(Comm.ResponseModel.ResponseModelBase.Success());
-                }
-                else
-                {
-                    return Content(HttpStatusCode.OK, Comm.ResponseModel.ResponseModelBase.GetRes(Comm.ResponseModel.ResponseModelErrorEnum.SystemError));
-                }
+                return flag ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
 
             }
             catch (Exception ex)
@@ -128,6 +184,7 @@ namespace YY.Edu.Sys.Api.Controllers
                 return BadRequest();
             }
         }
+
 
         [HttpPost]
         public IHttpActionResult Edit(YY.Edu.Sys.Models.Coach coach)
@@ -182,21 +239,21 @@ namespace YY.Edu.Sys.Api.Controllers
                 criteria.Condition = "1=1";
 
                 if (oData.SearchCondition.VenueID > 0)
-                    criteria.Condition += string.Format(" and v.VenueID = {0}", oData.SearchCondition.VenueID);
+                    criteria.Condition += string.Format(" and cv.VenueID = {0}", oData.SearchCondition.VenueID);
                 if (!string.IsNullOrEmpty(oData.SearchCondition.UserName))
                     criteria.Condition += string.Format(" and c.UserName = '{0}'", oData.SearchCondition.UserName);
                 if (!string.IsNullOrEmpty(oData.SearchCondition.FullName))
                     criteria.Condition += string.Format(" and c.FullName like '%{0}%'", oData.SearchCondition.FullName);
 
                 criteria.CurrentPage = oData.PageIndex + 1;//adminlte 加载的datatable起始页为0
-                criteria.Fields = "c.CoachID,c.FullName,c.UserName,c.State,c.Introduce,c.NickName,c.HeadUrl,c.Address,c.Mobile,c.Sex,v.VenueName,cv.Wage,cv.Price";
+                criteria.Fields = "c.CoachID,c.FullName,c.UserName,c.State,c.Introduce,c.NickName,c.HeadUrl,c.Address,c.Mobile,c.Sex,v.VenueID,v.VenueName,cv.Wage,cv.Price";
                 criteria.PageSize = oData.PageSize;
-                criteria.TableName = "Coach as c join Venue as v on c.VenueID=v.VenueID left join Coach_Venue as cv on c.CoachID=cv.CoachID";
+                criteria.TableName = "Coach as c left join Coach_Venue as cv on c.CoachID = cv.CoachID left join Venue as v on v.VenueID = cv.VenueID";
                 criteria.PrimaryKey = "c.CoachID";
 
-                var r = Comm.Helper.DapperHelper.GetPageData<Sys.Models.Coach>(criteria);
+                var r = Comm.Helper.DapperHelper.GetPageData<Models.ResponseModel.CoachResponse>(criteria);
 
-                return Ok(new Comm.ResponseModel.ResponseModel4Page<Sys.Models.Coach>()
+                return Ok(new Comm.ResponseModel.ResponseModel4Page<Models.ResponseModel.CoachResponse>()
                 {
                     data = r.Items,
                     recordsFiltered = r.TotalNum,
@@ -276,28 +333,25 @@ namespace YY.Edu.Sys.Api.Controllers
                     coach.CoachID == null || coach.CoachID <= 0 || coach.Wage <= 0)
                     return BadRequest();
 
-                var result = DapperHelper.Instance.Get<Sys.Models.Coach>(coach.CoachID);
+                try
+                {
+                    VenueContainCoach(coach.VenueID.Value, coach.CoachID.Value);
 
-                //判断教练状态
-                if (result.State != 1)
-                    return Content(HttpStatusCode.OK, Comm.ResponseModel.ResponseModelBase.GetRes("此教练未审核通过"));
+                    //判断教练状态
+                    var result = DapperHelper.Instance.Get<Sys.Models.Coach>(coach.CoachID);
+                    if (result.State != 1)
+                        return Ok(Comm.ResponseModel.ResponseModelBase.GetRes("此教练未审核通过"));
 
-                //查询该学校下是否有此教练
-                var venue_info = DapperHelper.Instance.Get<Sys.Models.Coach_Venue>(
-                    Predicates.Field<Sys.Models.Coach_Venue>(f => f.CoachID, Operator.Eq, coach.CoachID)
-                );
+                    var sql = "update Coach_Venue set Wage=@Wage where CoachID=@CoachID and VenueID=@VenueID";
+                    //设置工资
+                    int flag = DapperHelper.Instance.Execute(sql, coach);
 
-                if (venue_info == null)
-                    return Content(HttpStatusCode.OK, Comm.ResponseModel.ResponseModelBase.GetRes("此教练未绑定场馆"));
-
-                if (venue_info.VenueID != coach.VenueID)
-                    return Content(HttpStatusCode.OK, Comm.ResponseModel.ResponseModelBase.GetRes("该场馆下没有此教练"));
-
-                //设置工资
-                venue_info.Wage = coach.Wage;
-                bool flag = DapperHelper.Instance.Update(venue_info);
-
-                return flag ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
+                    return flag > 0 ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
+                }
+                catch (Exception ex)
+                {
+                    return Ok(Comm.ResponseModel.ResponseModelBase.GetRes(ex.Message));
+                }
             }
             catch (Exception ex)
             {
@@ -316,35 +370,25 @@ namespace YY.Edu.Sys.Api.Controllers
         {
             try
             {
-                if (!ModelState.IsValid)
-                    return BadRequest();
+                try
+                {
+                    VenueContainCoach(coach.VenueID.Value, coach.CoachID.Value);
 
-                if (coach == null || coach.VenueID == null || coach.VenueID <= 0 ||
-                    coach.CoachID == null || coach.CoachID <= 0 || coach.Price <= 0)
-                    return BadRequest();
+                    //判断教练状态
+                    var result = DapperHelper.Instance.Get<Sys.Models.Coach>(coach.CoachID);
+                    if (result.State != 1)
+                        return Ok(Comm.ResponseModel.ResponseModelBase.GetRes("此教练未审核通过"));
 
-                //查询该学校下是否有此教练
-                var venue_info = DapperHelper.Instance.Get<Sys.Models.Coach_Venue>(
-                    Predicates.Field<Sys.Models.Coach_Venue>(f => f.CoachID, Operator.Eq, coach.CoachID)
-                );
+                    var sql = "update Coach_Venue set Price=@Price where CoachID=@CoachID and VenueID=@VenueID";
+                    //设置工资
+                    int flag = DapperHelper.Instance.Execute(sql, coach);
 
-                if (venue_info == null)
-                    return Content(HttpStatusCode.OK, Comm.ResponseModel.ResponseModelBase.GetRes("此教练未绑定场馆"));
-
-                if (venue_info.VenueID != coach.VenueID)
-                    return Content(HttpStatusCode.OK, Comm.ResponseModel.ResponseModelBase.GetRes("该场馆下没有此教练"));
-
-                var result = DapperHelper.Instance.Get<Sys.Models.Coach>(coach.CoachID);
-
-                //判断教练状态
-                if (result.State != 1)
-                    return Content(HttpStatusCode.OK, Comm.ResponseModel.ResponseModelBase.GetRes("此教练未审核通过"));
-
-                //设置教练课时费
-                venue_info.Price = coach.Price;
-                bool flag = DapperHelper.Instance.Update(venue_info);
-
-                return flag ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
+                    return flag > 0 ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
+                }
+                catch (Exception ex)
+                {
+                    return Ok(Comm.ResponseModel.ResponseModelBase.GetRes(ex.Message));
+                }
             }
             catch (Exception ex)
             {
@@ -369,16 +413,23 @@ namespace YY.Edu.Sys.Api.Controllers
                 if (coach == null || coach.CoachID <= 0)
                     return BadRequest();
 
-                //查询该学校下是否有此教练
                 int coachId = coach.CoachID;
-                var result = DapperHelper.Instance.Get<Sys.Models.Coach>(coachId);
-                if (result.VenueID != coach.VenueID)
-                    return Content(HttpStatusCode.OK, Comm.ResponseModel.ResponseModelBase.GetRes("该场馆下没有此教练"));
+                int venudId = coach.VenueID;
 
-                result.State = 1;
-                bool flag = DapperHelper.Instance.Update(result);
+                try
+                {
 
-                return flag ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
+                    VenueContainCoach(venudId, coachId);
+                    var result = DapperHelper.Instance.Get<Sys.Models.Coach>(coachId);
+                    result.State = 1;
+                    bool flag = DapperHelper.Instance.Update(result);
+
+                    return flag ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
+                }
+                catch (Exception ex)
+                {
+                    return Ok(Comm.ResponseModel.ResponseModelBase.GetRes(ex.Message));
+                }
             }
             catch (Exception ex)
             {
@@ -397,22 +448,29 @@ namespace YY.Edu.Sys.Api.Controllers
         {
             try
             {
+
                 if (!ModelState.IsValid)
                     return BadRequest();
 
                 if (coach == null || coach.CoachID <= 0)
                     return BadRequest();
 
-                //查询该学校下是否有此教练
                 int coachId = coach.CoachID;
-                var result = DapperHelper.Instance.Get<Sys.Models.Coach>(coachId);
-                if (result.VenueID != coach.VenueID)
-                    return Content(HttpStatusCode.OK, Comm.ResponseModel.ResponseModelBase.GetRes("该场馆下没有此教练"));
+                int venudId = coach.VenueID;
 
-                result.State = 2;
-                bool flag = DapperHelper.Instance.Update(result);
+                try
+                {
+                    VenueContainCoach(venudId, coachId);
+                    var result = DapperHelper.Instance.Get<Sys.Models.Coach>(coachId);
+                    result.State = 2;
+                    bool flag = DapperHelper.Instance.Update(result);
 
-                return flag ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
+                    return flag ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
+                }
+                catch (Exception ex)
+                {
+                    return Ok(Comm.ResponseModel.ResponseModelBase.GetRes(ex.Message));
+                }
             }
             catch (Exception ex)
             {
@@ -420,6 +478,72 @@ namespace YY.Edu.Sys.Api.Controllers
                 return BadRequest();
             }
         }
+
+        /// <summary>
+        /// 检查教练是否再此场馆任职
+        /// </summary>
+        /// <param name="venudId"></param>
+        /// <param name="coachId"></param>
+        /// <exception cref="Exception">抛出异常</exception>
+        private void VenueContainCoach(int venudId, int coachId)
+        {
+
+            //查询该学校下是否有此教练
+            var sql = "select * from Coach_Venue where CoachID=@CoachID";
+            var predicate = Predicates.Field<Sys.Models.Coach_Venue>(f => f.CoachID, Operator.Eq, coachId);
+            var venue_info = DapperHelper.Instance.Query<Sys.Models.Coach_Venue>(sql, new { CoachID = coachId });
+
+            if (venue_info == null)
+                throw new Exception("此教练未绑定场馆");
+
+            bool contain = false;
+            venue_info.AsList().ForEach((v) => { if (v.VenueID == venudId) contain = true; });
+            if (!contain)
+                throw new Exception("此教练没有在该场馆任职");
+
+        }
+
+        /// <summary>
+        /// 获取教练排课课程
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public IHttpActionResult GetCoachTeachingSche(int coachID, string curriculumDate)
+        {
+
+            var sql = @"select CurriculumDate,CurriculumStr = ( STUFF(( SELECT    ',' + CurriculumBeginTime+'-'+CurriculumEndTime+'|'+CONVERT(varchar(1), [State])+'|'+CONVERT(varchar(1), VenueID)+'|'+CONVERT(varchar(1), CampusID) FROM TeachingSchedule WHERE  CurriculumDate = t.CurriculumDate FOR XML PATH('') ), 1, 1, '') )  
+from TeachingSchedule as t where CoachID = @CoachID and CurriculumDate>= @CurriculumDateStart and CurriculumDate< @CurriculumDateEnd
+group by CurriculumDate";
+
+            try
+            {
+
+                string[] curriculumDateArr = curriculumDate
+                    .Split("to".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+
+                var result = DapperHelper.Instance.Query(sql,
+                    new
+                    {
+                        CoachID = coachID,
+                        CurriculumDateStart = curriculumDateArr[0],
+                        CurriculumDateEnd = Convert.ToDateTime(curriculumDateArr[1]).AddDays(1).ToString("yyy-MM-dd")
+                    });
+
+                return Ok(new Comm.ResponseModel.ResponseModel4Page<object>()
+                {
+                    data = result.ToList(),
+                    recordsFiltered = result.Count(),
+                    recordsTotal = result.Count()
+                });
+            }
+            catch (Exception ex)
+            {
+                logs.Error("获取教练排课失败", ex);
+                return BadRequest();
+            }
+        }
+
 
 
         #endregion
@@ -537,46 +661,104 @@ namespace YY.Edu.Sys.Api.Controllers
         #region 课程
 
         /// <summary>
+        /// 购买课时时选择教练
+        /// </summary>
+        /// <param name="VenueID"></param>
+        /// <param name="StudentID"></param>
+        /// <returns></returns>
+        public IHttpActionResult GetCoachListByHourClass(int VenueID, int StudentID)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.Append("select c.*,'hNumber'=isnull(ClassNumber,0) from Coach c with(nolock)");
+            sql.Append(" inner join Coach_Venue cv with(nolock) on c.CoachID=cv.CoachID");
+            sql.Append(" left join ClassHoursNumber ch with(nolock) on c.coachID = ch.coachID and ch.StudentID =@StudentID ");
+            sql.Append("where c.state = 1 and cv.VenueID =@VenueID ");
+            var query = Comm.Helper.DapperHelper.Instance.Query<CoachHourClassResponse>(sql.ToString(), new { StudentID = StudentID, VenueID = VenueID });
+            return Ok(query);
+
+        }
+        /// <summary>
         /// 取的教练下的所有课程
         /// </summary>
         /// <param name="CoachID"></param>
         /// <returns></returns>
-        public IHttpActionResult GetCoachCurriculum(int CoachID)
+        public IHttpActionResult GetCoachCurriculum(string query)
         {
             //
             //select T.*,v.VenueName,c.CampusName from  TeachingSchedule t with(nolock) inner join Venue v with(nolock) on t.VenueID=v.VenueID             left join Campus c with(nolock) on t.CampusID = t.CampusID  where PKID in(select PKID from Curriculum c with(nolock) where CoachID = 0 ) and CoachID = 0
             try
             {
-
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                System.Web.HttpContextBase context = (System.Web.HttpContextBase)Request.Properties["MS_HttpContext"];//获取传统context
-                System.Web.HttpRequestBase request = context.Request;//定义传统request对象
-                string UserName = Comm.Helper.ParamHelper<string>.GetParam(request["UserName"], "");
-                string ParentMobile = Comm.Helper.ParamHelper<string>.GetParam(request["ParentMobile"], "");
-                string FullName = Comm.Helper.ParamHelper<string>.GetParam(request["FullName"], "");
-                string ParentFullName = Comm.Helper.ParamHelper<string>.GetParam(request["ParentFullName"], "");
-                int start = Comm.Helper.ParamHelper<int>.GetParam(request["start"], 0);
-                start += 1;//adminlte 加载的datatable起始页为0
-                int length = Comm.Helper.ParamHelper<int>.GetParam(request["length"], 0);
-                int venueId = Comm.Helper.ParamHelper<int>.GetParam(request["venueId"], 0);
+                Comm.RequestModel.RequestModelBase<Sys.Models.Coach> oData = Newtonsoft.Json.JsonConvert.DeserializeObject<Comm.RequestModel.RequestModelBase<Sys.Models.Coach>>(query);
 
-                if (venueId <= 0 || start < 0 || length <= 0)
+
+                if (oData.SearchCondition.CoachID <= 0 || oData.PageIndex < 0 || oData.PageSize <= 0)
                     return BadRequest();
 
                 PageCriteria criteria = new PageCriteria();
-                criteria.Condition = "1=1";
 
-                criteria.Condition += string.Format(" and t.CoachID = {0} ", CoachID);
 
-                //  select T.*,v.VenueName,c.CampusName from  TeachingSchedule t with(nolock) inner join Venue v with(nolock) on t.VenueID = v.VenueID             left join Campus c with(nolock) on t.CampusID = t.CampusID  where PKID in(select PKID from Curriculum c with(nolock) where CoachID = 0 ) and CoachID = 0
+                criteria.Condition += string.Format("t.PKID in(select PKID from Curriculum with(nolock) where CoachID='" + oData.SearchCondition.CoachID + "') ", oData.SearchCondition.CoachID);
+                criteria.Condition += string.Format(" and t.CoachID='{0}' ", oData.SearchCondition.CoachID);
 
-                criteria.CurrentPage = start;
-                criteria.Fields = "*";
-                criteria.PageSize = length;
-                criteria.TableName = " TeachingSchedule t with(nolock) inner join Venue v with(nolock) on t.VenueID = v.VenueID             left join Campus c with(nolock) on t.CampusID = t.CampusID  where PKID in(select PKID from Curriculum c with(nolock) where CoachID = '" + CoachID + "' )";
-                criteria.PrimaryKey = "PKID";
+                //当日
+                if (oData.RequestType == 1)
+                {
+                    if (!string.IsNullOrEmpty(oData.CurrentDate))
+                    {
+                        criteria.Condition += string.Format(" and t.CurriculumDate= '{0}'", oData.CurrentDate);
+                    }
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(oData.CurrentDate) && string.IsNullOrEmpty(oData.BeginDate) && string.IsNullOrEmpty(oData.EndDate))
+                    {
+
+                        criteria.Condition += string.Format(" and t.CurriculumDate<> '{0}'", oData.CurrentDate);
+                    }
+                }
+
+                //1有效，2学校停课（需要判断，有没有学生预约）,3老师请假,4上课
+                if (oData.RequestType == 2)
+                {
+                    criteria.Condition += string.Format(" and t.State<>{0} ", 4);
+                }
+                else if (oData.RequestType == 3)
+                {
+                    criteria.Condition += string.Format(" and t.State={0} ", 4);
+                }
+
+
+                //开始日期
+                if (!string.IsNullOrEmpty(oData.BeginDate))
+                {
+                    criteria.Condition += string.Format(" and t.CurriculumDate>= '{0}'", oData.BeginDate);
+                }
+                //结束日期
+                if (!string.IsNullOrEmpty(oData.EndDate))
+                {
+                    criteria.Condition += string.Format(" and t.CurriculumDate< '{0}'", oData.EndDate);
+                }
+
+
+
+
+
+                criteria.CurrentPage = oData.PageIndex;
+                criteria.Fields = "t.*,v.VenueName,c.CampusName,co.FullName,'Sucount'=(select COUNT(1) from Curriculum with(nolock) where PKID=t.PKID ) ";
+                criteria.PageSize = oData.PageSize;
+                criteria.TableName = "TeachingSchedule t with(nolock) inner join Venue v with(nolock) on t.VenueID = v.VenueID left join Campus c with(nolock) on t.CampusID = t.CampusID  inner join Coach co with(nolock) on co.CoachID=t.CoachID  ";
+                criteria.PrimaryKey = "t.PKID";
+                if (oData.RequestType == 3)
+                {
+                    criteria.Sort = "CurriculumDate desc,t.PKID desc";
+                }
+                else
+                {
+                    criteria.Sort = "CurriculumDate,CurriculumBeginTime,t.PKID";
+                }
 
                 var r = Comm.Helper.DapperHelper.GetPageData<TeachingScheduleResponse>(criteria);
 
@@ -597,6 +779,39 @@ namespace YY.Edu.Sys.Api.Controllers
 
 
         /// <summary>
+        /// 课程 详细信息
+        /// </summary>
+        /// <param name="PKID"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public IHttpActionResult GetCoachCurriculumByID(int PKID)
+        {
+
+            //           select T.*,v.VenueName,c.CampusName,cu.State,cu.CoachID from  TeachingSchedule t with(nolock)
+            //inner join Venue v with(nolock) on t.VenueID = v.VenueID
+            //left join Campus c with(nolock) on t.CampusID = t.CampusID
+            //inner join Curriculum cu with(nolock) on t.PKID = cu.PKID
+            //where cu.StudentID = @StudentID
+
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest();
+
+                string sql = "select t.*,v.VenueName,c.CampusName,co.FullName,'Sucount'=(select COUNT(1) from Curriculum with(nolock) where PKID=t.PKID )  from TeachingSchedule t with(nolock) inner join Venue v with(nolock) on t.VenueID = v.VenueID left join Campus c with(nolock) on t.CampusID = t.CampusID  inner join Coach co with(nolock) on co.CoachID=t.CoachID where t.PKID=" + PKID;
+
+                var query = Comm.Helper.DapperHelper.Instance.Query<TeachingScheduleResponse>(sql);
+                return Ok(query);
+            }
+            catch (Exception ex)
+            {
+                logs.Error("课程详细信息", ex);
+                return BadRequest();
+            }
+
+        }
+
+        /// <summary>
         /// 取的课程下预约的学生
         /// </summary>
         /// <param name="pkid"></param>
@@ -604,16 +819,18 @@ namespace YY.Edu.Sys.Api.Controllers
         public IHttpActionResult GetCurriculumStudentByPKID(int pkid)
         {
 
-            string sql = "select c.CurriculumID,s.FullName,s.Mobile,s.ParentFullName,s.ParentMobile from Curriculum c with(nolock) inner join Student s with(nolock) on c.StudentID=s.StudentID  where PKID=@PKID ";
+            string sql = "select c.CurriculumID,c.PKID,c.CoachID,'CState'=c.State,s.StudentID,s.FullName,s.Mobile,s.ParentFullName,s.ParentMobile from Curriculum c with(nolock) inner join Student s with(nolock) on c.StudentID=s.StudentID  where PKID=@PKID ";
             var query = Comm.Helper.DapperHelper.Instance.Query<StudentCurriculumResponse>(sql, new { PKID = pkid });
             return Ok(query);
         }
 
 
+
+
         /// <summary>
-        ///课程表 学生进行签到（由教练发起）df
+        ///课程表 学生进行签到或请假（由教练发起）df
         /// </summary>
-        /// <param name="State"></param>
+        /// <param name="State">0预约成功，1上课成功，2学生请假，3老师请假4场馆停课</param>
         /// <param name="StudentID"></param>
         /// <param name="pkid"></param>
         /// <returns></returns>
@@ -645,7 +862,53 @@ namespace YY.Edu.Sys.Api.Controllers
             }
         }
 
+        #region 点评
 
+        [HttpPost]
+        public IHttpActionResult AddCoachComment(YY.Edu.Sys.Models.CoachComment cm)
+        {
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            try
+            {
+
+                var result = Comm.Helper.DapperHelper.Instance.Insert(cm);
+
+                if (result > 0)
+                {
+                    return Ok(Comm.ResponseModel.ResponseModelBase.Success());
+                }
+                else
+                {
+                    return Content(HttpStatusCode.OK, Comm.ResponseModel.ResponseModelBase.GetRes(Comm.ResponseModel.ResponseModelErrorEnum.SystemError));
+                }
+
+            }
+            catch (Exception ex)
+            {
+                logs.Error("点评", ex);
+                return BadRequest();
+            }
+        }
+
+
+
+        /// <summary>
+        /// 取的课程下预约的学生
+        /// </summary>
+        /// <param name="pkid"></param>
+        /// <returns></returns>
+        public IHttpActionResult GetCoachCommentByPKID(int pkid)
+        {
+
+            string sql = "select c.*,'StudentFullName'=s.FullName from CoachComment c with(nolock) inner join Student s with(nolock) on c.StudentID=s.StudentID where  PKID=@PKID ";
+            var query = Comm.Helper.DapperHelper.Instance.Query<CoachCommentResponse>(sql, new { PKID = pkid });
+            return Ok(query);
+        }
+
+        #endregion
 
         // 薪酬列表、明细
 

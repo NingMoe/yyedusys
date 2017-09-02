@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 
@@ -33,6 +34,30 @@ namespace YY.Edu.Sys.Admin.Controllers
         // GET: Studeng/Create
         public ActionResult Create()
         {
+            return View();
+        }
+
+        public ActionResult Import()
+        {
+            ViewBag.VenueId = 1;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Import(HttpPostedFileBase file)
+        {
+            try
+            {
+
+                var fileName = file.FileName;
+                var filePath = Server.MapPath(string.Format("~/{0}", "Upload"));
+                var finalPath = System.IO.Path.Combine(filePath, fileName);
+                file.SaveAs(finalPath);
+            }
+            catch (Exception ex)
+            {
+
+            }
             return View();
         }
 

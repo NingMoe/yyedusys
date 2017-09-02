@@ -18,6 +18,30 @@ namespace YY.Edu.Sys.Api.Services
             //var query = Helper.DapperHelper.Instance.Query<Models.City>("select * from city where CityID=@id", new { Id = 1 });
         }
 
+        /// <summary>
+        /// 检测场馆编码是否生成
+        /// </summary>
+        /// <param name="venudId"></param>
+        /// <returns></returns>
+        public static bool IsExistVenueCode(int venudId)
+        {
+
+            if (venudId <= 0)
+                throw new Comm.YYException.YYException("参数错误");
+
+            var result = Comm.Helper.DapperHelper.Instance.Get<Sys.Models.Venue>(venudId);
+
+            if (result == null)
+                return false;
+
+            return !string.IsNullOrWhiteSpace(result.VenueCode);
+        }
+
+        /// <summary>
+        /// 生成场馆编码
+        /// </summary>
+        /// <param name="venue"></param>
+        /// <returns></returns>
         public string GenVenueCode(YY.Edu.Sys.Models.Venue venue)
         {
 
