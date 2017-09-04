@@ -61,6 +61,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Helper\HttpRequestHelper.cs" />
     <Compile Include="YYException\YYException.cs" />
     <Compile Include="Helper\DapperHelper.cs" />
     <Compile Include="Helper\ExcelHelper.cs" />

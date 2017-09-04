@@ -87,7 +87,7 @@ namespace YY.Edu.Sys.Admin
 
             bundles.Add(new ScriptBundle("~/Scripts/Mailbox/Inbox/menu").Include(
                 "~/Scripts/Mailbox/Inbox-menu.js"));
-            
+
             bundles.Add(new ScriptBundle("~/Scripts/Mailbox/Compose").Include(
                 "~/Scripts/Mailbox/Compose.js"));
 
@@ -166,7 +166,7 @@ namespace YY.Edu.Sys.Admin
 
             bundles.Add(new ScriptBundle("~/Scripts/Elements/Sliders/menu").Include(
                 "~/Scripts/Elements/Sliders-menu.js"));
-            
+
             bundles.Add(new ScriptBundle("~/Scripts/Elements/Timeline/menu").Include(
                 "~/Scripts/Elements/Timeline-menu.js"));
         }
@@ -249,6 +249,9 @@ namespace YY.Edu.Sys.Admin
             bundles.Add(new ScriptBundle("~/Scripts/SysManage/Coach").Include(
               "~/Scripts/SysManage/Coach.js"));
 
+            bundles.Add(new ScriptBundle("~/Scripts/SysManage/ControlPanel").Include(
+              "~/Scripts/SysManage/ControlPanel.js"));
+
             bundles.Add(new ScriptBundle("~/Scripts/SysManage/StateTranstion").Include(
             "~/Scripts/SysManage/StateTranstion.js"));
 
@@ -283,7 +286,7 @@ namespace YY.Edu.Sys.Admin
 
             bundles.Add(new StyleBundle("~/AdminLTE/bootstrap/css").Include(
                 "~/AdminLTE/bootstrap/css/bootstrap.min.css"));
-            
+
             // dist
             bundles.Add(new ScriptBundle("~/AdminLTE/dist/js").Include(
                 "~/AdminLTE/dist/js/app.js"));

@@ -221,7 +221,7 @@ from TeachingSchedule as t join Coach as c2 on t.CoachID = c2.CoachID where t.pk
                     //已经添加的下课时间
                     DateTime classOver = Convert.ToDateTime("2008-08-08 " + item.CurriculumEndTime);
 
-                    if ((inClassStart >= classStart && inClassStart <= classStart)||
+                    if ((inClassStart >= classStart && inClassStart <= classStart) ||
                         (inClassStart >= classOver && inClassStart <= classOver))
                     {
                         throw new Exception(info.CurriculumDate.Value.ToString("yyyy-MM-dd") + " " + timeStr + "已排课");
@@ -300,7 +300,24 @@ from TeachingSchedule as t join Coach as c2 on t.CoachID = c2.CoachID where t.pk
                 if (teachSche == null || teachSche.PKID <= 0)
                     return BadRequest();
 
-                return ChangeTeachingScheState(Convert.ToInt32(teachSche.PKID), Convert.ToInt32(teachSche.VenueID), Convert.ToInt32(Sys.Models.StateEnum.TeachingSchedule.StopTeachingSche));
+                bool result = false;
+                bool isBook = Services.TeachingScheduleService.IsBeBook(Convert.ToInt32(teachSche.PKID), Convert.ToInt32(teachSche.VenueID));
+                if (isBook)
+                {
+                    result = Services.TeachingScheduleService.CancelTeachingSche(Convert.ToInt32(teachSche.PKID), Convert.ToInt32(teachSche.VenueID),
+                         Sys.Models.StateEnum.TeachingSchedule.StopTeachingSche, Sys.Models.StateEnum.Curriculum.StopTeachingSche,
+                          Sys.Models.StateEnum.ClassHoursDetailed.StopTeachingSche, "学校停课");
+                }
+                else
+                {
+                    result = Services.TeachingScheduleService.ChangeTeachingScheState(Convert.ToInt32(teachSche.PKID), Convert.ToInt32(teachSche.VenueID), Sys.Models.StateEnum.TeachingSchedule.StopTeachingSche);
+                }
+
+                return result ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
+            }
+            catch (Comm.YYException.YYException ex)
+            {
+                return Ok(Comm.ResponseModel.ResponseModelBase.GetRes(ex.Message));
             }
             catch (Exception ex)
             {
@@ -310,13 +327,14 @@ from TeachingSchedule as t join Coach as c2 on t.CoachID = c2.CoachID where t.pk
         }
 
         /// <summary>
-        /// 同意请假
+        /// 同意教练请假
         /// </summary>
         /// <param name="teachSche"></param>
         /// <returns></returns>
         [HttpPost]
         public IHttpActionResult AgreeLeave(dynamic teachSche)
         {
+
             try
             {
                 if (!ModelState.IsValid)
@@ -325,7 +343,25 @@ from TeachingSchedule as t join Coach as c2 on t.CoachID = c2.CoachID where t.pk
                 if (teachSche == null || teachSche.PKID <= 0)
                     return BadRequest();
 
-                return ChangeTeachingScheState(Convert.ToInt32(teachSche.PKID), Convert.ToInt32(teachSche.VenueID), Convert.ToInt32(Sys.Models.StateEnum.TeachingSchedule.LeaveTeachingScheDone));
+                bool result = false;
+                bool isBook = Services.TeachingScheduleService.IsBeBook(Convert.ToInt32(teachSche.PKID), Convert.ToInt32(teachSche.VenueID));
+                if (isBook)
+                {
+                    result = Services.TeachingScheduleService.CancelTeachingSche(Convert.ToInt32(teachSche.PKID), Convert.ToInt32(teachSche.VenueID),
+                         Sys.Models.StateEnum.TeachingSchedule.LeaveTeachingScheDone, Sys.Models.StateEnum.Curriculum.CoachLeaveTeachingScheDone,
+                         Sys.Models.StateEnum.ClassHoursDetailed.CoachLeaveTeachingScheDone, "教练请假");
+                }
+                else
+                {
+                    result = Services.TeachingScheduleService.ChangeTeachingScheState(Convert.ToInt32(teachSche.PKID),
+                        Convert.ToInt32(teachSche.VenueID), Sys.Models.StateEnum.TeachingSchedule.StopTeachingSche);
+                }
+
+                return result ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
+            }
+            catch (Comm.YYException.YYException ex)
+            {
+                return Ok(Comm.ResponseModel.ResponseModelBase.GetRes(ex.Message));
             }
             catch (Exception ex)
             {
@@ -349,42 +385,20 @@ from TeachingSchedule as t join Coach as c2 on t.CoachID = c2.CoachID where t.pk
                 if (teachSche == null || teachSche.PKID <= 0)
                     return BadRequest();
 
-                return ChangeTeachingScheState(Convert.ToInt32(teachSche.PKID), Convert.ToInt32(teachSche.VenueID), Convert.ToInt32(Sys.Models.StateEnum.TeachingSchedule.ClassOverTeachingSche));
+                bool result = Services.TeachingScheduleService.DoneTeachingSche(Convert.ToInt32(teachSche.PKID),
+                    Convert.ToInt32(teachSche.VenueID),
+                    Sys.Models.StateEnum.TeachingSchedule.ClassOverTeachingSche,
+                    Sys.Models.StateEnum.Curriculum.ClassOverTeachingSche);
+
+                return result ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
+            }
+            catch (Comm.YYException.YYException ex)
+            {
+                return Ok(Comm.ResponseModel.ResponseModelBase.GetRes(ex.Message));
             }
             catch (Exception ex)
             {
                 logs.Error("确认上课完成失败", ex);
-                return BadRequest();
-            }
-        }
-
-        private IHttpActionResult ChangeTeachingScheState(int pkId, int venueID, int state)
-        {
-            try
-            {
-                if (pkId <= 0)
-                    return BadRequest();
-
-                try
-                {
-
-                    var result = DapperHelper.Instance.Get<Sys.Models.TeachingSchedule>(pkId);
-                    if (result.VenueID != venueID)
-                        return Ok(Comm.ResponseModel.ResponseModelBase.GetRes("操作非法"));
-
-                    result.State = state;
-                    bool flag = DapperHelper.Instance.Update(result);
-
-                    return flag ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
-                }
-                catch (Exception ex)
-                {
-                    return Ok(Comm.ResponseModel.ResponseModelBase.GetRes(ex.Message));
-                }
-            }
-            catch (Exception ex)
-            {
-                logs.Error("停课失败", ex);
                 return BadRequest();
             }
         }

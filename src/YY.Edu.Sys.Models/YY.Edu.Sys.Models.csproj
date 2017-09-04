@@ -48,6 +48,7 @@
     <Compile Include="Campus.cs" />
     <Compile Include="City.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="ClassHoursDetailed.cs" />
     <Compile Include="ClassHoursNumber.cs" />
     <Compile Include="ClassHoursOrder.cs" />
     <Compile Include="Coach.cs" />
@@ -62,6 +63,8 @@
     <Compile Include="MenuManage.cs" />
     <Compile Include="M_User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StateEnum\ClassHoursDetailed.cs" />
+    <Compile Include="StateEnum\Curriculum.cs" />
     <Compile Include="StateEnum\TeachingSchedule.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="StudentGrowth.cs" />
@@ -73,6 +76,7 @@
     <Compile Include="Venue.cs" />
     <Compile Include="VenueInfo.cs" />
     <Compile Include="VenueNotice.cs" />
+    <Compile Include="WxUserInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

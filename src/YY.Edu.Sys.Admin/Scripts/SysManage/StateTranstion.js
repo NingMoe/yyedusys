@@ -37,6 +37,7 @@ function transtionTeachingScheStateHandle(state, pkId, venueId) {
         edithtml += '<button class="btn btn-xs btn-danger" onclick="return change_state(' + "'" + 'StopTeachingSche' + "'," + pkId + ',' + venueId + ');"><i class="fa fa-edit"> 停课 </i></button>&nbsp;&nbsp;';
         return edithtml;
     } else if (state == 1) {
+        edithtml += '<button class="btn btn-xs btn-danger" onclick="return change_state(' + "'" + 'StopTeachingSche' + "'," + pkId + ',' + venueId + ');"><i class="fa fa-edit"> 停课 </i></button>&nbsp;&nbsp;';
         return edithtml;
     } else if (state == 2) {
         return edithtml;

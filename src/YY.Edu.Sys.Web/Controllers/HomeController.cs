@@ -10,6 +10,11 @@ namespace YY.Edu.Sys.Web.Controllers
     {
         public ActionResult Index()
         {
+
+            if (Session["OpenId"]!=null)
+            {
+                ViewBag.OpenId = Session["OpenId"];
+            }
             ViewBag.Title = "Home Page";
 
             return View();

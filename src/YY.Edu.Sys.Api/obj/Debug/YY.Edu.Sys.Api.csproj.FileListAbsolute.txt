@@ -160,6 +160,8 @@ D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\System.Web.WebPages.Razor.
 D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\WebGrease.dll
 D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\YY.Edu.Sys.Comm.dll
 D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\YY.Edu.Sys.Models.dll
+D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\NPOI.dll
+D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\ICSharpCode.SharpZipLib.dll
 D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\YY.Edu.Sys.Comm.pdb
 D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\YY.Edu.Sys.Models.pdb
 D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\Dapper.xml
@@ -197,6 +199,7 @@ D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\Microsoft.Owin.Security.Go
 D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\Microsoft.Owin.Security.Twitter.xml
 D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\System.Web.Http.Owin.xml
+D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\NPOI.xml
 D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\zh-Hans\System.Net.Http.Formatting.resources.dll
 D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\zh-Hans\System.Web.Helpers.resources.dll
 D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\zh-Hans\System.Web.Http.resources.dll
@@ -223,6 +226,3 @@ D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\zh-Hans\System.Web.Http.Ow
 D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\obj\Debug\YY.Edu.Sys.Api.csprojResolveAssemblyReference.cache
 D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\obj\Debug\YY.Edu.Sys.Api.dll
 D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\obj\Debug\YY.Edu.Sys.Api.pdb
-D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\NPOI.dll
-D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\ICSharpCode.SharpZipLib.dll
-D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\NPOI.xml

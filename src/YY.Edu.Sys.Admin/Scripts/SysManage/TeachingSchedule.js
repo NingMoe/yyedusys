@@ -232,8 +232,9 @@ function change_state(action, pKID, venueId) {
             contentType: 'application/json',
             data: JSON.stringify({ PKID: pKID, VenueID: venueId }),
             success: function (data, status) {
+                console.log(data);
                 if (status == "success") {
-                    if (!data.error) {
+                    if (!data.Error) {
                         bind_data();
                         alert('设置成功');
                     } else {
@@ -274,7 +275,8 @@ function showdetail() {
                     $("#CurriculumDate").html(new Date(dataStr).Format("yyyy-MM-dd"));
                     $("#CurriculumBeginTime").html(data.Info.CurriculumBeginTime);
                     $("#CurriculumEndTime").html(data.Info.CurriculumEndTime);
-                    $("#AddTime").html(data.Info.AddTime);
+                    $("#StudentFullName").html(data.Info.StudentFullName);
+                    //$("#AddTime").html(data.Info.AddTime);
                     $("#State").html(data.Info.State);
                     $("#Info").html(data.Info.Info);
                 }

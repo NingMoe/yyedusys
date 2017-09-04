@@ -241,6 +241,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CampusController.cs" />
     <Compile Include="Controllers\CoachController.cs" />
+    <Compile Include="Controllers\ControlPanelController.cs" />
     <Compile Include="Controllers\FeedBackLogController.cs" />
     <Compile Include="Controllers\HelloController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -251,6 +252,7 @@
     <Compile Include="Controllers\VenueInfoController.cs" />
     <Compile Include="Controllers\VenueNoticeController.cs" />
     <Compile Include="Controllers\WeixinController.cs" />
+    <Compile Include="Controllers\WxUserInfoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -266,6 +268,7 @@
     <Compile Include="Models\ResponseModel\CoachHourClassResponse.cs" />
     <Compile Include="Models\ResponseModel\CoachResponse.cs" />
     <Compile Include="Models\ResponseModel\CoachWagesResponse.cs" />
+    <Compile Include="Models\ResponseModel\ControlPanelResponse.cs" />
     <Compile Include="Models\ResponseModel\StudentCurriculumResponse.cs" />
     <Compile Include="Models\ResponseModel\StudentResponse.cs" />
     <Compile Include="Models\ResponseModel\TeachingScheduleResponse.cs" />
@@ -275,6 +278,7 @@
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Services\CoachService.cs" />
     <Compile Include="Services\StudentService.cs" />
+    <Compile Include="Services\TeachingScheduleService.cs" />
     <Compile Include="Services\VenueService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
