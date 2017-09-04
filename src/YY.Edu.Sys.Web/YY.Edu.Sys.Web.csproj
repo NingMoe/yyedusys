@@ -54,9 +54,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Senparc.Weixin, Version=4.14.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Senparc.Weixin.4.14.3\lib\net45\Senparc.Weixin.dll</HintPath>
@@ -78,6 +81,10 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -239,6 +246,9 @@
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TenPayV3Controller.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="data\UpLoad.ashx.cs">
+      <DependentUpon>UpLoad.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Filter\CustomOAuthAttribute.cs" />
     <Compile Include="Filter\PayOAuthAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -261,6 +271,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\iscroll.css" />
     <Content Include="Content\style.css" />
+    <Content Include="data\UpLoad.ashx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\font_1474352518_1483889.svg" />
@@ -305,7 +316,10 @@
     <Content Include="fonts\font_1474352518_1483889.eot" />
     <Content Include="fonts\font_1474352518_1483889.ttf" />
     <Content Include="fonts\font_1474352518_1483889.woff" />
+    <Content Include="images\movie.ogg" />
+    <Fakes Include="Fakes\Newtonsoft.Json.fakes" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Coash\MyPresence.js" />
     <Content Include="Scripts\Coash\CoashCurriculum.js" />
     <Content Include="Scripts\Coash\CurriculumStudent.js" />
     <Content Include="Scripts\Coash\MyComment.js" />
@@ -348,9 +362,12 @@
     <Content Include="Views\Coash\CurriculumStudent.cshtml" />
     <Content Include="Views\Student\BuyHourClass.cshtml" />
     <Content Include="Views\Student\SubscribeCurriculum.cshtml" />
+    <Content Include="Views\Coash\MyPresence.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="UpLoad\Coach\" />
+    <Folder Include="Views\OAuth2\" />
     <Folder Include="Views\TenPayV3\" />
   </ItemGroup>
   <ItemGroup>

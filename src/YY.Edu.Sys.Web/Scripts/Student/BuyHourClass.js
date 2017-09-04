@@ -53,39 +53,42 @@ $(document).ready(function () {
 });
 
 
-function Buy(coachid, sid,obj)
-    {
+function Buy(coachid, sid, obj) {
 
-        var vid = $("#hdVenueID").val();
-        var sid = $("#hdStudentID").val();
-        
-     
-        var oj = $(obj).parent().find("input");
-        var inumber = 0;
-        if (oj.val() != "")
-        {
-            inumber = oj.val();
-        }
-       // BuyCurriculum(int StudentID,int CoachID,int number)
-        $.ajax({
-            type: "get",
-            url: "http://localhost:53262/api/Student/BuyCurriculum/",//BuyCurriculum(int StudentID,int CoachID,int number)
-            dataType: "json",
-            async: false,
-            data: { StudentID: sid, CoachID: coachid, number: inumber, VenueID:vid },
-            beforeSend: function () {
-            },
-            success: function (data, status) {
-                if (status == "success") {
+    var vid = $("#hdVenueID").val();
+    var sid = $("#hdStudentID").val();
+
+
+    var oj = $(obj).parent().find("input");
+    var inumber = 0;
+    if (oj.val() != "") {
+        inumber = oj.val();
+    }
+    // BuyCurriculum(int StudentID,int CoachID,int number)
+    $.ajax({
+        type: "get",
+        url: "http://localhost:53262/api/Student/BuyCurriculum/",//BuyCurriculum(int StudentID,int CoachID,int number)
+        dataType: "json",
+        async: false,
+        data: { StudentID: sid, CoachID: coachid, number: inumber, VenueID: vid },
+        beforeSend: function () {
+        },
+        success: function (data, status) {
+            if (status == "success") {
+                if (data.Code == 1001) {
                     alert("购买课时成功，快去约课吧");
                     console.log('ok');
                 }
                 else {
                     alert("购买课时失败，再操作一次吧");
                 }
-
-
             }
-        });
-      
-    }
+            else {
+                alert("购买课时失败，再操作一次吧");
+            }
+
+
+        }
+    });
+
+}

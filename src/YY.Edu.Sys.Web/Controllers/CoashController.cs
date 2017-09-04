@@ -40,5 +40,12 @@ namespace YY.Edu.Sys.Web.Controllers
             ViewBag.CID = cid;
             return View();
         }
+
+
+        public ActionResult MyPresence(int coachid)
+        {
+            ViewBag.CoachID = coachid;
+            return View();
+        }
     }
 }

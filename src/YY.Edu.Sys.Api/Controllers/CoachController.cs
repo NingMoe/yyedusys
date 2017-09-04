@@ -25,6 +25,7 @@ namespace YY.Edu.Sys.Api.Controllers
             return new string[] { "value1", "value2" };
         }
 
+
         #region 基础信息
         [HttpGet]
         // GET api/<controller>/5
@@ -553,7 +554,7 @@ group by CurriculumDate";
 
         [HttpGet]
         // GET api/<controller>
-        public IHttpActionResult GetCoachingPresence()
+        public IHttpActionResult GetCoachingPresence(int VenueID,int CoachID,int FCType)
         {
             try
             {
@@ -561,41 +562,23 @@ group by CurriculumDate";
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                System.Web.HttpContextBase context = (System.Web.HttpContextBase)Request.Properties["MS_HttpContext"];//获取传统context
-                System.Web.HttpRequestBase request = context.Request;//定义传统request对象
-                string UserName = Comm.Helper.ParamHelper<string>.GetParam(request["UserName"], "");
-                string ParentMobile = Comm.Helper.ParamHelper<string>.GetParam(request["ParentMobile"], "");
-                string FullName = Comm.Helper.ParamHelper<string>.GetParam(request["FullName"], "");
-                string ParentFullName = Comm.Helper.ParamHelper<string>.GetParam(request["ParentFullName"], "");
-                int start = Comm.Helper.ParamHelper<int>.GetParam(request["start"], 0);
-                start += 1;//adminlte 加载的datatable起始页为0
-                int length = Comm.Helper.ParamHelper<int>.GetParam(request["length"], 0);
-                int venueId = Comm.Helper.ParamHelper<int>.GetParam(request["venueId"], 0);
-
-                if (venueId <= 0 || start < 0 || length <= 0)
-                    return BadRequest();
-
-                PageCriteria criteria = new PageCriteria();
-                criteria.Condition = "1=1";
-
-                criteria.Condition += string.Format(" and VenueID = {0} and FCState=1 ", venueId);
-
-
-
-                criteria.CurrentPage = start;
-                criteria.Fields = "*";
-                criteria.PageSize = length;
-                criteria.TableName = "CoachingPresence";
-                criteria.PrimaryKey = "FCID";
-
-                var r = Comm.Helper.DapperHelper.GetPageData<YY.Edu.Sys.Models.CoachingPresence>(criteria);
-
-                return Ok(new Comm.ResponseModel.ResponseModel4Page<YY.Edu.Sys.Models.CoachingPresence>()
+                      
+               string strWhere = string.Format("CoachID = {0} and FCState=1 and FCType={1} ", CoachID,FCType);
+                if (VenueID > 0)
                 {
-                    data = r.Items,
-                    recordsFiltered = r.TotalNum,
-                    recordsTotal = r.TotalNum,
-                });
+                    strWhere += string.Format(" and VenueID = {0} ", VenueID);
+                }
+
+                
+
+                string sql = " select top 8 * from CoachingPresence with(nolock) where "+ strWhere+" order by FCID desc ";
+
+
+
+                var result = DapperHelper.Instance.Query<YY.Edu.Sys.Models.CoachingPresence>(sql);
+                return Ok(new Comm.ResponseModel.ResponseModel4Res<YY.Edu.Sys.Models.CoachingPresence>()
+                {
+                    data = result.AsList()                });
 
             }
             catch (Exception ex)
@@ -611,6 +594,7 @@ group by CurriculumDate";
             if (!ModelState.IsValid)
                 return BadRequest();
 
+            cp.FCUrl = cp.FCUrl.Replace("-", "/");
             try
             {
 
@@ -834,12 +818,28 @@ group by CurriculumDate";
         /// <param name="StudentID"></param>
         /// <param name="pkid"></param>
         /// <returns></returns>
-        public IHttpActionResult UpdateCurriculumState(int State, string StudentIDs, int pkid)
+        public IHttpActionResult UpdateCurriculumState(int State, string StudentIDs, int pkid,int VenueID,int CoachID)
         {
-            string sql = "update Curriculum set State=@State,ModifyTime=GETDATE() where PKID=@PKID and StudentID in(@StudentID) ";
+       
             if (!ModelState.IsValid)
                 return BadRequest();
+            string sql = "update Curriculum set State=@State,ModifyTime=GETDATE() where PKID=@PKID and StudentID in(@StudentID); ";
 
+            if (State == 2)
+            {
+                StringBuilder Tsql = new StringBuilder();
+                string[] aryS = StudentIDs.Split(',');
+                foreach (string id in aryS)
+                {
+                    if (id != "")
+                    {
+                        //1购买，2约课3学生请假退回，4老师请假退回，5学校停课退回
+                        Tsql.Append(" INSERT INTO [ClassHoursDetailed]([DType],[VenueID],[CoachID],[StudentID],[Remark],[DNumber]) values(3,'" + VenueID + "','" + CoachID + "','" + id + "','学生请假充回','1') ");
+                    }
+                }
+                sql = sql + Tsql.ToString();
+
+            }
             try
             {
                 //Models.VenueInfo venueInfo = Comm.Helper.DapperHelper.Instance.Get<Models.VenueInfo>(cityId);

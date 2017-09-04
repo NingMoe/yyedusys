@@ -494,8 +494,12 @@ namespace YY.Edu.Sys.Api.Controllers
             sql.Append(" if (@id > 0)   begin ");
             sql.Append("  update ClassHoursNumber set ClassNumber = ClassNumber +" + number + " where CHNID = @id ");
             sql.Append(" end else begin ");
-            sql.Append(" insert into ClassHoursNumber(StudentID, CoachID, ClassNumber,VenueID) values('" + StudentID + "', '" + CoachID + "', '" + number + "','" + VenueID + "')");
+
+            sql.Append(" insert into ClassHoursNumber(StudentID, CoachID, ClassNumber,VenueID) values('" + StudentID+"', '"+CoachID+"', '"+number+"','"+ VenueID + "')");
             sql.Append(" end ");
+            //1购买，2约课3学生请假退回，4老师请假退回，5学校停课退回
+            sql.Append(" INSERT INTO [ClassHoursDetailed]([DType],[VenueID],[CoachID],[StudentID],[Remark],[DNumber]) values(1,'" + VenueID + "','" + CoachID + "','" + StudentID + "','购买课时','"+number+"') ");
+
 
             if (!ModelState.IsValid)
                 return BadRequest();
@@ -559,22 +563,6 @@ namespace YY.Edu.Sys.Api.Controllers
 
                 criteria.Condition += " and CurriculumDate >= '" + DateTime.Now.ToString("yyyy-MM-dd") + "' and cm.CurriculumID is null and(t.State = 0 or(t.State = 1 and PKType = 2)) ";
 
-
-
-                //                select t.*,'CoachFullName'=c.FullName,v.VenueName,cs.CampusName,ClassNumber from
-                //TeachingSchedule t with(nolock) inner join Coach c with(nolock) on t.CoachID = c.CoachID
-                //inner join Venue v with(nolock) on t.VenueID = v.VenueID
-                //inner join Campus cs with(nolock) on v.VenueID = cs.VenueID and t.CampusID = cs.CampusID
-                //inner join ClassHoursNumber ch with(nolock) on t.CoachID = ch.CoachID and t.Venueid = ch.VenueID
-                //left join Curriculum cm with(nolock) on t.PKID = cm.PKID
-
-                //where 
-                //and ch.studentid = 1
-                //order by CoachID, CurriculumDate ,CurriculumBeginTime,pkid
-
-
-
-
                 criteria.CurrentPage = oData.PageIndex;
                 criteria.Fields = "t.*,'CoachFullName'=c.FullName,v.VenueName,cs.CampusName,ClassNumber ";
                 criteria.PageSize = oData.PageSize;
@@ -628,6 +616,8 @@ namespace YY.Edu.Sys.Api.Controllers
             sql.Append(" if (@count > 0 and @yk>0) begin");
             sql.Append("   insert into Curriculum(StudentID, PKID, CoachID, StudentFullName) values('" + sid + "','" + pkid + "','" + cid + "','" + sname + "'); ");
             sql.Append(" update ClassHoursNumber set ClassNumber=ClassNumber-1 where  StudentID ='" + sid + "' and CoachID ='" + cid + "'  and VenueID = '" + vid + "'");
+            //1购买，2约课3学生请假退回，4老师请假退回，5学校停课退回
+            sql.Append(" INSERT INTO [ClassHoursDetailed]([DType],[VenueID],[CoachID],[StudentID],[Remark],[DNumber]) values(2,'"+vid+"','"+cid+"','"+sid+"','预约课程',1) ");
             sql.Append(" end");
 
             try

@@ -62,7 +62,7 @@ function GetStudent()
               
                 if (CState == 0)
                 {
-                    str += " <button type='button' data-CurriculumID='" + c.CurriculumID + "' data-PKID='" + c.PKID + "' onclick='StudentLeave(" + c.PKID + "," + c.CoashID + "," + c.StudentID + ")' class='order-btn' style='right: 6rem'>代请假</button> ";
+                    str += " <button type='button' data-CurriculumID='" + c.CurriculumID + "' data-PKID='" + c.PKID + "' onclick='StudentLeave(" + c.PKID + "," + c.CoashID + "," + c.StudentID + "," + c.VenueID + ")' class='order-btn' style='right: 6rem'>代请假</button> ";
                     str += " <button type='button' data-CurriculumID='" + c.CurriculumID + "' data-PKID='" + c.PKID + "' onclick='SignLeave(" + c.PKID + "," + c.CoashID + "," + c.StudentID + ")' class='order-btn'>签到</button> ";
                 }
                 else if (CState == 1) {
@@ -81,7 +81,7 @@ function Comment(pkid, coachid, cid) {
     location.href = "http://localhost:37396/Coash/MyComment/?pkid=" + pkid + "&coachid=" + coachid + "&cid=" + cid;
 }
 
-function StudentLeave(pkid, coachid, studentid)
+function StudentLeave(pkid, coachid, studentid,venueid)
 {
     alert(1);
     //0预约成功，1上课成功，2学生请假，3老师请假4场馆停课
@@ -90,7 +90,7 @@ function StudentLeave(pkid, coachid, studentid)
         url: "http://localhost:53262/api/Coach/UpdateCurriculumState/",
         dataType: "json",
         async: false,
-        data: { State:2, StudentIDs:studentid, pkid:pkid },
+        data: { State:2, StudentIDs:studentid, pkid:pkid,VenueID:venueid,CoachID:coachid },
         beforeSend: function () {
         },
         success: function (data, status) {
