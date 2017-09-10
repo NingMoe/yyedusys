@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "场馆系统";
+    ViewBag.Title = "运营系统";
     ViewBag.SubTitle = "公告管理";
 }
 
@@ -45,27 +45,27 @@
                         </div>
 
                         @*<label for="NoticeType" class="col-sm-2 control-label">时间</label>
-                        <div class="col-sm-3">
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-clock-o"></i>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
+                                    </div>
+                                    <input type="hidden" id="CurriculumPMTime" name="CurriculumPMTime" value="14:00-18:00" />
+                                    <input type="time" class="form-control" id="timepicker_pm_start" value="14:00">
+                                    <span class="input-group-addon">到</span>
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
+                                    </div>
+                                    <input type="time" class="form-control" id="timepicker_pm_end" value="18:00">
+                                    <div class="input-group-addon">
+                                        <input type="checkbox" id="timepicker_pm_check" name="timepicker_pm_check" checked />
+                                    </div>
                                 </div>
-                                <input type="hidden" id="CurriculumPMTime" name="CurriculumPMTime" value="14:00-18:00" />
-                                <input type="time" class="form-control" id="timepicker_pm_start" value="14:00">
-                                <span class="input-group-addon">到</span>
-                                <div class="input-group-addon">
-                                    <i class="fa fa-clock-o"></i>
-                                </div>
-                                <input type="time" class="form-control" id="timepicker_pm_end" value="18:00">
-                                <div class="input-group-addon">
-                                    <input type="checkbox" id="timepicker_pm_check" name="timepicker_pm_check" checked />
-                                </div>
-                            </div>
-                        </div>*@
+                            </div>*@
                         <div class="col-sm-3">
                             <button type="button" class="btn btn-info pull-right" onclick="return bind_data();">查询</button>
                         </div>
-                        </div>
+                    </div>
                 </div>
             </form>
         </div>

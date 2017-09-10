@@ -107,6 +107,26 @@ namespace YY.Edu.Sys.Models
         /// 最后登录时间
         /// </summary>
         public DateTime LastLoginTime { get; set; }
+
+        /// <summary>
+        /// 纬度，浮点数，范围为90 ~ -90
+        /// </summary>
+        public decimal Latitude { get; set; }
+
+        /// <summary>
+        /// 经度，浮点数，范围为180 ~ -180
+        /// </summary>
+        public decimal Longitude { get; set; }
+
+        /// <summary>
+        /// 速度，以米/每秒计
+        /// </summary>
+        public decimal Speed { get; set; }
+
+        /// <summary>
+        /// 位置精度
+        /// </summary>
+        public decimal Accuracy { get; set; }
         #endregion Model
 
     }

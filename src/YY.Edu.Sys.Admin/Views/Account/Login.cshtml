@@ -37,12 +37,12 @@
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group has-feedback">
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", placeholder = "Email" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", placeholder = "邮箱" })
                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", type = "password", placeholder = "Password" })
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", type = "password", placeholder = "密码" })
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
@@ -69,8 +69,8 @@
                     Google+
                 </a>
             </div>*@
-            <a href="#">忘记密码</a><br>
-            <a href="@Url.Action("Register", "Account")" class="text-center">注册一个新用户</a>
+            @*<a href="#">忘记密码</a><br>*@
+            @*<a href="@Url.Action("Register", "Account")" class="text-center">注册一个新用户</a>*@
         </div>
     </div>
 

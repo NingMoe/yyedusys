@@ -138,6 +138,10 @@ namespace YY.Edu.Sys.Models
 		}
         #endregion Model
 
+        /// <summary>
+        /// openid
+        /// </summary>
+        public string OpenID { get; set; }
     }
 }
 

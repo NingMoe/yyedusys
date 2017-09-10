@@ -1,24 +1,191 @@
-﻿<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-<div class="row">
-    <div class="col-md-4">
+﻿@model Senparc.Weixin.MP.Helpers.JsSdkUiPackage
+@{
+    Layout = null;
+}
+@*
+    使用JSSDK，首先要到微信公众平台【公众号设置】下的【功能设置】里面设置“JS接口安全域名”
+*@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>公众号JSSDK演示</title>
+    <!--jQuery非JS-SDK必须-->
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.serializejson.min.js"></script>
+    <script src="@(Request.Url.Scheme)://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script>
+
+        function myfunction() {
+            console.log('success');
+            console.log(JSON.stringify($('#locationform').serializeJSON()));
+        }
+        function create() {
+
+            console.log(JSON.stringify($('#locationform').serializeJSON()));
+            //添加
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:53262/api/WxUserInfo/Edit",
+                contentType: "application/json",
+                data: JSON.stringify($('#locationform').serializeJSON()),
+                success: function (data, status) {
+                    if (status == "success") {
+                        console.log(data);
+                    }
+                },
+                error: function (e) {
+                    console.log('error');
+                },
+                complete: function () {
+
+                }
+            });
+        }
+
+    </script>
+    <script>
+        wx.config({
+            debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: '@Model.AppId', // 必填，公众号的唯一标识
+            timestamp: '@Model.Timestamp', // 必填，生成签名的时间戳
+            nonceStr: '@Model.NonceStr', // 必填，生成签名的随机串
+            signature: '@Model.Signature',// 必填，签名
+            jsApiList: [
+                    'checkJsApi',
+                    'openLocation',
+                    'getLocation'
+                    //'checkJsApi',
+                    //'onMenuShareTimeline',
+                    //'onMenuShareAppMessage',
+                    //'onMenuShareQQ',
+                    //'onMenuShareWeibo',
+                    //'hideMenuItems',
+                    //'showMenuItems',
+                    //'hideAllNonBaseMenuItem',
+                    //'showAllNonBaseMenuItem',
+                    //'translateVoice',
+                    //'startRecord',
+                    //'stopRecord',
+                    //'onRecordEnd',
+                    //'playVoice',
+                    //'pauseVoice',
+                    //'stopVoice',
+                    //'uploadVoice',
+                    //'downloadVoice',
+                    //'chooseImage',
+                    //'previewImage',
+                    //'uploadImage',
+                    //'downloadImage',
+                    //'getNetworkType',
+                    //'openLocation',
+                    //'getLocation',
+                    //'hideOptionMenu',
+                    //'showOptionMenu',
+                    //'closeWindow',
+                    //'scanQRCode',
+                    //'chooseWXPay',
+                    //'openProductSpecificView',
+                    //'addCard',
+                    //'chooseCard',
+                    //'openCard'
+            ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2。详见：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
+        });
+
+        wx.error(function (res) {
+            console.log(res);
+            alert('验证失败');
+        });
+
+
+         wx.ready(function () {
+                var url = '@(Request.Url.Scheme)://www.yy.com';
+                var link = url + '@(Request.Url.PathAndQuery)';
+                var imgUrl = url + '/images/v2/ewm_01.png';
+
+                wx.checkJsApi({
+                    jsApiList: [
+                        'getLocation'
+                    ],
+                    success: function (res) {
+                        // alert(JSON.stringify(res));
+                        // alert(JSON.stringify(res.checkResult.getLocation));
+                        if (res.checkResult.getLocation == false) {
+                            alert('你的微信版本太低，不支持微信JS接口，请升级到最新的微信版本！');
+                            return;
+                        }
+                    }
+                });
+
+
+                wx.getLocation({
+                    success: function (res) {
+                        var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+                        var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+                        var speed = res.speed; // 速度，以米/每秒计
+                        var accuracy = res.accuracy; // 位置精度
+                        console.log(latitude);
+                        console.log(longitude);
+                        console.log(speed);
+                        console.log(accuracy);
+
+                        $("#Latitude").val(latitude);
+                        $("#Longitude").val(longitude);
+                        $("#Speed").val(speed||'0');
+                        $("#Accuracy").val(accuracy||'0');
+                        create();
+
+                    },
+                    cancel: function (res) {
+                        alert('用户拒绝授权获取地理位置');
+                    }
+                });
+
+                //转发到朋友圈
+                wx.onMenuShareTimeline({
+                    title: 'JSSDK朋友圈转发测试',
+                    link: link,
+                    imgUrl: imgUrl,
+                    success: function () {
+                        alert('转发成功！');
+                    },
+                    cancel: function () {
+                        alert('转发失败！');
+                    }
+                });
+                //转发给朋友
+                wx.onMenuShareAppMessage({
+                    title: 'JSSDK朋友圈转发测试',
+                    desc: '转发给朋友',
+                    link: link,
+                    imgUrl: imgUrl,
+                    type: 'link',
+                    dataUrl: '',
+                    success: function () {
+                        alert('转发成功！');
+                    },
+                    cancel: function () {
+                        alert('转发失败！');
+                    }
+                });
+            });
+    </script>
+
+</head>
+<body>
+    <h1>公众号JSSDK演示</h1>
+    <div>
         <h2>@ViewBag.OpenId</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+        <form name="locationform" id="locationform">
+            <input type="hidden" name="OpenId" value="@ViewBag.OpenId" />
+            <input type="hidden" name="Latitude" id="Latitude" />
+            <input type="hidden" name="Longitude" id="Longitude" />
+            <input type="hidden" name="Speed" id="Speed" value="0"/>
+            <input type="hidden" name="Accuracy" id="Accuracy" value="0"/>
+        </form>
+        此页面是Senparc.Weixin.MP JSSDK的演示，可以点击右上方按钮，转发到朋友圈或者朋友进行测试。<br />
+        顺利的话，转发的内容可以看到自定义的标题，配有一个自定义图片。
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+</body>
+</html>

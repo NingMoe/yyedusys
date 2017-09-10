@@ -226,3 +226,5 @@ D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\zh-Hans\System.Web.Http.Ow
 D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\obj\Debug\YY.Edu.Sys.Api.csprojResolveAssemblyReference.cache
 D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\obj\Debug\YY.Edu.Sys.Api.dll
 D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\obj\Debug\YY.Edu.Sys.Api.pdb
+D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\aliyun-net-sdk-core.dll
+D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Api\bin\aliyun-net-sdk-dysmsapi.dll

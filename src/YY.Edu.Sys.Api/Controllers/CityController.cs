@@ -18,6 +18,7 @@ namespace YY.Edu.Sys.Api.Controllers
     /// 访问 http://localhost:53262/api/city/1 请求一个参数的Get方法
     /// 参考restful api 设计原则，资源的概念 http://www.ruanyifeng.com/blog/2014/05/restful_api.html
     /// </summary>
+    [Authorize]
     [RoutePrefix("api/City")]
     //[EnableCors(origins: "http://localhost:37315/", headers: "*", methods: "GET,POST,PUT,DELETE")]
     public class CityController : ApiController

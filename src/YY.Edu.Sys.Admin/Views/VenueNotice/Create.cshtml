@@ -25,6 +25,18 @@
             <form id="venuenoticefrom" class="form-horizontal">
                 <div class="box-body">
                     <div class="form-group">
+                        <label for="source" class="col-sm-2 control-label">通知来源</label>
+                        <div class="col-sm-3">
+                            <select id="NoticeRange" name="source" class="form-control">
+                                <option value="1" selected>场馆</option>
+                                <option value="2">运营</option>
+                                <option value="3">教练</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
                         <input type="hidden" id="VenueID" name="VenueID" value="@ViewBag.VenueId" />
                         <input type="hidden" id="UserId" name="UserId" value="@ViewBag.UserId" />
                         <input type="hidden" id="UserName" name="UserName" value="@ViewBag.UserName" />
@@ -54,6 +66,14 @@
                                 <option value="6">教练学生</option>
                                 <option value="7">全部</option>
                             </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="NoticeTitle" class="col-sm-2 control-label">通知标题</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" id="NoticeTitle" name="NoticeTitle" placeholder="通知标题"/>
                         </div>
                     </div>
                 </div>

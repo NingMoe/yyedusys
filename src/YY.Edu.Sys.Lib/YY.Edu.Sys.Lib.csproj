@@ -50,6 +50,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Libs\aliyun-net-sdk-core.dll" />
+    <Content Include="Libs\aliyun-net-sdk-dybaseapi.dll" />
+    <Content Include="Libs\aliyun-net-sdk-dysmsapi.dll" />
+    <Content Include="Libs\Aliyun.MNS.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

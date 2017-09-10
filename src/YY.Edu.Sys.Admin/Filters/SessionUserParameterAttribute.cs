@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http.Filters;
 using System.Web.Mvc;
+using YY.Edu.Sys.Models;
 
 namespace YY.Edu.Sys.Admin.Filters
 {
@@ -16,7 +17,7 @@ namespace YY.Edu.Sys.Admin.Filters
 
             //if (filterContext.ActionParameters.ContainsKey(key))
             {
-                Models.LoginUser loginUser = (filterContext.HttpContext.Session["venue"] as Models.LoginUser);//为Action设置参数
+                PCLoginUser loginUser = (filterContext.HttpContext.Session["venue"] as PCLoginUser);//为Action设置参数
                 if (loginUser == null)
                 {
                     //todo 

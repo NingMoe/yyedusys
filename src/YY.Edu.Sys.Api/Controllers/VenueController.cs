@@ -6,9 +6,12 @@ using System.Web.Http;
 using Dapper;
 using log4net;
 using DapperExtensions;
+using YY.Edu.Sys.Comm.Helper;
+using System.Net.Http;
 
 namespace YY.Edu.Sys.Api.Controllers
 {
+    [Authorize]
     [RoutePrefix("api/Venue")]
     public class VenueController : ApiController
     {
@@ -49,21 +52,60 @@ namespace YY.Edu.Sys.Api.Controllers
 
         }
 
-        [HttpPost]
-        // POST: api/Venue
-        public IHttpActionResult Create(YY.Edu.Sys.Models.Venue venue)
+        /// <summary>
+        /// 获取PC场馆系统我的信息
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public IHttpActionResult GetMe(string email)
         {
 
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            if (string.IsNullOrEmpty(email))
+                return BadRequest();
+
+            try
+            {
+                return Ok(new Comm.ResponseModel.ResponseModel4Res<Sys.Models.PCLoginUser>()
+                {
+                    Info = Services.PCLoginService.GetMe(email),
+                });
+            }
+            catch (Comm.YYException.YYException ex)
+            {
+                return Ok(Comm.ResponseModel.ResponseModelBase.GetRes(ex.Message));
+            }
+            catch (Exception ex)
+            {
+                logs.Error("场馆获取我的信息失败", ex);
+                return BadRequest();
+            }
+        }
+
+        [HttpPost]
+        // POST: api/Venue
+        public async System.Threading.Tasks.Task<IHttpActionResult> Create()
+        {
+            //http://blog.csdn.net/starfd/article/details/48652871
             //todo 实体验证
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            //单条添加
-            //            var result = Comm.Helper.DapperHelper.Instance.Execute(@"INSERT INTO [dbo].[Venue] ([UserName],[Pwd],[VenueCode],[VenueName],[VenueAddress],[LinkMan],[LinkManMobile],[LinkManWX],[VenueFax],[LegalPerson],[CardNumber],[AddTime],[BusinessLicense],[LogoUrl],[AddUser],[Status],[SystemRoleIDS]) VALUES 
-            //(@UserName,@Pwd,@VenueCode,@VenueName,@VenueAddress,@LinkMan,@LinkManMobile,@LinkManWX,@VenueFax,@LegalPerson,@CardNumber,@AddTime,@BusinessLicense,@LogoUrl,@AddUser,@Status,@SystemRoleIDS)",
-            //                                   venue);
+            if (!Request.Content.IsMimeMultipartContent())
+                return BadRequest();
+
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            string root = System.Web.HttpContext.Current.Server.MapPath("~/App_Data");
+            var provider = new Providers.MultipartFileWithExtensionStreamProvider(root);
             try
             {
+                await Request.Content.ReadAsMultipartAsync(provider);
+
+                Sys.Models.Venue venue = Newtonsoft.Json.JsonConvert.DeserializeObject<Sys.Models.Venue>(provider.FormData["venueInfo"]);
+                venue.BusinessLicense = provider.FileData[0].LocalFileName;
 
                 var result = Comm.Helper.DapperHelper.Instance.Insert(venue);
 
@@ -74,22 +116,74 @@ namespace YY.Edu.Sys.Api.Controllers
                     venue.VenueCode = new Services.VenueService().GenVenueCode(venue);
                     Comm.Helper.DapperHelper.Instance.Update(venue);
 
-                    return Ok(new Comm.ResponseModel.ResponseModel4Res<string>()
-                    {
-                        Info = venue.VenueCode,
-                    });
+                    return Ok(Comm.ResponseModel.ResponseModelBase.Success());
+
                 }
                 else
                 {
-                    return Content(HttpStatusCode.OK, Comm.ResponseModel.ResponseModelBase.GetRes(Comm.ResponseModel.ResponseModelErrorEnum.SystemError));
+                    return Ok(Comm.ResponseModel.ResponseModelBase.SysError());
                 }
+
             }
             catch (Exception ex)
             {
                 logs.Error("场馆添加失败", ex);
                 return BadRequest();
             }
+
         }
+
+        /// <summary>
+        /// 场馆分页查询
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public IHttpActionResult Page(string query)
+        {
+            try
+            {
+
+                if (!ModelState.IsValid)
+                    return BadRequest();
+
+                Comm.RequestModel.RequestModelBase<Sys.Models.Venue> oData = Newtonsoft.Json.JsonConvert.DeserializeObject<Comm.RequestModel.RequestModelBase<Sys.Models.Venue>>(query);
+
+                if (oData.PageIndex < 0 || oData.PageSize <= 0)
+                    return BadRequest();
+
+                PageCriteria criteria = new PageCriteria();
+                criteria.Condition = "1=1";
+
+                if (!string.IsNullOrWhiteSpace(oData.SearchCondition.LinkManMobile))
+                    criteria.Condition += string.Format(" and v.LinkManMobile = {0}", oData.SearchCondition.LinkManMobile);
+                if (!string.IsNullOrWhiteSpace(oData.SearchCondition.LinkMan))
+                    criteria.Condition += string.Format(" and v.LinkMan like '%{0}%'", oData.SearchCondition.LinkMan);
+                if (!string.IsNullOrWhiteSpace(oData.SearchCondition.VenueName))
+                    criteria.Condition += string.Format(" and v.VenueName like '%{0}%'", oData.SearchCondition.VenueName);
+
+                criteria.CurrentPage = oData.PageIndex + 1;//adminlte 加载的datatable起始页为0
+                criteria.Fields = "v.[VenueID],v.[CityID],v.[UserName],v.[VenueCode],v.[VenueName],v.[VenueAddress],v.[LinkMan],v.[LinkManMobile],v.[LinkManWX],v.[VenueFax],v.[LegalPerson],v.[CardNumber],v.[AddTime],v.[BusinessLicense],v.[LogoUrl],v.[AddUser],v.[Status],v.[SystemRoleIDS]";
+                criteria.PageSize = oData.PageSize;
+                criteria.TableName = "Venue as v";
+                criteria.PrimaryKey = "v.VenueID";
+
+                var r = Comm.Helper.DapperHelper.GetPageData<Sys.Models.Venue>(criteria);
+
+                return Ok(new Comm.ResponseModel.ResponseModel4Page<Sys.Models.Venue>()
+                {
+                    data = r.Items,
+                    recordsFiltered = r.TotalNum,
+                    recordsTotal = r.TotalNum,
+                });
+            }
+            catch (Exception ex)
+            {
+                logs.Error("场馆查询失败", ex);
+                return BadRequest();
+            }
+        }
+
 
         // PUT: api/Venue/5
         public void Put(int id, [FromBody]string value)

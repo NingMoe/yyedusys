@@ -183,6 +183,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CampusController.cs" />
     <Compile Include="Controllers\CoachController.cs" />
     <Compile Include="Controllers\FeedBackLogController.cs" />
@@ -190,6 +191,7 @@
     <Compile Include="Controllers\VenueInfoController.cs" />
     <Compile Include="Controllers\VenueNoticeController.cs" />
     <Compile Include="Controllers\WidgetsController.cs" />
+    <Compile Include="Filters\AuthAttribute.cs" />
     <Compile Include="Filters\SessionUserParameterAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
@@ -211,9 +213,9 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\LoginUser.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\LoginService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1203,6 +1205,7 @@
     <Content Include="Views\FeedBackLog\Create.cshtml" />
     <Content Include="Views\Student\Import.cshtml" />
     <Content Include="Views\Coach\Import.cshtml" />
+    <Content Include="Views\Base\Default.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1215,6 +1218,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\YY.Edu.Sys.Comm\YY.Edu.Sys.Comm.csproj">
+      <Project>{5cbcf9ab-5592-404e-bd14-f18eb07fcf06}</Project>
+      <Name>YY.Edu.Sys.Comm</Name>
+    </ProjectReference>
     <ProjectReference Include="..\YY.Edu.Sys.Models\YY.Edu.Sys.Models.csproj">
       <Project>{1ae98e47-0007-4f73-bf9b-60c4a6a516bd}</Project>
       <Name>YY.Edu.Sys.Models</Name>

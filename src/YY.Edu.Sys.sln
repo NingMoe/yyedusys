@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YY.Edu.Sys.Models", "YY.Edu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YY.Edu.Sys.Web", "YY.Edu.Sys.Web\YY.Edu.Sys.Web.csproj", "{AF3BC0AC-410C-4532-9D8B-A0C8F90A3CF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YY.Edu.Sys.Manage", "YY.Edu.Sys.Manage\YY.Edu.Sys.Manage.csproj", "{F72CFB7E-F3AE-4B84-95C0-F27AD9A2F7E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{AF3BC0AC-410C-4532-9D8B-A0C8F90A3CF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF3BC0AC-410C-4532-9D8B-A0C8F90A3CF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF3BC0AC-410C-4532-9D8B-A0C8F90A3CF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F72CFB7E-F3AE-4B84-95C0-F27AD9A2F7E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F72CFB7E-F3AE-4B84-95C0-F27AD9A2F7E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F72CFB7E-F3AE-4B84-95C0-F27AD9A2F7E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F72CFB7E-F3AE-4B84-95C0-F27AD9A2F7E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

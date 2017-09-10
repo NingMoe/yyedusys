@@ -28,11 +28,6 @@ namespace YY.Edu.Sys.Web.Controllers
     public class TenPayV3Controller : Controller
     {
         // GET: TenPayV3
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         private static TenPayV3Info _tenPayV3Info;
 
         private static bool CheckValidationResult(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors)

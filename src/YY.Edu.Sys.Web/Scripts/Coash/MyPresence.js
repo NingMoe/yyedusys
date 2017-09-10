@@ -25,9 +25,9 @@ function LoadMyCurriculumV() {
 
                 str += "<li> ";
                 str += "<div class='am-gallery-item'>";
-                str += "<a href='http://s.amazeui.org/media/i/demos/bing-1.jpg' class=''> ";
+                str += "<a href='#' class=''> ";
                 str += " <video controls='controls' autoplay='autoplay'> ";
-                str += "<source src='/" + c.FCUrl + "' type='video/ogg' /> </video> ";
+                str += "<source src='http://localhost:37396/" + c.FCUrl + "' type='video/ogg' /> <source src='http://localhost:37396/" + c.FCUrl + "' type='video/flv' /></video> ";
 
 
                 str += "  <h3 class='am-gallery-title'>" + c.Title + "</h3>";
@@ -37,7 +37,7 @@ function LoadMyCurriculumV() {
             });
 
         
-            $("#imgList").html(str);
+            $("#imgList2").html(str);
 
         }
     });
@@ -46,7 +46,6 @@ function LoadMyCurriculumV() {
 function LoadMyCurriculumImg() {
 
 
-    alert(111221);
     $.ajax({
         type: "get",
         url: "http://localhost:53262/api/Coach/GetCoachingPresence/",
@@ -90,7 +89,7 @@ function LoadMyCurriculumImg() {
 
             });
 
-            alert(str);
+     
             $("#imgList").html(str);
 
         }
@@ -102,7 +101,7 @@ function LoadMyCurriculumImg() {
 $(document).ready(function () {
 
     LoadMyCurriculumImg();
-   // LoadMyCurriculumV();
+    LoadMyCurriculumV();
 
 });
 
@@ -145,10 +144,11 @@ function uploadClick() {
     for (var i = 0; i < fileList.length; i++) {
         var file = fileList[i];
         //图片类型验证第二种方式
-        if (/image\/\w+/.test(file.type))
-        { uploadFile(file); }
-        else
-        { console.log(file.name + ':不是图片'); }
+        uploadFile(file);
+        //if (/image\/\w+/.test(file.type))
+        //{ }
+        //else
+        //{ console.log(file.name + ':不是图片'); }
     }
 }
 

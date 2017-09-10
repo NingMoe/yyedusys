@@ -178,5 +178,45 @@ where s.UserName=@userName and sv.VenueID=@venueID";
                 connection.Close();
             }
         }
+
+        /// <summary>
+        /// 学生注册
+        /// </summary>
+        /// <param name="coach"></param>
+        /// <returns></returns>
+        public static bool Reginster(Sys.Models.Student student)
+        {
+            try
+            {
+
+                if (!string.IsNullOrWhiteSpace(student.OpenID))
+                {
+                    var sql = "select * from WxUserInfo where OpenId=@openId";
+                    var wxuserInfo = Comm.Helper.DapperHelper.Instance.QueryFirst<Sys.Models.WxUserInfo>(sql, new
+                    {
+                        openId = student.OpenID
+                    });
+
+                    student.NickName = wxuserInfo.NickName;
+                    student.HeadUrl = wxuserInfo.HeadImgUrl;
+                }
+
+                int coach_id = Comm.Helper.DapperHelper.Instance.Insert<Sys.Models.Student>(student);
+                //var student_venue_result = Comm.Helper.DapperHelper.Instance.Insert<Sys.Models.Coach_Venue>(new Sys.Models.Coach_Venue()
+                //{
+                //    AddTime = DateTime.Now,
+                //    CoachID = coach_id,
+                //    VenueID = student.VenueID,
+                //});
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                logs.Error("学生注册失败", ex);
+                return false;
+            }
+        }
+
     }
 }

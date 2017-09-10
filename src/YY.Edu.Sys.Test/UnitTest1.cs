@@ -7,6 +7,9 @@ using NPOI.HSSF.UserModel;
 using System.IO;
 using NPOI.SS.UserModel;
 using System.Data;
+using Senparc.Weixin.MP.AdvancedAPIs.TemplateMessage;
+using Senparc.Weixin.MP.AdvancedAPIs;
+using Senparc.Weixin.MP.Containers;
 
 namespace YY.Edu.Sys.Test
 {
@@ -123,7 +126,6 @@ namespace YY.Edu.Sys.Test
             }
         }
 
-        [TestMethod]
         public void TestMethod4()
         {
             DataTable dt = new DataTable();
@@ -177,6 +179,99 @@ namespace YY.Edu.Sys.Test
             }
 
         }
+
+        public void SendTemplateMessageTestForBook()
+        {
+            var _appId = "wx03ea2f7f93b7cf96";
+            var _appSecret = "609bd314b63811293cec1d9adb84e699";
+
+            //Senparc.Weixin.MP.Containers.AccessTokenContainer.Register(_appId, _appSecret);
+
+            var accessToken = AccessTokenContainer.TryGetAccessToken(_appId, _appSecret);
+
+            var openId = "ozLW4wHYTcApj55HIUT0o8Qdet6U";//消息目标用户的OpenId
+            var templateId = "7VMaAiEXaI9WabE8z5_oRTtUjimclgeLc6XuwgIw__o"; //7VMaAiEXaI9WabE8z5_oRTtUjimclgeLc6XuwgIw__o
+            templateId = "jGWhXy1FpVQP2GaEki1ReAQAcbE6KyWEp5PmiNlnvhk";
+
+            var data = new
+            {
+                first = new TemplateDataItem("您的订单已经支付"),
+                keyword1 = new TemplateDataItem("飞翔的企鹅"),
+                keyword2 = new TemplateDataItem("123456789"),
+                keyword3 = new TemplateDataItem("1000", "#ff0000"),//显示为红色
+                keyword4 = new TemplateDataItem("购买课时"),
+                remark = new TemplateDataItem("更详细信息，官方网站（http://www.baidu.com）查看！")
+            };
+
+            var result = TemplateApi.SendTemplateMessage(_appId, openId, templateId, "http://www.cnblogs.com", data);
+
+            Assert.AreEqual(Senparc.Weixin.ReturnCode.请求成功, result.errcode);
+        }
+
+        [TestMethod]
+        public void T()
+        {
+            string token = @"{""access_token"": ""9sx2ojliKmWgoi9QzcccOUVACyFliVp1HnRUDnI8u7X-VsjqesakAtqWyzYxWxo4dXSnV374VAb5p42NOkWqLCRWNruqmzjA_WzrBHF9pBcB7Pw33hW5lAkNwwS6Y-lG8xZ0zGPdjMzIPNSPTt89u2fMfZODJ7GR_uG9pP8kEv3ef51prx-AqlWAkD9xDIqxh5ZnkMmQDhMN4bnIItmZKuhXJLbGPu0WYbFBtoKULdQ"",
+  ""token_type"": ""bearer"",
+  ""expires_in"": 1209599,
+  ""refresh_token"": ""667a9cff7ad74447aa703da97a73114b""
+}";
+
+            //TokenInfo t = new TokenInfo()
+            //{
+            //    access_token = "9sx2ojliKmWgoi9QzcccOUVACyFliVp1HnRUDnI8u7X",
+            //    token_type = "bearer",
+            //    expires_in = 1209599,
+            //    refresh_token = "667a9cff7ad74447aa703da97a73114b"
+            //};
+            TokenInfo tokenInfo = new TokenInfo(token);
+
+        }
+    }
+
+
+    public class TokenInfo
+    {
+
+        //        {
+        //  "access_token": "9sx2ojliKmWgoi9QzcccOUVACyFliVp1HnRUDnI8u7X-VsjqesakAtqWyzYxWxo4dXSnV374VAb5p42NOkWqLCRWNruqmzjA_WzrBHF9pBcB7Pw33hW5lAkNwwS6Y-lG8xZ0zGPdjMzIPNSPTt89u2fMfZODJ7GR_uG9pP8kEv3ef51prx-AqlWAkD9xDIqxh5ZnkMmQDhMN4bnIItmZKuhXJLbGPu0WYbFBtoKULdQ",
+        //  "token_type": "bearer",
+        //  "expires_in": 1209599,
+        //  "refresh_token": "667a9cff7ad74447aa703da97a73114b"
+        //}
+
+        public TokenInfo() { }
+
+        public TokenInfo(string token)
+        {
+
+            TokenInfo oData = Newtonsoft.Json.JsonConvert.DeserializeObject<TokenInfo>(token);
+            this.access_token = oData.access_token;
+            this.token_type = oData.token_type;
+            this.expires_in = oData.expires_in;
+            this.refresh_token = oData.refresh_token;
+        }
+
+        /// <summary>
+        /// token
+        /// </summary>
+        public string access_token { get; set; }
+
+        /// <summary>
+        /// token_type
+        /// </summary>
+        public string token_type { get; set; }
+
+        /// <summary>
+        /// 超时时间
+        /// </summary>
+        public int expires_in { get; set; }
+
+        /// <summary>
+        /// refresh_token
+        /// </summary>
+        public string refresh_token { get; set; }
+
     }
 
     public class M_User

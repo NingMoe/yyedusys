@@ -6,26 +6,25 @@ using System.Web.Mvc;
 
 namespace YY.Edu.Sys.Admin.Controllers
 {
-    public class CoachController : Controller
+    public class CoachController : BaseController
     {
         // GET: Coach
         public ActionResult Index()
         {
-            //todo 
-            ViewBag.VenueId = 1;// Session["venue"].ToString();
+            ViewBag.VenueId = base.Me.VenueInfo.VenueID;
             return View();
         }
 
         // GET: Coach/Details/5
         public ActionResult Details(int id)
         {
-            ViewBag.CoachID = id;// Session["venue"].ToString();
+            ViewBag.CoachID = id;
             return View();
         }
 
         public ActionResult Import()
         {
-            ViewBag.VenueId = 1;
+            ViewBag.VenueId = base.Me.VenueInfo.VenueID;
             return View();
         }
 

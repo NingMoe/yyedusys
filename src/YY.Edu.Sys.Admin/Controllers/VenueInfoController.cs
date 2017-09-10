@@ -6,13 +6,12 @@ using System.Web.Mvc;
 
 namespace YY.Edu.Sys.Admin.Controllers
 {
-    public class VenueInfoController : Controller
+    public class VenueInfoController : BaseController
     {
         // GET: VenueInfo
         public ActionResult Index()
         {
-            //todo 
-            ViewBag.VenueId = 1;// Session["venue"].ToString();
+            ViewBag.VenueId = base.Me.VenueInfo.VenueID;
             return View();
         }
 

@@ -94,7 +94,7 @@ namespace YY.Edu.Sys.Web.Controllers
                 OAuthUserInfo userInfo = OAuthApi.GetUserInfo(result.access_token, result.openid);
                 Session["OpenId"] = userInfo.openid;
 
-                Services.WxUserService.FollowMP(userInfo);
+                new Services.WxUserService().FollowMP(userInfo);
 
                 if (!string.IsNullOrEmpty(returnUrl))
                 {
@@ -149,7 +149,7 @@ namespace YY.Edu.Sys.Web.Controllers
             {
                 //已关注，可以得到详细信息
                 userInfo = OAuthApi.GetUserInfo(result.access_token, result.openid);
-                Services.WxUserService.FollowMP(userInfo);
+                new Services.WxUserService().FollowMP(userInfo);
 
                 if (!string.IsNullOrEmpty(returnUrl))
                 {

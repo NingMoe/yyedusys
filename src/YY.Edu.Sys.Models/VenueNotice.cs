@@ -20,6 +20,14 @@ namespace YY.Edu.Sys.Models
         private int? _noticerange;
         private int _venueid;
         private DateTime? _sendtime = DateTime.Now;
+
+        private int _source;
+        private int _studentID;
+        private int _coachID;
+        private string _noticeTitle;
+
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -94,10 +102,26 @@ namespace YY.Edu.Sys.Models
         }
 
         /// <summary>
-        /// 0 无效 1有效
+        /// 0 无效 1有效 2发送成功
         /// </summary>
         public int State { get; set; }
+        /// <summary>
+        /// 来源，1场馆，2运营平台，3场馆教练 
+        /// </summary>
+        public int source { get;set;  }
 
+        /// <summary>
+        /// 学生ID（用于直接通知的，公共通知这个字段为0）
+        /// </summary>
+        public int StudentID { get; set; }
+        /// <summary>
+        /// 教练ID（用于直接通知的，公共通知这个字段为0）
+        /// </summary>
+        public int CoachID { get; set; }
+        /// <summary>
+        /// 消息标题
+        /// </summary>
+        public string NoticeTitle { get; set; }
         #endregion Model
 
     }

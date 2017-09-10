@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace YY.Edu.Sys.Admin.Controllers
 {
-    public class VenueController : Controller
+    public class VenueController : BaseController
     {
         // GET: Venue
         public ActionResult Index()

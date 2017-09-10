@@ -8,6 +8,7 @@ using System.Web.Http;
 
 namespace YY.Edu.Sys.Api.Controllers
 {
+    [Authorize]
     public class ControlPanelController : ApiController
     {
         // GET: api/ControlPanel

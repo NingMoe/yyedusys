@@ -6,12 +6,12 @@ using System.Web.Mvc;
 
 namespace YY.Edu.Sys.Admin.Controllers
 {
-    public class VenueNoticeController : Controller
+    public class VenueNoticeController : BaseController
     {
         // GET: VenueNotice
         public ActionResult Index()
         {
-            ViewBag.VenueId = 1;// Session["venue"].ToString();
+            ViewBag.VenueId = base.Me.VenueInfo.VenueID;
 
             return View();
         }
@@ -25,8 +25,9 @@ namespace YY.Edu.Sys.Admin.Controllers
         // GET: VenueNotice/Create
         public ActionResult Create()
         {
-            ViewBag.VenueId = 1;// Session["venue"].ToString();
-            ViewBag.UserId = 1;// Session["venue"].ToString();
+            ViewBag.VenueId = base.Me.VenueInfo.VenueID;
+            //todo
+            ViewBag.UserId = 1;
             ViewBag.UserName = "赵俊福";// Session["venue"].ToString();
             return View();
         }
@@ -50,7 +51,7 @@ namespace YY.Edu.Sys.Admin.Controllers
         // GET: VenueNotice/Edit/5
         public ActionResult Edit(int id)
         {
-            ViewBag.VenueId = 1;// Session["venue"].ToString();
+            ViewBag.VenueId = base.Me.VenueInfo.VenueID;
             return View();
         }
 

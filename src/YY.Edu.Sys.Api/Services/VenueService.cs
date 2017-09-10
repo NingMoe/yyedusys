@@ -38,6 +38,28 @@ namespace YY.Edu.Sys.Api.Services
         }
 
         /// <summary>
+        /// 检测是否有相同的场馆编码
+        /// </summary>
+        /// <param name="venueCode"></param>
+        /// <returns></returns>
+        public static bool IsExistSameCode(string venueCode)
+        {
+
+            if (string.IsNullOrWhiteSpace(venueCode))
+                throw new Comm.YYException.YYException("参数不能为空");
+
+            var sql = "SELECT COUNT(VenueID)  FROM [SportsDB].[dbo].[Venue] where VenueCode=@venueCode";
+            var count = Comm.Helper.DapperHelper.Instance.Query<int>(sql,
+                new
+                {
+                    venueCode = venueCode
+                });
+
+            return (count.FirstOrDefault() > 0);
+
+        }
+
+        /// <summary>
         /// 生成场馆编码
         /// </summary>
         /// <param name="venue"></param>
@@ -46,17 +68,13 @@ namespace YY.Edu.Sys.Api.Services
         {
 
             Random r = new Random();
-            string code = venue.VenueID.ToString().PadLeft(6, Convert.ToChar(r.Next(1, 9)));
+            //string code = venue.VenueID.ToString().PadLeft(6, Convert.ToChar(r.Next(1, 9)));
 
             while (true)
             {
-                IList<IPredicate> predList = new List<IPredicate>();
-                predList.Add(Predicates.Field<YY.Edu.Sys.Models.Venue>(f => f.CityID, Operator.Le, venue.VenueCode));
-                int count = Comm.Helper.DapperHelper.Instance.Count<YY.Edu.Sys.Models.Venue>(predList);
-                if (count == 0)
-                {
+                string code = r.Next(1000, 9999).ToString();
+                if (!IsExistSameCode(code))
                     return code;
-                }
             }
 
         }

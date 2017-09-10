@@ -118,12 +118,12 @@ namespace YY.Edu.Sys.Api.Controllers
         public IHttpActionResult Create(YY.Edu.Sys.Models.Student student)
         {
 
-            if (!ModelState.IsValid)
-                return BadRequest();
+            //if (!ModelState.IsValid)
+            //    return BadRequest();
 
             try
             {
-                bool flag = Services.StudentService.Create(student);
+                bool flag = Services.StudentService.Reginster(student);
 
                 return flag ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
             }
@@ -245,53 +245,37 @@ namespace YY.Edu.Sys.Api.Controllers
 
         [HttpGet]
         // GET api/<controller>
-        public IHttpActionResult GetStudentGrowth()
+        public IHttpActionResult GetStudentGrowth(int VenueID, int StudentID, int FCType)
         {
-
             try
             {
 
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                System.Web.HttpContextBase context = (System.Web.HttpContextBase)Request.Properties["MS_HttpContext"];//获取传统context
-                System.Web.HttpRequestBase request = context.Request;//定义传统request对象
-                string UserName = Comm.Helper.ParamHelper<string>.GetParam(request["UserName"], "");
-                string ParentMobile = Comm.Helper.ParamHelper<string>.GetParam(request["ParentMobile"], "");
-                string FullName = Comm.Helper.ParamHelper<string>.GetParam(request["FullName"], "");
-                string ParentFullName = Comm.Helper.ParamHelper<string>.GetParam(request["ParentFullName"], "");
-                int start = Comm.Helper.ParamHelper<int>.GetParam(request["start"], 0);
-                start += 1;//adminlte 加载的datatable起始页为0
-                int length = Comm.Helper.ParamHelper<int>.GetParam(request["length"], 0);
-                int StudentID = Comm.Helper.ParamHelper<int>.GetParam(request["studentID"], 0);
 
-                if (StudentID <= 0 || start < 0 || length <= 0)
-                    return BadRequest();
-
-                PageCriteria criteria = new PageCriteria();
-
-                criteria.Condition += string.Format("  StudentID= {0}", StudentID);
-
-
-                criteria.CurrentPage = start;
-                criteria.Fields = "*";
-                criteria.PageSize = length;
-                criteria.TableName = "StudentGrowth";
-                criteria.PrimaryKey = "GrowthID";
-
-                var r = Comm.Helper.DapperHelper.GetPageData<YY.Edu.Sys.Models.StudentGrowth>(criteria);
-
-                return Ok(new Comm.ResponseModel.ResponseModel4Page<YY.Edu.Sys.Models.StudentGrowth>()
+                string strWhere = string.Format("StudentID = {0} and FCState=1 and FCType={1} ", StudentID, FCType);
+                if (VenueID > 0)
                 {
-                    data = r.Items,
-                    recordsFiltered = r.TotalNum,
-                    recordsTotal = r.TotalNum,
+                    strWhere += string.Format(" and VenueID = {0} ", VenueID);
+                }
+
+
+
+                string sql = " select top 8 * from StudentGrowth with(nolock) where " + strWhere + " order by GrowthID desc ";
+
+
+
+                var result = DapperHelper.Instance.Query<YY.Edu.Sys.Models.StudentGrowth>(sql);
+                return Ok(new Comm.ResponseModel.ResponseModel4Res<YY.Edu.Sys.Models.StudentGrowth>()
+                {
+                    data = result.AsList()
                 });
 
             }
             catch (Exception ex)
             {
-                logs.Error("学生成长查询失败", ex);
+                logs.Error("教师风采", ex);
                 return BadRequest();
             }
         }

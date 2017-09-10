@@ -6,6 +6,11 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using YY.Edu.Sys.Admin.Models;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Newtonsoft.Json.Linq;
+using System;
 
 namespace YY.Edu.Sys.Admin.Controllers
 {
@@ -71,14 +76,37 @@ namespace YY.Edu.Sys.Admin.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+
+                    var tokenValue = await Services.LoginService.GetToken(model.Email, model.Password);
+                    if (tokenValue.Contains("invalid_grant"))
+                    {
+                        ModelState.AddModelError("", "登录失败,请联系管理员");
+                        return View(model);
+                    }
+                    Sys.Models.TokenInfo tokenInfo = new Sys.Models.TokenInfo(tokenValue);
+                    Session["tokenInfo"] = tokenValue;
+                    Session["accessToken"] = tokenInfo.access_token;
+                    Session["refreshToken"] = tokenInfo.refresh_token;
+
+                    var userValue = await Services.LoginService.GetMe(tokenInfo.access_token, model.Email);
+                    JObject jo = JObject.Parse(userValue);
+                    if (Convert.ToBoolean(jo["Error"].ToString()))
+                    {
+                        ModelState.AddModelError("", jo["Msg"].ToString());
+                        return View(model);
+                    }
+
+                    Session["loginUser"] = jo["Info"].ToString();
+
                     return RedirectToLocal(returnUrl);
+
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "登录失败,用户名密码错误");
                     return View(model);
             }
         }
@@ -147,7 +175,7 @@ namespace YY.Edu.Sys.Admin.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("DashboardV1", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
@@ -349,8 +377,11 @@ namespace YY.Edu.Sys.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+
+            this.Session.Abandon();
+            this.Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", string.Empty) { HttpOnly = true });
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("DashboardV1", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         [AllowAnonymous]
@@ -405,7 +436,7 @@ namespace YY.Edu.Sys.Admin.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("DashboardV1", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

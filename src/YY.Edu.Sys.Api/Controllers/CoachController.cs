@@ -173,8 +173,9 @@ namespace YY.Edu.Sys.Api.Controllers
 
             try
             {
-
-                bool flag = Services.CoachService.Create(coach);
+                coach.CardPositiveUrl = coach.CardPositiveUrl.Replace("-", "/");
+                coach.CardReverseUrl = coach.CardReverseUrl.Replace("-", "/");
+                bool flag = Services.CoachService.Reginster(coach);
 
                 return flag ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
 

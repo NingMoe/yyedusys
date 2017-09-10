@@ -238,7 +238,6 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CampusController.cs" />
     <Compile Include="Controllers\CoachController.cs" />
     <Compile Include="Controllers\ControlPanelController.cs" />
@@ -274,9 +273,13 @@
     <Compile Include="Models\ResponseModel\TeachingScheduleResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Providers\MultipartFileWithExtensionStreamProvider.cs" />
+    <Compile Include="Providers\YYAuthorizationServerProvider.cs" />
+    <Compile Include="Providers\YYRefreshTokenProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Services\CoachService.cs" />
+    <Compile Include="Services\PCLoginService.cs" />
     <Compile Include="Services\StudentService.cs" />
     <Compile Include="Services\TeachingScheduleService.cs" />
     <Compile Include="Services\VenueService.cs" />

@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "运营系统";
+    ViewBag.SubTitle = "校区管理";
+}
+
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+}
+
+@Styles.Render("~/AdminLTE/plugins/datatables/css")
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">校区列表</h3>
+                <a href="@Url.Action("Create", "Campus")" class="btn btn-info pull-right">
+                    添加
+                </a>
+            </div>
+
+            <form id="campusform" class="form-horizontal">
+                <input type="hidden" id="VenueID" name="VenueID" value="@ViewBag.venueId" />
+            </form>
+            <div class="box-body" id="demo">
+                <table id="campustable" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>编号</th>
+                            <th>校区</th>
+                            <th>联系人</th>
+                            <th>联系人电话</th>
+                            <th>所属城市</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/AdminLTE/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")
+    @Scripts.Render("~/Scripts/SysManage/ManageBase")
+    @Scripts.Render("~/Scripts/SysManage/Campus")
+    @Scripts.Render("~/Scripts/SysManage/jquery.serializejson.min")
+    <script>
+        $(function () {
+            bind_data();
+        });
+    </script>
+}

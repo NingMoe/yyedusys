@@ -17,7 +17,7 @@
     <AssemblyName>YY.Edu.Sys.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -240,12 +240,17 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CoashController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NoticeController.cs" />
     <Compile Include="Controllers\OAuth2Controller.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\SubscribeMsgController.cs" />
     <Compile Include="Controllers\TenPayV3Controller.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\WeiXinController.cs" />
+    <Compile Include="Controllers\WeixinJSSDKController.cs" />
     <Compile Include="data\UpLoad.ashx.cs">
       <DependentUpon>UpLoad.ashx</DependentUpon>
     </Compile>
@@ -261,6 +266,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Services\WeixinNoticeService.cs" />
     <Compile Include="Services\WxUserService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -317,8 +323,10 @@
     <Content Include="fonts\font_1474352518_1483889.ttf" />
     <Content Include="fonts\font_1474352518_1483889.woff" />
     <Content Include="images\movie.ogg" />
-    <Fakes Include="Fakes\Newtonsoft.Json.fakes" />
+    <None Include="Properties\PublishProfiles\q.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Coash\BindingUser.js" />
+    <Content Include="Scripts\Coash\MyNotice.js" />
     <Content Include="Scripts\Coash\MyPresence.js" />
     <Content Include="Scripts\Coash\CoashCurriculum.js" />
     <Content Include="Scripts\Coash\CurriculumStudent.js" />
@@ -327,16 +335,20 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.serializejson.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Notice\Detail.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Student\MyEvaluate.js" />
     <Content Include="Scripts\Student\BuyHourClass.js" />
+    <Content Include="Scripts\Student\MyNotice.js" />
     <Content Include="Scripts\Student\StudentCurriculum.js" />
+    <Content Include="Scripts\Student\StudentGrowth.js" />
     <Content Include="Scripts\Student\SubscribeCurriculum.js" />
     <Content Include="Views\Student\Index.html" />
     <Content Include="Web.config" />
@@ -363,12 +375,23 @@
     <Content Include="Views\Student\BuyHourClass.cshtml" />
     <Content Include="Views\Student\SubscribeCurriculum.cshtml" />
     <Content Include="Views\Coash\MyPresence.cshtml" />
+    <Content Include="Views\Student\StudentGrowth.cshtml" />
+    <Content Include="Views\Coash\BindingUser.cshtml" />
+    <Content Include="Views\Student\MyMessage.cshtml" />
+    <Content Include="Views\WeixinJSSDK\Index.cshtml" />
+    <Content Include="Views\Notice\Detail.cshtml" />
+    <Content Include="Views\Coash\MyMessage.cshtml" />
+    <Content Include="Views\TenPayV3\JsApi.cshtml" />
+    <Content Include="Views\TenPayV3\ProductList.cshtml" />
+    <Content Include="Views\TenPayV3\ProductItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="UpLoad\Coach\" />
+    <Folder Include="UpLoad\Student\" />
+    <Folder Include="Views\Base\" />
     <Folder Include="Views\OAuth2\" />
-    <Folder Include="Views\TenPayV3\" />
+    <Folder Include="Views\WeiXin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -408,7 +431,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>37396</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:37396/</IISUrl>
+          <IISUrl>http://www.yy.com</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://www.yy.com/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

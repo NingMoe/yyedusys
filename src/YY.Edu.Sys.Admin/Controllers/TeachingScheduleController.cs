@@ -6,29 +6,27 @@ using System.Web.Mvc;
 
 namespace YY.Edu.Sys.Admin.Controllers
 {
-    public class TeachingScheduleController : Controller
+    public class TeachingScheduleController : BaseController
     {
         // GET: TeachingSchedule
         public ActionResult Index()
         {
-            //todo 
-            ViewBag.VenueId = 1;// Session["venue"].ToString();
+            ViewBag.VenueId = base.Me.VenueInfo.VenueID;
             return View();
         }
 
         // GET: TeachingSchedule/Details/5
         public ActionResult Details(int id)
         {
-            ViewBag.pkId = id;// Session["venue"].ToString();
-            ViewBag.VenueId = 1;// Session["venue"].ToString();
+            ViewBag.pkId = id;
+            ViewBag.VenueId = base.Me.VenueInfo.VenueID;
             return View();
         }
 
         // GET: TeachingSchedule/Create
         public ActionResult Create()
         {
-            //todo 
-            ViewBag.VenueId = 1;// Session["venue"].ToString();
+            ViewBag.VenueId = base.Me.VenueInfo.VenueID;
             return View();
         }
 
@@ -51,8 +49,7 @@ namespace YY.Edu.Sys.Admin.Controllers
         // GET: TeachingSchedule/Edit/5
         public ActionResult Edit(int id)
         {
-            //todo 
-            ViewBag.VenueId = 1;// Session["venue"].ToString();
+            ViewBag.VenueId = base.Me.VenueInfo.VenueID;
             ViewBag.PKID = id;
             return View();
         }

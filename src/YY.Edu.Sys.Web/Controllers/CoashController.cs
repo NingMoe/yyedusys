@@ -47,5 +47,20 @@ namespace YY.Edu.Sys.Web.Controllers
             ViewBag.CoachID = coachid;
             return View();
         }
+
+        public ActionResult BindingUser()
+        {
+            ViewBag.OpenID = "ozLW4wHYTcApj55HIUT0o8Qdet6U";
+            ViewBag.VenueID = 1;
+            ViewBag.HeadUrl = "http://loackatek";
+            return View();
+        }
+
+
+        public ActionResult MyMessage(int CoachID)
+        {
+            ViewBag.CoachID = CoachID;
+            return View();
+        }
     }
 }

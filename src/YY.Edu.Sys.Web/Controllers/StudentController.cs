@@ -51,5 +51,20 @@ namespace YY.Edu.Sys.Web.Controllers
             ViewBag.StudentID = StudentID;
             return View();
         }
+
+
+        public ActionResult StudentGrowth(int StudentID,int VenueID)
+        {
+            ViewBag.VenueID = VenueID;
+            ViewBag.StudentID = StudentID;
+            return View();
+        }
+
+
+        public ActionResult MyMessage(int StudentID)
+        {
+            ViewBag.StudentID = StudentID;
+            return View();
+        }
     }
 }

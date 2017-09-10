@@ -19,8 +19,13 @@ namespace YY.Edu.Sys.Web.data
             HttpPostedFile _PostedFile = context.Request.Files["file"];
             string FileName = _PostedFile.FileName;
             string FileEx = context.Request["extention"] ;
+            string utype = context.Request["utype"];
             string sysPaht = System.Web.HttpContext.Current.Server.MapPath("~/");
             string newname ="UpLoad\\Coach\\"+DateTime.Now.ToString("yyyyMMddHHmmssfff")+ FileEx;
+            if (utype == "1")
+            { newname = "UpLoad\\Student\\" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + FileEx; }
+
+          
             //接收二级制数据并保存
             Stream stream = _PostedFile.InputStream;
             byte[] dataOne = new byte[stream.Length];

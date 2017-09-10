@@ -181,8 +181,13 @@ namespace YY.Edu.Sys.Models
 			set{ _systemroleids=value;}
 			get{return _systemroleids;}
 		}
-		#endregion Model
 
-	}
+        /// <summary>
+        /// 用户表guid    
+        /// </summary>
+        public string UserId { get; set; }
+        #endregion Model
+
+    }
 }
 

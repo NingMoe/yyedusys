@@ -23,6 +23,7 @@ namespace YY.Edu.Sys.Api.Controllers
         }
 
         // GET: api/VenueNotice/5
+       
         public IHttpActionResult Get(int id)
         {
             try
@@ -164,5 +165,68 @@ namespace YY.Edu.Sys.Api.Controllers
         public void Delete(int id)
         {
         }
+
+        [HttpGet]
+        /// <summary>
+        /// 取的我的消息(学生，教练)
+        /// </summary>
+        /// <param name="CoachID"></param>
+        /// <returns></returns>
+        public IHttpActionResult GetMyNotice(string query)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest();
+
+                Comm.RequestModel.RequestModelBase<Sys.Models.VenueNotice> oData = Newtonsoft.Json.JsonConvert.DeserializeObject<Comm.RequestModel.RequestModelBase<Sys.Models.VenueNotice>>(query);
+
+
+                if (oData.PageIndex < 0 || oData.PageSize <= 0)
+                    return BadRequest();
+
+                PageCriteria criteria = new PageCriteria();
+
+                if (oData.SearchCondition.StudentID > 0)
+                {
+                    criteria.Condition += string.Format(" state = 2 and((NoticeRange in(4, 5, 6, 7) and StudentID = 0) or StudentID ={0}) ", oData.SearchCondition.StudentID);
+
+                }
+                else
+                {
+                    if (oData.SearchCondition.CoachID > 0)
+                    {
+                        criteria.Condition += string.Format(" state = 2 and((NoticeRange in(2,3,6,7) and CoachID = 0) or CoachID ={0}) ", oData.SearchCondition.CoachID);
+                    }
+                }
+
+
+
+                criteria.CurrentPage = oData.PageIndex;
+                criteria.Fields = "NoticeId, NoticeType, SendTime, source, NoticeTitle";
+                criteria.PageSize = oData.PageSize;
+                criteria.TableName = "VenueNotice";
+                criteria.PrimaryKey = "NoticeId";
+                
+                    criteria.Sort = "SendTime desc ,NoticeId desc ";
+               
+
+                var r = Comm.Helper.DapperHelper.GetPageData<Sys.Models.VenueNotice>(criteria);
+
+                return Ok(new Comm.ResponseModel.ResponseModel4Page<Sys.Models.VenueNotice>()
+                {
+                    data = r.Items,
+                    recordsFiltered = r.TotalNum,
+                    recordsTotal = r.TotalNum,
+                });
+
+            }
+            catch (Exception ex)
+            {
+                logs.Error("取的学生的消息", ex);
+                return BadRequest();
+            }
+        }
+
     }
 }

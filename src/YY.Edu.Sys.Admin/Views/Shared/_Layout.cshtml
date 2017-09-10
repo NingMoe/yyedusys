@@ -15,10 +15,12 @@
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+    @Html.Action("Default", "Base")
+    
     <div class="wrapper">
         <header class="main-header">
             <a href="@Url.Action("Index", "Home")" class="logo">
-                <span class="logo-mini"><b>W</b>eb</span>
+                <span class="logo-mini"><b>场馆</b></span>
                 <span class="logo-lg">场馆系统</span>
             </a>
             <nav class="navbar navbar-static-top" role="navigation">
@@ -210,9 +212,9 @@
                             </ul>
                         </li>
                         @Html.Partial("_LoginPartial")
-                        <li>
+                        @*<li>
                             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                        </li>
+                        </li>*@
                     </ul>
                 </div>
             </nav>
@@ -624,5 +626,6 @@
     @Scripts.Render("~/Scripts/Shared/_Layout")
     @Scripts.Render("~/AdminLTE/dist/js")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

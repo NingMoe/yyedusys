@@ -7,21 +7,22 @@ using System.Web.Mvc;
 
 namespace YY.Edu.Sys.Admin.Controllers
 {
-    public class StudentController : Controller
+    public class StudentController : BaseController
     {
         // GET: Studeng
         //[Filters.SessionUserParameter]
         public ActionResult Index()
         {
 
-            Models.LoginUser loginUser = (Session["venue"] as Models.LoginUser);//为Action设置参数
-            if (loginUser == null)
-            {
-            }
-            else
-            {
-            }
-            ViewBag.venueId = 1;
+            //Models.LoginUser loginUser = (Session["venue"] as Models.LoginUser);//为Action设置参数
+            //if (loginUser == null)
+            //{
+            //}
+            //else
+            //{
+            //}
+            //ViewBag.venueId = 1;
+            ViewBag.VenueId = base.Me.VenueInfo.VenueID;
             return View();
         }
 
@@ -39,7 +40,7 @@ namespace YY.Edu.Sys.Admin.Controllers
 
         public ActionResult Import()
         {
-            ViewBag.VenueId = 1;
+            ViewBag.VenueId = base.Me.VenueInfo.VenueID;
             return View();
         }
 

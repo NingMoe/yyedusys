@@ -6,12 +6,12 @@ using System.Web.Mvc;
 
 namespace YY.Edu.Sys.Admin.Controllers
 {
-    public class FeedBackLogController : Controller
+    public class FeedBackLogController : BaseController
     {
         // GET: FeedBackLog
         public ActionResult Index()
         {
-            ViewBag.VenueId = 1;// Session["venue"].ToString();
+            ViewBag.VenueId = base.Me.VenueInfo.VenueID;
 
             return View();
         }
@@ -25,7 +25,7 @@ namespace YY.Edu.Sys.Admin.Controllers
         // GET: FeedBackLog/Create
         public ActionResult Create()
         {
-            ViewBag.VenueId = 1;// Session["venue"].ToString();
+            ViewBag.VenueId = base.Me.VenueInfo.VenueID;
             return View();
         }
 

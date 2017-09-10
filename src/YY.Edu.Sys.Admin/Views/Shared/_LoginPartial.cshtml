@@ -14,7 +14,7 @@
                 </p>
             </li>
             <li class="user-body">
-                <div class="row">
+                @*<div class="row">
                     <div class="col-xs-4 text-center">
                         <a href="#">Followers</a>
                     </div>
@@ -24,15 +24,15 @@
                     <div class="col-xs-4 text-center">
                         <a href="#">Friends</a>
                     </div>
-                </div>
+                </div>*@
             </li>
             <li class="user-footer">
                 @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "" }))
                 {
                     @Html.AntiForgeryToken()
-                    <div class="pull-left">
+                    @*<div class="pull-left">
                         @Html.ActionLink("Profile", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "btn btn-default btn-flat", title = "Manage" })
-                    </div>
+                    </div>*@
                     <div class="pull-right">
                         <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-default btn-flat">退出登录</a>
                     </div>

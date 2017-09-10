@@ -6,13 +6,12 @@ using System.Web.Mvc;
 
 namespace YY.Edu.Sys.Admin.Controllers
 {
-    public class CampusController : Controller
+    public class CampusController : BaseController
     {
         // GET: Campus
         public ActionResult Index()
         {
-            //todo 
-            ViewBag.VenueId = 1;// Session["venue"].ToString();
+            ViewBag.VenueId = base.Me.VenueInfo.VenueID;
             return View();
         }
 
@@ -25,8 +24,7 @@ namespace YY.Edu.Sys.Admin.Controllers
         // GET: Campus/Create
         public ActionResult Create()
         {
-            //todo 
-            ViewBag.VenueId = 1;// Session["venue"].ToString();
+            ViewBag.VenueId = base.Me.VenueInfo.VenueID;
             return View();
         }
 
@@ -48,7 +46,7 @@ namespace YY.Edu.Sys.Admin.Controllers
         public ActionResult Edit(int id)
         {
             //todo 
-            ViewBag.VenueId = 1;// Session["venue"].ToString();
+            ViewBag.VenueId = base.Me.VenueInfo.VenueID;
             ViewBag.CampusID = id;
             return View();
         }
