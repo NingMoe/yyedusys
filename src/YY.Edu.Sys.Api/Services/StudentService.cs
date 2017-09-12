@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using YY.Edu.Sys.Comm.Helper;
 
 namespace YY.Edu.Sys.Api.Services
 {
@@ -217,6 +218,80 @@ where s.UserName=@userName and sv.VenueID=@venueID";
                 return false;
             }
         }
+
+
+        /// <summary>
+        /// 简易验证登录是否成功
+        /// </summary>
+        /// <param name="openId"></param>
+        /// <returns></returns>
+        public static bool StudentLogin(string openId)
+        {
+
+            try
+            {
+
+                if (string.IsNullOrWhiteSpace(openId))
+                    throw new Comm.YYException.YYException("参数不能为空");
+
+                var sql = "select count(studentID) from student where OpenID=@openId";
+                var count = Comm.Helper.DapperHelper.Instance.Query<int>(sql, new
+                {
+                    openId = openId
+                });
+
+                return (count.FirstOrDefault() > 0);
+
+            }
+            catch (Exception ex)
+            {
+                logs.Error("登录失败", ex);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 获取用户信息
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public static Sys.Models.PCLoginUser GetMe(string email)
+        {
+
+            try
+            {
+
+                var sql = @"SELECT [Id],[NameIdentifier],[Email],[EmailConfirmed],[PasswordHash],[SecurityStamp],[PhoneNumber],[PhoneNumberConfirmed],[TwoFactorEnabled],[LockoutEndDateUtc],[LockoutEnabled],[AccessFailedCount],[UserName] FROM [dbo].[AspNetUsers] where UserName=@userName";
+                var result = DapperHelper.Instance.QueryFirst<Sys.Models.AspNetUsers>(sql, new
+                {
+                    username = email
+                });
+
+                if (result == null)
+                    throw new YY.Edu.Sys.Comm.YYException.YYException("用户不存在");
+
+
+                var venueSql = "SELECT [VenueID],[CityID],[UserName],[Pwd],[VenueCode],[VenueName],[VenueAddress],[LinkMan],[LinkManMobile],[LinkManWX],[VenueFax],[LegalPerson],[CardNumber],[AddTime],[BusinessLicense],[LogoUrl],[AddUser],[Status],[SystemRoleIDS],[UserId] FROM[SportsDB].[dbo].[Venue] WHERE [UserId]=@UserId";
+                var venueResult = DapperHelper.Instance.QueryFirst<Sys.Models.Venue>(venueSql, new
+                {
+                    UserId = result.Id
+                });
+
+                Sys.Models.PCLoginUser login = new Sys.Models.PCLoginUser()
+                {
+                    Users = result as Sys.Models.AspNetUsers,
+                    VenueInfo = venueResult as Sys.Models.Venue
+                };
+
+                return login;
+            }
+            catch (Exception ex)
+            {
+                logs.Error("登录失败", ex);
+                throw new YY.Edu.Sys.Comm.YYException.YYException("用户不存在");
+            }
+        }
+
 
     }
 }

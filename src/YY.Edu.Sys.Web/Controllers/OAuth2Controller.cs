@@ -1,4 +1,5 @@
-﻿using Senparc.Weixin;
+﻿using Newtonsoft.Json.Linq;
+using Senparc.Weixin;
 using Senparc.Weixin.Exceptions;
 using Senparc.Weixin.HttpUtility;
 using Senparc.Weixin.MP;
@@ -21,6 +22,7 @@ namespace YY.Edu.Sys.Web.Controllers
         private string appId = ConfigurationManager.AppSettings["WeixinAppId"];
         private string secret = ConfigurationManager.AppSettings["WeixinAppSecret"];
         private string domain = "http://" + ConfigurationManager.AppSettings["Domain"];
+        private string studentDomain = ConfigurationManager.AppSettings["StudentDomain"];
 
         /// <summary>
         /// 
@@ -94,6 +96,7 @@ namespace YY.Edu.Sys.Web.Controllers
                 OAuthUserInfo userInfo = OAuthApi.GetUserInfo(result.access_token, result.openid);
                 Session["OpenId"] = userInfo.openid;
 
+                //获取微信信息并写入数据库
                 new Services.WxUserService().FollowMP(userInfo);
 
                 if (!string.IsNullOrEmpty(returnUrl))
@@ -102,6 +105,10 @@ namespace YY.Edu.Sys.Web.Controllers
                 }
 
                 return View(userInfo);
+            }
+            catch (Comm.YYException.YYException ex)
+            {
+                return Content(ex.Message);
             }
             catch (ErrorJsonResultException ex)
             {
@@ -149,13 +156,13 @@ namespace YY.Edu.Sys.Web.Controllers
             {
                 //已关注，可以得到详细信息
                 userInfo = OAuthApi.GetUserInfo(result.access_token, result.openid);
+                //获取微信信息并写入数据库
                 new Services.WxUserService().FollowMP(userInfo);
 
                 if (!string.IsNullOrEmpty(returnUrl))
                 {
                     return Redirect(returnUrl);
                 }
-
 
                 ViewData["ByBase"] = true;
                 return View("UserInfoCallback", userInfo);

@@ -71,7 +71,7 @@ function LoadMyCurriculum() {
                
                 str += "  <p class='time'>" + dateformat(c.CurriculumDate, "yyyy-MM-dd") + "    " + c.CurriculumBeginTime + "-" + c.CurriculumEndTime + "</p>";
                 str += "  <p class='address'><i class='iconfont'>&#xe600;</i>" + c.VenueName + "-" + c.CampusName + "</p>";
-                str += "  <p class='cx'><i class='iconfont'>&#xe612;</i>教练:" + c.FullName + "  <font color='red'>" + strState + "</font></p> </a>";
+                str += "  <p class='cx'><i class='iconfont'>&#xe612;</i>教练:" + c.CoachFullName + "  <font color='red'>" + strState + "</font></p> </a>";
 
                 if (KSstate == 1 && strState == "已学完") {
                     str += "  <button type='button' data-CurriculumID='" + c.CurriculumID + "' data-PKID='" + c.PKID + "' onclick='Evaluate(" + c.PKID + ",1," + c.CurriculumID + ")' class='order-btn'>评价</button> ";

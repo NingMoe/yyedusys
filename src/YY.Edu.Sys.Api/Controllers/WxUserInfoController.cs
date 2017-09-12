@@ -75,6 +75,7 @@ namespace YY.Edu.Sys.Api.Controllers
         }
 
 
+        [Authorize]
         [HttpPost]
         public IHttpActionResult Edit(Sys.Models.WxUserInfo wxUserInfo)
         {

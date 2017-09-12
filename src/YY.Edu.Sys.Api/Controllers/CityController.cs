@@ -123,7 +123,7 @@ namespace YY.Edu.Sys.Api.Controllers
         public IHttpActionResult Get(int id)
         {
             //查询
-            var query = Comm.Helper.DapperHelper.Instance.Query<YY.Edu.Sys.Models.City>("select * from city where CityID=@id", new { Id = 1 });
+            var query = Comm.Helper.DapperHelper.Instance.Query<YY.Edu.Sys.Models.City>("select * from city where CityID=@id", new { Id = id });
             return Ok(query);
             //return Json(query.ToString());
         }

@@ -36,6 +36,49 @@ namespace YY.Edu.Sys.Api.Controllers
         }
 
         /// <summary>
+        /// 获取我的信息
+        /// </summary>
+        /// <param name="openId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public IHttpActionResult GetMe(string openId)
+        {
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            if (string.IsNullOrEmpty(openId))
+                return BadRequest();
+
+            try
+            {
+
+                var sql = @" SELECT [StudentID],[UserName],[FullName],[NickName],[Mobile],[Address],[ParentFullName],[ParentMobile],[HeadUrl],[VenueID],[BirthDate],[OpenID] 
+                    FROM [SportsDB].[dbo].[Student] where OpenID =@openId ";
+
+                var result = DapperHelper.Instance.QueryFirst<Sys.Models.Student>(sql, new
+                {
+                    openId = openId
+                });
+
+                return Ok(new Comm.ResponseModel.ResponseModel4Res<Sys.Models.Student>()
+                {
+                    Info = result
+                });
+            }
+            catch (Comm.YYException.YYException ex)
+            {
+                return Ok(Comm.ResponseModel.ResponseModelBase.GetRes(ex.Message));
+            }
+            catch (Exception ex)
+            {
+                logs.Error("学生取我的信息失败", ex);
+                return BadRequest();
+            }
+        }
+
+
+        /// <summary>
         /// 导入学生
         /// </summary>
         /// <returns></returns>
@@ -410,7 +453,7 @@ namespace YY.Edu.Sys.Api.Controllers
 
 
                 criteria.CurrentPage = oData.PageIndex;
-                criteria.Fields = "t.*,v.VenueName,c.CampusName,'KSstate'=cu.State,co.FullName,cu.CurriculumID ";
+                criteria.Fields = "t.*,v.VenueName,c.CampusName,'KSstate'=cu.State,'CoachFullName'=co.FullName,cu.CurriculumID ";
                 criteria.PageSize = oData.PageSize;
                 criteria.TableName = "TeachingSchedule t with(nolock) inner join Venue v with(nolock) on t.VenueID = v.VenueID left join Campus c with(nolock) on t.CampusID = t.CampusID inner join Curriculum cu with(nolock) on t.PKID = cu.PKID inner join Coach co with(nolock) on co.CoachID=t.CoachID ";
                 criteria.PrimaryKey = "t.PKID";
@@ -479,10 +522,10 @@ namespace YY.Edu.Sys.Api.Controllers
             sql.Append("  update ClassHoursNumber set ClassNumber = ClassNumber +" + number + " where CHNID = @id ");
             sql.Append(" end else begin ");
 
-            sql.Append(" insert into ClassHoursNumber(StudentID, CoachID, ClassNumber,VenueID) values('" + StudentID+"', '"+CoachID+"', '"+number+"','"+ VenueID + "')");
+            sql.Append(" insert into ClassHoursNumber(StudentID, CoachID, ClassNumber,VenueID) values('" + StudentID + "', '" + CoachID + "', '" + number + "','" + VenueID + "')");
             sql.Append(" end ");
             //1购买，2约课3学生请假退回，4老师请假退回，5学校停课退回
-            sql.Append(" INSERT INTO [ClassHoursDetailed]([DType],[VenueID],[CoachID],[StudentID],[Remark],[DNumber]) values(1,'" + VenueID + "','" + CoachID + "','" + StudentID + "','购买课时','"+number+"') ");
+            sql.Append(" INSERT INTO [ClassHoursDetailed]([DType],[VenueID],[CoachID],[StudentID],[Remark],[DNumber]) values(1,'" + VenueID + "','" + CoachID + "','" + StudentID + "','购买课时','" + number + "') ");
 
 
             if (!ModelState.IsValid)
@@ -516,13 +559,56 @@ namespace YY.Edu.Sys.Api.Controllers
         /// </summary>
         /// <param name="StudentID"></param>
         /// <returns></returns>
-        public IHttpActionResult GetClassHoursNumberByStudentID(int StudentID)
+        public IHttpActionResult GetClassHoursNumberByStudentID(int StudentID)//?
         {
             var query = Comm.Helper.DapperHelper.Instance.Query<YY.Edu.Sys.Models.ClassHoursNumber>("select CHNID, ClassNumber, 'CoachFullName' = c.FullName from ClassHoursNumber n with(nolock) inner join Coach c with(nolock) on n.CoachID = c.CoachID order by CHNID desc ");
 
             //链表直接写sql传参
 
             return Ok(query);
+        }
+
+
+
+        [HttpGet]
+        //取的当前学生课时消息明细
+        public IHttpActionResult GetClassHoursDetailedByStudentID(int StudentID, int PageIndex, int PageSize)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest();
+
+
+                PageCriteria criteria = new PageCriteria();
+
+                criteria.Condition += string.Format("StudentID='{0}'", StudentID);
+
+
+                criteria.CurrentPage = PageIndex;
+                criteria.Fields = "d.*,VenueName,c.FullName";
+                criteria.PageSize = PageSize;
+                criteria.TableName = "ClassHoursDetailed d with(nolock) inner join Venue v with(nolock) on d.VenueID=v.VenueID  inner join Coach c with(nolock) on d.CoachID = c.CoachID";
+                criteria.PrimaryKey = "DetailedID";
+
+                criteria.Sort = "DetailedID desc";
+
+
+                var r = Comm.Helper.DapperHelper.GetPageData<ClassHoursDetailedResponse>(criteria);
+
+                return Ok(new Comm.ResponseModel.ResponseModel4Page<ClassHoursDetailedResponse>()
+                {
+                    data = r.Items,
+                    recordsFiltered = r.TotalNum,
+                    recordsTotal = r.TotalNum,
+                });
+
+            }
+            catch (Exception ex)
+            {
+                logs.Error("所有当前学生可以约的课程", ex);
+                return BadRequest();
+            }
         }
 
 
@@ -550,7 +636,7 @@ namespace YY.Edu.Sys.Api.Controllers
                 criteria.CurrentPage = oData.PageIndex;
                 criteria.Fields = "t.*,'CoachFullName'=c.FullName,v.VenueName,cs.CampusName,ClassNumber ";
                 criteria.PageSize = oData.PageSize;
-                criteria.TableName = "                TeachingSchedule t with(nolock) inner join Coach c with(nolock) on t.CoachID = c.CoachID  inner join Venue v with(nolock) on t.VenueID = v.VenueID  inner join Campus cs with(nolock) on v.VenueID = cs.VenueID and t.CampusID = cs.CampusID inner join ClassHoursNumber ch with(nolock) on t.CoachID = ch.CoachID and t.Venueid = ch.VenueID  left join Curriculum cm with(nolock) on t.PKID = cm.PKID ";
+                criteria.TableName = "                TeachingSchedule t with(nolock) inner join Coach c with(nolock) on t.CoachID = c.CoachID  inner join Venue v with(nolock) on t.VenueID = v.VenueID  inner join Campus cs with(nolock) on v.VenueID = cs.VenueID and t.CampusID = cs.CampusID inner join ClassHoursNumber ch with(nolock) on t.CoachID = ch.CoachID and t.Venueid = ch.VenueID  left join Curriculum cm with(nolock) on t.PKID = cm.PKID and cm.StudentID= ";
                 criteria.PrimaryKey = "t.PKID";
 
                 criteria.Sort = "t.CoachID, CurriculumDate ,CurriculumBeginTime,t.pkid";
@@ -601,7 +687,7 @@ namespace YY.Edu.Sys.Api.Controllers
             sql.Append("   insert into Curriculum(StudentID, PKID, CoachID, StudentFullName) values('" + sid + "','" + pkid + "','" + cid + "','" + sname + "'); ");
             sql.Append(" update ClassHoursNumber set ClassNumber=ClassNumber-1 where  StudentID ='" + sid + "' and CoachID ='" + cid + "'  and VenueID = '" + vid + "'");
             //1购买，2约课3学生请假退回，4老师请假退回，5学校停课退回
-            sql.Append(" INSERT INTO [ClassHoursDetailed]([DType],[VenueID],[CoachID],[StudentID],[Remark],[DNumber]) values(2,'"+vid+"','"+cid+"','"+sid+"','预约课程',1) ");
+            sql.Append(" INSERT INTO [ClassHoursDetailed]([DType],[VenueID],[CoachID],[StudentID],[Remark],[DNumber]) values(2,'" + vid + "','" + cid + "','" + sid + "','预约课程',1) ");
             sql.Append(" end");
 
             try

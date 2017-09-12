@@ -17,18 +17,13 @@
         <div class="am-header-left am-header-nav ">
             <a href="javascript:history.back()" style="color: #fff;"><i class="am-icon-chevron-left"></i></a>
         </div>
-        <h1 class="am-header-title" style="color: #fff;">我的课程</h1>
+        <h1 class="am-header-title" style="color: #fff;">我的消费</h1>
     </header>
     <div class="jl"></div>
-    <ul class="order">
-      
-        <li><a href="#" class="current" data-type="1">今日课程</a></li>
-        <li ><a href="#" data-type="3">已上课程</a></li>
-        <li><a href="#" data-type="2">未上课程</a></li>
-    </ul>
+  
 
     <ul class="order-list" id="list"></ul>
-    <div class="am-list-news-ft" id="btnMore"><a class="am-list-news-more am-btn am-btn-default" href="###">更多课程 »</a></div>
+    <div class="am-list-news-ft" id="btnMore"><a class="am-list-news-more am-btn am-btn-default" href="###">更多明细 »</a></div>
 
 
     <ul class="order-list">
@@ -36,7 +31,9 @@
         </li>
     </ul>
     <input type="hidden" id="hdPageIndex" value="1" />
-    <input type="hidden" id="hdPageSize" value="4" />
+    <input type="hidden" id="hdPageSize" value="8" />
+
+    <input type="hidden" id="hdStudentID" value="@ViewBag.StudentID" />
 
     <div data-am-widget="navbar" class="am-navbar  dream-foot am-no-layout" id="">
         <ul class="am-navbar-nav1 am-cf am-avg-sm-5" id="sList">
@@ -73,7 +70,7 @@
         </ul>
     </div>
 
-   
-    <script src="/Scripts/Student/StudentCurriculum.js"></script>
+
+    <script src="/Scripts/Student/ClassHoursDetailed.js"></script>
 </body>
 </html>

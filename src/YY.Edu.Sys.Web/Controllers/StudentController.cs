@@ -66,5 +66,12 @@ namespace YY.Edu.Sys.Web.Controllers
             ViewBag.StudentID = StudentID;
             return View();
         }
+
+
+        public ActionResult MyClassHoursDetailed(int StudentID)
+        {
+            ViewBag.StudentID = StudentID;
+            return View();
+        }
     }
 }

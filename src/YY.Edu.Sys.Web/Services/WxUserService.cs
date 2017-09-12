@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Web;
@@ -15,10 +17,11 @@ namespace YY.Edu.Sys.Web.Services
     {
 
         private HttpRequestHelper RequestHelper;
+        private System.Net.Http.HttpClient _httpClient;
 
         public WxUserService()
         {
-
+            _httpClient = new System.Net.Http.HttpClient();
             RequestHelper = new HttpRequestHelper();
         }
 
@@ -63,7 +66,62 @@ namespace YY.Edu.Sys.Web.Services
             return true;
         }
 
-    }
+        /// <summary>
+        /// 获取token信息
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="passWord"></param>
+        /// <returns></returns>
+        public async System.Threading.Tasks.Task<string> GetToken(string domain, string openId, string passWord)
+        {
 
-    
+            string url = System.Configuration.ConfigurationManager.AppSettings["ApiUrl"];
+            _httpClient.BaseAddress = new System.Uri(url);
+
+            string clientId = System.Web.Configuration.WebConfigurationManager.AppSettings["ClientId"];
+            string clientSecret = System.Web.Configuration.WebConfigurationManager.AppSettings["ClientSecret"];
+
+            var parameters = new Dictionary<string, string>();
+            parameters.Add("grant_type", "password");
+            parameters.Add("username", openId);
+            //parameters.Add("password", passWord);
+
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
+                "Basic",
+                System.Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(clientId + ":" + clientSecret)));
+
+            var response = await _httpClient.PostAsync("/token?domain=" + domain, new FormUrlEncodedContent(parameters));
+            var responseValue = await response.Content.ReadAsStringAsync();
+
+            return responseValue;
+        }
+
+        /// <summary>
+        /// 获取我的信息
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public async System.Threading.Tasks.Task<string> GetMe(string domain, string token, string openId)
+        {
+
+            string url = System.Configuration.ConfigurationManager.AppSettings["ApiUrl"];
+            _httpClient.BaseAddress = new System.Uri(url);
+
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            if (domain.ToLower().Contains("student"))
+            {
+                return (await (await _httpClient.GetAsync("api/Student/GetMe?openId=" + openId)).Content.ReadAsStringAsync());
+            }
+            else if (domain.ToLower().Contains("coach"))
+            {
+                return (await (await _httpClient.GetAsync("api/Coach/GetMe?openId=" + openId)).Content.ReadAsStringAsync());
+            }
+
+            throw new Comm.YYException.YYException("非法访问");
+        }
+
+
+    }
 }

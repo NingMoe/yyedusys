@@ -71,7 +71,7 @@ namespace YY.Edu.Sys.Api.Controllers
             {
                 return Ok(new Comm.ResponseModel.ResponseModel4Res<Sys.Models.PCLoginUser>()
                 {
-                    Info = Services.PCLoginService.GetMe(email),
+                    Info = Services.VenueService.GetMe(email),
                 });
             }
             catch (Comm.YYException.YYException ex)

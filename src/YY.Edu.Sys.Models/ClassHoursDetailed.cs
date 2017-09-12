@@ -10,6 +10,7 @@ namespace YY.Edu.Sys.Models
     {
         public int DetailedID { get; set; }
         /// <summary>
+        /// 
         /// 1购买，2约课3学生请假退回，4老师请假退回，5学校停课退回
         /// </summary>
         public int DType { get; set; }

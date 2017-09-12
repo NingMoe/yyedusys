@@ -19,7 +19,7 @@ namespace YY.Edu.Sys.Admin.Controllers
             return View();
         }
 
-        public string AccessToken
+        protected string AccessToken
         {
             get
             {
@@ -27,7 +27,7 @@ namespace YY.Edu.Sys.Admin.Controllers
             }
         }
 
-        public string RefreshToken
+        protected string RefreshToken
         {
             get
             {
@@ -38,7 +38,7 @@ namespace YY.Edu.Sys.Admin.Controllers
         /// <summary>
         /// token信息
         /// </summary>
-        public Sys.Models.TokenInfo SysToken
+        protected Sys.Models.TokenInfo SysToken
         {
             get
             {
@@ -49,7 +49,7 @@ namespace YY.Edu.Sys.Admin.Controllers
             }
         }
 
-        public Sys.Models.PCLoginUser Me
+        protected Sys.Models.PCLoginUser Me
         {
             get
             {

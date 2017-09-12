@@ -68,9 +68,12 @@ namespace YY.Edu.Sys.Api.Providers
         /// <returns></returns>
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            //调用后台的登录服务验证用户名与密码
 
-            if (Services.PCLoginService.VenueLogin(context.UserName))
+            if (string.IsNullOrWhiteSpace(context.Request.Query["domain"]))
+                await base.GrantResourceOwnerCredentials(context);
+
+            var loginService = new Services.LoginService(context.Request.Query["domain"], context.UserName, context.Password);
+            if (loginService.Login())
             {
                 var oAuthIdentity = new ClaimsIdentity(context.Options.AuthenticationType);
                 oAuthIdentity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
@@ -79,6 +82,7 @@ namespace YY.Edu.Sys.Api.Providers
             }
 
             await base.GrantResourceOwnerCredentials(context);
+
         }
 
         public override async Task GrantRefreshToken(OAuthGrantRefreshTokenContext context)

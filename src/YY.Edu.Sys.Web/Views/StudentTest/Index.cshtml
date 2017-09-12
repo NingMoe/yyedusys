@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@model Senparc.Weixin.MP.Helpers.JsSdkUiPackage
+@{
+    Layout = null;
+}
+@*
+    使用JSSDK，首先要到微信公众平台【公众号设置】下的【功能设置】里面设置“JS接口安全域名”
+*@
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -8,7 +15,7 @@
     <script src="~/Scripts/jquery.serializejson.min.js"></script>
     <script src="@(Request.Url.Scheme)://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script src="~/Scripts/Jquery_Extention.js"></script>
-    @*<script>
+    <script>
 
         function create() {
 
@@ -159,22 +166,49 @@
                     }
                 });
             });
-    </script>*@
+    </script>
 </head>
 <body>
-    @*@Html.Action("Default", "Base")*@
-    <h1>公众号登录演示</h1>
+    @Html.Action("Default", "Base")
+    <h1>公众号JSSDK演示</h1>
     <div>
-        @*<form name="locationform" id="locationform">
+        <h2>@ViewBag.OpenId</h2>
+        <h2>学生系统:@ViewBag.Me</h2>
+        <form name="locationform" id="locationform">
             <input type="hidden" name="OpenId" value="@ViewBag.OpenId" />
             <input type="hidden" name="Latitude" id="Latitude" />
             <input type="hidden" name="Longitude" id="Longitude" />
-            <input type="hidden" name="Speed" id="Speed" value="0"/>
-            <input type="hidden" name="Accuracy" id="Accuracy" value="0"/>
-        </form>*@
-        <a href='@Url.Action("Index", "StudentTest")'>学生系统</a><br />
-        <a href='@Url.Action("Index", "CoachTest")'>教练系统</a>
-</div>
-
+            <input type="hidden" name="Speed" id="Speed" value="0" />
+            <input type="hidden" name="Accuracy" id="Accuracy" value="0" />
+        </form>
+        <button id="test" onclick="return show_city();">测试</button>
+        <textarea id="test_result"></textarea>
+    </div>
 </body>
 </html>
+<script>
+
+
+    function show_city() {
+
+        //查询
+        $.ajax({
+            type: "get",
+            url: "http://localhost:53262/api/city/get/1",
+            contentType: 'application/json',
+            success: function (data, status) {
+                console.log(data);
+                //if (status == "success") {
+                $("#test_result").val(data[0].CityName);
+                //}
+            },
+            error: function (e) {
+            },
+            complete: function () {
+
+            }
+        });
+    }
+
+
+</script>

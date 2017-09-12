@@ -53,6 +53,48 @@ namespace YY.Edu.Sys.Api.Controllers
         }
 
         /// <summary>
+        /// 获取我的信息
+        /// </summary>
+        /// <param name="openId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public IHttpActionResult GetMe(string openId)
+        {
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            if (string.IsNullOrEmpty(openId))
+                return BadRequest();
+
+            try
+            {
+
+                var sql = @"select c.CoachID,c.FullName,c.UserName,c.State,c.Introduce,c.NickName,c.HeadUrl,c.Address,c.Mobile,c.Sex,v.VenueID,v.VenueName,cv.Wage,cv.Price 
+                    from Coach as c left join Coach_Venue as cv on c.CoachID = cv.CoachID left join Venue as v on v.VenueID = cv.VenueID where c.OpenID =@openId ";
+
+                var result = DapperHelper.Instance.QueryFirst<CoachResponse>(sql, new
+                {
+                    openId = openId
+                });
+
+                return Ok(new Comm.ResponseModel.ResponseModel4Res<CoachResponse>()
+                {
+                    Info = result
+                });
+            }
+            catch (Comm.YYException.YYException ex)
+            {
+                return Ok(Comm.ResponseModel.ResponseModelBase.GetRes(ex.Message));
+            }
+            catch (Exception ex)
+            {
+                logs.Error("教练取我的信息失败", ex);
+                return BadRequest();
+            }
+        }
+
+        /// <summary>
         /// 获取校区下可以任教的教练
         /// </summary>
         /// <param name="venueId"></param>
@@ -555,7 +597,7 @@ group by CurriculumDate";
 
         [HttpGet]
         // GET api/<controller>
-        public IHttpActionResult GetCoachingPresence(int VenueID,int CoachID,int FCType)
+        public IHttpActionResult GetCoachingPresence(int VenueID, int CoachID, int FCType)
         {
             try
             {
@@ -563,23 +605,24 @@ group by CurriculumDate";
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                      
-               string strWhere = string.Format("CoachID = {0} and FCState=1 and FCType={1} ", CoachID,FCType);
+
+                string strWhere = string.Format("CoachID = {0} and FCState=1 and FCType={1} ", CoachID, FCType);
                 if (VenueID > 0)
                 {
                     strWhere += string.Format(" and VenueID = {0} ", VenueID);
                 }
 
-                
 
-                string sql = " select top 8 * from CoachingPresence with(nolock) where "+ strWhere+" order by FCID desc ";
+
+                string sql = " select top 8 * from CoachingPresence with(nolock) where " + strWhere + " order by FCID desc ";
 
 
 
                 var result = DapperHelper.Instance.Query<YY.Edu.Sys.Models.CoachingPresence>(sql);
                 return Ok(new Comm.ResponseModel.ResponseModel4Res<YY.Edu.Sys.Models.CoachingPresence>()
                 {
-                    data = result.AsList()                });
+                    data = result.AsList()
+                });
 
             }
             catch (Exception ex)
@@ -819,9 +862,9 @@ group by CurriculumDate";
         /// <param name="StudentID"></param>
         /// <param name="pkid"></param>
         /// <returns></returns>
-        public IHttpActionResult UpdateCurriculumState(int State, string StudentIDs, int pkid,int VenueID,int CoachID)
+        public IHttpActionResult UpdateCurriculumState(int State, string StudentIDs, int pkid, int VenueID, int CoachID)
         {
-       
+
             if (!ModelState.IsValid)
                 return BadRequest();
             string sql = "update Curriculum set State=@State,ModifyTime=GETDATE() where PKID=@PKID and StudentID in(@StudentID); ";

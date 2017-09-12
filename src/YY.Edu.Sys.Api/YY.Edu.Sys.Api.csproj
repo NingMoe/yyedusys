@@ -262,6 +262,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\RequestModel\TeachingScheduleRequest.cs" />
     <Compile Include="Models\ResponseModel\CampusResponse.cs" />
+    <Compile Include="Models\ResponseModel\ClassHoursDetailedResponse.cs" />
     <Compile Include="Models\ResponseModel\ClassHoursOrderResponse.cs" />
     <Compile Include="Models\ResponseModel\CoachCommentResponse.cs" />
     <Compile Include="Models\ResponseModel\CoachHourClassResponse.cs" />
@@ -279,7 +280,7 @@
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Services\CoachService.cs" />
-    <Compile Include="Services\PCLoginService.cs" />
+    <Compile Include="Services\LoginService.cs" />
     <Compile Include="Services\StudentService.cs" />
     <Compile Include="Services\TeachingScheduleService.cs" />
     <Compile Include="Services\VenueService.cs" />
