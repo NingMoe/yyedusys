@@ -15,6 +15,8 @@ function bind_data() {
         { "data": "NickName" },
         { "data": "Wage" },
         { "data": "Price" },
+        { "data": "WageMore" },
+        { "data": "PriceMore" },
         { "data": "Address" },
         {
             "data": "Sex",
@@ -49,8 +51,8 @@ function bind_data() {
 
                 if (data == 1) {
                     //设置课时工资 课时价格 等级
-                    var edithtml = '<button  class="btn btn-xs btn-success" onclick="return showcoachwage(' + full['CoachID'] + ');"><i class="fa fa-edit"> 设置课时工资 </i></button>&nbsp;&nbsp;';
-                    edithtml += '<button  class="btn btn-xs btn-warning" onclick="return showcoachprice(' + full['CoachID'] + ');"><i class="fa fa-edit"> 设置课时费用 </i></button>&nbsp;&nbsp;';
+                    var edithtml = '<button  class="btn btn-xs btn-success" onclick="return showcoachwage(' + full['CoachID'] + ');"><i class="fa fa-edit"> 设置工资 </i></button>&nbsp;&nbsp;';
+                    edithtml += '<button  class="btn btn-xs btn-warning" onclick="return showcoachprice(' + full['CoachID'] + ');"><i class="fa fa-edit"> 设置费用 </i></button>&nbsp;&nbsp;';
 
                 } else {
                     var edithtml = '<button class="btn btn-xs btn-success" onclick="return setcoachaudited(' + full['CoachID'] + ',' + full['VenueID'] + ');"><i class="fa fa-edit"> 审核通过 </i></button>&nbsp;&nbsp;';
@@ -132,7 +134,6 @@ function deletecoach(coachId, venueId) {
     }
 }
 
-//展示教练信息
 function showcoachwage(coachId) {
 
     $('#setcoachwagemodal').on('show.bs.modal', function (e) {
@@ -153,6 +154,7 @@ function showcoachwage(coachId) {
                         $("[name='VenueID']").val(data.Info.VenueID);
                         $("[name='CoachID']").val(data.Info.CoachID);
                         $("#Wage").val(data.Info.Wage == null ? '0' : data.Info.Wage);
+                        $("#WageMore").val(data.Info.WageMore == null ? '0' : data.Info.WageMore);
                     }
                 }
             },
@@ -192,6 +194,7 @@ function showcoachprice(coachId) {
                         $("[name='VenueID']").val(data.Info.VenueID);
                         $("[name='CoachID']").val(data.Info.CoachID);
                         $("#Price").val(data.Info.Price == null ? '0' : data.Info.Price);
+                        $("#PriceMore").val(data.Info.PriceMore == null ? '0' : data.Info.PriceMore);
                     }
                 }
             },
@@ -227,6 +230,7 @@ function setcoachwage() {
                 } else {
                     bind_data();
                     alert('设置工资成功');
+                    $('#setcoachwagemodal').modal("hide");
                 }
             }
         },
@@ -255,6 +259,7 @@ function setcoachprice() {
                 } else {
                     bind_data();
                     alert('设置课时费成功');
+                    $('#setcoachpricemodal').modal("hide");
                 }
             }
         },
@@ -304,6 +309,8 @@ function showdetail(coachId) {
                     $("#Sex").html(data.Info.Sex == 1 ? "男" : "女");
                     $("#Price").html(data.Info.Price == null ? '0' : data.Info.Price);
                     $("#Wage").html(data.Info.Wage == null ? '0' : data.Info.Wage);
+                    $("#PriceMore").html(data.Info.PriceMore == null ? '0' : data.Info.PriceMore);
+                    $("#WageMore").html(data.Info.WageMore == null ? '0' : data.Info.WageMore);
                 }
             }
         },

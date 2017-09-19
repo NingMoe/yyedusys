@@ -222,6 +222,9 @@ namespace YY.Edu.Sys.Admin
             bundles.Add(new ScriptBundle("~/Scripts/SysManage/ManageBase").Include(
               "~/Scripts/SysManage/ManageBase.js"));
 
+            bundles.Add(new ScriptBundle("~/Scripts/SysManage/LoadData").Include(
+             "~/Scripts/SysManage/LoadData.js"));
+
             bundles.Add(new ScriptBundle("~/Scripts/SysManage/City").Include(
                 "~/Scripts/SysManage/City.js"));
 
@@ -233,6 +236,9 @@ namespace YY.Edu.Sys.Admin
 
             bundles.Add(new ScriptBundle("~/Scripts/SysManage/Campus").Include(
              "~/Scripts/SysManage/Campus.js"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/SysManage/CoachWages").Include(
+            "~/Scripts/SysManage/CoachWages.js"));
 
             bundles.Add(new ScriptBundle("~/Scripts/SysManage/Student").Include(
               "~/Scripts/SysManage/Student.js"));

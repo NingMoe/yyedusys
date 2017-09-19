@@ -83,7 +83,7 @@ namespace YY.Edu.Sys.Web.Services
 
             var parameters = new Dictionary<string, string>();
             parameters.Add("grant_type", "password");
-            parameters.Add("username", openId);
+            parameters.Add("UserName", openId);
             //parameters.Add("password", passWord);
 
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(

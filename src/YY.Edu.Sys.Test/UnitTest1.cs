@@ -208,7 +208,6 @@ namespace YY.Edu.Sys.Test
             Assert.AreEqual(Senparc.Weixin.ReturnCode.请求成功, result.errcode);
         }
 
-        [TestMethod]
         public void T()
         {
             string token = @"{""access_token"": ""9sx2ojliKmWgoi9QzcccOUVACyFliVp1HnRUDnI8u7X-VsjqesakAtqWyzYxWxo4dXSnV374VAb5p42NOkWqLCRWNruqmzjA_WzrBHF9pBcB7Pw33hW5lAkNwwS6Y-lG8xZ0zGPdjMzIPNSPTt89u2fMfZODJ7GR_uG9pP8kEv3ef51prx-AqlWAkD9xDIqxh5ZnkMmQDhMN4bnIItmZKuhXJLbGPu0WYbFBtoKULdQ"",
@@ -227,8 +226,26 @@ namespace YY.Edu.Sys.Test
             TokenInfo tokenInfo = new TokenInfo(token);
 
         }
+
+        [TestMethod]
+        public void TestMethod5()
+        {
+            string query = @"{""VenueID"":""1"",""WorkDate"":""2017-08"",""CoachID"":""-1"",""CurriculumBeginTime"":""2017-08"",""CurriculumId"":[""2"",""1""]}";
+
+            CreateCoachWageRequest oData = Newtonsoft.Json.JsonConvert.DeserializeObject<CreateCoachWageRequest>(query);
+
+
+        }
     }
 
+    public class CreateCoachWageRequest
+    {
+        public int VenueID { get; set; }
+
+        public string WorkDate { get; set; }
+
+        public List<int> CurriculumId { get; set; }
+    }
 
     public class TokenInfo
     {
@@ -475,4 +492,5 @@ namespace YY.Edu.Sys.Test
         #endregion Model
 
     }
+
 }

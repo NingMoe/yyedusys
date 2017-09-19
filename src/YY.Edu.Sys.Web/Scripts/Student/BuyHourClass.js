@@ -29,7 +29,7 @@ function LoadCoach() {
                 str += "  <p class='cx'><i class='iconfont'>&#xe612;</i>剩余课时:  <font color='red'>" + c.hNumber + "</font></p> </a>";
                 str += "  <p class='cx1'><i class='iconfont'>&#xe612;</i>购买课时:<input type='text' value='7' id='txtNumber' style='border:1;color:#000000' class='Number'></p>";
              
-                    str += "  <button type='button' data-CurriculumID='" + c.CurriculumID + "' data-PKID='" + c.PKID + "' onclick='Buy(" + c.CoachID + ",1,this)' class='order-btn'>购买</button> ";
+                    str += "  <button type='button' data-CurriculumID='" + c.CurriculumID + "' data-PKID='" + c.PKID + "' onclick='Buy(" + c.CoachID + ",1,this,"+c.Price+")' class='order-btn'>购买</button> ";
             
                 str += " </li>";
 
@@ -53,24 +53,32 @@ $(document).ready(function () {
 });
 
 
-function Buy(coachid, sid, obj) {
+function Buy(coachid, sid, obj,price) {
 
     var vid = $("#hdVenueID").val();
     var sid = $("#hdStudentID").val();
 
-
+    //金额
+    var CMoney=0;
     var oj = $(obj).parent().find("input");
     var inumber = 0;
     if (oj.val() != "") {
         inumber = oj.val();
     }
+
+    if (inumber == 0)
+    {
+        alert('请输入要购买的课时数');
+        return false;
+    }
+    CMoney = price * inumber;
     // BuyCurriculum(int StudentID,int CoachID,int number)
     $.ajax({
         type: "get",
         url: "http://localhost:53262/api/Student/BuyCurriculum/",//BuyCurriculum(int StudentID,int CoachID,int number)
         dataType: "json",
         async: false,
-        data: { StudentID: sid, CoachID: coachid, number: inumber, VenueID: vid },
+        data: { StudentID: sid, CoachID: coachid, number: inumber, VenueID: vid, CMoney: CMoney },
         beforeSend: function () {
         },
         success: function (data, status) {

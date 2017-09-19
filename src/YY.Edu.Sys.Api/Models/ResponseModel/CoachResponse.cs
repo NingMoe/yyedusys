@@ -14,5 +14,9 @@ namespace YY.Edu.Sys.Api.Models.ResponseModel
 
         public decimal? Price { get; set; }
 
+        public decimal? WageMore { get; set; }
+
+        public decimal? PriceMore { get; set; }
+
     }
 }

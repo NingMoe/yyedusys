@@ -28,6 +28,9 @@ namespace YY.Edu.Sys.Models.StateEnum
         /// 4学校停课（需要判断，有没有学生预约）
         /// </summary>
         StopTeachingSche,
-
+        /// <summary>
+        /// 5发放工资完成
+        /// </summary>
+        PayCoachMoney
     }
 }

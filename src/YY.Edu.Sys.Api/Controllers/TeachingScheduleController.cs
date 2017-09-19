@@ -49,6 +49,12 @@ from TeachingSchedule as t join Coach as c2 on t.CoachID = c2.CoachID where t.pk
             }
         }
 
+        /// <summary>
+        /// 场馆查询某项课程信息
+        /// </summary>
+        /// <param name="pkId"></param>
+        /// <param name="venueId"></param>
+        /// <returns></returns>
         [HttpGet]
         public IHttpActionResult GetTeachingScheDetail(int pkId, int venueId)
         {
@@ -77,6 +83,68 @@ from TeachingSchedule as t join Coach as c2 on t.CoachID = c2.CoachID where t.pk
             }
         }
 
+        /// <summary>
+        /// 获取上课完成课程 用来发工资
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public IHttpActionResult GetClassOverTeachingSches(string query)
+        {
+
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest();
+
+                Comm.RequestModel.RequestModelBase<Sys.Models.TeachingSchedule> oData = Newtonsoft.Json.JsonConvert.DeserializeObject<Comm.RequestModel.RequestModelBase<Sys.Models.TeachingSchedule>>(query);
+
+                if (oData.PageIndex < 0 || oData.PageSize <= 0)
+                    return BadRequest();
+
+                PageCriteria criteria = new PageCriteria();
+                criteria.Condition = "1=1";
+                criteria.Condition += string.Format(" and t.State = {0}", Convert.ToInt32(Sys.Models.StateEnum.TeachingSchedule.ClassOverTeachingSche));
+
+                if (oData.SearchCondition.VenueID > 0)
+                    criteria.Condition += string.Format(" and t.VenueID = {0}", oData.SearchCondition.VenueID);
+                if (oData.SearchCondition.CoachID > 0)
+                    criteria.Condition += string.Format(" and t.CoachID = {0}", oData.SearchCondition.CoachID);
+                if (!string.IsNullOrEmpty(oData.SearchCondition.CurriculumBeginTime))
+                {
+                    criteria.Condition += string.Format(" and t.CurriculumDate >= '{0}'", Convert.ToDateTime(oData.SearchCondition.CurriculumBeginTime));
+                    criteria.Condition += string.Format(" and t.CurriculumDate < '{0}'", Convert.ToDateTime(oData.SearchCondition.CurriculumBeginTime).AddMonths(1));
+                }
+                //if (!string.IsNullOrEmpty(oData.SearchCondition.CurriculumEndTime))
+                //    criteria.Condition += string.Format(" and t.CurriculumDate < '{0}'", Convert.ToDateTime(oData.SearchCondition.CurriculumEndTime).AddMonths(1));
+
+                criteria.CurrentPage = oData.PageIndex + 1;
+                criteria.Fields = "c.CurriculumID,t.PKID,t.VenueID,t.CampusID,t.CoachID,t.Title,t.CurriculumDate,t.CurriculumBeginTime,t.CurriculumEndTime,t.AddTime,t.Price,t.CoachPrice,t.PKType,t.State,c2.FullName as CoachFullName,c.studentfullname";
+                criteria.PageSize = oData.PageSize;
+                criteria.TableName = "Curriculum as c join TeachingSchedule as t on t.pkid = c.pkid join Coach as c2 on t.CoachID = c2.CoachID ";
+                criteria.PrimaryKey = "c.CurriculumID";
+
+                var r = Comm.Helper.DapperHelper.GetPageData<Models.ResponseModel.TeachingScheduleResponse>(criteria);
+
+                return Ok(new Comm.ResponseModel.ResponseModel4Page<Models.ResponseModel.TeachingScheduleResponse>()
+                {
+                    data = r.Items,
+                    recordsFiltered = r.TotalNum,
+                    recordsTotal = r.TotalNum,
+                });
+            }
+            catch (Exception ex)
+            {
+                logs.Error("查询排课详情异常", ex);
+                return BadRequest();
+            }
+        }
+
+        /// <summary>
+        /// 排课
+        /// </summary>
+        /// <param name="teachingschedule"></param>
+        /// <returns></returns>
         [HttpPost]
         public IHttpActionResult Create(Models.RequestModel.TeachingScheduleRequest teachingschedule)
         {
@@ -230,6 +298,11 @@ from TeachingSchedule as t join Coach as c2 on t.CoachID = c2.CoachID where t.pk
             }
         }
 
+        /// <summary>
+        /// 分页查询排课信息
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         [HttpGet]
         public IHttpActionResult Page4Venue(string query)
         {

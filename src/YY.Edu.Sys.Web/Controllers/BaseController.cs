@@ -81,24 +81,36 @@ namespace YY.Edu.Sys.Web.Controllers
         /// <param name="passWord"></param>
         protected async System.Threading.Tasks.Task<bool> LoginSuccess(string domain, string openId, string passWord)
         {
-
+            string info = domain + "|" + openId + "|" + passWord+"|";
             var service = new Services.WxUserService();
             var tokenValue = await service.GetToken(domain, openId, passWord);
 
             if (tokenValue.Contains("invalid_client"))
             {
-                throw new Comm.YYException.YYException("登录失败,请联系管理员");
+                throw new Comm.YYException.YYException("登录失败"+ info+ tokenValue+",请联系管理员");
             }
-            if (tokenValue.Contains("invalid_grant"))
-            {
-                //ModelState.AddModelError("", "登录失败,请联系管理员");
-                throw new Comm.YYException.YYException("登录失败,请联系管理员");
-            }
+            //if (tokenValue.Contains("invalid_grant"))
+            //{
+            //    //ModelState.AddModelError("", "登录失败,请联系管理员");
+            //    throw new Comm.YYException.YYException("登录失败"+ info + tokenValue + ",请联系管理员");
+            //}
 
-            Sys.Models.TokenInfo tokenInfo = new Sys.Models.TokenInfo(tokenValue);
-            Session["tokenInfo"] = tokenValue;
-            Session["accessToken"] = tokenInfo.access_token;
-            Session["refreshToken"] = tokenInfo.refresh_token;
+            Session["tokenInfo"] = "";
+            Session["accessToken"] = "";
+            Session["refreshToken"] = "";
+            if (tokenValue.Contains("invalid_grant")) //没有权限
+            {
+                Session["Binding"] = "0";
+               
+            }
+            else
+            {
+                Sys.Models.TokenInfo tokenInfo = new Sys.Models.TokenInfo(tokenValue);
+                Session["Binding"] = "1";
+                Session["tokenInfo"] = tokenValue;
+                Session["accessToken"] = tokenInfo.access_token;
+                Session["refreshToken"] = tokenInfo.refresh_token;
+            }
            
             return true;
         }

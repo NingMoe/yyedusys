@@ -121,6 +121,10 @@ namespace YY.Edu.Sys.Models
         #endregion Model
 
         /// <summary>
+        /// 学生状态  0 流失 1正常
+        /// </summary>
+        public int State { get; set; }
+        /// <summary>
         /// openid
         /// </summary>
         public string OpenID { get; set; }

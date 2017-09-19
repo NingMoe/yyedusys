@@ -57,15 +57,30 @@ namespace YY.Edu.Sys.Models
 			get{return _wage;}
 		}
 		/// <summary>
-		/// 课时 
+		/// 课时费用
 		/// </summary>
 		public decimal? Price
 		{
 			set{ _price=value;}
 			get{return _price;}
 		}
-		#endregion Model
 
-	}
+        /// <summary>
+		/// 一对多工资
+		/// </summary>
+		public decimal? WageMore
+        {
+            get;set;
+        }
+        /// <summary>
+        /// 一对多课时费用
+        /// </summary>
+        public decimal? PriceMore
+        {
+            get; set;
+        }
+        #endregion Model
+
+    }
 }
 

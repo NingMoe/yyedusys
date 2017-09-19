@@ -38,5 +38,10 @@ namespace YY.Edu.Sys.Models
         /// 备注
         /// </summary>
         public string Remark { get; set; }
+
+        /// <summary>
+        /// 金额
+        /// </summary>
+       public decimal CMoney { get; set; }
     }
 }

@@ -35,7 +35,7 @@ namespace YY.Edu.Sys.Api.Controllers
             {
                 //查询
 
-                var sql = @"select c.CoachID,c.FullName,c.UserName,c.State,c.Introduce,c.NickName,c.HeadUrl,c.Address,c.Mobile,c.Sex,v.VenueID,v.VenueName,cv.Wage,cv.Price 
+                var sql = @"select c.CoachID,c.FullName,c.UserName,c.State,c.Introduce,c.NickName,c.HeadUrl,c.Address,c.Mobile,c.Sex,v.VenueID,v.VenueName,cv.Wage,cv.Price,cv.WageMore,cv.PriceMore
                     from Coach as c left join Coach_Venue as cv on c.CoachID = cv.CoachID left join Venue as v on v.VenueID = cv.VenueID where c.CoachID = @CoachID";
 
                 var result = DapperHelper.Instance.Query<CoachResponse>(sql, new { CoachID = id });
@@ -70,7 +70,7 @@ namespace YY.Edu.Sys.Api.Controllers
             try
             {
 
-                var sql = @"select c.CoachID,c.FullName,c.UserName,c.State,c.Introduce,c.NickName,c.HeadUrl,c.Address,c.Mobile,c.Sex,v.VenueID,v.VenueName,cv.Wage,cv.Price 
+                var sql = @"select c.CoachID,c.FullName,c.UserName,c.State,c.Introduce,c.NickName,c.HeadUrl,c.Address,c.Mobile,c.Sex,v.VenueID,v.VenueName,cv.Wage,cv.Price,cv.WageMore,cv.PriceMore
                     from Coach as c left join Coach_Venue as cv on c.CoachID = cv.CoachID left join Venue as v on v.VenueID = cv.VenueID where c.OpenID =@openId ";
 
                 var result = DapperHelper.Instance.QueryFirst<CoachResponse>(sql, new
@@ -111,7 +111,7 @@ namespace YY.Edu.Sys.Api.Controllers
                 if (venueId <= 0)
                     return BadRequest();
 
-                var sql = @"select c.CoachID,c.FullName,c.UserName,c.State,c.Introduce,c.NickName,c.HeadUrl,c.Address,c.Mobile,c.Sex,v.VenueID,v.VenueName,cv.Wage,cv.Price 
+                var sql = @"select c.CoachID,c.FullName,c.UserName,c.State,c.Introduce,c.NickName,c.HeadUrl,c.Address,c.Mobile,c.Sex,v.VenueID,v.VenueName,cv.Wage,cv.Price,cv.WageMore,cv.PriceMore
                     from Coach as c left join Coach_Venue as cv on c.CoachID = cv.CoachID left join Venue as v on v.VenueID = cv.VenueID
                     where v.VenueID = @VenueID and c.state=1 ";
 
@@ -290,7 +290,7 @@ namespace YY.Edu.Sys.Api.Controllers
                     criteria.Condition += string.Format(" and c.FullName like '%{0}%'", oData.SearchCondition.FullName);
 
                 criteria.CurrentPage = oData.PageIndex + 1;//adminlte 加载的datatable起始页为0
-                criteria.Fields = "c.CoachID,c.FullName,c.UserName,c.State,c.Introduce,c.NickName,c.HeadUrl,c.Address,c.Mobile,c.Sex,v.VenueID,v.VenueName,cv.Wage,cv.Price";
+                criteria.Fields = "c.CoachID,c.FullName,c.UserName,c.State,c.Introduce,c.NickName,c.HeadUrl,c.Address,c.Mobile,c.Sex,v.VenueID,v.VenueName,cv.Wage,cv.Price,cv.WageMore,cv.PriceMore";
                 criteria.PageSize = oData.PageSize;
                 criteria.TableName = "Coach as c left join Coach_Venue as cv on c.CoachID = cv.CoachID left join Venue as v on v.VenueID = cv.VenueID";
                 criteria.PrimaryKey = "c.CoachID";
@@ -386,7 +386,7 @@ namespace YY.Edu.Sys.Api.Controllers
                     if (result.State != 1)
                         return Ok(Comm.ResponseModel.ResponseModelBase.GetRes("此教练未审核通过"));
 
-                    var sql = "update Coach_Venue set Wage=@Wage where CoachID=@CoachID and VenueID=@VenueID";
+                    var sql = "update Coach_Venue set Wage=@Wage,WageMore=@WageMore where CoachID=@CoachID and VenueID=@VenueID";
                     //设置工资
                     int flag = DapperHelper.Instance.Execute(sql, coach);
 
@@ -423,7 +423,7 @@ namespace YY.Edu.Sys.Api.Controllers
                     if (result.State != 1)
                         return Ok(Comm.ResponseModel.ResponseModelBase.GetRes("此教练未审核通过"));
 
-                    var sql = "update Coach_Venue set Price=@Price where CoachID=@CoachID and VenueID=@VenueID";
+                    var sql = "update Coach_Venue set Price=@Price,PriceMore=@PriceMore where CoachID=@CoachID and VenueID=@VenueID";
                     //设置工资
                     int flag = DapperHelper.Instance.Execute(sql, coach);
 
@@ -697,7 +697,7 @@ group by CurriculumDate";
         public IHttpActionResult GetCoachListByHourClass(int VenueID, int StudentID)
         {
             StringBuilder sql = new StringBuilder();
-            sql.Append("select c.*,'hNumber'=isnull(ClassNumber,0) from Coach c with(nolock)");
+            sql.Append("select c.*,'hNumber'=isnull(ClassNumber,0),cv.Price from Coach c with(nolock)");
             sql.Append(" inner join Coach_Venue cv with(nolock) on c.CoachID=cv.CoachID");
             sql.Append(" left join ClassHoursNumber ch with(nolock) on c.coachID = ch.coachID and ch.StudentID =@StudentID ");
             sql.Append("where c.state = 1 and cv.VenueID =@VenueID ");

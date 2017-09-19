@@ -50,7 +50,7 @@ namespace YY.Edu.Sys.Web.Controllers
 
         public ActionResult BindingUser()
         {
-            ViewBag.OpenID = "ozLW4wHYTcApj55HIUT0o8Qdet6U";
+            ViewBag.OpenID = "ozLW4wIKJuOzimRmGbZxJcrBvaoY";
             ViewBag.VenueID = 1;
             ViewBag.HeadUrl = "http://loackatek";
             return View();

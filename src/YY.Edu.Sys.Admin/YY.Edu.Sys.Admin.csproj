@@ -186,6 +186,8 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CampusController.cs" />
     <Compile Include="Controllers\CoachController.cs" />
+    <Compile Include="Controllers\CoachWagesController.cs" />
+    <Compile Include="Controllers\CoachWagesSubController.cs" />
     <Compile Include="Controllers\FeedBackLogController.cs" />
     <Compile Include="Controllers\TeachingScheduleController.cs" />
     <Compile Include="Controllers\VenueInfoController.cs" />
@@ -1098,9 +1100,11 @@
     <Content Include="Scripts\SysManage\Campus.js" />
     <Content Include="Scripts\SysManage\City.js" />
     <Content Include="Scripts\SysManage\Coach.js" />
+    <Content Include="Scripts\SysManage\CoachWages.js" />
     <Content Include="Scripts\SysManage\ControlPanel.js" />
     <Content Include="Scripts\SysManage\FeedBackLog.js" />
     <Content Include="Scripts\SysManage\jquery.serializejson.min.js" />
+    <Content Include="Scripts\SysManage\LoadData.js" />
     <Content Include="Scripts\SysManage\ManageBase.js" />
     <Content Include="Scripts\SysManage\StateTranstion.js" />
     <Content Include="Scripts\SysManage\Student.js" />
@@ -1206,6 +1210,9 @@
     <Content Include="Views\Student\Import.cshtml" />
     <Content Include="Views\Coach\Import.cshtml" />
     <Content Include="Views\Base\Default.cshtml" />
+    <Content Include="Views\CoachWages\Index.cshtml" />
+    <Content Include="Views\CoachWages\GetClassOverTeachingSches.cshtml" />
+    <Content Include="Views\CoachWagesSub\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

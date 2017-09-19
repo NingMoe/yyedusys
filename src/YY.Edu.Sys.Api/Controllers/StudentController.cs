@@ -212,6 +212,37 @@ namespace YY.Edu.Sys.Api.Controllers
 
         }
 
+        /// <summary>
+        /// 标记学生为流失状态
+        /// </summary>
+        /// <param name="student"></param>
+        /// <returns></returns>
+        public IHttpActionResult SignLoss(dynamic student)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest();
+
+                if (student == null || student.StudentID <= 0)
+                    return BadRequest();
+
+                VenueContainStudent(Convert.ToInt32(student.VenueID), Convert.ToInt32(student.studentId));
+
+                var sql = "UPDATE Student SET State=0 WHERE StudentID=@StudentID";
+                var result = DapperHelper.Instance.Execute(sql, new { StudentID = Convert.ToInt32(student.studentId) });
+                return result > 0 ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
+            }
+            catch (Comm.YYException.YYException ex)
+            {
+                return Ok(Comm.ResponseModel.ResponseModelBase.GetRes(ex.Message));
+            }
+            catch (Exception ex)
+            {
+                logs.Error("确认上课完成失败", ex);
+                return BadRequest();
+            }
+        }
 
         [HttpGet]
         public IHttpActionResult Page4Venue(string query)
@@ -242,7 +273,7 @@ namespace YY.Edu.Sys.Api.Controllers
                     criteria.Condition += string.Format(" and s.ParentFullName like '%{0}%'", oData.SearchCondition.ParentFullName);
 
                 criteria.CurrentPage = oData.PageIndex + 1;//adminlte 加载的datatable起始页为0
-                criteria.Fields = "s.StudentID,s.UserName,s.[Address],s.HeadUrl,s.Mobile,s.FullName,s.ParentFullName,s.ParentMobile,v.VenueName,v.LinkMan,v.LinkManMobile";
+                criteria.Fields = "s.StudentID,s.UserName,s.[Address],s.HeadUrl,s.Mobile,s.FullName,s.ParentFullName,s.ParentMobile,s.state,v.VenueName,v.LinkMan,v.LinkManMobile";
                 criteria.PageSize = oData.PageSize;
                 criteria.TableName = "Student as s join Student_Venue as sv on s.StudentID=sv.StudentID join Venue as v on sv.VenueID=v.VenueID";
                 criteria.PrimaryKey = "s.StudentID";
@@ -263,6 +294,27 @@ namespace YY.Edu.Sys.Api.Controllers
                 return BadRequest();
             }
         }
+
+        /// <summary>
+        /// 学生是否在场馆中上课
+        /// </summary>
+        /// <param name="venudId"></param>
+        /// <param name="studentId"></param>
+        private void VenueContainStudent(int venudId, int studentId)
+        {
+
+            //查询该学校下是否有此教练
+            var sql = "select count(SVID) from Student_Venue where StudentID=@StudentID and VenueID=@VenueID";
+            var count = DapperHelper.Instance.Query<int>(sql, new
+            {
+                StudentID = studentId,
+                VenueID = venudId
+            });
+
+            if (count.FirstOrDefault() == 0)
+                throw new Exception("此学生没有在该场馆上课");
+        }
+
 
         // POST: api/Student
         public void Post([FromBody]string value)
@@ -513,7 +565,7 @@ namespace YY.Edu.Sys.Api.Controllers
         }
         //购买课时
         [HttpGet]
-        public IHttpActionResult BuyCurriculum(int StudentID, int CoachID, int number, int VenueID)
+        public IHttpActionResult BuyCurriculum(int StudentID, int CoachID, int number, int VenueID, decimal CMoney)
         {
             StringBuilder sql = new StringBuilder();
             sql.Append("declare @id int;");
@@ -525,7 +577,7 @@ namespace YY.Edu.Sys.Api.Controllers
             sql.Append(" insert into ClassHoursNumber(StudentID, CoachID, ClassNumber,VenueID) values('" + StudentID + "', '" + CoachID + "', '" + number + "','" + VenueID + "')");
             sql.Append(" end ");
             //1购买，2约课3学生请假退回，4老师请假退回，5学校停课退回
-            sql.Append(" INSERT INTO [ClassHoursDetailed]([DType],[VenueID],[CoachID],[StudentID],[Remark],[DNumber]) values(1,'" + VenueID + "','" + CoachID + "','" + StudentID + "','购买课时','" + number + "') ");
+            sql.Append(" INSERT INTO [ClassHoursDetailed]([DType],[VenueID],[CoachID],[StudentID],[Remark],[DNumber],CMoney) values(1,'" + VenueID + "','" + CoachID + "','" + StudentID + "','购买课时','" + number + "','" + CMoney + "') ");
 
 
             if (!ModelState.IsValid)

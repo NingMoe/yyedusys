@@ -8,6 +8,7 @@ namespace YY.Edu.Sys.Api.Models.ResponseModel
 {
     public class TeachingScheduleResponse : TeachingSchedule
     {
+        public int CurriculumID { get; set; }
         /// <summary>
         /// 卖场名称
         /// </summary>

@@ -53,6 +53,8 @@
                             <th>昵称</th>
                             <th>课时工资</th>
                             <th>课时费用</th>
+                            <th>一对多工资</th>
+                            <th>一对多费用</th>
                             <th>住址</th>
                             <th>性别</th>
                             <th>状态</th>
@@ -81,9 +83,13 @@
                                     <div class="form-group">
                                         <input type="hidden" id="VenueID" name="VenueID" value="" />
                                         <input type="hidden" id="CoachID" name="CoachID" value="" />
-                                        <label for="Wage" class="col-sm-2 control-label">教练工资</label>
+                                        <label for="Wage" class="col-sm-3 control-label">一对一工资</label>
                                         <div class="col-sm-3">
-                                            <input type="text" class="form-control" id="Wage" name="Wage" placeholder="教练工资">
+                                            <input type="text" class="form-control" id="Wage" name="Wage" placeholder="一对一工资">
+                                        </div>
+                                        <label for="WageMore" class="col-sm-3 control-label">一对多工资</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" id="WageMore" name="WageMore" placeholder="一对多工资">
                                         </div>
                                     </div>
                                 </div>
@@ -114,9 +120,13 @@
                                 <div class="form-group">
                                     <input type="hidden" id="VenueID" name="VenueID" value="" />
                                     <input type="hidden" id="CoachID" name="CoachID" value="" />
-                                    <label for="Price" class="col-sm-3 control-label">教练课时费</label>
+                                    <label for="Price" class="col-sm-3 control-label">一对一课时费</label>
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control" id="Price" name="Price" placeholder="教练课时费">
+                                        <input type="text" class="form-control" id="Price" name="Price" placeholder="一对一课时费">
+                                    </div>
+                                    <label for="PriceMore" class="col-sm-3 control-label">一对多课时费</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="PriceMore" name="PriceMore" placeholder="一对多课时费">
                                     </div>
                                 </div>
                             </div>

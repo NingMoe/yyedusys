@@ -37,6 +37,9 @@ namespace YY.Edu.Sys.Models.StateEnum
         /// 6上课完成
         /// </summary>
         ClassOverTeachingSche,
-
+        /// <summary>
+        /// 7发放工资完成
+        /// </summary>
+        PayCoachMoney
     }
 }

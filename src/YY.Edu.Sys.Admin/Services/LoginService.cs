@@ -26,6 +26,7 @@ namespace YY.Edu.Sys.Admin.Services
 
             string clientId = System.Web.Configuration.WebConfigurationManager.AppSettings["ClientId"];
             string clientSecret = System.Web.Configuration.WebConfigurationManager.AppSettings["ClientSecret"];
+            string domain = System.Web.Configuration.WebConfigurationManager.AppSettings["VenueDomain"];
 
             var parameters = new Dictionary<string, string>();
             parameters.Add("grant_type", "password");
@@ -36,7 +37,7 @@ namespace YY.Edu.Sys.Admin.Services
                 "Basic",
                 System.Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(clientId + ":" + clientSecret)));
 
-            var response = await _httpClient.PostAsync("/token", new FormUrlEncodedContent(parameters));
+            var response = await _httpClient.PostAsync("/token?domain=" + domain, new FormUrlEncodedContent(parameters));
             var responseValue = await response.Content.ReadAsStringAsync();
 
             return responseValue;

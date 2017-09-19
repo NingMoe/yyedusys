@@ -240,6 +240,8 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\CampusController.cs" />
     <Compile Include="Controllers\CoachController.cs" />
+    <Compile Include="Controllers\CoachWagesController.cs" />
+    <Compile Include="Controllers\CoachWagesSubController.cs" />
     <Compile Include="Controllers\ControlPanelController.cs" />
     <Compile Include="Controllers\FeedBackLogController.cs" />
     <Compile Include="Controllers\HelloController.cs" />
@@ -260,6 +262,8 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\RequestModel\CoachWageRequest.cs" />
+    <Compile Include="Models\RequestModel\CreateCoachWageRequest.cs" />
     <Compile Include="Models\RequestModel\TeachingScheduleRequest.cs" />
     <Compile Include="Models\ResponseModel\CampusResponse.cs" />
     <Compile Include="Models\ResponseModel\ClassHoursDetailedResponse.cs" />
@@ -268,6 +272,7 @@
     <Compile Include="Models\ResponseModel\CoachHourClassResponse.cs" />
     <Compile Include="Models\ResponseModel\CoachResponse.cs" />
     <Compile Include="Models\ResponseModel\CoachWagesResponse.cs" />
+    <Compile Include="Models\ResponseModel\CoachWagesSubResponse.cs" />
     <Compile Include="Models\ResponseModel\ControlPanelResponse.cs" />
     <Compile Include="Models\ResponseModel\StudentCurriculumResponse.cs" />
     <Compile Include="Models\ResponseModel\StudentResponse.cs" />
@@ -329,7 +334,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

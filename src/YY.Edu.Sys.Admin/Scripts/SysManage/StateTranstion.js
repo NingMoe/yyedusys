@@ -21,9 +21,11 @@ function transtionTeachingScheState(data) {
     } else if (data == 4) {
         return '<span class="btn btn-xs btn-danger">请假批准</span>';
     } else if (data == 5) {
-        return '<span class="btn btn-xs btn-success">上课中</span>';
+        return '<span class="btn btn-xs btn-success">上课中</span>'; 
     } else if (data == 6) {
         return '<span class="btn btn-xs btn-success">上课完成</span>';
+    } else if (data == 7) {
+        return '<span class="btn btn-xs btn-success">工资待发</span>';
     } else {
         return '<span class="btn btn-xs btn-danger">其他</span>';
     }
@@ -78,3 +80,15 @@ function transtionVenueNoticeRange(data) {
     }
 
 }
+
+
+function transtionCoachWagesState(data) {
+    if (data == 0) {
+        return '<span class="btn btn-xs btn-danger">未发放</span>';
+    } else if (data == 1) {
+        return '<span class="btn btn-xs btn-success">已发</span>';
+    } else {
+        return '<span class="btn btn-xs btn-danger">其他</span>';
+    }
+}
+

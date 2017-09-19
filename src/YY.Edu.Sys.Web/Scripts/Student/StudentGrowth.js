@@ -36,7 +36,7 @@ function LoadMyCurriculumV() {
 
             });
 
-
+            alert(str);
             $("#imgList2").html(str);
 
         }
@@ -55,7 +55,7 @@ function LoadMyCurriculumImg() {
         beforeSend: function () {
         },
         success: function (data) {
-            alert(JSON.stringify(data));
+          
             var str = "";
             var dataCu = data.data;
 
@@ -88,7 +88,6 @@ function LoadMyCurriculumImg() {
 
             });
 
-          
             $("#imgList").html(str);
 
         }
@@ -100,7 +99,7 @@ function LoadMyCurriculumImg() {
 $(document).ready(function () {
 
     LoadMyCurriculumImg();
-    LoadMyCurriculumV();
+  //  LoadMyCurriculumV();
 
 });
 
@@ -110,7 +109,14 @@ $('#btnMore a').bind('click', function () {
     //hdPageIndex
     var iPindex = parseInt($("#hdPageIndex").val()) + 1;
     $("#hdPageIndex").val(iPindex);
-    LoadMyCurriculum();
+
+    var datatype = $(".current").attr("data-type");
+    if (datatype == "1") {
+        LoadMyCurriculumImg();
+    }
+    else {
+        LoadMyCurriculumV();
+    }
     //hdPageSize
 });
 
@@ -119,8 +125,15 @@ $('.order li a').bind('click', function () {
     $('.order li a').removeClass("current");
     $(this).addClass("current");
     $("#hdPageIndex").val(1);
-    $("#list").html('');
-    LoadMyCurriculum();
+    $("#imgList").html('');
+    $("#imgList2").html('');
+    var datatype = $(".current").attr("data-type");
+    if (datatype == "1") {
+        LoadMyCurriculumImg();
+    }
+    else {
+        LoadMyCurriculumV();
+    }
 });
 
 
@@ -199,7 +212,7 @@ function uploadFile(file) {
 }
 
 $('#btnSave').bind('click', function () {
-    alert(1);
+
     if ($("#txtTitle").val() == "") {
         alert('标题不能为空');
         $("#txtTitle").focus();

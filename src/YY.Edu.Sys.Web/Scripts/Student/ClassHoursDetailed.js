@@ -45,7 +45,7 @@ function LoadClassHoursDetailed() {
                 str += "  <p class='cx'><font color='red'>" + strState + "</font></p>";
                 str += "  <p class='time'>" + dateformat(c.AddTime, "yyyy-MM-dd HH:mm:ss")+"</p>";
                 str += "  <p class='address'><i class='iconfont'>&#xe600;</i>" + c.VenueName + "-" + c.FullName + "</p>";
-                str += "  <p class='cx'><i class='iconfont'>&#xe612;</i>课时数:" + c.DNumber + "  </p> </a>";
+                str += "  <p class='cx'><i class='iconfont'>&#xe612;</i>课时数：<font color='red'>" + c.DNumber + "</font>        金额：<font color='red'>" + c.CMoney + "</font> </p> </a>";
               
                 str += " </li>";
 

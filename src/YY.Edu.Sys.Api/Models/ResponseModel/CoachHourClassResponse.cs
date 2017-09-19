@@ -12,5 +12,10 @@ namespace YY.Edu.Sys.Api.Models.ResponseModel
         /// 课时数
         /// </summary>
         public int hNumber { get; set; }
+
+        /// <summary>
+        /// 金额
+        /// </summary>
+        public decimal Price { get; set; }
     }
 }

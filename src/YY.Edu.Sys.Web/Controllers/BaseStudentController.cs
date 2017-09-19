@@ -17,15 +17,21 @@ namespace YY.Edu.Sys.Web.Controllers
         public async Task<Sys.Models.Student> Me()
         {
             await GetMe();
-
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Sys.Models.Student>(Session[studentDomain].ToString());
+            if (Session["Binding"] != null && Session["Binding"].ToString() != "0")
+            {
+                return Newtonsoft.Json.JsonConvert.DeserializeObject<Sys.Models.Student>(Session[studentDomain].ToString());
+            }
+            return null;
         }
 
         private async Task GetMe()
         {
             await base.LoginSuccess(studentDomain, base.OpenId, "");
 
-            await base.GetMineInfo(studentDomain, base.AccessToken, base.OpenId);
+            if (Session["Binding"] != null && Session["Binding"].ToString() != "0")
+            {
+                await base.GetMineInfo(studentDomain, base.AccessToken, base.OpenId);
+            }
         }
 
     }

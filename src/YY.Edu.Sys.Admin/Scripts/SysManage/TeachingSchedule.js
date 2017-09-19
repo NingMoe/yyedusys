@@ -59,8 +59,41 @@ $("#preview").on("click", function () {
     bindStaticTable('previewteachingscheduletable', JSON.parse(data), show_coach_teachingsche());
 })
 
+
+$("#PKType").on("change", function () {
+
+    var id = $("#CoachID").val();
+    var pkType = $("#PKType").val();
+
+    $.ajax({
+        type: "get",
+        url: ApiUrl + "api/coach/get/" + id,
+        contentType: 'application/json',
+        success: function (data, status) {
+            if (status == "success") {
+                if (data.Info == null) {
+                    alert('error');
+                } else {
+                    if (pkType == 1) {
+                        show_wage(data.Info.Wage, data.Info.Price);
+                    } else {
+                        show_wage(data.Info.WageMore, data.Info.PriceMore);
+                    }
+                }
+            }
+        },
+        error: function (e) {
+        },
+        complete: function () {
+
+        }
+    });
+})
+
 $("#CoachID").on("change", function () {
 
+    var pkType = $("#PKType").val();
+    
     $.ajax({
         type: "get",
         url: ApiUrl + "api/coach/get/" + $(this).val(),
@@ -70,7 +103,11 @@ $("#CoachID").on("change", function () {
                 if (data.Info == null) {
                     alert('error');
                 } else {
-                    show_wage(data.Info.Wage, data.Info.Price);
+                    if (pkType == 1) {
+                        show_wage(data.Info.Wage, data.Info.Price);
+                    } else {
+                        show_wage(data.Info.WageMore, data.Info.PriceMore);
+                    }
                 }
             }
         },
