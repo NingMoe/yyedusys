@@ -40,21 +40,26 @@ function LoadClassHoursDetailed() {
                 else if (Dtype == 5) {
                     strState = "退回(停课)";
                 }
-                str += " <li> ";
-                str += "  <a href='order_detail.html'>";
-                str += "  <p class='cx'><font color='red'>" + strState + "</font></p>";
-                str += "  <p class='time'>" + dateformat(c.AddTime, "yyyy-MM-dd HH:mm:ss")+"</p>";
-                str += "  <p class='address'><i class='iconfont'>&#xe600;</i>" + c.VenueName + "-" + c.FullName + "</p>";
-                str += "  <p class='cx'><i class='iconfont'>&#xe612;</i>课时数：<font color='red'>" + c.DNumber + "</font>        金额：<font color='red'>" + c.CMoney + "</font> </p> </a>";
+
+
+                str +=' <li>';
+                str +='<div class="am-g">';
+                str += '   <p class="_PaymentName am-u-sm-9 am-u-md-9 am-u-lg-9">' + c.VenueName + "-" + c.FullName + '</p>';
+                str += '  <span class="am-u-sm-3 am-u-md-3 am-u-lg-3 _payBiao">' + strState + '</span>';
+                str +=' </div>';
+                str += ' <div class="am-g"><p class="am-u-sm-6 am-u-md-6 am-u-lg-6">课时数：<span>' + c.DNumber + '次</span></p><p class="am-u-sm-6 am-u-md-6 am-u-lg-6">金额：'+ c.CMoney +'<span></span></p></div>';
+                str += ' <div class="am-g"><p class="am-u-sm-6 am-u-md-6 am-u-lg-6">时间：<span>' + dateformat(c.AddTime, "yyyy-MM-dd HH:mm:ss") + '</span></p></div>';
+                str +='</li>';
+
               
-                str += " </li>";
 
             });
            
-            if (str == "") {
-                $('#btnMore a').text("没有课程啦");
-            } else { $('#btnMore a').text("更多课程 »"); }
-            $("#list").append(str);
+            //if (str == "") {
+            //    $('#btnMore a').text("没有课程啦");
+            //} else { $('#btnMore a').text("更多课程 »"); }
+           
+            $("._Payment").append(str);
 
         }
     });

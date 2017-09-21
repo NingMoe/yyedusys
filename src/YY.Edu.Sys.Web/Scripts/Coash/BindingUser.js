@@ -4,31 +4,6 @@ jQuery.support.cors = true;
 
 
 
-$(document).ready(function () {
-
-    $(".student").show();
-    $(".coach").hide();
-
-});
-
-
-
-
-$('.am-form-group input[name="rdtype"]').bind('click', function () {
-    $(".student").hide();
-    $(".coach").hide();
-   
-    if ($(this).val() == "1")
-    { $(".student").show(); }
-    else
-    {
-        $(".coach").show();
-        fileBox = document.getElementById('file');
-        fileBox2 = document.getElementById('file2');
-    }
-   });
-
-
 
 
 
@@ -126,17 +101,9 @@ function uploadFileF(file,url) {
 function Save(url,furl)
 {
     var PostUrl = "http://localhost:53262/api/Coach/Create/";
-    var FCtype = $("input[name='rdtype']:checked").val();
-    if (FCtype == "1")
-    {
-        PostUrl = "http://localhost:53262/api/Student/Create/";
-    }
-
+   
     var parm = { FullName:$("#txtFullName").val(),CardPositiveUrl:url,CardReverseUrl:furl,UserName:$("#txtMobile").val(),Pwd:$("#txtMobile").val(),Introduce:"",NickName:$("#txtTitle").val(),HeadUrl:$("#hdHeadUrl").val(),Address:$("#txtAddress").val(),Mobile:$("#txtMobile").val(),Sex:1,VenueID:$("#hdVenueID").val(),OpenID:$("#hdOpenID").val() };
-    if (FCtype == "1")
-    {
-        parm = { UserName: $("#txtMobile").val(), Pwd: $("#txtMobile").val(), FullName: $("#txtFullName").val(), NickName: $("#txtTitle").val(), Mobile: $("#txtMobile").val(), Address: $("#txtAddress").val(), ParentFullName: $("#txtParentFullName").val(), ParentMobile: $("#txtParentMobile").val(), HeadUrl: $("#hdHeadUrl").val(), VenueID: $("#hdVenueID").val(), BirthDate: $("#txtBirthDate").val(), OpenID: $("#hdOpenID").val() };
-    }
+   
 
     $.ajax({
         type: "POST",
@@ -184,46 +151,49 @@ $('#btnSave').bind('click', function () {
         $("#txtAddress").focus();
         return false;
     }
-
-    var FCtype = $("input[name='rdtype']:checked").val();
-    if (FCtype == "1") {
-        if ($("#txtParentFullName").val() == "") {
-            alert('家长姓名不能为空');
-            $("#txtParentFullName").focus();
-            return false;
-        }
-        if ($("#txtParentMobile").val() == "") {
-            alert('家长手机号不能为空');
-            $("#txtParentMobile").focus();
-            return false;
-        }
-
+    if ($("#file").val() == "") {
+        alert('请上传身份证正面图片');
+        $("#file").focus();
+        return false;
     }
-    else {
-
-        if ($("#file").val() == "") {
-            alert('请上传身份证正面图片');
-            $("#file").focus();
-            return false;
-        }
-        if ($("#file2").val() == "") {
-            alert('请上传身份证反面图片');
-            $("#file2").focus();
-            return false;
-        }
+    if ($("#file2").val() == "") {
+        alert('请上传身份证反面图片');
+        $("#file2").focus();
+        return false;
     }
+
     if ($("#txtCode").val() == "") {
         alert('场馆（学校）代码不能为空');
         $("#txtCode").focus();
         return false;
     }
-    
 
-    alert(2);
-    if (FCtype == "1")
-    { Save("", ""); }
-    else
-    {
-        uploadClick();
-    }
+   return IsExisitVCode();
+
 });
+
+function IsExisitVCode() {
+    var PostUrl = "http://localhost:53262/api/Student/Create/";
+
+    $.ajax({
+        type: "POST",
+        url: PostUrl,
+        contentType: "application/json",
+        data: { VenueCode: $("#txtCode").val() },
+        success: function (data) {
+            var c = data[0];
+            if (c != null && c.VenueName != "") {
+                uploadClick();
+            }
+            else {
+                alert('场馆代码不存在，快去核实下吧')
+            }
+        },
+        error: function (e) {
+            alert('场馆代码不存在，快去核实下吧')
+        },
+        complete: function () {
+
+        }
+    });
+}

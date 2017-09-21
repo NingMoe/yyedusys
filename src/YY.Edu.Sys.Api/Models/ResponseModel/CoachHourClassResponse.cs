@@ -17,5 +17,15 @@ namespace YY.Edu.Sys.Api.Models.ResponseModel
         /// 金额
         /// </summary>
         public decimal Price { get; set; }
+
+        public decimal PriceMore { get; set; }
+
+        /// <summary>
+        /// 场馆名称
+        /// </summary>
+        public string VenueName { get; set;}
+
+
+        public int VenueID { get; set; }
     }
 }

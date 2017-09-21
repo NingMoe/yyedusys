@@ -58,6 +58,11 @@ namespace YY.Edu.Sys.Models
         #endregion Model
 
         public int StarLevel { get; set; }
+
+        /// <summary>
+        /// 效果评分
+        /// </summary>
+        public int EffectStarLevel { get; set; }
     }
 }
 

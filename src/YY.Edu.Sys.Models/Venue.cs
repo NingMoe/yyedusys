@@ -186,6 +186,7 @@ namespace YY.Edu.Sys.Models
         /// 用户表guid    
         /// </summary>
         public string UserId { get; set; }
+     
         #endregion Model
 
     }

@@ -277,14 +277,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\admin.css" />
+    <Content Include="Content\amazeui.css" />
+    <Content Include="Content\amazeui.flat.css" />
+    <Content Include="Content\amazeui.flat.min.css" />
     <Content Include="Content\amazeui.min.css" />
+    <Content Include="Content\app.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\iconfont.css" />
+    <Content Include="Content\index.css" />
     <Content Include="Content\iscroll.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\teacher.css" />
     <Content Include="data\UpLoad.ashx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="font\iconfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\2-icon.png" />
     <Content Include="images\2icon1.png" />
@@ -292,12 +301,21 @@
     <Content Include="images\2icon3.png" />
     <Content Include="images\about.jpg" />
     <Content Include="images\adv.jpg" />
+    <Content Include="images\app-icon72x72%402x.png" />
     <Content Include="images\banner.jpg" />
+    <Content Include="images\favicon.png" />
     <Content Include="images\gsyh.png" />
     <Content Include="images\icon01.png" />
+    <Content Include="images\startup-640x1096.png" />
     <Content Include="images\star_empty.png" />
     <Content Include="images\star_full.png" />
+    <Content Include="Scripts\amazeui.ie8polyfill.js" />
+    <Content Include="Scripts\amazeui.ie8polyfill.min.js" />
+    <Content Include="Scripts\amazeui.js" />
     <Content Include="Scripts\amazeui.min.js" />
+    <Content Include="Scripts\amazeui.widgets.helper.js" />
+    <Content Include="Scripts\amazeui.widgets.helper.min.js" />
+    <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -320,16 +338,28 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="images\movie.ogg" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="font\iconfont.eot" />
+    <Content Include="font\iconfont.ttf" />
+    <Content Include="font\iconfont.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Coash\BindingUser.js" />
+    <Content Include="Scripts\Coash\MyInfo.js" />
     <Content Include="Scripts\Coash\MyNotice.js" />
     <Content Include="Scripts\Coash\MyPresence.js" />
     <Content Include="Scripts\Coash\CoashCurriculum.js" />
     <Content Include="Scripts\Coash\CurriculumStudent.js" />
     <Content Include="Scripts\Coash\MyComment.js" />
+    <Content Include="Scripts\Coash\Wages.js" />
+    <Content Include="Scripts\handlebars.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.12.0.min.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.serializejson.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -341,6 +371,8 @@
     <Content Include="Scripts\Notice\Detail.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Student\BindingUser.js" />
+    <Content Include="Scripts\Student\CurriculumDetail.js" />
     <Content Include="Scripts\Student\MyEvaluate.js" />
     <Content Include="Scripts\Student\BuyHourClass.js" />
     <Content Include="Scripts\Student\MyNotice.js" />
@@ -348,7 +380,6 @@
     <Content Include="Scripts\Student\StudentCurriculum.js" />
     <Content Include="Scripts\Student\StudentGrowth.js" />
     <Content Include="Scripts\Student\SubscribeCurriculum.js" />
-    <Content Include="Views\Student\Index.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -386,9 +417,15 @@
     <Content Include="Views\Base\Default.cshtml" />
     <Content Include="Views\StudentTest\Index.cshtml" />
     <Content Include="Views\CoachTest\Index.cshtml" />
+    <Content Include="Views\Coash\MyInfo.cshtml" />
+    <Content Include="Views\Student\BindingUser.cshtml" />
+    <Content Include="Views\Student\CurriculumDetail.cshtml" />
+    <Content Include="Views\Coash\Index.cshtml" />
+    <Content Include="Views\Coash\Wages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\examples\" />
     <Folder Include="UpLoad\Coach\" />
     <Folder Include="UpLoad\Student\" />
     <Folder Include="Views\BaseCoach\" />

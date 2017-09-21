@@ -59,7 +59,6 @@ $("#preview").on("click", function () {
     bindStaticTable('previewteachingscheduletable', JSON.parse(data), show_coach_teachingsche());
 })
 
-
 $("#PKType").on("change", function () {
 
     var id = $("#CoachID").val();
@@ -198,7 +197,7 @@ function show_campus(venueId, isCreate) {
                             if (isCreate) {
                                 programme_sel.push('<option selected value="' + programme.CampusID + '">' + programme.CampusName + '</option>')
                             } else {
-                                programme_sel.push('<option selected value="-1">全部校区</option>')
+                                programme_sel.push('<option selected value="-1">选择校区</option>')
                                 programme_sel.push('<option value="' + programme.CampusID + '">' + programme.CampusName + '</option>')
                             }
                         } else {
@@ -239,7 +238,7 @@ function show_coach(venueId, isCreate) {
                             if (isCreate) {
                                 programme_sel.push('<option selected value="' + programme.CoachID + '">' + programme.FullName + '</option>')
                             } else {
-                                programme_sel.push('<option selected value="-1">全部教练</option>')
+                                programme_sel.push('<option selected value="-1">选择教练</option>')
                                 programme_sel.push('<option value="' + programme.CoachID + '">' + programme.FullName + '</option>')
                             }
                             show_wage(programme.Wage, programme.Price);

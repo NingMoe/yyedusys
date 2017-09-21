@@ -63,6 +63,27 @@ namespace YY.Edu.Sys.Api.Services
         }
 
         /// <summary>
+        /// 检测是否有相同的场馆
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public static bool IsExist(string email)
+        {
+
+            if (string.IsNullOrWhiteSpace(email))
+                throw new Comm.YYException.YYException("参数不能为空");
+
+            var sql = "select COUNT(v.VenueID) from venue as v join AspNetUsers as a on v.UserId=a.id where a.[NameIdentifier]=@NameIdentifier";
+            var count = Comm.Helper.DapperHelper.Instance.Query<int>(sql, new
+            {
+                NameIdentifier = email
+            });
+
+            return (count.FirstOrDefault() > 0);
+
+        }
+
+        /// <summary>
         /// 生成场馆编码
         /// </summary>
         /// <param name="venue"></param>

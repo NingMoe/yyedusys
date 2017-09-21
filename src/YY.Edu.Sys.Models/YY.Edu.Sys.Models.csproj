@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplyBuyHours.cs" />
     <Compile Include="AspNetRoles.cs" />
     <Compile Include="AspNetUserClaims.cs" />
     <Compile Include="AspNetUserLogins.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="CoachWages.cs" />
     <Compile Include="CoachWages_Sub.cs" />
     <Compile Include="Coach_Venue.cs" />
+    <Compile Include="CreateVenue.cs" />
     <Compile Include="Curriculum.cs" />
     <Compile Include="CurriculumEvaluate.cs" />
     <Compile Include="FeedBackLog.cs" />

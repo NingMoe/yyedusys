@@ -1,157 +1,78 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en" style="overflow: auto;">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="stylesheet" href="/Content/amazeui.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="/Content/style.css" type="text/css" />
-
-    <script src="/Scripts/jquery.min.js"></script>
-    <script src="/Scripts/amazeui.min.js"></script>
+    <title></title>
+    <link rel="stylesheet" href="/Content/amazeui.min.css" />
+    <link rel="stylesheet" href="/Content/admin.css">
+    <link rel="stylesheet" href="/Content/index.css">
+    <link rel="stylesheet" href="/fonts/FontAwesome.otf">
+    <link rel="stylesheet" href="/fonts/fontawesome-webfont.eot">
+    <link rel="stylesheet" href="/fonts/fontawesome-webfont.ttf">
+    <link rel="stylesheet" href="/fonts/fontawesome-webfont.woff">
+    <link rel="stylesheet" href="/fonts/fontawesome-webfont.woff2">
 </head>
-<body class="bgcolor">
-    <header data-am-widget="header" class="am-header am-header-default header-green1">
-        <div class="am-header-left am-header-nav ">
-            <a href="javascript:history.back()" style="color: #fff;"><i class="am-icon-chevron-left"></i></a>
-        </div>
-        <div class="am-header-right am-header-nav ">
-          
-        </div>
-        <h1 class="am-header-title" style="color: #fff;">完善信息</h1>
-    </header>
-    <div class="jl"></div>
-    <input type="hidden" id="hdOpenID" name="hdOpenID" value="@ViewBag.OpenID" />
-    <input type="hidden" id="hdVenueID" name="hdVenueID" value="@ViewBag.VenueID" />
-    <input type="hidden" id="hdHeadUrl" name="hdHeadUrl" value="@ViewBag.HeadUrl" />
-    <input type="hidden" id="hdPageIndex" value="1" />
-    <input type="hidden" id="hdPageSize" value="8" />
-
-        <div class="am-modal-dialog" style="margin-top:60px">
-
-            <div class="am-modal-bd" style="height:700px">
-
-
-                <fieldset>
-                    <legend>完善信息</legend>
-                    <div class="am-form-group">
-                        <label for="doc-ipt-email-1">头像</label>
-                        <img src="" />
-                    </div>
-                    <div class="am-form-group">
-                        <label for="doc-ipt-email-1">昵称</label>
-                        <input type="text" class="" id="txtTitle" placeholder="昵称">
-                    </div>
-
-                    <div class="am-form-group">
-                        <label class="am-radio-inline">
-                            <input type="radio" value="1" checked name="rdtype"> 学生
-                        </label>
-                        <label class="am-radio-inline">
-                            <input type="radio" value="2" name="rdtype"> 教练
-                        </label>
-
-                    </div>
-                    <div class="am-form-group">
-                        <label for="doc-ipt-email-1">姓名</label>
-                        <input type="text" class="" id="txtFullName" placeholder="姓名">
-                    </div>
-                    <div class="am-form-group">
-                        <label for="doc-ipt-email-1">手机号</label>
-                        <input type="text" class="" id="txtMobile" placeholder="手机号">
-                    </div>
-
-                    
-                    <div class="am-form-group">
-                        <label for="doc-ipt-email-1">住址</label>
-                        <input type="text" class="" id="txtAddress" placeholder="住址">
-                    </div>
-                    <div class="am-form-group student">
-                        <label for="doc-ipt-email-1">出生日期</label>
-                        <input type="text" class="" id="txtBirthDate" placeholder="出生日期">
-                    </div>
-                    
-                    <div class="am-form-group student">
-                        <label for="doc-ipt-email-1">家长姓名</label>
-                        <input type="text" class="" id="txtParentFullName" placeholder="姓名">
-                    </div>
-                    <div class="am-form-group student">
-                        <label for="doc-ipt-email-1">家长手机号</label>
-                        <input type="text" class="" id="txtParentMobile" placeholder="家长手机号">
-                    </div>
-
-
-                    <div class="am-form-group">
-                        <label for="doc-select-1">场馆代码</label>
-                        <input type="text" class="" id="txtCode" placeholder="场馆代码">
-                        
-                    </div>
-                  
-
-                    <div class="coach am-form-group am-form-file">
-                        <div>
-                            <button type="button" class="am-btn am-btn-default am-btn-sm">
-                                <i class="am-icon-cloud-upload"></i>身份证正面
-                            </button>
-                        </div>
-                        <input type="file" id="file" name="file">
-                    </div>
-                    <div class="am-form-group am-form-file coach">
-                        <div>
-                            <button type="button" class="am-btn am-btn-default am-btn-sm">
-                                <i class="am-icon-cloud-upload"></i>身份证反面
-                            </button>
-                        </div>
-                        <input type="file" id="file2" name="file2">
-                    </div>
-                    <p><button type="button" class="am-btn am-btn-default" id="btnSave">提交</button></p>
-                </fieldset>
-
-
-
+<body>
+    <div class="_compile">
+        <!-- 头部导航 -->
+        <header data-am-widget="header" class="am-header am-header-default">
+            <div class="am-header-left am-header-nav">
+                <a href="#left-link" class="">
+                    <i class="am-header-icon am-icon-arrow-left"></i>
+                </a>
             </div>
-        </div>
-   
+            <h1 class="am-header-title">
+                <a href="#title-link" class="">我</a>
+            </h1>
+        </header>
+        <!-- 内容部分 -->
+        <div class="CompileCon">
+            <div class="ComFir am-g">
+                <p class="am-u-sm-8 am-u-md-8 am-u-lg-8">头像：</p>
+                <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" alt="" class="am-u-sm-3 am-u-md-3 am-u-lg-3 am-circle">
+            </div>
+            <div class="ComFir am-g">
+                <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">姓名：</p>
+                <input type="text" placeholder="请输入姓名" class="am-u-sm-9 am-u-md-9 am-u-lg-9" id="txtFullName">
+            </div>
 
-    <div data-am-widget="navbar" class="am-navbar  dream-foot am-no-layout" id="">
-        <ul class="am-navbar-nav1 am-cf am-avg-sm-5" id="sList">
-            <li>
-                <a href="index.html" class="curr">
-                    <span class="iconfont">&#xe60b;</span>
-                    <p class="am-navbar-label">首页</p>
-                </a>
-            </li>
-            <li>
-                <a href="nearby.html" class="">
-                    <span class="iconfont">&#xe60c;</span>
-                    <p class="am-navbar-label">附近</p>
-                </a>
-            </li>
-            <li>
-                <a href="find.html" class="">
-                    <span class="add"><i class="iconfont" style="font-size: 30px; line-height: 40px;">&#xe60e;</i></span>
-                    <p class="am-navbar-label" style="margin-top: -36px;">选课</p>
-                </a>
-            </li>
-            <li>
-                <a href="message.html" class="">
-                    <span class="iconfont">&#xe60d;</span>
-                    <p class="am-navbar-label">消息</p>
-                </a>
-            </li>
-            <li>
-                <a href="member.html" class="">
-                    <span class="iconfont">&#xe609;</span>
-                    <p class="am-navbar-label">个人中心</p>
-                </a>
-            </li>
-        </ul>
+            <div class="ComFir am-g">
+                <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">手机号：</p>
+                <input type="text" placeholder="请输入手机号" class="am-u-sm-9 am-u-md-9 am-u-lg-9" id="txtMobile">
+            </div>
+            <div class="ComFir am-g">
+                <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">住址：</p>
+                <input type="text" placeholder="请输入住址" class="am-u-sm-9 am-u-md-9 am-u-lg-9" id="txtAddress">
+            </div>
+           
+            <div class="ComFir am-g">
+                <button type="button" class="am-btn am-btn-default am-btn-sm">
+                    <i class="am-icon-cloud-upload"></i>身份证正面
+                </button>
+            </div>
+            <div class="ComFir am-g">
+                <button type="button" class="am-btn am-btn-default am-btn-sm">
+                    <i class="am-icon-cloud-upload"></i>身份证反面
+                </button>
+            </div>
+
+            <div class="ComFir am-g">
+                <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">场馆代码：</p>
+                <input type="text" placeholder="请输入场馆代码" class="am-u-sm-9 am-u-md-9 am-u-lg-9" id="txtCode">
+            </div>
+            <p class="reBUT textAlign" id="btnSave">提交</p>
+        </div>
+
     </div>
 
-  
 
-    <script src="/Scripts/coash/BindingUser.js"></script>
+    <script src="/Scripts/jquery-1.12.0.min.js"></script>
+    <script src="/Scripts/app.js"></script>
+    <script src="/Scripts/amazeui.min.js"></script>
+    <script src="/Scripts/amazeui.ie8polyfill.min.js"></script>
+    <script src="~/Scripts/Coash/BindingUser.js"></script>
 </body>
 </html>

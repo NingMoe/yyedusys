@@ -8,6 +8,8 @@ using log4net;
 using DapperExtensions;
 using YY.Edu.Sys.Comm.Helper;
 using System.Net.Http;
+using Microsoft.AspNet.Identity;
+using YY.Edu.Sys.Api.Models;
 
 namespace YY.Edu.Sys.Api.Controllers
 {
@@ -87,7 +89,7 @@ namespace YY.Edu.Sys.Api.Controllers
 
         [HttpPost]
         // POST: api/Venue
-        public async System.Threading.Tasks.Task<IHttpActionResult> Create()
+        public async System.Threading.Tasks.Task<IHttpActionResult> Create_old()
         {
             //http://blog.csdn.net/starfd/article/details/48652871
             //todo 实体验证
@@ -131,6 +133,64 @@ namespace YY.Edu.Sys.Api.Controllers
                 return BadRequest();
             }
 
+        }
+
+        public IHttpActionResult Create(Sys.Models.CreateVenue model)
+        {
+            //http://blog.csdn.net/starfd/article/details/48652871
+            //todo 实体验证
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            try
+            {
+
+                if (Services.VenueService.IsExist(model.LinkManEmail))
+                    return Ok(Comm.ResponseModel.ResponseModelBase.GetRes("场馆已经存在"));
+
+                var usersql = "SELECT [Id] FROM [SportsDB].[dbo].[AspNetUsers] where NameIdentifier= @NameIdentifier";
+                var useResult = DapperHelper.Instance.Query<string>(usersql, new
+                {
+                    NameIdentifier = model.LinkManEmail
+                });
+
+                Sys.Models.Venue venue = new Sys.Models.Venue()
+                {
+                    AddTime = model.AddTime,
+                    VenueName = model.VenueName,
+                    CityID = model.CityID,
+                    LegalPerson = model.LegalPerson,
+                    LinkMan = model.LinkMan,
+                    LinkManMobile = model.LinkManMobile,
+                    VenueAddress = model.VenueAddress,
+                    UserName = model.LinkManEmail,
+                    VenueFax = model.VenueFax,
+                    CardNumber = model.CardNumber,
+                    UserId = useResult.FirstOrDefault()
+                };
+
+                var result = DapperHelper.Instance.Insert(venue);
+
+                if (result > 0)
+                {
+
+                    venue.VenueID = result;
+                    venue.VenueCode = new Services.VenueService().GenVenueCode(venue);
+                    DapperHelper.Instance.Update(venue);
+
+                    return Ok(Comm.ResponseModel.ResponseModelBase.Success());
+                }
+                else
+                {
+                    return Ok(Comm.ResponseModel.ResponseModelBase.SysError());
+                }
+
+            }
+            catch (Exception ex)
+            {
+                logs.Error("场馆添加失败", ex);
+                return BadRequest();
+            }
         }
 
         /// <summary>
@@ -194,6 +254,19 @@ namespace YY.Edu.Sys.Api.Controllers
         // DELETE: api/Venue/5
         public void Delete(int id)
         {
+        }
+
+
+
+
+        public IHttpActionResult IsExisitVenueByVCode(string VenueCode)
+        {
+            string sql = "select VenueName from Venue with(nolock) where VenueCode=@VenueCode";
+            var query = Comm.Helper.DapperHelper.Instance.Query<YY.Edu.Sys.Models.CurriculumEvaluate>(sql, new { VenueCode = VenueCode });
+
+            //链表直接写sql传参
+
+            return Ok(query);
         }
 
     }

@@ -183,6 +183,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\ApplyBuyHoursController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CampusController.cs" />
     <Compile Include="Controllers\CoachController.cs" />
@@ -1097,6 +1098,7 @@
     <Content Include="Scripts\Mailbox\Read-menu.js" />
     <Content Include="Scripts\Shared\_Layout.js" />
     <Content Include="Scripts\SysManage\AdvancedDate.js" />
+    <Content Include="Scripts\SysManage\ApplyBuyHours.js" />
     <Content Include="Scripts\SysManage\Campus.js" />
     <Content Include="Scripts\SysManage\City.js" />
     <Content Include="Scripts\SysManage\Coach.js" />
@@ -1213,6 +1215,8 @@
     <Content Include="Views\CoachWages\Index.cshtml" />
     <Content Include="Views\CoachWages\GetClassOverTeachingSches.cshtml" />
     <Content Include="Views\CoachWagesSub\Index.cshtml" />
+    <Content Include="Views\ApplyBuyHours\Index.cshtml" />
+    <Content Include="Views\ApplyBuyHours\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

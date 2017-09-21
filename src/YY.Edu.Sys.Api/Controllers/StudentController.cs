@@ -227,10 +227,10 @@ namespace YY.Edu.Sys.Api.Controllers
                 if (student == null || student.StudentID <= 0)
                     return BadRequest();
 
-                VenueContainStudent(Convert.ToInt32(student.VenueID), Convert.ToInt32(student.studentId));
+                VenueContainStudent(Convert.ToInt32(student.VenueID), Convert.ToInt32(student.StudentID));
 
                 var sql = "UPDATE Student SET State=0 WHERE StudentID=@StudentID";
-                var result = DapperHelper.Instance.Execute(sql, new { StudentID = Convert.ToInt32(student.studentId) });
+                var result = DapperHelper.Instance.Execute(sql, new { StudentID = Convert.ToInt32(student.StudentID) });
                 return result > 0 ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
             }
             catch (Comm.YYException.YYException ex)
@@ -239,7 +239,7 @@ namespace YY.Edu.Sys.Api.Controllers
             }
             catch (Exception ex)
             {
-                logs.Error("确认上课完成失败", ex);
+                logs.Error("修改学生为流失失败", ex);
                 return BadRequest();
             }
         }
@@ -273,7 +273,7 @@ namespace YY.Edu.Sys.Api.Controllers
                     criteria.Condition += string.Format(" and s.ParentFullName like '%{0}%'", oData.SearchCondition.ParentFullName);
 
                 criteria.CurrentPage = oData.PageIndex + 1;//adminlte 加载的datatable起始页为0
-                criteria.Fields = "s.StudentID,s.UserName,s.[Address],s.HeadUrl,s.Mobile,s.FullName,s.ParentFullName,s.ParentMobile,s.state,v.VenueName,v.LinkMan,v.LinkManMobile";
+                criteria.Fields = "s.StudentID,s.UserName,s.[Address],s.HeadUrl,s.Mobile,s.FullName,s.ParentFullName,s.ParentMobile,s.state,sv.VenueID,v.VenueName,v.LinkMan,v.LinkManMobile";
                 criteria.PageSize = oData.PageSize;
                 criteria.TableName = "Student as s join Student_Venue as sv on s.StudentID=sv.StudentID join Venue as v on sv.VenueID=v.VenueID";
                 criteria.PrimaryKey = "s.StudentID";
@@ -303,7 +303,7 @@ namespace YY.Edu.Sys.Api.Controllers
         private void VenueContainStudent(int venudId, int studentId)
         {
 
-            //查询该学校下是否有此教练
+            //查询该学校下是否有此学生
             var sql = "select count(SVID) from Student_Venue where StudentID=@StudentID and VenueID=@VenueID";
             var count = DapperHelper.Instance.Query<int>(sql, new
             {
@@ -313,6 +313,42 @@ namespace YY.Edu.Sys.Api.Controllers
 
             if (count.FirstOrDefault() == 0)
                 throw new Exception("此学生没有在该场馆上课");
+        }
+
+        /// <summary>
+        /// 获取场馆下的学生
+        /// </summary>
+        /// <param name="venueId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public IHttpActionResult GetStudents4Venue(int venueId)
+        {
+            try
+            {
+
+                if (!ModelState.IsValid)
+                    return BadRequest();
+
+                if (venueId <= 0)
+                    return BadRequest();
+
+                var sql = @"select s.StudentID,s.UserName,s.[Address],s.HeadUrl,s.Mobile,s.FullName,s.ParentFullName,s.ParentMobile,s.state,v.VenueName,v.LinkMan,v.LinkManMobile
+from Student as s join Student_Venue as sv on s.StudentID=sv.StudentID join Venue as v on sv.VenueID=v.VenueID
+where v.VenueID = @VenueID and s.state=1 ";
+
+                var result = DapperHelper.Instance.Query<StudentResponse>(sql, new { VenueID = venueId });
+
+                return Ok(new Comm.ResponseModel.ResponseModel4Res<StudentResponse>()
+                {
+                    data = result.AsList(),
+                });
+
+            }
+            catch (Exception ex)
+            {
+                logs.Error("获取学生失败", ex);
+                return BadRequest();
+            }
         }
 
 
@@ -402,6 +438,8 @@ namespace YY.Edu.Sys.Api.Controllers
                 return BadRequest();
             }
         }
+
+
 
         [HttpPost]
         public IHttpActionResult DelStudentGrowth(int ID, int State)
@@ -551,7 +589,7 @@ namespace YY.Edu.Sys.Api.Controllers
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                string sql = "select distinct T.*,v.VenueName,c.CampusName,'KSstate'=cu.State,co.FullName,cu.CurriculumID from TeachingSchedule t with(nolock) inner join Venue v with(nolock) on t.VenueID = v.VenueID left join Campus c with(nolock) on t.CampusID = t.CampusID inner join Curriculum cu with(nolock) on t.PKID = cu.PKID inner join Coach co with(nolock) on co.CoachID=t.CoachID where t.PKID=" + PKID;
+                string sql = "select distinct T.*,v.VenueName,c.CampusName,'KSstate'=cu.State,co.FullName,cu.CurriculumID,co.HeadUrl from TeachingSchedule t with(nolock) inner join Venue v with(nolock) on t.VenueID = v.VenueID left join Campus c with(nolock) on  c.CampusID = t.CampusID and v.VenueID=c.VenueID inner join Curriculum cu with(nolock) on t.PKID = cu.PKID inner join Coach co with(nolock) on co.CoachID=t.CoachID where t.PKID=" + PKID;
 
                 var query = Comm.Helper.DapperHelper.Instance.Query<TeachingScheduleResponse>(sql);
                 return Ok(query);
@@ -563,6 +601,71 @@ namespace YY.Edu.Sys.Api.Controllers
             }
 
         }
+
+        ///申请请假
+        public IHttpActionResult ApplyLeave(int State,int cID)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            string sql = "update Curriculum set State=@State,ModifyTime=GETDATE() where CurriculumID=@CurriculumID ";
+
+            
+            try
+            {
+                //Models.VenueInfo venueInfo = Comm.Helper.DapperHelper.Instance.Get<Models.VenueInfo>(cityId);
+
+                var result = Comm.Helper.DapperHelper.Instance.Execute(sql, new { State= State, CurriculumID = cID});
+
+                if (result > 0)
+                {
+                    return Ok(Comm.ResponseModel.ResponseModelBase.Success());
+                }
+                else
+                {
+                    return Content(HttpStatusCode.OK, Comm.ResponseModel.ResponseModelBase.GetRes(Comm.ResponseModel.ResponseModelErrorEnum.SystemError));
+                }
+            }
+            catch (Exception ex)
+            {
+                logs.Error("学生申请请假", ex);
+                return BadRequest();
+            }
+        }
+
+        /// <summary>
+        /// 申请购买课时
+        /// </summary>
+        /// <param name="ApplyBuyHours"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IHttpActionResult ApplyBuy(YY.Edu.Sys.Models.ApplyBuyHours ApplyBuyHours)
+        {
+
+            //if (!ModelState.IsValid)
+            //    return BadRequest();
+
+            try
+            {
+                //Models.VenueInfo venueInfo = Comm.Helper.DapperHelper.Instance.Get<Models.VenueInfo>(cityId);
+
+                var result = Comm.Helper.DapperHelper.Instance.Insert(ApplyBuyHours);
+
+                if (result)
+                {
+                    return Ok(Comm.ResponseModel.ResponseModelBase.Success());
+                }
+                else
+                {
+                    return Content(HttpStatusCode.OK, Comm.ResponseModel.ResponseModelBase.GetRes(Comm.ResponseModel.ResponseModelErrorEnum.SystemError));
+                }
+            }
+            catch (Exception ex)
+            {
+                logs.Error("申请购买课时失败", ex);
+                return BadRequest();
+            }
+        }
+
         //购买课时
         [HttpGet]
         public IHttpActionResult BuyCurriculum(int StudentID, int CoachID, int number, int VenueID, decimal CMoney)
@@ -683,12 +786,16 @@ namespace YY.Edu.Sys.Api.Controllers
 
                 criteria.Condition += string.Format("ch.StudentID='{0}'", oData.SearchCondition.StudentID);
 
-                criteria.Condition += " and CurriculumDate >= '" + DateTime.Now.ToString("yyyy-MM-dd") + "' and cm.CurriculumID is null and(t.State = 0 or(t.State = 1 and PKType = 2)) ";
+                if (oData.PKType > 0)
+                {
+                    criteria.Condition += string.Format(" and t.PKType='{0}'", oData.PKType);
+                }
+                criteria.Condition += " and CurriculumDate >= '" + DateTime.Now.ToString("yyyy-MM-dd") + "' and cm.CurriculumID is null and(t.State = 0 or(t.State = 1 and t.PKType = 2)) ";
 
                 criteria.CurrentPage = oData.PageIndex;
                 criteria.Fields = "t.*,'CoachFullName'=c.FullName,v.VenueName,cs.CampusName,ClassNumber ";
                 criteria.PageSize = oData.PageSize;
-                criteria.TableName = "                TeachingSchedule t with(nolock) inner join Coach c with(nolock) on t.CoachID = c.CoachID  inner join Venue v with(nolock) on t.VenueID = v.VenueID  inner join Campus cs with(nolock) on v.VenueID = cs.VenueID and t.CampusID = cs.CampusID inner join ClassHoursNumber ch with(nolock) on t.CoachID = ch.CoachID and t.Venueid = ch.VenueID  left join Curriculum cm with(nolock) on t.PKID = cm.PKID and cm.StudentID= ";
+                criteria.TableName = "                TeachingSchedule t with(nolock) inner join Coach c with(nolock) on t.CoachID = c.CoachID  inner join Venue v with(nolock) on t.VenueID = v.VenueID  inner join Campus cs with(nolock) on v.VenueID = cs.VenueID and t.CampusID = cs.CampusID inner join ClassHoursNumber ch with(nolock) on t.CoachID = ch.CoachID and ch.PKType=t.PKType and t.Venueid = ch.VenueID  left join Curriculum cm with(nolock) on t.PKID = cm.PKID and cm.StudentID=ch.StudentID ";
                 criteria.PrimaryKey = "t.PKID";
 
                 criteria.Sort = "t.CoachID, CurriculumDate ,CurriculumBeginTime,t.pkid";
@@ -765,6 +872,9 @@ namespace YY.Edu.Sys.Api.Controllers
             }
 
         }
+
+
+   
         /// <summary>
         /// 预约课时d
         /// </summary>
@@ -954,6 +1064,7 @@ namespace YY.Edu.Sys.Api.Controllers
         /// </summary>
         /// <param name="StudentID"></param>
         /// <returns></returns>
+        [HttpGet]
         public IHttpActionResult GetCurriculumEvaluateByID(int StudentID, int CurriculumID)
         {
             var query = Comm.Helper.DapperHelper.Instance.Query<YY.Edu.Sys.Models.CurriculumEvaluate>("select * from CurriculumEvaluate with(nolock) where StudentID=@StudentID and CurriculumID=@CurriculumID order by PJID desc ", new { StudentID = StudentID, CurriculumID = CurriculumID });

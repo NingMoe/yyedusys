@@ -103,7 +103,7 @@ function StudentLeave(pkid, coachid, studentid,venueid)
 }
 
 function SignLeave(pkid, coachid, studentid) {
-    alert(2);
+  
     //0预约成功，1上课成功，2学生请假，3老师请假4场馆停课
     $.ajax({
         type: "get",

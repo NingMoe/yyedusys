@@ -50,15 +50,16 @@ function create() {
     
     var data = JSON.stringify($('#venuefrom').serializeJSON());
 
-    var fd = new FormData();
-    fd.append("venueInfo", data);
-    fd.append("file", $("#file").get(0).files[0]);
+    //var fd = new FormData();
+    //fd.append("venueInfo", data);
+    //fd.append("file", $("#file").get(0).files[0]);
     $.ajax({
-        url: ApiUrl + "api/Venue/Create",
+        //url: ApiUrl + "api/Venue/Create",
+        url: "/Account/ttttt",
         type: "POST",
         processData: false,
         contentType: false,
-        data: fd,
+        data: data,
         success: function (data, status) {
             if (status == "success") {
                 if (data.Error) {

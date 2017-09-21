@@ -12,8 +12,13 @@ namespace YY.Edu.Sys.Web.Controllers
     public class CoashController : Controller
     {
 
+        public ActionResult Index()
+        {
+            return View();
+        }
         public ActionResult MyCurriculum()
         {
+            ViewBag.CoachID = 1;
             return View();
         }
 
@@ -42,9 +47,9 @@ namespace YY.Edu.Sys.Web.Controllers
         }
 
 
-        public ActionResult MyPresence(int coachid)
+        public ActionResult MyPresence()
         {
-            ViewBag.CoachID = coachid;
+            ViewBag.CoachID = 1;
             return View();
         }
 
@@ -57,9 +62,24 @@ namespace YY.Edu.Sys.Web.Controllers
         }
 
 
-        public ActionResult MyMessage(int CoachID)
+        public ActionResult MyMessage()
         {
-            ViewBag.CoachID = CoachID;
+            ViewBag.CoachID = 1;
+            return View();
+        }
+
+
+        public ActionResult MyInfo()
+        {
+            ViewBag.CoachID = 1;
+            ViewBag.VenueID = 1;
+            return View();
+        }
+
+
+        public ActionResult Wages()
+        {
+            ViewBag.CoachID = 1;
             return View();
         }
     }

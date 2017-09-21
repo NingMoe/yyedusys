@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Mvc;
 
@@ -20,7 +21,13 @@ namespace YY.Edu.Sys.Web.Controllers
 
         public System.Web.Mvc.ActionResult MyCurriculum()
         {
+            //var obj =  base.Me();
+            // Sys.Models.Student s = obj.Result;           
+            // ViewBag.VenueID = s.VenueID;
+            // ViewBag.StudentID = s.StudentID;
 
+            ViewBag.VenueID = 1;
+            ViewBag.StudentID =1;
             return View();
         }
 
@@ -38,39 +45,77 @@ namespace YY.Edu.Sys.Web.Controllers
         /// <param name="VenueID"></param>
         /// <param name="StudentID"></param>
         /// <returns></returns>
-        public ActionResult BuyHourClass(int VenueID,int StudentID)
+        public ActionResult BuyHourClass()
         {
-            ViewBag.VenueID = VenueID;
-            ViewBag.StudentID = StudentID;
+            //var obj = base.Me();
+            //Sys.Models.Student s = obj.Result;
+            //ViewBag.VenueID = s.VenueID;
+            //ViewBag.StudentID = s.StudentID;
+            ViewBag.VenueID = 1;
+            ViewBag.StudentID = 1;
             return View();
         }
 
-        public ActionResult SubscribeCurriculum(int StudentID,int VenueID)
+        public ActionResult SubscribeCurriculum()
         {
-            ViewBag.VenueID = VenueID;
-            ViewBag.StudentID = StudentID;
-            return View();
-        }
-
-
-        public ActionResult StudentGrowth(int StudentID,int VenueID)
-        {
-            ViewBag.VenueID = VenueID;
-            ViewBag.StudentID = StudentID;
-            return View();
-        }
-
-
-        public ActionResult MyMessage(int StudentID)
-        {
-            ViewBag.StudentID = StudentID;
+            //var obj = base.Me();
+            //Sys.Models.Student s = obj.Result;
+            //ViewBag.VenueID = s.VenueID;
+            //ViewBag.StudentID = s.StudentID;
+            ViewBag.VenueID = 1;
+            ViewBag.StudentID = 1;
+            ViewBag.SName = "小赵子";
             return View();
         }
 
 
-        public ActionResult MyClassHoursDetailed(int StudentID)
+        public ActionResult StudentGrowth()
         {
-            ViewBag.StudentID = StudentID;
+            //var obj = base.Me();
+            //Sys.Models.Student s = obj.Result;
+            //ViewBag.VenueID = s.VenueID;
+            //ViewBag.StudentID = s.StudentID;
+            ViewBag.VenueID = 1;
+            ViewBag.StudentID = 1;
+            return View();
+        }
+
+
+        public ActionResult MyMessage()
+        {
+            //var obj = base.Me();
+            //Sys.Models.Student s = obj.Result;
+            //ViewBag.VenueID = s.VenueID;
+            //ViewBag.StudentID = s.StudentID;
+            ViewBag.VenueID = 1;
+            ViewBag.StudentID = 1;
+            return View();
+        }
+
+
+        public ActionResult MyClassHoursDetailed()
+        {
+            //var obj = base.Me();
+            //Sys.Models.Student s = obj.Result;
+            //ViewBag.VenueID = s.VenueID;
+            //ViewBag.StudentID = s.StudentID;
+            ViewBag.VenueID = 1;
+            ViewBag.StudentID = 1;
+            return View();
+        }
+
+
+        public ActionResult BindingUser()
+        {
+            return View();
+        }
+
+
+        public ActionResult CurriculumDetail(int cid,int pkid)
+        {
+            ViewBag.CID = cid;
+            ViewBag.StudentID = 1;
+            ViewBag.PKID = pkid;
             return View();
         }
     }

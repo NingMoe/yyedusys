@@ -46,27 +46,34 @@ function LoadNotice() {
                         break;
                 }
              
-                str += " <li> ";
-                str += "  <a href='order_detail.html'>";
+                str += '<li>';
+                str += ' <p class="newTitle"><span class="am-icon-exclamation"></span><span>【' + source + '】' + NoticeType + '</span></p>';
+                str+=' <div>';
+                str += '   <p class="_newName">' + c.NoticeTitle + '</p>';
+                str += '<p class="_newCon">' + dateformat(c.SendTime, "yyyy-MM-dd HH:mm:ss") + '</p>';
+                str+=' </div> </li>';
+             
+                //str += " <li> ";
+                //str += "  <a href='order_detail.html'>";
 
-                str += "  <p class='time'>" + dateformat(c.SendTime, "yyyy-MM-dd HH:mm:ss") + "</p>";
-                str += "  <p class='address'><i class='iconfont'>&#xe600;</i>" + c.NoticeTitle +"</p>";
-                str += "  <p class='cx'><i class='iconfont'>&#xe612;</i>消息来源：【" + source + "】，消息类型：【" + NoticeType + "】</p> </a>";
+                //str += "  <p class='time'>" + dateformat(c.SendTime, "yyyy-MM-dd HH:mm:ss") + "</p>";
+                //str += "  <p class='address'><i class='iconfont'>&#xe600;</i>" + c.NoticeTitle +"</p>";
+                //str += "  <p class='cx'><i class='iconfont'>&#xe612;</i>消息来源：【" + source + "】，消息类型：【" + NoticeType + "】</p> </a>";
 
               
-                str += "  <button type='button' onclick='Detail(" + c.NoticeId + ")' class='order-btn'>详细</button> ";
+                //str += "  <button type='button' onclick='Detail(" + c.NoticeId + ")' class='order-btn'>详细</button> ";
 
               
-                str += " </li>";
+                //str += " </li>";
 
             });
 
-            if (str == "") {
-                $('#btnMore a').text("没有消息啦");
-            } else { $('#btnMore a').text("更多消息 »"); }
+            //if (str == "") {
+            //    $('#btnMore a').text("没有消息啦");
+            //} else { $('#btnMore a').text("更多消息 »"); }
 
    
-            $("#list").append(str);
+            $(".newsCon").append(str);
 
         }
     });

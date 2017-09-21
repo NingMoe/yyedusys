@@ -64,25 +64,45 @@ function LoadMyCurriculum() {
                 else if (KSstate == 2) {
                     strState = "场馆停课";
                 }
-                str += " <li> ";
-                str += "  <a href='order_detail.html'>";
 
-                str += "  <p class='time'>" + dateformat(c.CurriculumDate, "yyyy-MM-dd") + "    " + c.CurriculumBeginTime + "-" + c.CurriculumEndTime + "</p>";
-                str += "  <p class='address'><i class='iconfont'>&#xe600;</i>" + c.VenueName + "-" + c.CampusName + "</p>";
-                str += "  <p class='cx'><i class='iconfont'>&#xe612;</i>学员人数:（" + c.Sucount + "）  <font color='red'>" + strState + "</font></p> </a>";
 
-                if (KSstate == 4 && strState == "完成") {
-                    str += "  <button type='button' data-CurriculumID='" + c.CurriculumID + "' data-PKID='" + c.PKID + "' onclick='CurriculumStudent(" + c.PKID + "," + c.CoachID + "," + c.CurriculumID + ")' class='order-btn'>详细</button> ";
+                str += '<div class="courseT am-g">';
+                str += ' <a href=""> <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" alt="" class="am-u-sm-3 am-u-md-3 am-u-lg-3">';
+                str += ' <div class="am-u-sm-9 am-u-md-9 am-u-lg-9">';
+
+                str += '<p class="courseName">' + c.Title + '</p>';
+                str += ' <p><span class="am-icon-clock-o"></span><span>' + dateformat(c.CurriculumDate, "yyyy-MM-dd") + " " + c.CurriculumBeginTime + "-" + c.CurriculumEndTime + '</span></p>';
+                str += ' <p><span class="am-icon-map-marker"></span><span>' + c.VenueName + "-" + c.CampusName + '</span></p>';
+                str += ' <div class="coueseNum am-g"><p class="am-u-sm-6 am-u-md-6 am-u-lg-6">学员人数：<span>（' + c.Sucount +' ） </span></p><p class="am-u-sm-6 am-u-md-6 am-u-lg-6">状态:<span>' + strState + '</span></p></div>';
+
+                str += ' </div> </a>  ';
+          
+                str += ' <div class="am-checkbox am-u-sm-1 am-u-md-1 am-u-lg-1 ClassX">';
+                str += " <button type='button' onclick='CurriculumStudent(" + c.PKID + "," + $("#hdCoachID").val() + "," + c.CurriculumID + ")' class='order-btn'>详细</button>";
+                str += ' </div>';
+
+                // }
+                str += " </div>";
+
+                //str += " <li> ";
+                //str += "  <a href='order_detail.html'>";
+
+                //str += "  <p class='time'>" + dateformat(c.CurriculumDate, "yyyy-MM-dd") + "    " + c.CurriculumBeginTime + "-" + c.CurriculumEndTime + "</p>";
+                //str += "  <p class='address'><i class='iconfont'>&#xe600;</i>" + c.VenueName + "-" + c.CampusName + "</p>";
+                //str += "  <p class='cx'><i class='iconfont'>&#xe612;</i>学员人数:（" + c.Sucount + "）  <font color='red'>" + strState + "</font></p> </a>";
+
+                //if (KSstate == 4 && strState == "完成") {
+                //    str += "  <button type='button' data-CurriculumID='" + c.CurriculumID + "' data-PKID='" + c.PKID + "' onclick='CurriculumStudent(" + c.PKID + "," + c.CoachID + "," + c.CurriculumID + ")' class='order-btn'>详细</button> ";
                    
-                }
-                str += " </li>";
+                //}
+                //str += " </li>";
 
             });
 
-            if (str == "") {
-                $('#btnMore a').text("没有课程啦");
-            } else { $('#btnMore a').text("更多课程 »"); }
-            $("#list").append(str);
+            //if (str == "") {
+            //    $('#btnMore a').text("没有课程啦");
+            //} else { $('#btnMore a').text("更多课程 »"); }
+            $("#panel1").append(str);
 
         }
     });
@@ -140,6 +160,7 @@ $('.order li a').bind('click', function () {
     $("#list").html('');
     LoadMyCurriculum();
 });
+
 
 
 function CurriculumStudent(pkid, coachid, cid) {

@@ -49,7 +49,8 @@ namespace YY.Edu.Sys.Api.Services
             }
             else if (Domain.ToLower() == manageDomain)
             {
-
+                //todo 获取运营用户信息
+                return Services.VenueService.VenueLogin(UserName);
             }
 
             return false;

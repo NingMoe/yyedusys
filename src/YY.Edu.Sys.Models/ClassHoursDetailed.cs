@@ -43,5 +43,8 @@ namespace YY.Edu.Sys.Models
         /// 金额
         /// </summary>
        public decimal CMoney { get; set; }
+
+
+        public int PKType { get; set; }
     }
 }

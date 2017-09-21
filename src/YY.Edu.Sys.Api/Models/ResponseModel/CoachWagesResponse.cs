@@ -9,5 +9,9 @@ namespace YY.Edu.Sys.Api.Models.ResponseModel
     public class CoachWagesResponse:CoachWages
     {
         public string VenueName { get; set; }
+        /// <summary>
+        /// 课时数
+        /// </summary>
+        public int Number { get; set; }
     }
 }

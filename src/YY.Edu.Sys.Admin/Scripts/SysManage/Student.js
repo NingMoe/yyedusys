@@ -12,16 +12,72 @@ function bind_data() {
         },
         { "data": "UserName" },
         { "data": "FullName" },
+        {
+            "data": "State",
+            "render": function (data, type, full, meta) {
+
+                if (data == 1) {
+                    return '<span class="btn btn-xs btn-success">正常</span>';
+                } else {
+                    return '<span class="btn btn-xs btn-danger">流失</span>';
+                }
+            }
+        },
         { "data": "Mobile" },
         { "data": "ParentFullName" },
         { "data": "ParentMobile" },
-        { "data": "LinkMan" },
-        { "data": "LinkManMobile" },
+        //{ "data": "LinkMan" },
+        //{ "data": "LinkManMobile" },
         { "data": "Address" },
+        {
+            "data": "State",
+            "render": function (data, type, full, meta) {
+
+                if (data == 1) {
+                    var edithtml = '<button class="btn btn-xs btn-danger" onclick="return signLoss(' + full['StudentID'] + ',' + full['VenueID'] + ');"><i class="fa fa-edit"> 流失 </i></button>&nbsp;&nbsp;';
+                    return edithtml;
+                } else {
+                    return "";
+                }
+            }
+        },
     ];
 
     bindTable('studenttable', 'studentfrom', 'api/student/Page4Venue', columns_data);
 }
+
+function signLoss(studentID, venueId) {
+
+    var flag = confirm('确定标记为流失?');
+    if (flag) {
+
+        $.ajax({
+            type: "post",
+            url: ApiUrl + "api/Student/SignLoss",
+            contentType: 'application/json',
+            data: JSON.stringify({ StudentID: studentID, VenueID: venueId }),
+            success: function (data, status) {
+                if (status == "success") {
+                    console.log(data);
+                    if (data.Error) {
+                        alert(data.Msg);
+                    } else {
+                        bind_data();
+                        alert('设置流失成功');
+                    }
+                }
+            },
+            error: function (e) {
+            },
+            complete: function () {
+
+            }
+        });
+    } else {
+
+    }
+}
+
 
 $(function () {
 

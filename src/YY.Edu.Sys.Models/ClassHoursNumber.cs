@@ -55,6 +55,11 @@ namespace YY.Edu.Sys.Models
 			set{ _addtime=value;}
 			get{return _addtime;}
 		}
+
+        /// <summary>
+        /// 场馆ID
+        /// </summary>
+        public int VenueID { get; set; }
 		#endregion Model
 
 	}

@@ -1,70 +1,47 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en" style="overflow: auto;">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="stylesheet" href="/Content/amazeui.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="/Content/style.css" type="text/css" />
-
-    <script src="/Scripts/jquery.min.js"></script>
-    <script src="/Scripts/amazeui.min.js"></script>
+    <title>个人中心</title>
+    <link rel="stylesheet" href="/Content/amazeui.min.css" />
+    <link rel="stylesheet" href="/Content/admin.css">
+    <link rel="stylesheet" href="/Content/index.css">
+    <link rel="stylesheet" href="/Content/iconfont.css">
+    <link rel="stylesheet" href="/font/iconfont.woff">
+    <link rel="stylesheet" href="/font/iconfont.eot">
+    <link rel="stylesheet" href="/font/iconfont.svg">
+    <link rel="stylesheet" href="/font/iconfont.ttf">
 </head>
-<body class="bgcolor">
-    <header data-am-widget="header" class="am-header am-header-default header-green1">
-        <div class="am-header-left am-header-nav ">
-            <a href="javascript:history.back()" style="color: #fff;"><i class="am-icon-chevron-left"></i></a>
-        </div>
-        <h1 class="am-header-title" style="color: #fff;">我的消息</h1>
-    </header>
-    <div class="jl"></div>
-   
-    <ul class="order-list" id="list"></ul>
-    <div class="am-list-news-ft" id="btnMore"><a class="am-list-news-more am-btn am-btn-default" href="###">更多消息 »</a></div>
-
-
-    <div class="jl"></div>
-    <input type="hidden" id="hdPageIndex" value="1" />
-    <input type="hidden" id="hdPageSize" value="6" />
-
-    <div data-am-widget="navbar" class="am-navbar  dream-foot am-no-layout" id="">
-        <ul class="am-navbar-nav1 am-cf am-avg-sm-5" id="sList">
-            <li>
-                <a href="index.html" class="curr">
-                    <span class="iconfont">&#xe60b;</span>
-                    <p class="am-navbar-label">首页</p>
+<body style="background-color: #ddd;">
+    <div class="_News">
+        <!-- 头部导航 -->
+        <header data-am-widget="header" class="am-header am-header-default">
+            <div class="am-header-left am-header-nav">
+                <a href="javascript:history.back()"  class="">
+                    <i class="am-header-icon am-icon-arrow-left"></i>
                 </a>
-            </li>
-            <li>
-                <a href="nearby.html" class="">
-                    <span class="iconfont">&#xe60c;</span>
-                    <p class="am-navbar-label">附近</p>
-                </a>
-            </li>
-            <li>
-                <a href="find.html" class="">
-                    <span class="add"><i class="iconfont" style="font-size: 30px; line-height: 40px;">&#xe60e;</i></span>
-                    <p class="am-navbar-label" style="margin-top: -36px;">选课</p>
-                </a>
-            </li>
-            <li>
-                <a href="message.html" class="">
-                    <span class="iconfont">&#xe60d;</span>
-                    <p class="am-navbar-label">消息</p>
-                </a>
-            </li>
-            <li>
-                <a href="member.html" class="">
-                    <span class="iconfont">&#xe609;</span>
-                    <p class="am-navbar-label">个人中心</p>
-                </a>
-            </li>
+            </div>
+            <h1 class="am-header-title">
+                <a href="#title-link" class="">我的消息</a>
+            </h1>
+        </header>
+        <!-- 内容部分 -->
+        <ul class="newsCon">
+          
         </ul>
     </div>
 
+    <input type="hidden" id="hdPageIndex" value="1" />
+    <input type="hidden" id="hdPageSize" value="10" />
+    <input type="hidden" id="hdStudentID" value="@ViewBag.StudentID" />
 
+    <script src="/Scripts/jquery-1.12.0.min.js"></script>
+    <script src="/Scripts/app.js"></script>
+    <script src="/Scripts/amazeui.min.js"></script>
+    <script src="/Scripts/amazeui.ie8polyfill.min.js"></script>
     <script src="/Scripts/Student/MyNotice.js"></script>
 </body>
 </html>

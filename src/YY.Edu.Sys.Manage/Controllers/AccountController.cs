@@ -6,6 +6,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using YY.Edu.Sys.Manage.Models;
+using Newtonsoft.Json.Linq;
+using System;
 
 namespace YY.Edu.Sys.Manage.Controllers
 {
@@ -71,6 +73,28 @@ namespace YY.Edu.Sys.Manage.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+
+                    var tokenValue = await Services.LoginService.GetToken(model.Email, model.Password);
+                    if (tokenValue.Contains("invalid_grant"))
+                    {
+                        ModelState.AddModelError("", "登录失败,请联系管理员");
+                        return View(model);
+                    }
+                    Sys.Models.TokenInfo tokenInfo = new Sys.Models.TokenInfo(tokenValue);
+                    Session["tokenInfo"] = tokenValue;
+                    Session["accessToken"] = tokenInfo.access_token;
+                    Session["refreshToken"] = tokenInfo.refresh_token;
+
+                    var userValue = await Services.LoginService.GetMe(tokenInfo.access_token, model.Email);
+                    JObject jo = JObject.Parse(userValue);
+                    if (System.Convert.ToBoolean(jo["Error"].ToString()))
+                    {
+                        ModelState.AddModelError("", jo["Msg"].ToString());
+                        return View(model);
+                    }
+
+                    Session["loginUser"] = jo["Info"].ToString();
+
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -155,6 +179,36 @@ namespace YY.Edu.Sys.Manage.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create(Sys.Models.CreateVenue model)
+        {
+
+            if (!ModelState.IsValid)
+                return RedirectToAction("Index", "Venue");
+
+            var user = new ApplicationUser { UserName = model.LinkManEmail, Email = model.LinkManEmail, NameIdentifier = model.LinkManEmail };
+            var result = await UserManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
+            {
+                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                try
+                {
+                    Services.LoginService.Register(Session["accessToken"].ToString(), model);
+                    return RedirectToAction("Index", "Venue");
+                }
+                catch (Comm.YYException.YYException ex)
+                {
+                    ModelState.AddModelError("", ex);
+                }
+            }
+            AddErrors(result);
+            return View(model);
+            // If we got this far, something failed, redisplay form
+        }
+
 
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)

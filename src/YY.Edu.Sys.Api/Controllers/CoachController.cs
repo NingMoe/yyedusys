@@ -614,7 +614,7 @@ group by CurriculumDate";
 
 
 
-                string sql = " select top 8 * from CoachingPresence with(nolock) where " + strWhere + " order by FCID desc ";
+                string sql = " select top 6 * from CoachingPresence with(nolock) where " + strWhere + " order by FCID desc ";
 
 
 
@@ -694,13 +694,22 @@ group by CurriculumDate";
         /// <param name="VenueID"></param>
         /// <param name="StudentID"></param>
         /// <returns></returns>
-        public IHttpActionResult GetCoachListByHourClass(int VenueID, int StudentID)
+        public IHttpActionResult GetCoachListByHourClass(int VenueID, int StudentID,int PKType)
         {
             StringBuilder sql = new StringBuilder();
-            sql.Append("select c.*,'hNumber'=isnull(ClassNumber,0),cv.Price from Coach c with(nolock)");
+            sql.Append("select c.*,'hNumber'=isnull(ClassNumber,0),cv.Price,vc.PriceMore,v.VenueName,ch.PKType from Coach c with(nolock)");
             sql.Append(" inner join Coach_Venue cv with(nolock) on c.CoachID=cv.CoachID");
-            sql.Append(" left join ClassHoursNumber ch with(nolock) on c.coachID = ch.coachID and ch.StudentID =@StudentID ");
+            sql.Append(" inner join VenueID v with(nolock) on cv.VenueID=v.VenueID");
+            sql.Append(" left join ClassHoursNumber ch with(nolock) on c.coachID = ch.coachID and ch.StudentID =@StudentID and PKType='"+PKType+"' ");
             sql.Append("where c.state = 1 and cv.VenueID =@VenueID ");
+            if (PKType == 1)
+            {
+                sql.Append(" and cv.Price>0 ");
+            }
+            else
+            {
+                sql.Append(" and cv.PriceMore>0 ");
+            }
             var query = Comm.Helper.DapperHelper.Instance.Query<CoachHourClassResponse>(sql.ToString(), new { StudentID = StudentID, VenueID = VenueID });
             return Ok(query);
 
@@ -954,6 +963,16 @@ group by CurriculumDate";
 
         #endregion
 
+
+        #region  //取的最新10条的课程评价，用于记算教练星级s
+        public IHttpActionResult GetCurriculumEvaluateByCoachID(int CoachID)
+        {
+            string sql = "select top 10 PJID,StarLevel,EffectStarLevel from CurriculumEvaluate ce with(nolock) inner join TeachingSchedule t with(nolock) on ce.pkID = t.PKID where t.CoachID ='"+CoachID+"' order by pjID desc";
+            var query = Comm.Helper.DapperHelper.Instance.Query<YY.Edu.Sys.Models.CurriculumEvaluate>(sql);
+            return Ok(query);
+        }
+        #endregion
+
         // 薪酬列表、明细
 
 
@@ -1045,7 +1064,19 @@ group by CurriculumDate";
 
         #endregion
 
-
+        #region 工资
+        /// <summary>
+        /// 获取教练工资，只获取12个月的数据
+        /// </summary>
+        /// <param name="CoachID"></param>
+        /// <returns></returns>
+        public IHttpActionResult GetWages(int CoachID)
+        {
+            string sql = " select top 12 cw.*,v.VenueName,'Number'=(select count(1) from CoachWages_sub s with(nolock) where s.WagesID=cw.wagesid) from CoachWages cw with(nolock) inner join Venue v with(nolock) on cw.VenueID = v.VenueID where cw.state = 1 and cw.CoachID =@CoachID order by wagesID desc";
+            var query = Comm.Helper.DapperHelper.Instance.Query<CoachWagesResponse>(sql, new { CoachID=CoachID });
+            return Ok(query);
+        }
+            #endregion
 
     }
 }

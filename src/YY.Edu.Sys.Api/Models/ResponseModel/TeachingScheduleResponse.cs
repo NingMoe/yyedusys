@@ -30,6 +30,10 @@ namespace YY.Edu.Sys.Api.Models.ResponseModel
         /// </summary>
         public string CoachFullName { get; set; }
         /// <summary>
+        /// 教练头像
+        /// </summary>
+        public string HeadUrl { get; set; }
+        /// <summary>
         /// 学生姓名
         /// </summary>
         public string StudentFullName { get; set; }

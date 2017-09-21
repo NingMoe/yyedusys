@@ -34,6 +34,9 @@ namespace YY.Edu.Sys.Comm.RequestModel
         /// </summary>
         public string EndDate { get; set; }
 
-
+        /// <summary>
+        /// 1:1对1，2：1对多
+        /// </summary>
+        public int PKType { get; set; }
     }
 }
