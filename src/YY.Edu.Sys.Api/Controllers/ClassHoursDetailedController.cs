@@ -38,7 +38,7 @@ namespace YY.Edu.Sys.Api.Controllers
                 PageCriteria criteria = new PageCriteria();
                 criteria.Condition = "1=1";
 
-                criteria.Condition += string.Format(" and v.VenueID = {0}", oData.SearchCondition.VenueID);
+                criteria.Condition += string.Format(" and c.VenueID = {0}", oData.SearchCondition.VenueID);
                 //查询购买课时和约课的流水记录
                 criteria.Condition += string.Format(" and c.DType in ({0}) ", "1,2");
 
