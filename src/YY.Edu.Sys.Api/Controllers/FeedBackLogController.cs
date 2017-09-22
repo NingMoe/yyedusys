@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace YY.Edu.Sys.Api.Controllers
 {
+    [Authorize]
     [RoutePrefix("api/FeedBackLog")]
     public class FeedBackLogController : ApiController
     {

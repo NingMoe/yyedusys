@@ -8,6 +8,7 @@ using Dapper;
 using System.Web.Http.Cors;
 using DapperExtensions;
 using log4net;
+using YY.Edu.Sys.Comm.Helper;
 
 namespace YY.Edu.Sys.Api.Controllers
 {
@@ -141,6 +142,9 @@ namespace YY.Edu.Sys.Api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest();
 
+            if (IsExist(city.CityName))
+                return Ok(Comm.ResponseModel.ResponseModelBase.GetRes("此城市已经存在"));
+
             //单条添加
             var result = Comm.Helper.DapperHelper.Instance.Execute("Insert into city values (@cityname)",
                                    new { CityName = city.CityName });
@@ -163,6 +167,15 @@ namespace YY.Edu.Sys.Api.Controllers
         // DELETE api/<controller>/5
         public void Delete(int id)
         {
+        }
+
+        private bool IsExist(string cityName)
+        {
+
+            var sql = "select COUNT(CityID) from City where CityName=@CityName";
+            var result = DapperHelper.Instance.Query<int>(sql, new { CityName = cityName });
+            return (result.FirstOrDefault() > 0);
+
         }
     }
 }

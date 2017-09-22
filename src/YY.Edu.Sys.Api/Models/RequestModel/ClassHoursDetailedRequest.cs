@@ -5,7 +5,7 @@ using System.Web;
 
 namespace YY.Edu.Sys.Api.Models.RequestModel
 {
-    public class ApplyBuyHoursRequest : Sys.Models.ApplyBuyHours
+    public class ClassHoursDetailedRequest : Sys.Models.ClassHoursDetailed
     {
 
         public string StartDate { get; set; }

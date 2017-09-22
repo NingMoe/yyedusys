@@ -12,6 +12,7 @@ using YY.Edu.Sys.Comm.Helper;
 namespace YY.Edu.Sys.Api.Controllers
 {
     [Authorize]
+    [RoutePrefix("api/CoachWages")]
     public class CoachWagesController : ApiController
     {
 

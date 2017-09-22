@@ -7,9 +7,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using YY.Edu.Sys.Comm.Helper;
 
 namespace YY.Edu.Sys.Api.Controllers
 {
+    [Authorize]
     [RoutePrefix("api/Campus")]
     public class CampusController : ApiController
     {
@@ -105,18 +107,13 @@ where c.VenueID=@venueId ";
             try
             {
 
+                if (IsExist(campusInfo.VenueID.Value, campusInfo.CampusName))
+                    return Ok(Comm.ResponseModel.ResponseModelBase.GetRes("此校区已经存在"));
+
                 campusInfo.CampusStatus = 1;
                 var result = Comm.Helper.DapperHelper.Instance.Insert(campusInfo);
 
-                if (result > 0)
-                {
-                    return Ok(Comm.ResponseModel.ResponseModelBase.Success());
-                }
-                else
-                {
-                    return Content(HttpStatusCode.OK, Comm.ResponseModel.ResponseModelBase.GetRes(Comm.ResponseModel.ResponseModelErrorEnum.SystemError));
-                }
-
+                return result > 0 ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
             }
             catch (Exception ex)
             {
@@ -177,7 +174,7 @@ where c.VenueID=@venueId ";
                 YY.Edu.Sys.Models.Campus result = Comm.Helper.DapperHelper.Instance.Get<YY.Edu.Sys.Models.Campus>(id);
                 result.CampusStatus = 2;
                 bool update = Comm.Helper.DapperHelper.Instance.Update<YY.Edu.Sys.Models.Campus>(result);
-                
+
                 if (update)
                 {
                     return Ok(Comm.ResponseModel.ResponseModelBase.Success());
@@ -222,6 +219,15 @@ where c.VenueID=@venueId ";
                 logs.Error("校区启用失败", ex);
                 return BadRequest();
             }
+        }
+
+        private bool IsExist(int venueId, string campusName)
+        {
+
+            var sql = "select COUNT(CampusID) from Campus where CampusName=@CampusName and VenueID=@VenueID";
+            var result = DapperHelper.Instance.Query<int>(sql, new { CampusName = campusName, VenueID = venueId });
+            return (result.FirstOrDefault() > 0);
+
         }
 
     }

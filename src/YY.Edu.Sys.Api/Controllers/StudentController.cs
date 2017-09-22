@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 
 namespace YY.Edu.Sys.Api.Controllers
 {
+    [Authorize]
     [RoutePrefix("api/Student")]
     public class StudentController : ApiController
     {

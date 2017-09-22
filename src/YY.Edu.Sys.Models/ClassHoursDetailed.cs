@@ -42,9 +42,12 @@ namespace YY.Edu.Sys.Models
         /// <summary>
         /// 金额
         /// </summary>
-       public decimal CMoney { get; set; }
+        public decimal CMoney { get; set; }
 
-
+        /// <summary>
+        /// 1一对一 2一对多
+        /// </summary>
         public int PKType { get; set; }
+
     }
 }

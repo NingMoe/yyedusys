@@ -240,16 +240,15 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ApplyBuyHoursController.cs" />
     <Compile Include="Controllers\CampusController.cs" />
+    <Compile Include="Controllers\ClassHoursDetailedController.cs" />
     <Compile Include="Controllers\CoachController.cs" />
     <Compile Include="Controllers\CoachWagesController.cs" />
     <Compile Include="Controllers\CoachWagesSubController.cs" />
     <Compile Include="Controllers\ControlPanelController.cs" />
     <Compile Include="Controllers\FeedBackLogController.cs" />
-    <Compile Include="Controllers\HelloController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TeachingScheduleController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\VenueController.cs" />
     <Compile Include="Controllers\VenueInfoController.cs" />
     <Compile Include="Controllers\VenueNoticeController.cs" />
@@ -264,6 +263,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\RequestModel\ApplyBuyHoursRequest.cs" />
+    <Compile Include="Models\RequestModel\ClassHoursDetailedRequest.cs" />
     <Compile Include="Models\RequestModel\CoachWageRequest.cs" />
     <Compile Include="Models\RequestModel\CreateCoachWageRequest.cs" />
     <Compile Include="Models\RequestModel\TeachingScheduleRequest.cs" />

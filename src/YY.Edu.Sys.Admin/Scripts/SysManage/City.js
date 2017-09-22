@@ -160,8 +160,9 @@ function create() {
         data: JSON.stringify($('#cityfrom').serializeJSON()),
         success: function (data, status) {
             if (status == "success") {
-                alert("ok");
-                console.log('ok');
+                alert("添加成功");
+            } else {
+                alert("添加失败");
             }
         },
         error: function (e) {

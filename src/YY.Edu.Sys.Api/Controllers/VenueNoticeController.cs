@@ -11,6 +11,7 @@ using YY.Edu.Sys.Comm.Helper;
 
 namespace YY.Edu.Sys.Api.Controllers
 {
+    [Authorize]
     [RoutePrefix("api/VenueNotice")]
     public class VenueNoticeController : ApiController
     {

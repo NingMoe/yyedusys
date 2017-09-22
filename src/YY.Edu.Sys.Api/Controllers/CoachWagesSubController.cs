@@ -13,6 +13,7 @@ namespace YY.Edu.Sys.Api.Controllers
 {
 
     [Authorize]
+    [RoutePrefix("api/CoachWagesSub")]
     public class CoachWagesSubController : ApiController
     {
 

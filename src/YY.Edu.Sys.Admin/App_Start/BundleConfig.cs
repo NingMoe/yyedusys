@@ -231,6 +231,9 @@ namespace YY.Edu.Sys.Admin
             bundles.Add(new ScriptBundle("~/Scripts/SysManage/ApplyBuyHours").Include(
                "~/Scripts/SysManage/ApplyBuyHours.js"));
 
+            bundles.Add(new ScriptBundle("~/Scripts/SysManage/ClassHoursDetailed").Include(
+              "~/Scripts/SysManage/ClassHoursDetailed.js"));
+
             bundles.Add(new ScriptBundle("~/Scripts/SysManage/Venue").Include(
                 "~/Scripts/SysManage/Venue.js"));
 

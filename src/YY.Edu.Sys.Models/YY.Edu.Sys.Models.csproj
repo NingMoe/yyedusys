@@ -52,7 +52,6 @@
     <Compile Include="AspNetUsers.cs" />
     <Compile Include="Campus.cs" />
     <Compile Include="City.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="ClassHoursDetailed.cs" />
     <Compile Include="ClassHoursNumber.cs" />
     <Compile Include="ClassHoursOrder.cs" />

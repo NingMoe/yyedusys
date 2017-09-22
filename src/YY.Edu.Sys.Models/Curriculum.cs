@@ -64,8 +64,13 @@ namespace YY.Edu.Sys.Models
 			set{ _coachid=value;}
 			get{return _coachid;}
 		}
-		#endregion Model
+        #endregion Model
 
-	}
+        /// <summary>
+        /// 场馆编号
+        /// </summary>
+        public int VenueID { get; set; }
+
+    }
 }
 

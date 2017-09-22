@@ -14,5 +14,9 @@ namespace YY.Edu.Sys.Api.Models.ResponseModel
         /// 教练名字
         /// </summary>
         public string FullName { get; set; }
+        /// <summary>
+        /// 学生名字
+        /// </summary>
+        public string StudentFullName { get; set; }
     }
 }

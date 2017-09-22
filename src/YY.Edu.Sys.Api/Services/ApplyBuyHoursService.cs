@@ -38,8 +38,7 @@ namespace YY.Edu.Sys.Api.Services
                     var isExistClassHoursNumber = Services.ClassHoursNumberService.IsExist(Convert.ToInt32(applyBuyHours.VenueID), model.StudentID, model.CoachID);
                     if (isExistClassHoursNumber)
                     {
-                        var updateClassHoursNumberSql = @"update ClassHoursNumber set ClassNumber=ClassNumber+@classNumber 
-                            where StudentID=@studentID and CoachID=@coachID and VenueID=@venueID";
+                        var updateClassHoursNumberSql = @"update ClassHoursNumber set ClassNumber=ClassNumber+@classNumber where StudentID=@studentID and CoachID=@coachID and VenueID=@venueID";
                         //修改学生课时数量
                         int updateClassHoursNumber = connection.Execute(updateClassHoursNumberSql, new
                         {

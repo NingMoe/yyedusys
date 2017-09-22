@@ -23,7 +23,7 @@
                 <h3 class="box-title">公告</h3>
             </div>
             <form id="venuenoticefrom" class="form-horizontal">
-                <div class="box-body">
+                @*<div class="box-body">
                     <div class="form-group">
                         <label for="source" class="col-sm-2 control-label">通知来源</label>
                         <div class="col-sm-3">
@@ -34,9 +34,10 @@
                             </select>
                         </div>
                     </div>
-                </div>
+                </div>*@
                 <div class="box-body">
                     <div class="form-group">
+                        <input type="hidden" id="NoticeRange" name="NoticeRange" value="1" />
                         <input type="hidden" id="VenueID" name="VenueID" value="@ViewBag.VenueId" />
                         <input type="hidden" id="UserId" name="UserId" value="@ViewBag.UserId" />
                         <input type="hidden" id="UserName" name="UserName" value="@ViewBag.UserName" />

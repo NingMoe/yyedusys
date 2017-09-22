@@ -11,6 +11,7 @@ using YY.Edu.Sys.Comm.Helper;
 
 namespace YY.Edu.Sys.Api.Controllers
 {
+    [Authorize]
     [RoutePrefix("api/ApplyBuyHours")]
     public class ApplyBuyHoursController : ApiController
     {
@@ -106,10 +107,10 @@ namespace YY.Edu.Sys.Api.Controllers
                     criteria.Condition += string.Format(" and Status = {0}", oData.SearchCondition.Status);
                 if (oData.SearchCondition.PKType > 0)
                     criteria.Condition += string.Format(" and PKType = {0}", oData.SearchCondition.PKType);
-                if (!string.IsNullOrEmpty(oData.SearchCondition.StartTime))
-                    criteria.Condition += string.Format(" and AddTime >= '{0}'", oData.SearchCondition.StartTime);
-                if (!string.IsNullOrEmpty(oData.SearchCondition.EndTime))
-                    criteria.Condition += string.Format(" and AddTime < '{0}'", Convert.ToDateTime(oData.SearchCondition.EndTime).AddDays(1));
+                if (!string.IsNullOrEmpty(oData.SearchCondition.StartDate))
+                    criteria.Condition += string.Format(" and AddTime >= '{0}'", oData.SearchCondition.StartDate);
+                if (!string.IsNullOrEmpty(oData.SearchCondition.EndDate))
+                    criteria.Condition += string.Format(" and AddTime < '{0}'", Convert.ToDateTime(oData.SearchCondition.EndDate).AddDays(1));
 
                 criteria.CurrentPage = oData.PageIndex + 1;
                 criteria.Fields = "[ApplyID],[StudentID],[CoachID],[ClassNumber],[AddTime],[PayMoney],[Status],[PKType],[PaidMoney],[VenueID],[StudentFullName],[CoachFullName]";
