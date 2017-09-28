@@ -125,16 +125,24 @@ namespace YY.Edu.Sys.Web.Controllers
         public async System.Threading.Tasks.Task GetMineInfo(string domain, string token, string openId)
         {
 
-            var service = new Services.WxUserService();
-            var userValue = await service.GetMe(domain, token, openId);
-            JObject jo = JObject.Parse(userValue);
-            if (Convert.ToBoolean(jo["Error"].ToString()))
-            {
-                //ModelState.AddModelError("", jo["Msg"].ToString());
-                throw new Comm.YYException.YYException(jo["Msg"].ToString());
-            }
 
-            Session[domain] = jo["Info"].ToString();
+            try
+            {
+                var service = new Services.WxUserService();
+                var userValue = await service.GetMe(domain, token, openId);
+                JObject jo = JObject.Parse(userValue);
+                if (jo["Error"] != null)
+                {
+                    if (Convert.ToBoolean(jo["Error"].ToString()))
+                    {
+                        //ModelState.AddModelError("", jo["Msg"].ToString());
+                        throw new Comm.YYException.YYException(jo["Msg"].ToString());
+                    }
+
+                    Session[domain] = jo["Info"].ToString();
+                }
+            }
+            catch { }
         }
 
     }

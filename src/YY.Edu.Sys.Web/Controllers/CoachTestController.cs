@@ -19,18 +19,30 @@ namespace YY.Edu.Sys.Web.Controllers
 
                 ViewBag.Me = Newtonsoft.Json.JsonConvert.SerializeObject(await base.Me());
 
-                var templateId = Comm.WeiXin.NoticeTemplates.OrderPayTemplate;
-                var data = new
+                if (ViewBag.Me == null || ViewBag.Me == "null")
                 {
-                    first = new TemplateDataItem("教练登录成功"),
-                    keyword1 = new TemplateDataItem("飞翔的企鹅"),
-                    keyword2 = new TemplateDataItem("123456789"),
-                    keyword3 = new TemplateDataItem("1000", "#ff0000"),//显示为红色
-                    keyword4 = new TemplateDataItem("购买课时"),
-                    remark = new TemplateDataItem("详细信息,查看（http://www.baidu.com）！")
-                };
 
-                var result = TemplateApi.SendTemplateMessage(base.AppId, Session["OpenId"].ToString(), templateId, "http://www.baidu.com", data);
+                    Response.Redirect("Coash/BindingUser/?opid=" + Session["OpenId"] + "&url=http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLmqP7fEiaQdThp5Q9KH0TZEvoAut4dex2zicNNsa7iccRfMcJzbw34jQoATDLZ2j4OibErMpGriboOIsg/0&name=我是2017");
+                    return View();
+                }
+                else
+                {
+
+                    var templateId = Comm.WeiXin.NoticeTemplates.OrderPayTemplate;
+                    var data = new
+                    {
+                        first = new TemplateDataItem("教练登录成功"),
+                        keyword1 = new TemplateDataItem("飞翔的企鹅"),
+                        keyword2 = new TemplateDataItem("123456789"),
+                        keyword3 = new TemplateDataItem("1000", "#ff0000"),//显示为红色
+                        keyword4 = new TemplateDataItem("购买课时"),
+                        remark = new TemplateDataItem("详细信息,查看（http://www.baidu.com）！")
+                    };
+
+                    var result = TemplateApi.SendTemplateMessage(base.AppId, Session["OpenId"].ToString(), templateId, "http://www.baidu.com", data);                 
+                    Response.Redirect("Coash/Index");
+                    return View();
+                }
 
             }
             ViewBag.Title = "Home Page";

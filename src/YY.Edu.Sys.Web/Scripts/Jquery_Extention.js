@@ -5,7 +5,7 @@
         //2.每次调用发送ajax请求的时候定义默认的error处理方法
         var fn = {
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                toastr.error(XMLHttpRequest.responseText, '错误消息', { closeButton: true, timeOut: 0, positionClass: 'toast-top-full-width' });
+                //toastr.error(XMLHttpRequest.responseText, '错误消息', { closeButton: true, timeOut: 0, positionClass: 'toast-top-full-width' });
             },
             success: function (data, textStatus) { },
             beforeSend: function (XHR) { },
@@ -20,6 +20,7 @@
                 fn.success(data, textStatus);
             },
             beforeSend: function (XHR) {
+                console.log(Token);
                 XHR.setRequestHeader('Authorization', 'Bearer ' + Token);
                 fn.beforeSend(XHR);
             },

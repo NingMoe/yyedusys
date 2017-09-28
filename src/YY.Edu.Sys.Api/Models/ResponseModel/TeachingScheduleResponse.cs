@@ -43,6 +43,23 @@ namespace YY.Edu.Sys.Api.Models.ResponseModel
         /// </summary>
         public int ClassNumber { get; set; }
 
-        
+        /// <summary>
+        /// 教案内容
+        /// </summary>
+        public string PlanContent { get; set; }
+
+        /// <summary>
+        /// 课程总结
+        /// </summary>
+        public string SContent { get; set; }
+        /// <summary>
+        /// 请假人数
+        /// </summary>
+        public int sqjcount { get; set; }
+
+        /// <summary>
+        /// 预约人数
+        /// </summary>
+        public int Sucount { get; set; }
     }
 }

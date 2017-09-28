@@ -8,7 +8,7 @@
     <title>教练介绍</title>
     <link rel="stylesheet" href="/Content/amazeui.min.css" />
     <link rel="stylesheet" href="/Content/admin.css">
-    <link rel="stylesheet" href="/Content/index.css">
+    <link rel="stylesheet" href="/Content/CoachIndex.css">
     <link rel="stylesheet" href="/fonts/FontAwesome.otf">
     <link rel="stylesheet" href="/fonts/fontawesome-webfont.eot">
     <link rel="stylesheet" href="/fonts/fontawesome-webfont.ttf">
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/fonts/fontawesome-webfont.woff2">
 </head>
 <body>
+    @Html.Action("Default", "Base")
     <div class="_teacDeatil">
         <!-- 头部导航 -->
         <header data-am-widget="header" class="am-header am-header-default">
@@ -74,6 +75,7 @@
 
     <input type="hidden" id="hdVenveID" value="@ViewBag.VenueID" />
     <script src="/Scripts/jquery-1.12.0.min.js"></script>
+    <script src="/Scripts/Jquery_Extention.js"></script>
     <script src="/Scripts/app.js"></script>
     <script src="/Scripts/amazeui.min.js"></script>
     <script src="/Scripts/amazeui.ie8polyfill.min.js"></script>

@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="/Content/amazeui.min.css" />
     <link rel="stylesheet" href="/Content/admin.css">
-    <link rel="stylesheet" href="/Content/index.css">
+    <link rel="stylesheet" href="/Content/CoachIndex.css">
     <link rel="stylesheet" href="/Content/iconfont.css">
     <link rel="stylesheet" href="/font/iconfont.woff">
     <link rel="stylesheet" href="/font/iconfont.eot">
@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/font/iconfont.ttf">
 </head>
 <body>
+    @Html.Action("Default", "Base")
     <div>
         <!-- 头部导航 -->
         <header data-am-widget="header" class="am-header am-header-default">
@@ -57,7 +58,7 @@
             <div class="index_zixun">
                 <div class="index_zixunC">
                     <p>最新资讯</p>
-                    <ul>
+                    <ul id="sList">
                         <li class="clear">
                             <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" alt="" class="le am-circle">
                             <div class="le">
@@ -102,6 +103,7 @@
     </div>
 
     <script src="/Scripts/jquery-1.12.0.min.js"></script>
+    <script src="/Scripts/Jquery_Extention.js"></script>
     <script src="/Scripts/amazeui.min.js"></script>
     <script src="/Scripts/app.js"></script>
 </body>

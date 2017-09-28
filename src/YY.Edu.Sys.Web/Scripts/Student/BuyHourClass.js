@@ -12,8 +12,8 @@ function LoadCoach() {
         dataType: "json",
         async: false,
         data: { StudentID: $("#hdStudentID").val(), VenueID: $("#hdVenueID").val(),PKType:1 },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data) {
 
             var str = '<ul class="choseList">';
@@ -74,8 +74,8 @@ function LoadCoachMore() {
         dataType: "json",
         async: false,
         data: { StudentID: $("#hdStudentID").val(), VenueID: $("#hdVenueID").val(), PKType: 2},
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data) {
 
             var str = '<ul class="choseList">';
@@ -158,8 +158,8 @@ function Buy(coachid, sid1, obj,price,vid,pktype) {
         dataType: "json",
         async: false,
         data: { StudentID: sid, CoachID: coachid, ClassNumber: inumber, VenueID: vid, PayMoney: CMoney, Status: 0, PKType: pktype, PaidMoney:CMoney },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data, status) {
             if (status == "success") {
                 if (data.Code == 1001) {

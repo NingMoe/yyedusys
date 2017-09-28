@@ -15,10 +15,9 @@ function LoadMyCurriculum() {
         dataType: "json",
         async: false,
         data: { query: requestPrm },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data) {
-
             var str = "";
             var dataCu = data.data;
             //0 排课完成 1学生约课完成，2学校停课（需要判断，有没有学生预约）,3请假申请 4请假 5上课中 6上课完成 
@@ -132,8 +131,8 @@ function LoadMyCurriculum2() {
         dataType: "json",
         async: false,
         data: { query: requestPrm },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data) {
 
             var str = "";

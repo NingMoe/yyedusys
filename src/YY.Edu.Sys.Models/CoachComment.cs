@@ -64,6 +64,8 @@ namespace YY.Edu.Sys.Models
 			set{ _info=value;}
 			get{return _info;}
 		}
+
+        public int PKID { get; set; }
 		#endregion Model
 
 	}

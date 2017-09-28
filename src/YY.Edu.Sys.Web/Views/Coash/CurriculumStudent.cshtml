@@ -18,6 +18,7 @@
 
 </head>
 <body>
+    @Html.Action("Default", "Base")
     <input type="hidden" id="hdID" name="hdID" value="@ViewBag.PKID" />
     <input type="hidden" id="hdSID" name="hdSID" value="@ViewBag.SID" />
     <input type="hidden" id="hdCID" name="hdCID" value="@ViewBag.CID" />
@@ -44,6 +45,7 @@
 
     </ul>
     <div class="jl"></div>
+    <script src="/Scripts/Jquery_Extention.js"></script>
     <script src="/Scripts/Coash/CurriculumStudent.js"></script>
    
 

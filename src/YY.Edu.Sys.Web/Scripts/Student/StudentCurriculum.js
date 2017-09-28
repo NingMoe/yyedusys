@@ -16,8 +16,9 @@ function LoadMyCurriculum() {
         dataType: "json",
         async: false,
         data: { query: requestPrm },
-        beforeSend: function () {
-        },
+        //beforeSend: function (XHR) {
+        //    XHR.setRequestHeader('Authorization', 'Bearer ' + Token);
+        //},
         success: function (data) {
 
             var str = "";
@@ -123,8 +124,8 @@ function LoadMyCurriculum1() {
         dataType: "json",
         async: false,
         data: { query: requestPrm },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data) {
 
             var str = "";
@@ -209,8 +210,8 @@ function LoadMyCurriculum2() {
         dataType: "json",
         async: false,
         data: { query: requestPrm },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data) {
 
             var str = "";

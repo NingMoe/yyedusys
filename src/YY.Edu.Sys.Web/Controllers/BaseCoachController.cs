@@ -17,11 +17,16 @@ namespace YY.Edu.Sys.Web.Controllers
         {
             await GetMe();
 
-            Models.CoachResponse cr = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.CoachResponse>(Session[studentDomain].ToString());
-            return new Models.LoginCoachInfo()
+            Models.CoachResponse cr = null;
+            if (Session[studentDomain] != null)
             {
-                CoachInfo = cr
-            };
+                cr = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.CoachResponse>(Session[studentDomain].ToString());
+                return new Models.LoginCoachInfo()
+                {
+                    CoachInfo = cr
+                };
+            }
+            return null;
         }
 
         private async Task GetMe()

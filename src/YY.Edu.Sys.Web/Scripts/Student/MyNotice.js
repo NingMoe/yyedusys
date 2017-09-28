@@ -10,8 +10,8 @@ function LoadNotice() {
         dataType: "json",
         async: false,
         data: { query: requestPrm },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data) {
       
             var str = "";

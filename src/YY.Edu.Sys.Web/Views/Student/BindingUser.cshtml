@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/font/iconfont.ttf">
 </head>
 <body>
+    @Html.Action("Default", "Base")
     <div class="_compile">
         <!-- 头部导航 -->
         <header data-am-widget="header" class="am-header am-header-default">
@@ -30,9 +31,13 @@
         </header>
         <!-- 内容部分 -->
         <div class="CompileCon">
+            <div class="person_Img">
+                <img src="@ViewBag.HeadUrl" alt="" class="am-circle">
+               
+            </div>
             <div class="ComFir am-g">
-                <p class="am-u-sm-8 am-u-md-8 am-u-lg-8">头像：</p>
-                <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" alt="" class="am-u-sm-3 am-u-md-3 am-u-lg-3 am-circle">
+                <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">昵称：</p>
+                <input type="text" placeholder="请输入昵称" class="am-u-sm-9 am-u-md-9 am-u-lg-9" id="txtNickName"  value="@ViewBag.NickName">
             </div>
             <div class="ComFir am-g">
                 <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">姓名：</p>
@@ -66,11 +71,12 @@
             </div>
             <p class="reBUT textAlign"  id="btnSave">提交</p>
         </div>
-
+        <input type="hidden" id="hdOpenID" value="@ViewBag.OpenID " />
     </div>
 
 
     <script src="/Scripts/jquery-1.12.0.min.js"></script>
+    <script src="/Scripts/Jquery_Extention.js"></script>
     <script src="/Scripts/app.js"></script>
     <script src="/Scripts/amazeui.min.js"></script>
     <script src="/Scripts/amazeui.ie8polyfill.min.js"></script>

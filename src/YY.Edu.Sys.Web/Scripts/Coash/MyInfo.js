@@ -6,8 +6,8 @@
         dataType: "json",
         async: false,
         data: { id: $("#hdID").val() },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data) {           
             var c = data.Info;
             $("#pName").text(c.FullName);
@@ -25,8 +25,8 @@ function LoadPJInfo() {
         dataType: "json",
         async: false,
         data: { CoachID: $("#hdID").val() },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data) {
             var Zcount = 0;
             var JsCount = 0;
@@ -112,8 +112,8 @@ function LoadPresenceInfo() {
         dataType: "json",
         async: false,
         data: { VenueID: $("#hdVenveID").val(), CoachID: $("#hdID").val(), FCType: 1 },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data) {
             alert(JSON.stringify(data));
                    $.each(data.data, function (i, c) {

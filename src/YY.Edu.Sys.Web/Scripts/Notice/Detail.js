@@ -10,8 +10,8 @@ function LoadNoticeDetail() {
         dataType: "json",
         async: false,
         data: { id: $("#hdNoticeID").val() },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data) {
             var dataCu = data.Info;
             

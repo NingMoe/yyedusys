@@ -2,7 +2,8 @@
 $(document).ready(function () {
 
     LoadCoach();
-
+    LoadWages();
+    LoadWages();
 
 });
 
@@ -14,24 +15,23 @@ function LoadCoach() {
         url: "http://localhost:53262/api/Coach/GetWages/",
         dataType: "json",
         async: false,
-        data: { CoachID: $("#hdCoachID").val()},
-        beforeSend: function () {
-        },
+        data: { CoachID: $("#hdCoachID").val() },
+        //beforeSend: function () {
+        //},
         success: function (data) {
 
-          
+
             var dataCu = data;
             //取得教练
             $.each(dataCu, function (i, c) {
-          
-                str += '  <li>';
 
-                str += '   <div class="am-g">';
-                str += '   <p class="_PaymentName am-u-sm-9 am-u-md-9 am-u-lg-9">' + c.VenueName + '</p>';
-                str += '    <span class="am-u-sm-3 am-u-md-3 am-u-lg-3 _payBiao">发放日期：' + c.PayTime + '</span>';
-                str += '  </div>';
-                str += '  <div class="am-g"><p class="am-u-sm-6 am-u-md-6 am-u-lg-6">月课时数：<span>' + c.Number + '次</span></p><p class="am-u-sm-6 am-u-md-6 am-u-lg-6">金额：' + c.Price + '<span></span></p></div>';
-                str += '  <div class="am-g"><p class="am-u-sm-6 am-u-md-6 am-u-lg-6">工资月份：<span>' + c.WorkDate.substring(1,7) + '</span></p><p class="am-u-sm-6 am-u-md-6 am-u-lg-6">备注：'+c.Remark+'<span></span></p></div>';
+
+                str += '  <li>';
+                str += ' <p>场馆：<span>' + c.VenueName + '</span></p>';
+                str += ' <p>发放时间：<span>' + c.PayTime + '</span></p>';
+                str += ' <p>月课时数：<span>' + c.Number + '</span></p>';
+                str += ' <p>工资月份：<span>' + c.WorkDate.substring(1, 7) + '</span></p>';
+                str += ' <p>备注：<span>' + c.Remark + '</span></p>';
                 str += '   </li>';
 
             });
@@ -39,8 +39,46 @@ function LoadCoach() {
             //if (str == "") {
             //    $('#btnMore a').text("场馆正在入住教练");
             //}
-            alert(str);
-            $("._Payment").html(str);
+
+            $("#Detail").html(str);
+        }
+    });
+}
+
+
+function LoadNoWages()
+{   
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:53262/api/Coash/GetWagesSumMoney/",
+        contentType: "application/json",
+        data: {CoachID:$("#hdCoachID").val(),State:6},
+        success: function (data) {
+            $("#spNoMoney").text(data);
+        },
+        error: function (e) {
+            $("#spNoMoney").text('计算出错了');
+        },
+        complete: function () {
+
+        }
+    });
+}
+
+function LoadWages() {
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:53262/api/Coash/GetWagesSumMoney/",
+        contentType: "application/json",
+        data: { CoachID: $("#hdCoachID").val(), State: 7},
+        success: function (data) {
+            $("#spMoney").text(data);
+        },
+        error: function (e) {
+            $("#spMoney").text('计算出错了');
+        },
+        complete: function () {
+
         }
     });
 }

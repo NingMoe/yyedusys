@@ -1,60 +1,101 @@
-﻿$('.Pu-img img').bind('mouseover', function () {
-    var cImg = $(this).attr("src");
-    if (cImg.indexOf("star_full") >= 0) {
-        $(this).attr("src", "/images/star_empty.png");
-    }
-    else { $(this).attr("src", "/images/star_full.png"); }
-});
+﻿
 
 $(".save").bind("click", function () {
-    var icount = 0;
-    $('.Pu-img img').each(function () {
-        var cImg = $(this).attr("src");
-        if (cImg.indexOf("star_full") >= 0) {
-            icount = icount + 1;
-        }
-    });
 
-    var parm = { CurriculumID: $("#hdCID").val(), StudentID: $("#hdSID").val(), Info: $("#txtInfo").val(), StarLevel: icount };
-    $.ajax({
-        type: "POST",
-        url: "http://localhost:53262/api/Student/AddCurriculumEvaluate",
-        contentType: "application/json",
-        data: JSON.stringify(parm),
-        success: function (data, status) {
-            if (status == "success") {
-                alert("ok");
-                console.log('ok');
+    if ($("#hdStudentID").val() == "")
+    {
+        alert("请选择要点评的学生");
+        return false;
+    }
+
+    if ($("#hdCommentID").val() != "")//修改
+    {
+        var parm = { CommentID: $("#hdCommentID").val(), Info: $("#txtInfo").val() };
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:53262/api/Coash/UpdateCoachComment",
+            contentType: "application/json",
+            data: JSON.stringify(parm),
+            success: function (data, status) {
+                if (status == "success") {
+                    alert("修改点评成功");                   
+                }
+            },
+            error: function (e) {
+                alert("修改点评信息失败，再操作一次吧");
+            },
+            complete: function () {
+
             }
-        },
-        error: function (e) {
-            console.log('error');
-        },
-        complete: function () {
+        });
+    }
+    else
+    {
+        var parm = { CurriculumID: $("#hdCID").val(), StudentID: $("#hdStudentID").val(), Info: $("#txtInfo").val(), CoachID: $("#hdCoachID").val(), PKID: $("#hdPKID").val() };
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:53262/api/Coash/AddCoachComment",
+            contentType: "application/json",
+            data: JSON.stringify(parm),
+            success: function (data, status) {
+                if (status == "success") {
+                    alert("添加点评信息成功");
+                    console.log('ok');
+                }
+            },
+            error: function (e) {
+                alert("添加点评信息失败，再操作一次吧");
+            },
+            complete: function () {
 
-        }
-    });
+            }
+        });
+    }
 
 });
 
-
+//取的当前学员信息
 function LoadInfo() {
-    var str = "";
+    var str = ""; 
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/GetCoachCurriculumByID/",
+        url: "http://localhost:53262/api/Coach/GetCurriculumStudentByPKID/",
         dataType: "json",
         async: false,
-        data: { PKID: $("#hdID").val() },
-        beforeSend: function () {
-        },
+        data: { PKID: $("#hdPKID").val() },
+        //beforeSend: function () {
+        //},
         success: function (data) {
-            var c = data[0];
 
-            str += "  <p class='time'>" + dateformat(c.CurriculumDate, "yyyy-MM-dd") + "    " + c.CurriculumBeginTime + "-" + c.CurriculumEndTime + "</p>";
-            str += "  <p class='address'><i class='iconfont'>&#xe600;</i>" + c.VenueName + "-" + c.CampusName + "</p>";
-            str += "  <p class='cx'><i class='iconfont'>&#xe612;</i>学员数:" + c.Sucount + "  <font color='red'>已学完</font></p> </a>";
-            $(".find-left").html(str);
+            var str = ' <li class="am-dropdown-header">学员列表</li>';
+            $.each(data, function (i, c) {
+                str += '  <li><a href="#" data-id="'+c.StudentID+'">'+c.FullName+'</a></li>';
+            });
+
+            $("#cStudent").html(str);
+
+            $("#cStudent li a").on("click", function () {
+                $("#hdStudentID").val($(this).attr("data-id"));
+             
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:53262/api/Coash/GetCoachCommentDetail",
+                    contentType: "application/json",
+                    data: {StudentID:$(this).attr("data-id"),CurriculumID:$("#hdCID").val()},
+                    success: function (data) {
+                        var c = data[0];
+                        $("#txtInfo").text(c.Info);
+                        $("#hdCommentID").val(c.CommentID);
+                    },
+                    error: function (e) {
+                        console.log('error');
+                    },
+                    complete: function () {
+
+                    }
+                });
+            }
+            );
         }
     });
 
@@ -65,55 +106,6 @@ $(document).ready(function () {
 
     LoadInfo();
 
-    GetPJ();
-
+  
 });
 
-
-function GetPJ() {
-
-
-    var str = "";
-    $.ajax({
-        type: "get",
-        url: "http://localhost:53262/api/Coach/GetCoachCommentByPKID/",
-        dataType: "json",
-        async: false,
-        data: { pkid: $("#hdID").val()},
-        beforeSend: function () {
-        },
-        success: function (data) {   
-
-            $.each(data, function (i, c) {
-                str = str + " <article class='fabu'>";
-
-                str = str + "    <a href=''>   <img class='am-comment-avatar' src='/images/icon01.png' />  </a>";
-                var icount = c.StarLevel;
-
-                str = str + " <div class='Pu-img'>";
-                for (var i = 1; i < 6; i++) {
-                    if (i <= icount) {
-                        str = str + " <img src='/images/star_full.png' style='width:20px;height:20px' />";
-                    }
-                    else {
-                        str = str + " <img src='/images/star_empty.png' style='width:20px;height:20px' />";
-                    }
-                }
-                str = str + "</div>";
-                str = str + "   <div class='am-comment-main'>";
-                str = str + " <header class='am-comment-hd'>";
-                str = str + " <div class='am-comment-meta'>";
-                str = str + " <a href='#link-to-user' class='am-comment-author'>..</a> 点评学员【" + c.StudentFullName + "】于 <time datetime=''>" + c.AddTime + "</time>";
-                str = str + "  </div>  </header><div class='am-comment-bd'> " + c.Info + "</div> </div>    </article>";
-
-            });
-            $(".PJ").html(str);
-        
-        }
-    });
-}
-
-function dateformat(date) {
-    var myDate = new Date(date);
-    return myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate();
-}

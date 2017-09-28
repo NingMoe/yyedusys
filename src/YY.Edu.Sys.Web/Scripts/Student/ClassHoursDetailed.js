@@ -13,8 +13,8 @@ function LoadClassHoursDetailed() {
         dataType: "json",
         async: false,
         data: { StudentID: $("#hdStudentID").val(),PageIndex:$("#hdPageIndex").val(),PageSize: $("#hdPageSize").val()  },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data) {
 
             var str = "";

@@ -14,7 +14,7 @@ var fileBox2 = document.getElementById('file2');
 
 function uploadClick() {
 
-
+    alert(43434343);
   
     var fileList = $('#file')[0].files[0];
     var fileList2= $('#file2')[0].files[0];
@@ -30,9 +30,11 @@ function uploadClick() {
 }
 
 
+
+
 //关键代码上传到服务器
 function uploadFile(file,file2) {
-    
+  
     var reader = new FileReader();
     reader.readAsArrayBuffer(file);
     reader.onload = function () {
@@ -46,8 +48,13 @@ function uploadFile(file,file2) {
         fd.append('isClip', -1);
         var xhr = new XMLHttpRequest();
         xhr.open('post', 'http://localhost:37396/data/UpLoad.ashx?t=2', true);
-        xhr.onreadystatechange = function () {          
+        xhr.onreadystatechange = function () {
+            alert(44);
+            alert(xhr.readyState);
+            alert(xhr.status);
+            alert(xhr.responseText);
             if (xhr.readyState == 4 && xhr.status == 200) {
+
                 var data = eval('(' + xhr.responseText + ')');
                 if (data.success == 1) {
                     uploadFileF(file2,data.msg);
@@ -66,7 +73,7 @@ function uploadFile(file,file2) {
 }
 
 function uploadFileF(file,url) {
-
+    alert(1);
     var reader = new FileReader();
     reader.readAsArrayBuffer(file);
     reader.onload = function () {
@@ -81,11 +88,13 @@ function uploadFileF(file,url) {
         var xhr = new XMLHttpRequest();
         xhr.open('post', 'http://localhost:37396/data/UpLoad.ashx?t=2', true);
         xhr.onreadystatechange = function () {
+            alert(55);
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var data = eval('(' + xhr.responseText + ')');
                 if (data.success == 1) {
                     Save(url,data.msg);
                     //上传成功
+
 
                 } else {
                     alert('上传返面失败：' + data.msg + ",重新操作下试试吧");
@@ -102,7 +111,7 @@ function Save(url,furl)
 {
     var PostUrl = "http://localhost:53262/api/Coach/Create/";
    
-    var parm = { FullName:$("#txtFullName").val(),CardPositiveUrl:url,CardReverseUrl:furl,UserName:$("#txtMobile").val(),Pwd:$("#txtMobile").val(),Introduce:"",NickName:$("#txtTitle").val(),HeadUrl:$("#hdHeadUrl").val(),Address:$("#txtAddress").val(),Mobile:$("#txtMobile").val(),Sex:1,VenueID:$("#hdVenueID").val(),OpenID:$("#hdOpenID").val() };
+    var parm = { FullName: $("#txtFullName").val(), CardPositiveUrl: url, CardReverseUrl: furl, UserName: $("#txtMobile").val(), Pwd: $("#txtMobile").val(), Introduce: "", NickName: $("#txtNickName").val(), HeadUrl: $("#imgHurl").attr("src"), Address: $("#txtAddress").val(), Mobile: $("#txtMobile").val(), Sex: 1, VenueID: $("#hdVenueID").val(), OpenID: $("#hdOpenID").val() };
    
 
     $.ajax({
@@ -173,16 +182,17 @@ $('#btnSave').bind('click', function () {
 });
 
 function IsExisitVCode() {
-    var PostUrl = "http://localhost:53262/api/Student/Create/";
-
+    alert(888);
+    var PostUrl = "http://localhost:53262/api/Coach/IsExisitVenueByVCode/";  
     $.ajax({
-        type: "POST",
+        type: "get",
         url: PostUrl,
         contentType: "application/json",
         data: { VenueCode: $("#txtCode").val() },
-        success: function (data) {
+        success: function (data) {   
             var c = data[0];
-            if (c != null && c.VenueName != "") {
+            if (c != null && c.VenueName!=null&&c.VenueName != "") {
+                $("#hdVenueID").val(c.VenueID);
                 uploadClick();
             }
             else {

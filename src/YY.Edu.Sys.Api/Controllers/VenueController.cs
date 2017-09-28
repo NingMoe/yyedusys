@@ -20,6 +20,13 @@ namespace YY.Edu.Sys.Api.Controllers
 
         private static readonly ILog logs = Comm.Helper.LogHelper.GetInstance();
 
+        [HttpPost]
+        public IHttpActionResult add(dynamic info)
+        {
+
+            return Ok("success");
+        }
+
         // GET: api/Venue
         public IEnumerable<string> Get()
         {
@@ -258,16 +265,7 @@ namespace YY.Edu.Sys.Api.Controllers
 
 
 
-
-        public IHttpActionResult IsExisitVenueByVCode(string VenueCode)
-        {
-            string sql = "select VenueName from Venue with(nolock) where VenueCode=@VenueCode";
-            var query = Comm.Helper.DapperHelper.Instance.Query<YY.Edu.Sys.Models.CurriculumEvaluate>(sql, new { VenueCode = VenueCode });
-
-            //链表直接写sql传参
-
-            return Ok(query);
-        }
+      
 
     }
 }

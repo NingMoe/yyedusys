@@ -9,8 +9,8 @@ function LoadInfo() {
         dataType: "json",
         async: false,
         data: { PKID: $("#hdID").val() },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data) {
     
             var c = data[0];
@@ -44,8 +44,8 @@ function GetPJ()
         dataType: "json",
         async: false,
         data: { StudentID: $("#hdSID").val(), CurriculumID: $("#hdCID").val() },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data) {
             var c = data[0];
             if (c != null && c != "") {

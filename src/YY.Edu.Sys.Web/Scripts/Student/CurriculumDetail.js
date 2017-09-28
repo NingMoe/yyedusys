@@ -13,8 +13,8 @@ $(function () {
                       dataType: "json",
                       async: false,
                       data: {State:6, cID: $("#hdCID").val() },
-                      beforeSend: function () {
-                      },
+                      //beforeSend: function () {
+                      //},
                       success: function (data, status) {
                           if (status == "success") {
                               alert("请假申请提交成功");
@@ -55,8 +55,8 @@ function GetInfo()
         dataType: "json",
         async: false,
         data: { PKID: $("#hdID").val() },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data) {
 
             var c = data[0];

@@ -2,7 +2,7 @@
 jQuery.support.cors = true;
 function LoadNotice() {
 
-    var requestPrm = " { PageIndex: " + $("#hdPageIndex").val() + ", PageSize:" + $("#hdPageSize").val() + ",SearchCondition:{CoachID: 1}}";
+    var requestPrm = " { PageIndex: " + $("#hdPageIndex").val() + ", PageSize:" + $("#hdPageSize").val() + ",SearchCondition:{CoachID: " + $("#hdCoachID").val() + "}}";
 
     $.ajax({
         type: "get",
@@ -10,8 +10,8 @@ function LoadNotice() {
         dataType: "json",
         async: false,
         data: { query: requestPrm },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data) {
 
             var str = "";
@@ -44,25 +44,23 @@ function LoadNotice() {
                     case 3: source = "教练";
                         break;
                 }
-               
-                str += " <li> ";
+
+                str += ' <li>';
                 str += "  <a href='order_detail.html'>";
-
-                str += "  <p class='time'>" + dateformat(c.SendTime, "yyyy-MM-dd HH:mm:ss") + "</p>";
-                str += "  <p class='address'><i class='iconfont'>&#xe600;</i>" + c.NoticeTitle + "</p>";
-                str += "  <p class='cx'><i class='iconfont'>&#xe612;</i>消息来源：【" + source + "】，消息类型：【" + NoticeType + "】</p> </a>";
-
-
-                str += "  <button type='button' onclick='Detail(" + c.NoticeId + ")' class='order-btn'>详细</button> ";
-
-
-                str += " </li>";
+                str += ' <p class="newTitle"><span class="iconfont icon icon-tixing"></span><span>' + NoticeType + '</span></p>';
+                str+=' <div>';
+                str += ' <p class="_newName">消息来源:【' + source + '】</p>';
+                str += '<p class="_newCon">' + c.NoticeTitle + '</p>';
+                str += ' </div>';
+                str += '</a>';
+                str += '  </li>';           
+      
 
             });
 
-            if (str == "") {
-                $('#btnMore a').text("没有消息啦");
-            } else { $('#btnMore a').text("更多消息 »"); }
+            //if (str == "") {
+            //    $('#btnMore a').text("没有消息啦");
+            //} else { $('#btnMore a').text("更多消息 »"); }
 
       
             $("#list").append(str);

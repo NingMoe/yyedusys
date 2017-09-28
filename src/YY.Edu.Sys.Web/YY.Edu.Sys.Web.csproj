@@ -285,6 +285,7 @@
     <Content Include="Content\app.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CoachIndex.css" />
     <Content Include="Content\iconfont.css" />
     <Content Include="Content\index.css" />
     <Content Include="Content\iscroll.css" />
@@ -348,6 +349,8 @@
     <Content Include="font\iconfont.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Coash\BindingUser.js" />
+    <Content Include="Scripts\Coash\CommentLog.js" />
+    <Content Include="Scripts\Coash\CurriculumDetail.js" />
     <Content Include="Scripts\Coash\MyInfo.js" />
     <Content Include="Scripts\Coash\MyNotice.js" />
     <Content Include="Scripts\Coash\MyPresence.js" />
@@ -422,6 +425,8 @@
     <Content Include="Views\Student\CurriculumDetail.cshtml" />
     <Content Include="Views\Coash\Index.cshtml" />
     <Content Include="Views\Coash\Wages.cshtml" />
+    <Content Include="Views\Coash\CurriculumDetail.cshtml" />
+    <Content Include="Views\Coash\CommentLog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

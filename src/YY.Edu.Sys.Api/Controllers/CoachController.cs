@@ -14,7 +14,7 @@ using YY.Edu.Sys.Comm.Helper;
 
 namespace YY.Edu.Sys.Api.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [RoutePrefix("api/Coach")]
     public class CoachController : ApiController
     {
@@ -62,11 +62,11 @@ namespace YY.Edu.Sys.Api.Controllers
         public IHttpActionResult GetMe(string openId)
         {
 
-            if (!ModelState.IsValid)
-                return BadRequest();
+            //if (!ModelState.IsValid)
+            //    return BadRequest();
 
-            if (string.IsNullOrEmpty(openId))
-                return BadRequest();
+            //if (string.IsNullOrEmpty(openId))
+            //    return BadRequest();
 
             try
             {
@@ -690,6 +690,98 @@ group by CurriculumDate";
         #region 课程
 
         /// <summary>
+        /// 教练申请请假
+        /// </summary>
+        /// <param name="PKID">排课ID</param>
+        /// <param name="State">0 排课完成 1学生约课完成，2学校停课（需要判断，有没有学生预约）,3请假申请 4请假 5上课中 6上课完成 7发放工资完成</param>
+        /// <returns></returns>
+        public IHttpActionResult ApplyLeaveByPKID(int PKID, int State)
+        {
+            string sql = " update TeachingSchedule set State=@State where PKID=@PKID ";
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            //单条添加
+            var result = Comm.Helper.DapperHelper.Instance.Execute(sql.ToString(),
+                                   new { State = State, PKID = PKID });
+
+            if (result > 0)
+            {
+                return Ok(new { error = false, code = "1000", message = "操作成功" });
+            }
+            else
+            {
+                return Content(HttpStatusCode.OK, new { error = true, code = "1001", message = "操作失败,请重新操作" });
+            }
+
+        }
+        /// <summary>
+        /// 教案
+        /// </summary>
+        /// <param name="cp"></param>
+        /// <returns></returns>
+        public IHttpActionResult AddCurriculumTeachingPlan(YY.Edu.Sys.Models.CurriculumTeachingPlan cp)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            try
+            {
+
+                var result = Comm.Helper.DapperHelper.Instance.Insert(cp);
+
+                if (result > 0)
+                {
+                    return Ok(Comm.ResponseModel.ResponseModelBase.Success());
+                }
+                else
+                {
+                    return Content(HttpStatusCode.OK, Comm.ResponseModel.ResponseModelBase.GetRes(Comm.ResponseModel.ResponseModelErrorEnum.SystemError));
+                }
+
+            }
+            catch (Exception ex)
+            {
+                logs.Error("教案信息添加失败", ex);
+                return BadRequest();
+            }
+        }
+
+
+        /// <summary>
+        /// 总结
+        /// </summary>
+        /// <param name="cp"></param>
+        /// <returns></returns>
+        public IHttpActionResult AddCurriculumSummary(YY.Edu.Sys.Models.CurriculumSummary cp)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            try
+            {
+
+                var result = Comm.Helper.DapperHelper.Instance.Insert(cp);
+
+                if (result > 0)
+                {
+                    return Ok(Comm.ResponseModel.ResponseModelBase.Success());
+                }
+                else
+                {
+                    return Content(HttpStatusCode.OK, Comm.ResponseModel.ResponseModelBase.GetRes(Comm.ResponseModel.ResponseModelErrorEnum.SystemError));
+                }
+
+            }
+            catch (Exception ex)
+            {
+                logs.Error("总结信息添加失败", ex);
+                return BadRequest();
+            }
+        }
+
+
+        /// <summary>
         /// 购买课时时选择教练
         /// </summary>
         /// <param name="VenueID"></param>
@@ -836,7 +928,7 @@ group by CurriculumDate";
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                string sql = "select t.*,v.VenueName,c.CampusName,co.FullName,'Sucount'=(select COUNT(1) from Curriculum with(nolock) where PKID=t.PKID )  from TeachingSchedule t with(nolock) inner join Venue v with(nolock) on t.VenueID = v.VenueID left join Campus c with(nolock) on t.CampusID = t.CampusID  inner join Coach co with(nolock) on co.CoachID=t.CoachID where t.PKID=" + PKID;
+                string sql = "select t.*,v.VenueName,c.CampusName,co.FullName,'Sucount'=(select COUNT(1) from Curriculum with(nolock) where PKID=t.PKID ),'sqjcount'=(select count(1) from Curriculum c with(nolock) where c.PKID = t.PKID and State = 2 ),PlanContent,SContent  from TeachingSchedule t with(nolock) inner join Venue v with(nolock) on t.VenueID = v.VenueID left join Campus c with(nolock) on t.CampusID = t.CampusID  inner join Coach co with(nolock) on co.CoachID=t.CoachID left join CurriculumTeachingPlan tp with(nolock) on t.PKID=tp.PKID  left join  CurriculumSummary  cs  with(nolock) on t.PKID=cs.PKID where t.PKID=" + PKID;
 
                 var query = Comm.Helper.DapperHelper.Instance.Query<TeachingScheduleResponse>(sql);
                 return Ok(query);
@@ -857,7 +949,7 @@ group by CurriculumDate";
         public IHttpActionResult GetCurriculumStudentByPKID(int pkid)
         {
 
-            string sql = "select c.CurriculumID,c.PKID,c.CoachID,'CState'=c.State,s.StudentID,s.FullName,s.Mobile,s.ParentFullName,s.ParentMobile from Curriculum c with(nolock) inner join Student s with(nolock) on c.StudentID=s.StudentID  where PKID=@PKID ";
+            string sql = "select c.CurriculumID,c.PKID,c.CoachID,'CState'=c.State,s.StudentID,s.FullName,s.Mobile,s.ParentFullName,s.ParentMobile,s.HeadUrl from Curriculum c with(nolock) inner join Student s with(nolock) on c.StudentID=s.StudentID  where PKID=@PKID ";
             var query = Comm.Helper.DapperHelper.Instance.Query<StudentCurriculumResponse>(sql, new { PKID = pkid });
             return Ok(query);
         }
@@ -927,7 +1019,7 @@ group by CurriculumDate";
 
             try
             {
-
+               // Comm.Helper.DapperHelper.Instance.Delete(cm);
                 var result = Comm.Helper.DapperHelper.Instance.Insert(cm);
 
                 if (result > 0)
@@ -947,18 +1039,59 @@ group by CurriculumDate";
             }
         }
 
+        [HttpPost]
+        public IHttpActionResult UpdateCoachComment(YY.Edu.Sys.Models.CoachComment cm)
+        {
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            try
+            {
+                // Comm.Helper.DapperHelper.Instance.Delete(cm);
+                var result = Comm.Helper.DapperHelper.Instance.Update(cm);
+
+                if (result)
+                {
+                    return Ok(Comm.ResponseModel.ResponseModelBase.Success());
+                }
+                else
+                {
+                    return Content(HttpStatusCode.OK, Comm.ResponseModel.ResponseModelBase.GetRes(Comm.ResponseModel.ResponseModelErrorEnum.SystemError));
+                }
+
+            }
+            catch (Exception ex)
+            {
+                logs.Error("点评", ex);
+                return BadRequest();
+            }
+        }
 
 
         /// <summary>
-        /// 取的课程下预约的学生
+        /// 取的教练的点评信息
         /// </summary>
         /// <param name="pkid"></param>
         /// <returns></returns>
         public IHttpActionResult GetCoachCommentByPKID(int pkid)
         {
 
-            string sql = "select c.*,'StudentFullName'=s.FullName from CoachComment c with(nolock) inner join Student s with(nolock) on c.StudentID=s.StudentID where  PKID=@PKID ";
+            string sql = "select c.*,'StudentFullName'=s.FullName from CoachComment c with(nolock) inner join Curriculum cm with(nolock) on c.CurriculumID=cm.CurriculumID inner join Student s with(nolock) on c.StudentID=s.StudentID where  PKID=@PKID ";
             var query = Comm.Helper.DapperHelper.Instance.Query<CoachCommentResponse>(sql, new { PKID = pkid });
+            return Ok(query);
+        }
+
+        /// <summary>
+        /// 取的教练的对某一学生某一课时的点评信息
+        /// </summary>
+        /// <param name="pkid"></param>
+        /// <returns></returns>
+        public IHttpActionResult GetCoachCommentDetail(int StudentID, int CurriculumID)
+        {
+
+            string sql = "select * from CoachComment c with(nolock) where  CurriculumID=@CurriculumID and StudentID=@StudentID ";
+            var query = Comm.Helper.DapperHelper.Instance.Query<CoachCommentResponse>(sql, new { CurriculumID = CurriculumID, StudentID=StudentID });
             return Ok(query);
         }
 
@@ -972,6 +1105,14 @@ group by CurriculumDate";
             var query = Comm.Helper.DapperHelper.Instance.Query<YY.Edu.Sys.Models.CurriculumEvaluate>(sql);
             return Ok(query);
         }
+
+        public IHttpActionResult GetCurriculumEvaluateByPKID(int pkid)
+        {
+            string sql = "select PJID,StarLevel,EffectStarLevel from CurriculumEvaluate ce with(nolock) inner join TeachingSchedule t with(nolock) on ce.pkID = t.PKID where t.PKID ='" + pkid + "' order by pjID desc";
+            var query = Comm.Helper.DapperHelper.Instance.Query<YY.Edu.Sys.Models.CurriculumEvaluate>(sql);
+            return Ok(query);
+        }
+
         #endregion
 
         // 薪酬列表、明细
@@ -1073,11 +1214,37 @@ group by CurriculumDate";
         /// <returns></returns>
         public IHttpActionResult GetWages(int CoachID)
         {
-            string sql = " select top 12 cw.*,v.VenueName,'Number'=(select count(1) from CoachWages_sub s with(nolock) where s.WagesID=cw.wagesid) from CoachWages cw with(nolock) inner join Venue v with(nolock) on cw.VenueID = v.VenueID where cw.state = 1 and cw.CoachID =@CoachID order by wagesID desc";
+            string sql = " select cw.*,v.VenueName,'Number'=(select count(1) from CoachWages_sub s with(nolock) where s.WagesID=cw.wagesid) from CoachWages cw with(nolock) inner join Venue v with(nolock) on cw.VenueID = v.VenueID where cw.state = 1 and cw.CoachID =@CoachID order by wagesID desc";
             var query = Comm.Helper.DapperHelper.Instance.Query<CoachWagesResponse>(sql, new { CoachID=CoachID });
             return Ok(query);
         }
-            #endregion
+
+
+        /// <summary>
+        /// 取得已发放或未发放工资金额
+        /// </summary>
+        /// <param name="CoachID"></param>
+        /// <param name="State">6上课完成，7发工资完成</param>
+        /// <returns></returns>
+        public IHttpActionResult GetWagesSumMoney(int CoachID,int State)
+        {
+            string sql = "select sum(coachPrice) from TeachingSchedule t with(nolock) where CoachID=@CoachID and State=@State ";// --6上课完成7发工资完成";
+            var query = Comm.Helper.DapperHelper.Instance.Query<decimal>(sql, new { CoachID = CoachID, State= State });
+            return Ok(query);
+        }
+
+        #endregion
+
+        [HttpGet]
+        public IHttpActionResult IsExisitVenueByVCode(string VenueCode)
+        {
+            string sql = "select VenueID, VenueName from Venue with(nolock) where VenueCode=@VenueCode";
+            var query = Comm.Helper.DapperHelper.Instance.Query<YY.Edu.Sys.Models.Venue>(sql, new { VenueCode = VenueCode });
+
+            //链表直接写sql传参
+
+            return Ok(query);
+        }
 
     }
 }

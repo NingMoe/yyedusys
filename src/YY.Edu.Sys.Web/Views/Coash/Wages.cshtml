@@ -8,7 +8,7 @@
     <title></title>
     <link rel="stylesheet" href="/Content/amazeui.min.css" />
     <link rel="stylesheet" href="/Content/admin.css">
-    <link rel="stylesheet" href="/Content/index.css">
+    <link rel="stylesheet" href="/Content/CoachIndex.css">
     <link rel="stylesheet" href="/Content/iconfont.css">
     <link rel="stylesheet" href="/font/iconfont.woff">
     <link rel="stylesheet" href="/font/iconfont.eot">
@@ -16,23 +16,34 @@
     <link rel="stylesheet" href="/font/iconfont.ttf">
 </head>
 <body>
-    <div class="_CHOOSE">
+    @Html.Action("Default", "Base")
+    <div class="MY_inconme">
         <!-- 头部导航 -->
         <header data-am-widget="header" class="am-header am-header-default">
             <div class="am-header-left am-header-nav">
                 <a href="#left-link" class="">
-                    <i class="am-header-icon am-icon-arrow-left"></i>
+                    <i class="icon iconfont icon-back"></i>
                 </a>
             </div>
             <h1 class="am-header-title">
-                <a href="#title-link" class="">工资情况</a>
+                <a href="#title-link" class="">我的收入</a>
             </h1>
         </header>
         <!-- 内容部分 -->
-        <ul class="_Payment"></ul>
+        <div class="_my_con">
+            <div class="_my_conFir am-g">
+                <p class="am-u-sm-6 am-u-md-6 am-u-lg-6 textAlign">收入总额：<span id="spMoney">0</span></p>
+                <p class="am-u-sm-6 am-u-md-6 am-u-lg-6 textAlign">未收总额：<span id="spNoMoney">0</span></p>
+            </div>
+            <div class="_my_conSec">
+                <p>收入明细:</p>
+                <ul id="Detail"></ul>
+            </div>
+        </div>
     </div>
     <input type="hidden" id="hdCoachID" value="@ViewBag.CoachID" />
     <script src="/Scripts/jquery-1.12.0.min.js"></script>
+    <script src="/Scripts/Jquery_Extention.js"></script>
     <script src="/Scripts/amazeui.min.js"></script>
     <script src="/Scripts/app.js"></script>
     <script src="/Scripts/amazeui.ie8polyfill.min.js"></script>

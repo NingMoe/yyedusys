@@ -844,7 +844,7 @@ where v.VenueID = @VenueID and s.state=1 ";
             sql.Append(" select @yk=count(1) from TeachingSchedule with(nolock) where (state = 0 or(state = 1 and pkType = 2)) and PKID ='" + pkid + "' ");
 
             sql.Append(" if (@count > 0 and @yk>0) begin");
-            sql.Append("   insert into Curriculum(StudentID, PKID, CoachID, StudentFullName) values('" + sid + "','" + pkid + "','" + cid + "','" + sname + "'); ");
+            sql.Append("   insert into Curriculum(StudentID, PKID, CoachID, StudentFullName,VenueID) values('" + sid + "','" + pkid + "','" + cid + "','" + sname + "','"+vid+"'); ");
             sql.Append(" update ClassHoursNumber set ClassNumber=ClassNumber-1 where  StudentID ='" + sid + "' and CoachID ='" + cid + "'  and VenueID = '" + vid + "'");
             //1购买，2约课3学生请假退回，4老师请假退回，5学校停课退回
             sql.Append(" INSERT INTO [ClassHoursDetailed]([DType],[VenueID],[CoachID],[StudentID],[Remark],[DNumber]) values(2,'" + vid + "','" + cid + "','" + sid + "','预约课程',1) ");
@@ -1075,5 +1075,17 @@ where v.VenueID = @VenueID and s.state=1 ";
             return Ok(query);
         }
         #endregion
+
+
+        [HttpGet]
+        public IHttpActionResult IsExisitVenueByVCode(string VenueCode)
+        {
+            string sql = "select VenueID, VenueName from Venue with(nolock) where VenueCode=@VenueCode";
+            var query = Comm.Helper.DapperHelper.Instance.Query<YY.Edu.Sys.Models.Venue>(sql, new { VenueCode = VenueCode });
+
+            //链表直接写sql传参
+
+            return Ok(query);
+        }
     }
 }

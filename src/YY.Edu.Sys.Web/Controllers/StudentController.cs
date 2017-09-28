@@ -10,7 +10,7 @@ using System.Web.Mvc;
 namespace YY.Edu.Sys.Web.Controllers
 {
     
-    public class StudentController : Controller
+    public class StudentController : BaseStudentController
     {
         public System.Web.Mvc.ActionResult Index()
         {
@@ -19,15 +19,12 @@ namespace YY.Edu.Sys.Web.Controllers
         }
 
 
-        public System.Web.Mvc.ActionResult MyCurriculum()
+        public async Task<System.Web.Mvc.ActionResult> MyCurriculum()
         {
-            //var obj =  base.Me();
-            // Sys.Models.Student s = obj.Result;           
-            // ViewBag.VenueID = s.VenueID;
-            // ViewBag.StudentID = s.StudentID;
-
-            ViewBag.VenueID = 1;
-            ViewBag.StudentID =1;
+            var obj =await base.Me();
+            Sys.Models.Student s = obj;
+            ViewBag.VenueID = s.VenueID;
+            ViewBag.StudentID = s.StudentID;
             return View();
         }
 
@@ -45,76 +42,73 @@ namespace YY.Edu.Sys.Web.Controllers
         /// <param name="VenueID"></param>
         /// <param name="StudentID"></param>
         /// <returns></returns>
-        public ActionResult BuyHourClass()
+        public async Task<System.Web.Mvc.ActionResult> BuyHourClass()
         {
-            //var obj = base.Me();
-            //Sys.Models.Student s = obj.Result;
-            //ViewBag.VenueID = s.VenueID;
-            //ViewBag.StudentID = s.StudentID;
-            ViewBag.VenueID = 1;
-            ViewBag.StudentID = 1;
+            var obj =await base.Me();
+            Sys.Models.Student s = obj;
+            ViewBag.VenueID = s.VenueID;
+            ViewBag.StudentID = s.StudentID;
             return View();
         }
 
-        public ActionResult SubscribeCurriculum()
+        public async Task<System.Web.Mvc.ActionResult> SubscribeCurriculum()
         {
-            //var obj = base.Me();
-            //Sys.Models.Student s = obj.Result;
-            //ViewBag.VenueID = s.VenueID;
-            //ViewBag.StudentID = s.StudentID;
-            ViewBag.VenueID = 1;
-            ViewBag.StudentID = 1;
-            ViewBag.SName = "小赵子";
+            var obj =await base.Me();
+            Sys.Models.Student s = obj;
+            ViewBag.VenueID = s.VenueID;
+            ViewBag.StudentID = s.StudentID;
+            ViewBag.SName = s.FullName;
             return View();
         }
 
 
-        public ActionResult StudentGrowth()
+        public async Task<System.Web.Mvc.ActionResult> StudentGrowth()
         {
-            //var obj = base.Me();
-            //Sys.Models.Student s = obj.Result;
-            //ViewBag.VenueID = s.VenueID;
-            //ViewBag.StudentID = s.StudentID;
-            ViewBag.VenueID = 1;
-            ViewBag.StudentID = 1;
+            var obj =await base.Me();
+            Sys.Models.Student s = obj;
+            ViewBag.VenueID = s.VenueID;
+            ViewBag.StudentID = s.StudentID;
             return View();
         }
 
 
-        public ActionResult MyMessage()
+        public async Task<System.Web.Mvc.ActionResult> MyMessage()
         {
-            //var obj = base.Me();
-            //Sys.Models.Student s = obj.Result;
-            //ViewBag.VenueID = s.VenueID;
-            //ViewBag.StudentID = s.StudentID;
-            ViewBag.VenueID = 1;
-            ViewBag.StudentID = 1;
+            var obj =await base.Me();
+            Sys.Models.Student s = obj;
+            ViewBag.VenueID = s.VenueID;
+            ViewBag.StudentID = s.StudentID;
             return View();
         }
 
 
-        public ActionResult MyClassHoursDetailed()
+        public async Task<System.Web.Mvc.ActionResult> MyClassHoursDetailed()
         {
-            //var obj = base.Me();
-            //Sys.Models.Student s = obj.Result;
-            //ViewBag.VenueID = s.VenueID;
-            //ViewBag.StudentID = s.StudentID;
-            ViewBag.VenueID = 1;
-            ViewBag.StudentID = 1;
+            var obj =await base.Me();
+            Sys.Models.Student s = obj;
+            ViewBag.VenueID = s.VenueID;
+            ViewBag.StudentID = s.StudentID;
             return View();
         }
 
 
-        public ActionResult BindingUser()
+        public ActionResult BindingUser(string opid,string url,string name)
         {
+            ViewBag.OpenID = opid;
+            ViewBag.HeadUrl = url;
+            ViewBag.NickName = name;
             return View();
         }
 
 
-        public ActionResult CurriculumDetail(int cid,int pkid)
+        public async Task<System.Web.Mvc.ActionResult> CurriculumDetail(int cid,int pkid)
         {
+            var obj =await base.Me();
+            Sys.Models.Student s = obj;
+            ViewBag.VenueID = s.VenueID;
+            ViewBag.StudentID = s.StudentID;
             ViewBag.CID = cid;
-            ViewBag.StudentID = 1;
+       
             ViewBag.PKID = pkid;
             return View();
         }

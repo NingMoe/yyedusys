@@ -26,6 +26,5 @@ namespace YY.Edu.Sys.Api.Models.ResponseModel
         public string VenueName { get; set;}
 
 
-        public int VenueID { get; set; }
     }
 }

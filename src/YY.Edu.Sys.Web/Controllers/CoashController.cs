@@ -5,11 +5,11 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Mvc;
-
+using YY.Edu.Sys.Web.Models;
 
 namespace YY.Edu.Sys.Web.Controllers
 {
-    public class CoashController : Controller
+    public class CoashController : BaseCoachController
     {
 
         public ActionResult Index()
@@ -18,18 +18,58 @@ namespace YY.Edu.Sys.Web.Controllers
         }
         public ActionResult MyCurriculum()
         {
-            ViewBag.CoachID = 1;
+            var obj = base.Me();
+            Models.LoginCoachInfo s = obj.Result;
+            CoachResponse c = s.CoachInfo;
+            ViewBag.VenueID = c.VenueID;
+            ViewBag.CoachID = c.CoachID;
+            ViewBag.FullName = c.FullName;
             return View();
         }
 
-        public ActionResult MyComment(int pkid,int coachid ,int cid)
+       /// <summary>
+       /// 学生点评
+       /// </summary>
+       /// <param name="pkid"></param>
+       /// <param name="cid"></param>
+       /// <returns></returns>
+        public ActionResult MyComment(int pkid,int cid)
         {
-            ViewBag.PKID = pkid;
-            ViewBag.CoashID = coachid;
+            var obj = base.Me();
+            Models.LoginCoachInfo s = obj.Result;
+            CoachResponse c = s.CoachInfo;
+            ViewBag.VenueID = c.VenueID;
+            ViewBag.CoachID = c.CoachID;
+            ViewBag.FullName = c.FullName;
+            ViewBag.PKID = pkid;       
             ViewBag.CID = cid;
             return View();
         }
 
+        /// <summary>
+        /// 课程点评记录
+        /// </summary>
+        /// <param name="pkid"></param>
+        /// <returns></returns>
+        public ActionResult CommentLog(int pkid)
+        {
+            ViewBag.PKID = pkid;
+            return View();
+        }
+
+        /// <summary>
+        /// 课程详细信息
+        /// </summary>
+        /// <param name="cuid">课程ID</param>
+        /// <param name="pkid">排课ID</param>
+        /// <returns></returns>
+        public ActionResult CurriculumDetail(int cuid, int pkid)
+        {
+            ViewBag.PKID = pkid;
+           //ViewBag.CoashID = coachid;
+            ViewBag.CID = cuid;
+            return View();
+        }
 
         /// <summary>
         /// 课程学生明细
@@ -49,37 +89,56 @@ namespace YY.Edu.Sys.Web.Controllers
 
         public ActionResult MyPresence()
         {
-            ViewBag.CoachID = 1;
+            var obj = base.Me();
+            Models.LoginCoachInfo s = obj.Result;
+            CoachResponse c = s.CoachInfo;
+            ViewBag.VenueID = c.VenueID;
+            ViewBag.CoachID = c.CoachID;
+            ViewBag.FullName = c.FullName;
             return View();
         }
 
         public ActionResult BindingUser()
         {
-            ViewBag.OpenID = "ozLW4wIKJuOzimRmGbZxJcrBvaoY";
-            ViewBag.VenueID = 1;
-            ViewBag.HeadUrl = "http://loackatek";
+            ViewBag.OpenID = "ozLW4wIKJuOzimRmGbZxJcrBvaoY";     
+            ViewBag.HeadUrl = "http://s.amazeui.org/media/i/demos/bing-1.jpg";
+            ViewBag.NickName = "测试";
             return View();
         }
 
 
         public ActionResult MyMessage()
         {
-            ViewBag.CoachID = 1;
+            var obj = base.Me();
+            Models.LoginCoachInfo s = obj.Result;
+            CoachResponse c = s.CoachInfo;
+            ViewBag.VenueID = c.VenueID;
+            ViewBag.CoachID = c.CoachID;
+            ViewBag.FullName = c.FullName;
             return View();
         }
 
 
         public ActionResult MyInfo()
         {
-            ViewBag.CoachID = 1;
-            ViewBag.VenueID = 1;
+            var obj = base.Me();
+            Models.LoginCoachInfo s = obj.Result;
+            CoachResponse c = s.CoachInfo;
+            ViewBag.VenueID = c.VenueID;
+            ViewBag.CoachID = c.CoachID;
+            ViewBag.FullName = c.FullName;
             return View();
         }
 
 
         public ActionResult Wages()
         {
-            ViewBag.CoachID = 1;
+            var obj = base.Me();
+            Models.LoginCoachInfo s = obj.Result;
+            CoachResponse c = s.CoachInfo;
+            ViewBag.VenueID = c.VenueID;
+            ViewBag.CoachID = c.CoachID;
+            ViewBag.FullName = c.FullName;
             return View();
         }
     }

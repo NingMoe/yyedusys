@@ -8,14 +8,15 @@
     <title></title>
     <link rel="stylesheet" href="/Content/amazeui.min.css" />
     <link rel="stylesheet" href="/Content/admin.css">
-    <link rel="stylesheet" href="/Content/index.css">
-    <link rel="stylesheet" href="/fonts/FontAwesome.otf">
-    <link rel="stylesheet" href="/fonts/fontawesome-webfont.eot">
-    <link rel="stylesheet" href="/fonts/fontawesome-webfont.ttf">
-    <link rel="stylesheet" href="/fonts/fontawesome-webfont.woff">
-    <link rel="stylesheet" href="/fonts/fontawesome-webfont.woff2">
+    <link rel="stylesheet" href="/Content/CoachIndex.css">
+    <link rel="stylesheet" href="/Content/iconfont.css">
+    <link rel="stylesheet" href="/font/iconfont.woff">
+    <link rel="stylesheet" href="/font/iconfont.eot">
+    <link rel="stylesheet" href="/font/iconfont.svg">
+    <link rel="stylesheet" href="/font/iconfont.ttf">
 </head>
 <body>
+    @Html.Action("Default", "Base")
     <div class="_compile">
         <!-- 头部导航 -->
         <header data-am-widget="header" class="am-header am-header-default">
@@ -25,15 +26,21 @@
                 </a>
             </div>
             <h1 class="am-header-title">
-                <a href="#title-link" class="">我</a>
+                <a href="#title-link" class="">绑定账户</a>
             </h1>
         </header>
         <!-- 内容部分 -->
         <div class="CompileCon">
             <div class="ComFir am-g">
                 <p class="am-u-sm-8 am-u-md-8 am-u-lg-8">头像：</p>
-                <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" alt="" class="am-u-sm-3 am-u-md-3 am-u-lg-3 am-circle">
+                <img id="imgHurl" src="@ViewBag.HeadUrl" alt="" class="am-u-sm-5 am-u-md-5 am-u-lg-5 ">
             </div>
+
+            <div class="ComFir am-g">
+                <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">昵称：</p>
+                <input type="text" placeholder="请输入姓名" class="am-u-sm-9 am-u-md-9 am-u-lg-9" id="txtNickName" value="@ViewBag.NickName">
+            </div>
+
             <div class="ComFir am-g">
                 <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">姓名：</p>
                 <input type="text" placeholder="请输入姓名" class="am-u-sm-9 am-u-md-9 am-u-lg-9" id="txtFullName">
@@ -48,31 +55,45 @@
                 <input type="text" placeholder="请输入住址" class="am-u-sm-9 am-u-md-9 am-u-lg-9" id="txtAddress">
             </div>
            
-            <div class="ComFir am-g">
-                <button type="button" class="am-btn am-btn-default am-btn-sm">
-                    <i class="am-icon-cloud-upload"></i>身份证正面
-                </button>
+            <div class="_upSend">
+                <div>
+                    <div class="am-form-group am-form-file">
+                        <img src="" id="imgZ"/>
+                        <button type="button" class="am-btn am-btn-danger am-btn-sm">
+                            <i class="am-icon-cloud-upload"></i> 身份证正面
+                        </button>
+                        <input id="file" name="file" type="file" multiple>
+                    </div>
+                    <div id="file-list"></div>
+                </div>
+                <div>
+                    <div class="am-form-group am-form-file">
+                        <img src="" id="imgF" />
+                        <button type="button" class="am-btn am-btn-danger am-btn-sm">
+                            <i class="am-icon-cloud-upload"></i> 身份证反面
+                        </button>
+                        <input type="file" multiple id="file2" name="file2">
+                    </div>
+                    <div id="file-list"></div>
+                </div>
             </div>
-            <div class="ComFir am-g">
-                <button type="button" class="am-btn am-btn-default am-btn-sm">
-                    <i class="am-icon-cloud-upload"></i>身份证反面
-                </button>
-            </div>
-
+        
             <div class="ComFir am-g">
                 <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">场馆代码：</p>
                 <input type="text" placeholder="请输入场馆代码" class="am-u-sm-9 am-u-md-9 am-u-lg-9" id="txtCode">
             </div>
             <p class="reBUT textAlign" id="btnSave">提交</p>
         </div>
-
+        <input type="hidden" id="hdOpenID" value="@ViewBag.OpenID " />
     </div>
 
+   <input type="hidden" id="hdVenueID" />
 
     <script src="/Scripts/jquery-1.12.0.min.js"></script>
+    <script src="/Scripts/Jquery_Extention.js"></script>
     <script src="/Scripts/app.js"></script>
     <script src="/Scripts/amazeui.min.js"></script>
     <script src="/Scripts/amazeui.ie8polyfill.min.js"></script>
-    <script src="~/Scripts/Coash/BindingUser.js"></script>
+    <script src="/Scripts/Coash/BindingUser.js"></script>
 </body>
 </html>

@@ -64,6 +64,8 @@
     <Compile Include="CreateVenue.cs" />
     <Compile Include="Curriculum.cs" />
     <Compile Include="CurriculumEvaluate.cs" />
+    <Compile Include="CurriculumSummary.cs" />
+    <Compile Include="CurriculumTeachingPlan.cs" />
     <Compile Include="FeedBackLog.cs" />
     <Compile Include="LoginUser.cs" />
     <Compile Include="MenuManage.cs" />

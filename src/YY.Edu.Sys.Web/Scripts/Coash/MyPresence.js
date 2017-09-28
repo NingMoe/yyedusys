@@ -14,8 +14,8 @@ function LoadMyCurriculumV() {
         dataType: "json",
         async: false,
         data: { VenueID: 1, CoachID: $("#hdCoachID").val(), FCType: 2 },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data) {
             
             var str = "";
@@ -52,8 +52,8 @@ function LoadMyCurriculumImg() {
         dataType: "json",
         async: false,
         data: { VenueID: 1, CoachID: $("#hdCoachID").val(),FCType:1 },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data) {
             alert(JSON.stringify(data));
             var str = "";
@@ -63,19 +63,17 @@ function LoadMyCurriculumImg() {
                 alert(c.Title);
                 var Ftype = 1;
                 if (Ftype == 1) {
-                    str += "<li> ";
-                    str += "<div class='am-gallery-item'>";
-                    str += "<a href='http://s.amazeui.org/media/i/demos/bing-1.jpg' class=''> ";
-                    str += " <img src='/" + c.FCUrl + "' alt='" + c.Title + "' style='width:160px;height:160px' /> ";
-                    str += "  <h3 class='am-gallery-title'>" + c.Title + "</h3>";
-                    str += "  <div class='am-gallery-desc'>" + c.AddTime + "</div>";
-                    str += "    </a></div></li> ";
+
+                    str += '<li>';
+                    str += '<img src="' + c.FCUrl + '" alt="' + c.Title + '" class="am-thumbnail" />';
+                    str += ' <p class="textAlign">' + c.Title + '</p>';
+                    str += ' <p class="textAlign">' + c.AddTime + '</p></li>';
                 }
                 else
                 {
                     str += "<li> ";
                     str += "<div class='am-gallery-item'>";
-                    str += "<a href='http://s.amazeui.org/media/i/demos/bing-1.jpg' class=''> ";
+                    str += "<a href='#' class=''> ";
                     str += " <video controls='controls' autoplay='autoplay'> ";
                     str += "<source src='" + c.FCUrl + "' type='video/ogg' /> </video> ";
   

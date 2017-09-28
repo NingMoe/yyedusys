@@ -21,10 +21,10 @@ namespace YY.Edu.Sys.Models
         private int _venueid;
         private DateTime? _sendtime = DateTime.Now;
 
-        private int _source;
-        private int _studentID;
-        private int _coachID;
-        private string _noticeTitle;
+        //private int _source;
+        //private int _studentID;
+        //private int _coachID;
+        //private string _noticeTitle;
 
 
 

@@ -15,8 +15,8 @@ function LoadMyCurriculum() {
         dataType: "json",
         async: false,
         data: { query: requestPrm },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data) {
 
             var str = "";
@@ -67,7 +67,7 @@ function LoadMyCurriculum() {
 
 
                 str += '<div class="courseT am-g">';
-                str += ' <a href=""> <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" alt="" class="am-u-sm-3 am-u-md-3 am-u-lg-3">';
+                str += ' <a href="CurriculumDetail/?cuid=' + c.CurriculumID + '&pkid='+c.PKID+'"> <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" alt="" class="am-u-sm-3 am-u-md-3 am-u-lg-3">';
                 str += ' <div class="am-u-sm-9 am-u-md-9 am-u-lg-9">';
 
                 str += '<p class="courseName">' + c.Title + '</p>';
@@ -78,7 +78,8 @@ function LoadMyCurriculum() {
                 str += ' </div> </a>  ';
           
                 str += ' <div class="am-checkbox am-u-sm-1 am-u-md-1 am-u-lg-1 ClassX">';
-                str += " <button type='button' onclick='CurriculumStudent(" + c.PKID + "," + $("#hdCoachID").val() + "," + c.CurriculumID + ")' class='order-btn'>详细</button>";
+            //    str += " <button type='button' onclick='CurriculumStudent(" + c.PKID + "," + $("#hdCoachID").val() + "," + c.CurriculumID + ")' class='order-btn'>详细</button>";
+                str += ' <a href="CurriculumDetail/?cuid=' + c.CurriculumID + '&pkid=' + c.PKID + '">详细</a>';
                 str += ' </div>';
 
                 // }

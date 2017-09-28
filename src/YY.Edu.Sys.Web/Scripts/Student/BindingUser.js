@@ -1,12 +1,12 @@
 ﻿
 jQuery.support.cors = true;
 
-function Save(url,furl)
+function Save(url,furl,VenueID)
 {
     var PostUrl = "http://localhost:53262/api/Student/Create/";
   
 
-        parm = { UserName: $("#txtMobile").val(), Pwd: $("#txtMobile").val(), FullName: $("#txtFullName").val(), NickName: $("#txtTitle").val(), Mobile: $("#txtMobile").val(), Address: $("#txtAddress").val(), ParentFullName: $("#txtParentFullName").val(), ParentMobile: $("#txtParentMobile").val(), HeadUrl: $("#hdHeadUrl").val(), VenueID: $("#hdVenueID").val(), BirthDate: $("#txtBirthDate").val(), OpenID: $("#hdOpenID").val() };
+    parm = { UserName: $("#txtMobile").val(), Pwd: $("#txtMobile").val(), NickName: $("#txtNickName").val(), FullName: $("#txtFullName").val(), NickName: $("#txtTitle").val(), Mobile: $("#txtMobile").val(), Address: $("#txtAddress").val(), ParentFullName: $("#txtParentFullName").val(), ParentMobile: $("#txtParentMobile").val(), HeadUrl: $("#hdHeadUrl").val(), VenueID: VenueID, BirthDate: $("#txtBirthDate").val(), OpenID: $("#hdOpenID").val() };
    
 
     $.ajax({
@@ -79,17 +79,18 @@ $('#btnSave').bind('click', function () {
 
 function IsExisitVCode()
 {
-    var PostUrl = "http://localhost:53262/api/Student/Create/";
-
+    var PostUrl = "http://localhost:53262/api/Student/IsExisitVenueByVCode/";
+   
     $.ajax({
-        type: "POST",
+        type: "get",
         url: PostUrl,
         contentType: "application/json",
         data: { VenueCode: $("#txtCode").val() },
         success: function (data) {
+         
             var c = data[0];
             if (c != null && c.VenueName != "") {
-                Save('', '');
+                Save('', '', c.VenueID);
             }
             else {
                   alert('场馆代码不存在，快去核实下吧')

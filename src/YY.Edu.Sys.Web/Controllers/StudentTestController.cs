@@ -22,7 +22,8 @@ namespace YY.Edu.Sys.Web.Controllers
 
                 if (ViewBag.Me == null|| ViewBag.Me=="null")
                 {
-                    Response.Redirect("Coash/BindingUser");
+                  
+                    Response.Redirect("Student/BindingUser/?opid="+ Session["OpenId"] + "&url=http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLmqP7fEiaQdThp5Q9KH0TZEvoAut4dex2zicNNsa7iccRfMcJzbw34jQoATDLZ2j4OibErMpGriboOIsg/0&name=我是2017");
                     return View();
                 }
                 else

@@ -137,7 +137,7 @@ img{
 	width: 5rem!important;
 	height:5rem;
 	margin-top: 0.3rem;
-}
+}@import url('file:///E:\MYProject\teacher系统\amaze\assets\css\index.css');
 .index_list li a>img{
 	width: 6rem;
 	height: 5rem;
@@ -149,7 +149,7 @@ img{
 	 filter:alpha(opacity=100 finishopacity=50 style=1 startx=0,starty=0,finishx=0,finishy=150) progid:DXImageTransform.Microsoft.gradient(startColorStr=#fff,endColorStr=#6cadd3,gradientType=0);
 background: -ms-linear-gradient(top, #fff,  #6cadd3);        /* IE 10 */
 background:-moz-linear-gradient(top,#fff,#6cadd3);/*火狐*/ 
-background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#fff), to(#6cadd3));/*谷歌*/ 
+background:-webkit@import url('file:///E:\MYProject\teacher系统\amaze\assets\css\index.css');-gradient(linear, 0% 0%, 0% 100%,from(#fff), to(#6cadd3));/*谷歌*/ 
 background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#6cadd3));      /* Safari 4-5, Chrome 1-9*/
 background: -webkit-linear-gradient(top, #fff, #6cadd3);   /*Safari5.1 Chrome 10+*/
 background: -o-linear-gradient(top, #fff, #6cadd3);  /*Opera 11.10+*/
@@ -623,4 +623,46 @@ background: -o-linear-gradient(top, #fff, #6cadd3);  /*Opera 11.10+*/
 }
 .am-input-group-btn{
 	font-size: 1.6rem!important;
+}
+
+/*成长*/
+._GROW>div li p{
+	font-size: 1.3rem;
+}
+#my-alert{
+	color: #000!important;
+}
+#my-alert .am-radio label{
+	display: inline-block!important;
+}
+#my-alert .am-radio {
+	margin-top: 1rem!important;
+}
+.am-form-group label{
+	font-weight: normal;
+}
+.GROW .am-form-group{
+	margin-bottom: 0!important;
+}
+.am-form-group select{
+	margin-top: 1rem!important;
+}
+.am-modal-hd,.am-modal-bd{
+	padding: 0!important;
+}
+.am-modal-bd input{
+	margin: 1rem 1rem 0 0!important;
+	font-size: 1.3rem;
+	padding: 0.2rem;
+}
+._GR_send {
+	margin: 1rem auto!important;
+}
+.am-modal-hd{
+	border-bottom: 0.05rem solid #c0c0c0;
+}
+.am-modal-footer .am-btn{
+	margin: 0 auto!important;
+	padding: 0.1rem 1rem!important;
+	background-color: #afdf6e;
 }

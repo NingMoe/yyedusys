@@ -7,8 +7,8 @@ function LoadInfo() {
         dataType: "json",
         async: false,
         data: { PKID: $("#hdID").val() },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data) {
             var c = data[0];
 
@@ -39,8 +39,8 @@ function GetStudent()
         dataType: "json",
         async: false,
         data: { pkid: $("#hdID").val() },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data) {
             $.each(data, function (i, c) {
 
@@ -91,8 +91,8 @@ function StudentLeave(pkid, coachid, studentid,venueid)
         dataType: "json",
         async: false,
         data: { State:2, StudentIDs:studentid, pkid:pkid,VenueID:venueid,CoachID:coachid },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data, status) {
             if (status == "success") {
                 alert("代学生请假成功");
@@ -111,8 +111,8 @@ function SignLeave(pkid, coachid, studentid) {
         dataType: "json",
         async: false,
         data: { State: 1, StudentIDs: studentid, pkid: pkid },
-        beforeSend: function () {
-        },
+        //beforeSend: function () {
+        //},
         success: function (data, status) {
             if (status == "success") {
                 alert("签到提交成功");
