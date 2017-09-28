@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>海豚驾考</title>
+        <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="format-detection" content="telephone=no, email=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="stylesheet" type="text/css" href="css/common.css">
+        <link rel="stylesheet" type="text/css" href="css/dialog.css">
+        <link rel="stylesheet" type="text/css" href="css/amortize/writeinfo.css">
+    </head>
+    <body>
+        <div class="topbar">
+            <h2>填写资料</h2>
+        </div>
+        <div class="block baseinfo">
+            <ul>
+                <li>申请人：王某某</li>
+                <li>手机号：13344556677</li>
+                <li>身份：学生</li>
+            </ul>
+            <ul>
+                <li>分期数：<span class="red">4期</span></li>
+                <li>贷款金额：<span class="yellow">4000元</span></li>
+                <li>每月应还：<span class="yellow">1000元</span></li>
+            </ul>
+        </div>
+        <div class="block">
+            <div class="ipt-wrap">
+                <input name="sfz" type="text" placeholder="请输入身份证号" />
+            </div>
+            <div class="ipt-wrap">
+                <input name="xm" type="text" placeholder="请填写所在学校名称（输入学校全称）" />
+            </div>
+            <div class="ipt-wrap ipt-wrap2">
+                <div class="sel-wrap">
+                    <span>请选择年级</span>
+                     <select name="nianji">
+                        <option>大一</option>
+                        <option>大一</option>
+                        <option>大一</option>
+                        <option>大四</option>
+                        <option>研一</option>
+                        <option>研二</option>
+                        <option>研三</option>
+                    </select>                    
+                </div>
+                <input name="bj" type="text" placeholder="请输入班级（专业+班级）">
+            </div>
+        </div>
+        <div class="block">
+            <div class="ipt-wrap ipt-wrap2">
+                <input name="fq" type="text" placeholder="请输入父亲姓名" />
+                <input name="fq_dh" type="text" placeholder="请输入父亲手机号">
+            </div>
+            <div class="ipt-wrap ipt-wrap2">
+                <input name="mq" type="text" placeholder="请输入母亲姓名" />
+                <input name="mq_dh" type="text" placeholder="请输入母亲手机号">
+            </div>
+            <div class="ipt-wrap ipt-wrap2">
+                <input name="fdy" type="text" placeholder="请输入辅导员姓名" />
+                <input name="fdy_dh" type="text" placeholder="请输入辅导员手机号">
+            </div>
+        </div>
+        <div class="btn-wrap">
+            <a class="btn btn-blue">提交</a>
+        </div>
+        <script src="js/zepto.min.js"></script>
+        <script src="js/dialog.js"></script>
+        <script>
+        $(function(){
+            (function(){
+                var sel = $('[name=nianji]');
+                $('.sel-wrap').on('click', function(e){
+                    sel.focus();
+                });
+                sel.on('change', function(){
+
+                    $('.sel-wrap span').addClass('selected').html($(this).val())
+                })
+
+            }());
+
+            var des = {  
+                sfz     : '身份证',
+                xm      : '学校姓名',
+                nianji  : '年级',
+                bj      : '班级和专业',
+                fq      : '父亲姓名',
+                fq_dh   : '父亲电话',
+                mq      : '母亲姓名',
+                mq_dh   : '母亲电话',
+                fdy     : '辅导员姓名',
+                fdy_dh  : '辅导员电话'
+            };
+            $('.btn-blue').click(function(e){
+                var ele;
+
+                ele = $('[name="sfz"]');
+                if(ele.val()!= '' && !/^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/
+.test(ele.val())){
+                    showError(ele, '请填写有效的身份证号')
+                    return;
+                }
+
+                for(var name in des){
+                    ele = $('[name="'+name+'"');
+
+                    if(name == 'nianji'){
+                        if($('.sel-wrap span').html() == '请选择年级'){
+                            showError(ele, '请选择年级');
+                            return;
+                        }
+                        continue;
+                    }
+                    if($.trim(ele.val())== ''){
+                        showError(ele, '请填写'+ des[name]);
+                        // ele.focus();
+                        return false;
+                    }
+                }
+                
+                var phoneReg = /1\d{10}/;
+                ele = $('[name=fq_dh]');
+                if( !phoneReg.test($.trim(ele.val()))){
+                    showError(ele, '请填写正确的'+des['fq_dh']);
+                    // ele.focus();
+                    return;
+                }
+                ele = $('[name=mq_dh]');
+                if(!phoneReg.test($.trim(ele.val()))){
+                    showError(ele, '请填写正确的'+des['mq_dh']);
+                    // ele.focus();
+                    return;
+                }
+                ele = $('[name=fdy_dh]');
+                if(!phoneReg.test($.trim(ele.val()))){
+                    showError(ele, '请填写正确的'+des['fdy_dh']);
+                    // ele.focus();
+                    return;
+                }                
+                
+            });
+            function showError(ele, msg){
+                $.dialog({
+                    title:msg,//'提示',
+                    // content:msg,
+                    btns:{
+                        yes:'继续'
+                        // no:'放弃'
+                    },
+                    on:{
+                        yes:function(){
+                            // alert('单击了继续');
+                            $.dialog.close();
+                            ele.focus();
+                        },
+                        no:function(){
+                            // alert('单击了放弃');
+                            $.dialog.close();
+                            ele.focus();
+                        }
+                    }
+                });
+            }
+        })
+        </script>
+    </body>
+</html>

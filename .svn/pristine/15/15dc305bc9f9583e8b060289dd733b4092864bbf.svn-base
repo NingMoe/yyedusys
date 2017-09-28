@@ -1,0 +1,161 @@
+﻿@{
+    ViewBag.Title = "场馆系统";
+    ViewBag.SubTitle = "公告管理";
+}
+
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+}
+
+@Styles.Render("~/AdminLTE/plugins/datatables/css")
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">查询条件</h3>
+                <a href="@Url.Action("Create", "VenueNotice")" class="btn btn-info pull-right">
+                    添加
+                </a>
+            </div>
+            <form id="coachform" class="form-horizontal">
+                <div class="box-body">
+                    <div class="form-group">
+                        <input type="hidden" id="VenueID" name="VenueID" value="@ViewBag.venueId" />
+                        <label for="NoticeType" class="col-sm-2 control-label">公告类型</label>
+                        <div class="col-sm-2">
+                            <select id="NoticeType" name="NoticeType" class="form-control"></select>
+                        </div>
+                        <label for="NoticeType" class="col-sm-2 control-label">发布时间</label>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <input type="hidden" id="CurriculumPMTime" name="CurriculumPMTime" value="14:00-18:00" />
+                                <input type="time" class="form-control" id="timepicker_pm_start" value="14:00">
+                                <span class="input-group-addon">到</span>
+                                <div class="input-group-addon">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <input type="time" class="form-control" id="timepicker_pm_end" value="18:00">
+                                <div class="input-group-addon">
+                                    <input type="checkbox" id="timepicker_pm_check" name="timepicker_pm_check" checked />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button" class="btn btn-info pull-right" onclick="return bind_data();">查询</button>
+                        </div>
+                        </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">公告列表</h3>
+            </div>
+            <div class="box-body" id="demo">
+                <table id="coachtable" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>编号</th>
+                            <th>发布人</th>
+                            <th>类型</th>
+                            <th>内容</th>
+                            <th>添加时间</th>
+                            <th>通知范围</th>
+                            <th>发送时间</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="example-modal">
+        <div class="modal" id="setcoachwagemodal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">设置 <span class="btn btn-xs btn-success" id="coachname" name="coachname"></span> 教练工资</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="setcoachwageform" class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <input type="hidden" id="VenueID" name="VenueID" value="" />
+                                    <input type="hidden" id="CoachID" name="CoachID" value="" />
+                                    <label for="Wage" class="col-sm-2 control-label">教练工资</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="Wage" name="Wage" placeholder="教练工资">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" onclick="return setcoachwage();">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="example-modal">
+        <div class="modal" id="setcoachpricemodal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">设置 <span class="btn btn-xs btn-success" id="coachname" name="coachname"></span> 教练课时费</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="setcoachpriceform" class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <input type="hidden" id="VenueID" name="VenueID" value="" />
+                                    <input type="hidden" id="CoachID" name="CoachID" value="" />
+                                    <label for="Price" class="col-sm-3 control-label">教练课时费</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="Price" name="Price" placeholder="教练课时费">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" onclick="return setcoachprice();">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/AdminLTE/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")
+    @Scripts.Render("~/Scripts/SysManage/ManageBase")
+    @Scripts.Render("~/Scripts/SysManage/Coach")
+    @Scripts.Render("~/Scripts/SysManage/jquery.serializejson.min")
+    <script>
+        $(function () {
+            bind_data();
+        });
+    </script>
+}

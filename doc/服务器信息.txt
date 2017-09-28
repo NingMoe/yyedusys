@@ -1,0 +1,8 @@
+数据库 47.93.191.129 sa/Yiyukeji@2017.com
+svn https://47.93.191.129/svn/yyedusys/
+    zhaojunfu/*
+    liangdezhi/*
+
+阿里云 易宇fayacy yiyukeji2017
+
+主机 47.93.191.129  administrator/Yiyukeji-2017

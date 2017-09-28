@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>体育培训系统-学员</title>
+		<meta name="keywords" content="体育,培训,系统" />
+		<meta name="description" content="体育培训系统" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <link rel="stylesheet" href="css/amazeui.min.css" type="text/css" />
+	    <link rel="stylesheet" href="css/style.css" type="text/css" />
+	    <script type="text/javascript" src="js/jquery.min.js" ></script>
+		<script type="text/javascript" src="js/amazeui.min.js" ></script>
+	    <script type="text/javascript" src="js/LArea.js" ></script>
+	    <script type="text/javascript" src="js/LAreaData1.js" ></script>
+	    <script type="text/javascript" src="js/LAreaData2.js" ></script>
+		
+	    <script>
+	    	$(function(){
+	    		$(".shaixuan").click(function(){
+	    			$(".condition").fadeIn();
+	    		})
+	    		$(".return").click(function(){
+	    			$(".condition").fadeOut();
+	    		})
+	    	})
+	    </script>
+	</head>
+	<body>
+		<header data-am-widget="header" class="am-header am-header-default header-green1">
+	      <div class="am-header-left am-header-nav ">
+		        <a href="javascript:history.back()" style="color: #fff;"><i class="am-icon-chevron-left"></i></a>
+	        </div>
+		  <h1 class="am-header-title" style="color: #fff;">选课</h1>
+	      <div class="am-header-right am-header-nav shaixuan">
+	      	<a href="javascript:;" style="color: #fff;"><i class="iconfont">&#xe60f;</i></a>
+	      </div>
+       </header>
+       <div class="jl"></div>
+       <ul class="find">
+       	  <li>
+       	  	<a href="huo-detail.html">
+	       	  	<img class="tx" src="images/tx.png"/>
+	       	  	<div class="find-left">
+	       	  		<p class="name">丁俊晖 <em style="color:red;font:icon">￥120/课时</em></p>
+	       	  		<p class="style">乒乓球    <em>20级</em></p>
+	       	  		<p class="car">国家级教练，荣获一等奖</p>
+	       	  	</div>
+	       	  	<div class="find-right">
+						 <p><span class="city">冠军乒乓球俱乐部</span>	</p>
+						 <p><i class="time">课程:17-08-22 - 09-22</i></p>
+	       	  		<!-- <p class="car">客满</p> -->
+	       	  		<a href="tel:10086" class="tele"><i class="iconfont">&#xe610;</i></a>
+	       	  	</div>
+       	  	</a>
+       	  </li>
+       	  <li>
+       	  	<a href="huo-detail.html">
+	       	  	<img class="tx" src="images/tx.png"/>
+					 <div class="find-left">
+							<p class="name">刘国梁 <em style="color:red;font:icon">￥120/课时</em></p>
+							<p class="style">台球    <em>20级</em></p>
+							<p class="car">国家级教练，荣获一等奖</p>
+						</div>
+						<div class="find-right">
+							<p><span class="city">金冠台球俱乐部</span>	</p>
+							<p><i class="time">课程:17-08-22 - 09-22</i></p>
+							<a href="tel:10086" class="tele"><i class="iconfont">&#xe610;</i></a>
+						</div>
+       	  	</a>
+       	  </li>
+       	  
+       </ul>
+       <!--筛选条件-->
+       <div class="condition">
+	         <header data-am-widget="header" class="am-header am-header-default header-green1">
+			      <div class="am-header-left am-header-nav return">
+				        <a href="javascript:history.back()" style="color: #fff;"><i class="am-icon-chevron-left"></i></a>
+			        </div>
+				  <h1 class="am-header-title" style="color: #fff;">筛选</h1>
+	         </header>
+	         <div class="jl"></div>
+	         <p class="title">选择地区：</p>
+	       	 <div class="content-block">
+				<input id="demo1" type="text" readonly=""  style="text-indent: 0;" />
+				<input id="value1" type="hidden" value="20,234,504">
+			 </div>
+			 <p class="title">车长：</p>
+			 <ul class="car-chang">
+			 	<li class="current">不限</li>
+			 	<li>4.2米</li>
+			 	<li>4.5米</li>
+			 	<li>6.2米</li>
+			 	<li>6.8米</li>
+			 	<li>7.2米</li>
+			 	<li>8.2米</li>
+			 	<li>8.6米</li>
+			 	<li>9.6米</li>
+			 	<li>11.7米</li>
+			 	<li>12.5米</li>
+			 	<li>13米</li>
+			 	<li>13.5米</li>
+			 	<li>14米</li>
+			 	<li>17米</li>
+			 	<li>17.5米</li>
+			 	<li>12.5米</li>
+			 	<li>18米</li>
+			 </ul>
+			 <p class="title">车型：</p>
+			 <ul class="car-chang">
+			 	<li class="current">不限</li>
+			 	<li>平板</li>
+			 	<li>高栏</li>
+			 	<li>厢式</li>
+			 	<li>高低板</li>
+			 	<li>保温</li>
+			 	<li>冷藏</li>
+			 	<li>危险品</li>
+			 </ul>
+			 <button class="save" type="button">保存</button>
+       </div>
+       <!--筛选条件-->
+	   <div class="jl"></div>
+		 <div data-am-widget="navbar" class="am-navbar  dream-foot am-no-layout" id="">
+				<ul class="am-navbar-nav1 am-cf am-avg-sm-5">   
+						<li>
+						  <a href="index.html" class="curr">
+							  <span class="iconfont">&#xe60b;</span>
+							  <p class="am-navbar-label">首页</p>
+						  </a>
+						</li>
+						<li>
+						  <a href="nearby.html" class="">
+							  <span class="iconfont">&#xe60c;</span>
+							  <p class="am-navbar-label">附近</p>
+						  </a>
+						</li>
+						<li>
+						  <a href="find.html" class="">
+							  <span class="add"><i class="iconfont" style="font-size: 30px; line-height: 40px;">&#xe60e;</i></span>
+							  <p class="am-navbar-label" style="margin-top: -36px;">选课</p>
+						  </a>
+						</li>
+						<li>
+						  <a href="message.html" class="">
+							  <span class="iconfont">&#xe60d;</span>
+							  <p class="am-navbar-label">消息</p>
+						  </a>
+						</li>
+						<li>
+						  <a href="member.html" class="">
+							  <span class="iconfont">&#xe609;</span>
+							  <p class="am-navbar-label">个人中心</p>
+						  </a>
+						</li>
+					</ul>
+		</div>
+		<script src="js/LAreaData1.js"></script>
+		<script src="js/LAreaData2.js"></script>
+		<script src="js/LArea.js"></script>
+		<script>
+		var area1 = new LArea();
+		area1.init({
+			'trigger': '#demo1', 
+			'valueTo': '#value1', 
+			'keys': {
+				id: 'id',
+				name: 'name'
+			}, 
+			'type': 1, 
+			'data': LAreaData 
+		});
+		area1.value=[1,13,3];
+		var area2 = new LArea();
+		area2.init({
+			'trigger': '#demo2',
+			'valueTo': '#value2',
+			'keys': {
+				id: 'value',
+				name: 'text'
+			},
+			'type': 2,
+			'data': [provs_data, citys_data, dists_data]
+		});
+		</script>
+	</body>
+</html>

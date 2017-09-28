@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en" style="overflow: auto;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title></title>
+    <link rel="stylesheet" href="/Content/amazeui.min.css" />
+    <link rel="stylesheet" href="/Content/admin.css">
+    <link rel="stylesheet" href="/Content/index.css">
+    <link rel="stylesheet" href="/Content/iconfont.css">
+    <link rel="stylesheet" href="/font/iconfont.woff">
+    <link rel="stylesheet" href="/font/iconfont.eot">
+    <link rel="stylesheet" href="/font/iconfont.svg">
+    <link rel="stylesheet" href="/font/iconfont.ttf">
+</head>
+<body>
+    <div class="_compile">
+        <!-- 头部导航 -->
+        <header data-am-widget="header" class="am-header am-header-default">
+            <div class="am-header-left am-header-nav">
+                <a href="#left-link" class="">
+                    <i class="am-header-icon am-icon-arrow-left"></i>
+                </a>
+            </div>
+            <h1 class="am-header-title">
+                <a href="#title-link" class="">我</a>
+            </h1>
+        </header>
+        <!-- 内容部分 -->
+        <div class="CompileCon">
+            <div class="person_Img">
+                <img src="@ViewBag.HeadUrl" alt="" class="am-circle">
+               
+            </div>
+            <div class="ComFir am-g">
+                <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">昵称：</p>
+                <input type="text" placeholder="请输入昵称" class="am-u-sm-9 am-u-md-9 am-u-lg-9" id="txtNickName"  value="@ViewBag.NickName">
+            </div>
+            <div class="ComFir am-g">
+                <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">姓名：</p>
+                <input type="text" placeholder="请输入姓名" class="am-u-sm-9 am-u-md-9 am-u-lg-9" id="txtFullName">
+            </div>
+            
+            <div class="ComFir am-g">
+                <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">手机号：</p>
+                <input type="text" placeholder="请输入手机号" class="am-u-sm-9 am-u-md-9 am-u-lg-9" id="txtMobile">
+            </div>
+            <div class="ComFir am-g">
+                <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">住址：</p>
+                <input type="text" placeholder="请输入住址" class="am-u-sm-9 am-u-md-9 am-u-lg-9" id="txtAddress">
+            </div>
+            <div class="ComFir am-g">
+                <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">出生日期：</p>
+                <input type="text" placeholder="请输入出生日期" class="am-u-sm-9 am-u-md-9 am-u-lg-9" id="txtBirthDate">
+            </div>
+            <div class="ComFir am-g">
+                <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">家长姓名：</p>
+                <input type="text" placeholder="请输入家长姓名" class="am-u-sm-9 am-u-md-9 am-u-lg-9" id="txtParentFullName">
+            </div>
+            <div class="ComFir am-g">
+                <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">家长手机号：</p>
+                <input type="text" placeholder="请输入家长手机号" class="am-u-sm-9 am-u-md-9 am-u-lg-9" id="txtParentMobile">
+            </div>
+
+            <div class="ComFir am-g">
+                <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">场馆代码：</p>
+                <input type="text" placeholder="请输入场馆代码" class="am-u-sm-9 am-u-md-9 am-u-lg-9" id="txtCode">
+            </div>
+            <p class="reBUT textAlign"  id="btnSave">提交</p>
+        </div>
+        <input type="hidden" id="hdOpenID" value="@ViewBag.OpenID " />
+    </div>
+
+
+    <script src="/Scripts/jquery-1.12.0.min.js"></script>
+    <script src="/Scripts/app.js"></script>
+    <script src="/Scripts/amazeui.min.js"></script>
+    <script src="/Scripts/amazeui.ie8polyfill.min.js"></script>
+    <script src="/Scripts/Student/BindingUser.js"></script>
+</body>
+</html>

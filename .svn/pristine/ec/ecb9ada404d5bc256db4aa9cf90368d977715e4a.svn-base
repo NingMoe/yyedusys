@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>体育培训系统-学员</title>
+		<meta name="keywords" content="体育,培训,系统" />
+	    <meta name="description" content="体育培训系统" /><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <link rel="stylesheet" href="css/amazeui.min.css" type="text/css" />
+	    <link rel="stylesheet" href="css/style.css" type="text/css" />
+	    <script type="text/javascript" src="js/jquery.min.js" ></script>
+	    <script type="text/javascript" src="js/amazeui.min.js" ></script>
+	</head>
+	<body class="bgcolor">
+		<header data-am-widget="header" class="am-header am-header-default header-green1">
+	      <div class="am-header-left am-header-nav ">
+		        <a href="javascript:history.back()" style="color: #fff;"><i class="am-icon-chevron-left"></i></a>
+	        </div>
+		  <h1 class="am-header-title" style="color: #fff;">订单</h1>
+       </header>
+       <div class="jl"></div>
+       <ul class="order">
+       	 <li><a href="">进行中订单</a></li>
+       	 <li class="current"><a href="">已完成订单</a></li>
+       	 <li><a href="">已取消</a></li>
+       </ul>
+       <ul class="order-list">
+       	 <li>
+       	 	<p class="time">2016-9-5    17:02</p>
+       	 	<p class="address"><i class="iconfont">&#xe600;</i>北京朝阳 — 天津武清</p>
+       	 	<p class="cx"><i class="iconfont">&#xe612;</i>建材3吨  普通车型</p>
+       	 	<button type="button" class="order-btn">生存条码</button>
+       	 </li>
+       	 <li>
+       	 	<p class="time">2016-9-5    17:02</p>
+       	 	<p class="address"><i class="iconfont">&#xe600;</i>北京朝阳 — 天津武清</p>
+       	 	<p class="cx"><i class="iconfont">&#xe612;</i>建材3吨  普通车型</p>
+       	 	<button type="button" class="order-btn">生存条码</button>
+       	 </li>
+       	 <li>
+       	 	<p class="time">2016-9-5    17:02</p>
+       	 	<p class="address"><i class="iconfont">&#xe600;</i>北京朝阳 — 天津武清</p>
+       	 	<p class="cx"><i class="iconfont">&#xe612;</i>建材3吨  普通车型</p>
+       	 	<button type="button" class="order-btn">生存条码</button>
+       	 </li>
+       </ul>
+       <div class="jl"></div>
+		 <div data-am-widget="navbar" class="am-navbar  dream-foot am-no-layout" id="">
+		      <ul class="am-navbar-nav1 am-cf am-avg-sm-5">   
+		          <li>
+		            <a href="index.html" class="">
+		                <span class="iconfont">&#xe60b;</span>
+		                <p class="am-navbar-label">首页</p>
+		            </a>
+		          </li>
+		          <li>
+		            <a href="nearby.html" class="">
+		                <span class="iconfont">&#xe60c;</span>
+		                <p class="am-navbar-label">附近</p>
+		            </a>
+		          </li>
+		       <li>
+		            <a href="find.html" class="curr">
+		                <span class="add"><i class="iconfont" style="font-size: 30px; line-height: 40px;">&#xe60e;</i></span>
+		                <p class="am-navbar-label" style="margin-top: -36px;">找货</p>
+		            </a>
+		          </li>
+		          <li>
+		            <a href="message.html" class="">
+		                <span class="iconfont">&#xe60d;</span>
+		                <p class="am-navbar-label">货源消息</p>
+		            </a>
+		          </li>
+		          <li>
+		            <a href="member.html" class="">
+		                <span class="iconfont">&#xe609;</span>
+		                <p class="am-navbar-label">个人中心</p>
+		            </a>
+		          </li>
+		      </ul>
+		</div>
+	</body>
+</html>

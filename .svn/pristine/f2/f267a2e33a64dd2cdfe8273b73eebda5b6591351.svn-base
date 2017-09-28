@@ -1,0 +1,96 @@
+.clear{
+	clear: both;
+	display: block;
+	content: '';
+}
+address, blockquote, dl, fieldset, figure, hr, ol, p, pre, ul{
+	margin: 0;
+}
+.le{
+	float: left;
+}
+a{
+	display: block;
+	color: #3d3d3d;
+}
+
+p{
+	margin: 0!important;
+}
+ol, ul{
+	padding: 0!important;
+}
+li{
+	list-style: none;
+}
+img{
+	width: 100%;
+}
+.pr{
+	position: relative;
+}
+.font60{
+	font-size: 1.5rem;
+}
+.textAlign{
+	text-align: center;
+}
+.widthMax{
+	width: 100%;
+}
+.heightMax{
+	height: 100%;
+}
+.CourseDetail{
+	height: 50.5rem;
+	overflow: auto;
+}
+.CourseDetail_con{
+	width: 94%;
+	margin: 0 auto;
+}
+.CourseAnli>img{
+	width: 22%;
+	margin: 1%;
+}
+.am-thumbnails>li{
+	padding: 0!important;
+}
+.am-thumbnail{
+	margin-bottom: 0!important;
+}
+.CourseFooter_icon{
+	padding-top: 0.95rem;
+	display: block;
+}
+.CourseFooter{
+	position: fixed;
+	background-color: #ddd;
+	z-index: 999;
+	bottom: 0;
+}
+.CourseFooter>li:first-child{
+	border-right: 0.05rem solid #3d3d3d;
+}
+.CourseDetail_con1 {
+	margin: 2rem auto 1rem;
+}
+.CourseDetail_con1 li{
+	border-bottom: 0.05rem solid #ddd;
+	padding: 0.125rem 0;
+}  
+.CourseMU{
+	padding: 0.125rem 0;
+	font-weight: bold;
+}
+.CourseMU span{
+	font-weight: normal!important;
+}
+/*.CourseAnli{
+	border:0.05rem solid #ccc;
+	border-radius: 0.1rem;
+}*/
+.CourseAnli>p{
+	font-weight: bold;
+	padding: 0.5rem 0;
+}

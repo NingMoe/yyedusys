@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>我的预约学员</title>
+        <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="format-detection" content="telephone=no, email=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="stylesheet" type="text/css" href="css/common.css">
+        <link rel="stylesheet" type="text/css" href="css/reserve.css">
+    </head>
+    <body>
+        <div class="topbar">
+            <h2>预约详情</h2>
+        </div>
+        <div class="subtitle">
+            2015-07-17 下午（12:00 - 16：00）
+        </div>
+        <div class="list">
+            <div class="item">
+                <div class="name">学员姓名：张三(第1次约车)</div>
+                <div class="phone">学员手机：<a href="tel:13333333333">13333333333</a></div>
+                <div class="btn-wrap">
+                    <div class="btn btn-blue">学员进度管理</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="name">学员姓名：张三</div>
+                <div class="phone">学员手机：<a href="tel:13333333333">13333333333</a></div>
+                <div class="btn-wrap">
+                    <div class="btn btn-blue">学员进度管理</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="name">学员姓名：张三</div>
+                <div class="phone">学员手机：<a href="tel:13333333333">13333333333</a></div>
+                <div class="btn-wrap">
+                    <div class="btn btn-blue">学员进度管理</div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>海豚驾校</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/phone.css">
+</head>
+<body class="body-txt phone">
+    <div class="line-title">
+        <div class="txt" style="width:6em;">完善报名资料</div>
+        <div class="line"></div>
+    </div>
+    <form>
+        <div class="form-item form-phone">
+            <span>+86</span>
+            <input name="phone" data-name="手机号" placeholder="请输入手机号" type="phone" maxlength="11" />
+        </div>
+        <div class="form-item form-cdoe">
+            <input name="code" data-name="验证码" placeholder="验证码" maxlength="4" />
+            <a class="sendcode" href="javascript:;">发送验证码</a>
+        </div>
+        <div class="form-item">
+            <input name="name" data-name="姓名" placeholder="请输入您的姓名" maxlength="11" />
+        </div>
+        <div class="form-item height">
+            <input name="heigh" data-name="身高" placeholder="请输入您的身高" type="phone"/>
+            <span>CM</span>
+        </div>
+        <a href="#" class="btn btn-blue">
+            提交
+        </a> 
+    </form>
+    <script src="js/zepto.min.js"></script>
+    <script src="js/phone.js"></script>    
+</body>
+</html>

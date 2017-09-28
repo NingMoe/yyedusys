@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="/Content/amazeui.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="/Content/style.css" type="text/css" />
+
+    <script src="/Scripts/jquery.min.js"></script>
+    <script src="/Scripts/amazeui.min.js"></script>
+</head>
+<body class="bgcolor">
+    <header data-am-widget="header" class="am-header am-header-default header-green1">
+        <div class="am-header-left am-header-nav ">
+            <a href="javascript:history.back()" style="color: #fff;"><i class="am-icon-chevron-left"></i></a>
+        </div>
+        <h1 class="am-header-title" style="color: #fff;">我的消息</h1>
+    </header>
+    <div class="jl"></div>
+
+    <ul class="order-list" id="list"></ul>
+    <div class="am-list-news-ft" id="btnMore"><a class="am-list-news-more am-btn am-btn-default" href="###">更多消息 »</a></div>
+
+
+    <div class="jl"></div>
+    <input type="hidden" id="hdPageIndex" value="1" />
+    <input type="hidden" id="hdPageSize" value="4" />
+
+    <div data-am-widget="navbar" class="am-navbar  dream-foot am-no-layout" id="">
+        <ul class="am-navbar-nav1 am-cf am-avg-sm-5" id="sList">
+            <li>
+                <a href="index.html" class="curr">
+                    <span class="iconfont">&#xe60b;</span>
+                    <p class="am-navbar-label">首页</p>
+                </a>
+            </li>
+            <li>
+                <a href="nearby.html" class="">
+                    <span class="iconfont">&#xe60c;</span>
+                    <p class="am-navbar-label">附近</p>
+                </a>
+            </li>
+            <li>
+                <a href="find.html" class="">
+                    <span class="add"><i class="iconfont" style="font-size: 30px; line-height: 40px;">&#xe60e;</i></span>
+                    <p class="am-navbar-label" style="margin-top: -36px;">选课</p>
+                </a>
+            </li>
+            <li>
+                <a href="message.html" class="">
+                    <span class="iconfont">&#xe60d;</span>
+                    <p class="am-navbar-label">消息</p>
+                </a>
+            </li>
+            <li>
+                <a href="member.html" class="">
+                    <span class="iconfont">&#xe609;</span>
+                    <p class="am-navbar-label">个人中心</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+    <script src="/Scripts/Coash/MyNotice.js"></script>
+</body>
+</html>

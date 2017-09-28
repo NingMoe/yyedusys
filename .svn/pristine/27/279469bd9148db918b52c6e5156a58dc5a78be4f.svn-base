@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>汕头市润信物流有限公司</title>
+		<meta name="keywords" content="汕头市润信物流有限公司,汕头物流配送,汕头物流,汕头物流货运,汕头货运,全国货运,厦门物流配送,深圳物流配送,广州物流配送,物流配送,物流货运,货运配送" />
+	    <meta name="description" content="汕头市润信物流有限公司是一家承接全国各地门到门配送业务的专业第三方物流，为企业量身定做仓储、配送物流方案，针对大小客户配备专业项目小组进行专人专车对接。" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <link rel="stylesheet" href="css/amazeui.min.css" type="text/css" />
+	    <link rel="stylesheet" href="css/style.css" type="text/css" />
+	    <script type="text/javascript" src="js/jquery.min.js" ></script>
+	    <script type="text/javascript" src="js/amazeui.min.js" ></script>
+	</head>
+	<body class="bgcolor">
+		<header data-am-widget="header" class="am-header am-header-default header-green1">
+	      <div class="am-header-left am-header-nav ">
+		        <a href="javascript:history.back()" style="color: #fff;"><i class="am-icon-chevron-left"></i></a>
+	        </div>
+		  <h1 class="am-header-title" style="color: #fff;">个人中心</h1>
+       </header>
+       <div class="jl"></div>
+       <div class="member">
+			<div class="mem-tit">18720083619<a href="step.html" class="step"><img src="images/step.png" width="26"></a></div>
+			<div class="mem-pic">
+                 <div class="mem-pic-bg" style=" background-image:url(images/tx.png)"></div>									
+			</div>
+			
+			<ul class="member-menu">
+	            <li>
+					<a href="message.html">
+						<p>0</p>
+						<p>消息 </p>
+					</a>
+				</li>
+				<li>
+					<a href="fans.html">
+						<p>0</p>
+						<p>粉丝 </p>
+					</a>
+				</li>
+				<li>
+					<a href="attention.html">
+						<p>0</p>
+						<p>关注 </p>
+					</a>
+				</li>
+		   </ul>
+	   </div>
+	   <ul class="member-list">
+	     	<li>
+				<a href="information.html">
+					<img src="images/icon07.png">
+					<span>个人信息</span>
+					<i class="am-icon-angle-right"></i>
+				</a>
+			</li>
+			<li>
+				<a href="message.html">
+					<img src="images/icon01.png">
+					<span>我的消息</span>
+					<i class="am-icon-angle-right"></i>
+				</a>
+			</li>
+			<li>
+				<a href="order.html">
+					<img src="images/icon02.png">
+					<span>我的订单</span>
+					<i class="am-icon-angle-right"></i>
+				</a>
+			</li>
+			<li>
+				<a href="money.html">
+					<img src="images/icon03.png">
+					<span>我的钱包</span>
+					<i class="am-icon-angle-right"></i>
+				</a>
+			</li>
+		</ul>
+		 <ul class="member-list">
+			<li>
+				<a href="tel:10086">
+					<img src="images/icon04.png">
+					<span>在线客服</span>
+					<i class="am-icon-angle-right"></i>
+				</a>
+			</li>
+			<li>
+				<a href="myupload.html">
+					<img src="images/icon06.png">
+					<span>我的帖子</span>
+					<i class="am-icon-angle-right"></i>
+				</a>
+			</li>
+		</ul>
+		 <ul class="member-list">
+			
+			<li>
+				<a href="share.html">
+					<img src="images/icon08.png">
+					<span>邀请好友</span>
+					<i class="am-icon-angle-right"></i>
+				</a>
+			</li>
+		</ul>
+       <div class="jl"></div>
+		 <div data-am-widget="navbar" class="am-navbar  dream-foot am-no-layout" id="">
+		      <ul class="am-navbar-nav1 am-cf am-avg-sm-5">   
+		          <li>
+		            <a href="index.html" class="">
+		                <span class="iconfont">&#xe60b;</span>
+		                <p class="am-navbar-label">首页</p>
+		            </a>
+		          </li>
+		          <li>
+		            <a href="nearby.html" class="">
+		                <span class="iconfont">&#xe60c;</span>
+		                <p class="am-navbar-label">附近</p>
+		            </a>
+		          </li>
+		       <li>
+		            <a href="find.html" class="">
+		                <span class="add"><i class="iconfont" style="font-size: 30px; line-height: 40px;">&#xe60e;</i></span>
+		                <p class="am-navbar-label" style="margin-top: -36px;">找货</p>
+		            </a>
+		          </li>
+		          <li>
+		            <a href="message.html" class="">
+		                <span class="iconfont">&#xe60d;</span>
+		                <p class="am-navbar-label">货源消息</p>
+		            </a>
+		          </li>
+		          <li>
+		            <a href="member.html" class="curr">
+		                <span class="iconfont">&#xe609;</span>
+		                <p class="am-navbar-label">个人中心</p>
+		            </a>
+		          </li>
+		      </ul>
+		</div>
+		<div id="msg_bh" style="display:none; width:100%; height:100%; z-index: 9999; background: rgba(0,0,0,0.8); position: fixed; top: 0; left: 0; "> 
+        	<p style="top: 45%; position: fixed; left: 42%;"><img src="images/loading.gif" width="50"/></p>
+        </div>
+
+		<script>
+			$(function(){
+			        $('.mem-pic-bg').click(function(){
+			            $('input[name=file]').click();
+			        })
+			        $('input[name=file]').change(function(){
+						$('#msg_bh').show();
+			            var fd = new FormData();
+			            fd.append("upload", 1);
+			            fd.append("img", $("input[name=file]").get(0).files[0]);
+			            $.ajax({
+			                url: "",
+			                type: "POST",
+			                processData: false,
+			                contentType: false,
+			                data: fd,
+			                success: function(d) {
+			              console.log(d);  
+			                    if(d.status){
+			                        $('.mem-pic-bg').css('background-image','url('+ d.info+')');
+									$('#msg_bh').hide();
+			                        location.reload();
+			                    }else{
+			                        alert(d.info);
+			                    }
+			                }
+			            });
+			        })
+			    });
+		</script>
+	</body>
+</html>

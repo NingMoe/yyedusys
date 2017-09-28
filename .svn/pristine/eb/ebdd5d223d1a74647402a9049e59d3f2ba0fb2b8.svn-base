@@ -1,0 +1,304 @@
+body{
+    background:#f2f2f2;
+}
+.price-list .month-list{
+    background-color: #82d2ff;
+}
+.price-list .month-list{
+    overflow: hidden;
+    padding: 0.4rem 0;
+    line-height: 1;
+    /*width:200%;*/
+}
+.price-list .month-list li{
+    width:19%;
+    display: inline-block;
+    text-align: center;
+    color: #fff;
+    padding: 0.5rem 0;
+}
+.price-list .month-list .price{
+    font-size:1rem;
+    margin-bottom: 0.3rem;
+    height: 1em;
+    line-height:1;
+}
+.price-list .month-list .month-current .month{
+    /*margin: 0.2rem 0;*/
+    font-size: 1.4rem;
+    font-weight: 900;
+    line-height: 1;
+}
+.price-list .month-list .month-current{
+    background-color: #4155af;
+    -webkit-border-radius: 0.25rem;
+    border-radius: 0.25rem;
+}
+
+.price-title{
+    font-size: 1.4rem;
+    color: #606785;
+    text-align: center;
+    line-height: 3;
+    /*line-height: 1;*/
+    /*padding-top:1em;*/
+}
+.price-title div{
+    padding: .8em 0 0;
+    font-size:.8em;
+}
+.price-title img{
+    height: 1em;
+    vertical-align: text-bottom;
+}
+
+.price-items{
+    /*padding:0 0.25rem;*/
+    width: 95%;
+    margin: 0 auto;
+}
+.price-info .overlay,.price-info .overlay{
+    color: #82d2ff;
+}
+.price-info em, .price-info s{
+    color: #babcc8;
+    font-size: 1.1rem;
+}
+
+.price-item{
+    padding:0.5rem;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    -webkit-border-radius:0.25rem;
+    border-radius:0.25rem;
+}
+.price-item .date{
+    border-bottom: 1px solid #f2f2f2;
+    font-size: 1.4rem;
+    color:#606785;
+}
+.price-item .price-info{
+    text-align: center;
+    padding-top: 0.5rem;    
+}
+.price-item .price-info .price-num{
+    display: block;
+    line-height: 1.5;
+    font-size: 1.7rem;
+}
+.price-item .price-info .price-wrap{
+    display: inline;
+    position: relative;
+}
+.price-item .price-info span{
+    font-size: 1.7rem;
+    display: block;
+}
+.price-item .price-info{
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;   
+    flex-flow: row;    
+}
+.price-item .price-info .price{
+    width: 4rem;
+}
+.price-item .price-info .percent{
+    width: 5rem;
+    height: 5rem;
+    text-align: right;
+    position: relative;
+}
+.price-item .price-info .percent input{
+    visibility: hidden;
+}
+.price-item .price-info span{
+    position: absolute;
+    left:50%;
+    top:50%;
+    font-size: 1rem;
+    width: 4em;
+    text-align: center;
+    -webkit-transform:translate(-50%,-50%);
+    transform:translate(-50%,-50%);    
+    color:#82d2ff;
+}
+.price-item .price-info span.full{
+    color:#dfdfdf
+  }
+.price-item .price-info .count{
+    -webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+    -webkit-flex: 1;          /* Chrome */
+    flex: 1; 
+}
+.dis{
+    position: absolute;
+    right: 0%;
+    -webkit-transform:translate(120%,-50%);
+    transform:translate(120%,-50%);
+    top: 50%;
+    font-size: 1rem;
+    width: 3.5rem;
+    background-color: #ff995b;
+    color: #fff;
+    line-height: 1;
+    padding: 0.25rem 0;
+    border-radius: 0.25rem;
+}
+.price-item .price-info s{
+    font-size: 1rem;
+    position: absolute;
+    left: 50%;
+    line-height: 1;
+    bottom: -1rem;
+    text-decoration: line-through;
+    -webkit-transform:translateX(-50%);
+    transform:translateX(-50%);
+}
+
+.line-title{
+    width: 95%;
+    margin: 0 auto;
+    height: 2.8rem;
+}
+.line-title .txt{
+    line-height: 2.8rem;
+}
+.line-title .line{
+    border-top:1px solid #afb3c2;
+}
+
+.price-list2 .price-item .price-info .price{
+    width: 7rem;
+}
+.price-list2 .price-item .price-info .percent{
+    width: 9em;
+}
+.price-list2 .price-item .price-info span{
+    width: 74%;
+    right:-40%;
+    left: auto;
+    line-height: 1.2;
+    top: 50%;
+}
+.price-list2 .price-item .price-info .percent em{
+    font-size: 1.5rem;
+    color: #82d2ff;
+}
+
+.price-list2 .price-item .price-info .percent{
+    height: 6em;
+}
+.price-list2 .date{
+    vertical-align: middle;
+    position: relative;
+}
+.price-list2 .date a,
+.pre-baoming2 .per-bm a{
+    position: absolute;
+    right: .25em;
+    bottom: .3rem;
+    margin-top: .3rem;
+    vertical-align: middle;
+    background: #4155af;
+    color: #fff;
+    line-height: 1;
+    padding: .4rem .5em;
+    font-size: 1rem;
+    -webkit-border-radius: .5em;
+    border-radius: .5em;
+}
+.price-list2 .price-item .price-info .price-wrap{
+    color: #ff995b;
+}
+
+.price-list2 .price-none .price-info .price-wrap{
+    color: #babcc8;
+}
+.price-list2 .price-none .dis{
+    background: #babcc8;
+}
+.price-list2 .price-title{
+    line-height: 1;
+    padding-top: 1em;
+}
+
+.pre-baoming2 .price-title{
+    padding: 1em 0;
+    line-height: 1.8;
+    color: #606785;
+}
+.pre-baoming2 .price-title a{
+    background-color: #4155af;
+    color: #fff;
+    font-size: 1.3rem;
+    padding: .5rem 1rem;
+    border-radius:.5rem;
+}
+.pre-baoming2 .per-bm{
+    height: 2em;
+    width: 6em;
+    position: relative;
+}
+.pre-baoming2{
+    padding-bottom: .5em;
+}
+.price-list2 .line-title{
+    margin-top: .5rem;
+}
+.knowit-wrap{
+    background: #fff;
+    position: fixed;
+    width:85%;
+    /*margin-left: 10%;*/
+    left: 50%;
+    top: 50%;
+    -webkit-transform:translate(-50%,-50%);
+    transform:translate(-50%,-50%);
+    /*height: 100%;*/
+    z-index: 10;
+    padding:1rem 1rem;
+    -webkit-border-radius:1rem;
+    border-radius:1rem;
+    /*top: 0;;*/
+}
+.knowit-wrap .title{
+  font-size: 1.5rem;
+  color: #4155af;
+  text-align: center;
+  line-height: 2;
+}
+.knowit-wrap .txt-panel{
+    margin: 0;
+}
+.knowit-wrap .txt-title{
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #000;
+}
+.knowit-wrap .txt-data-table{
+    color: #000;
+    line-height: 1.2;
+}
+.knowit-wrap .txt-ul{
+    /*margin-left: 1em;*/
+    width:100%;
+    padding:0;
+    list-style:disc inside;    
+}
+.knowit-wrap .txt-ul li{
+    line-height: 2;
+    margin-bottom: 0;
+    padding-left: 0;
+    display: list-item;
+    list-style:disc inside;
+}
+.knowit-wrap .btn{
+    margin-top: .5rem;
+}
+@media screen and (max-height: 450px) {
+
+    .knowit-wrap .txt-ul li{
+        line-height: 1.5;
+    }
+}

@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "运营系统";
+    ViewBag.SubTitle = "场馆管理";
+}
+
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+}
+
+@Styles.Render("~/AdminLTE/plugins/datatables/css")
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">查询条件</h3>
+            </div>
+            <form id="venuefrom" class="form-horizontal">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="VenueName" class="col-sm-1 control-label">场馆名称</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="VenueName" name="VenueName" placeholder="场馆名称">
+                        </div>
+                        <label for="LinkManMobile" class="col-sm-1 control-label">联系人电话</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="LinkManMobile" name="LinkManMobile" placeholder="联系人电话">
+                        </div>
+                        <label for="LinkMan" class="col-sm-1 control-label">联系人姓名</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="LinkMan" name="LinkMan" placeholder="联系人姓名">
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button" class="btn btn-info pull-right" onclick="return bind_data();">查询</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">场馆列表</h3>
+                <a href="@Url.Action("Create", "Venue")" class="btn btn-info pull-right">
+                    添加场馆
+                </a>
+            </div>
+            <div class="box-body" id="demo">
+                <table id="venuetable" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>编号</th>
+                            <th>场馆编码</th>
+                            <th>场馆名称</th>
+                            <th>场馆地址</th>
+                            <th>联系人</th>
+                            <th>联系人电话</th>
+                            <th>法人</th>
+                            <th>添加时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/AdminLTE/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")
+    @Scripts.Render("~/Scripts/SysManage/ManageBase")
+    @Scripts.Render("~/Scripts/SysManage/Venue")
+    @Scripts.Render("~/Scripts/SysManage/jquery.serializejson.min")
+    <script>
+    $(function () {
+        bind_data();
+    })
+    </script>
+}

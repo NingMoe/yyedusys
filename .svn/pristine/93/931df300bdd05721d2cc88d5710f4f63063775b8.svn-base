@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "场馆系统";
+    ViewBag.SubTitle = "工资管理";
+}
+
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+}
+
+@Styles.Render("~/AdminLTE/plugins/datatables/css")
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">查询条件</h3>
+            </div>
+            <form id="coachwagesfrom" class="form-horizontal">
+                <div class="box-body">
+                    <div class="form-group">
+                        <input type="hidden" id="VenueID" name="VenueID" value="@ViewBag.venueId" />
+                        <label for="CoachID" class="col-sm-1 control-label">教练</label>
+                        <div class="col-sm-3">
+                            <select id="CoachID" name="CoachID" class="form-control"></select>
+                        </div>
+                        <label for="State" class="col-sm-1 control-label">状态</label>
+                        <div class="col-sm-2">
+                            <select id="State" name="State" class="form-control">
+                                <option value="-1" selected>全部状态</option>
+                                <option value="0">未发</option>
+                                <option value="1">已发</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="StartWorkDate" class="col-sm-1 control-label">时间</label>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="month" class="form-control" id="StartWorkDate" name="StartWorkDate">
+                                <span class="input-group-addon">到</span>
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="month" class="form-control" id="EndWorkDate" name="EndWorkDate">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button" class="btn btn-info pull-right" onclick="return bindCoachWagesData();">查询</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">工资列表</h3>
+            </div>
+            <div class="box-body" id="demo">
+                <table id="coachwagestable" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>选择</th>
+                            <th>编号</th>
+                            <th>教练</th>
+                            <th>工作日期</th>
+                            <th>工资</th>
+                            <th>状态</th>
+                            <th>工资录入时间</th>
+                            <th>工资发放时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <button type="button" class="btn btn-primary pull-left" style="margin-left:10px;" id="selectAll">全选</button>&nbsp;&nbsp;
+        <button type="button" class="btn btn-primary pull-left" style="margin-left:10px;" id="unSelect">全不选</button>&nbsp;&nbsp;
+        <button type="button" class="btn btn-primary pull-left" style="margin-left:20px;" id="coachWagesSave">录入工资</button>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/AdminLTE/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")
+    @Scripts.Render("~/Scripts/SysManage/ManageBase")
+    @Scripts.Render("~/Scripts/SysManage/LoadData")
+    @Scripts.Render("~/Scripts/SysManage/CoachWages")
+    @Scripts.Render("~/Scripts/SysManage/jquery.serializejson.min")
+    @Scripts.Render("~/Scripts/SysManage/StateTranstion")
+    <script>
+
+
+        $(function () {
+
+            var ddd = new Date();
+            var day = ddd.getDate();
+
+            if (ddd.getMonth() < 10) {
+                var month = "0" + (ddd.getMonth());
+            }
+
+            if (ddd.getDate() < 10) {
+                day = "0" + ddd.getDate();
+            }
+
+            var datew = ddd.getFullYear() + "-" + month;
+            var datew = datew.toString();
+
+            $("#StartWorkDate").val(datew);
+            $("#EndWorkDate").val(datew);
+
+            var venueId = $("#VenueID").val();
+            showCoach(venueId);
+        })
+
+    </script>
+}

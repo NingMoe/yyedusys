@@ -1,0 +1,122 @@
+.txt-panel{
+    width: 95%;
+    margin: 0.5rem auto;
+}
+.blue-wrapbox{
+    padding: 0
+}
+h2{
+    text-align: center;
+    line-height: 3em;
+    font-size: 1.7rem;
+}
+.time-info{
+    padding: 1em 0;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;   
+    flex-flow: row;    
+}
+.info-item{
+    text-align: center;
+    -webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+    -webkit-flex: 1;          /* Chrome */
+    flex: 1; 
+}
+.info-item:nth-child(2){
+    position: relative;
+}
+.info-item:nth-child(2) .line{
+    position: absolute;
+    height: 80%;
+    left: -1px;
+    top: 15%;
+    border-left: 1px solid #a0aad7;
+}
+.info-title{
+    font-size: 1.2rem;
+    color: #a0aad7;
+}
+.info-text{
+    font-size: 2.1rem;
+    line-height: 1;
+}
+.txt1{
+    font-size: 1.4rem;
+    vertical-align:middle
+}
+.txt1 img{
+    height:1.8rem; 
+    vertical-align:-5px
+}
+.txt1 a{
+    float: right;
+    text-decoration: underline;
+    color: #4155af;
+}
+.txt-box{
+    padding:.5rem;
+}
+.txt-box p{
+    color: #babcc8;
+}
+
+.txt-box span{
+    font-size:1.3rem;
+}
+.cartype-box{
+    padding:1rem 0;
+}
+.cartype-box .item{
+    display: inline-block;
+    width:49%;
+    text-align: center;
+}
+.cartype-box .item img{
+    width: 69%;
+}
+.price .txt1{
+    font-size: 1.8rem;
+    text-align: center;
+}
+.price em{
+    font-size: 1.3rem;
+}
+.course2 .time-info{
+    text-align: center;
+    display: block;
+}
+.course2 .time-info .info-text{
+    display: inline-block;
+    font-size: 1.8rem;
+}
+.course2 .txt{
+    line-height: 1;
+    text-align: center;
+    color: #f2f2f2;
+}
+.course2 .txt3{
+    font-size: 1.8rem;
+    text-align: center;
+}
+.course2 .txt-box ul{
+    padding: 0 1em 0 1.5em;
+}
+.course2 .txt-box ul li{
+    font-size: 1.2rem;
+    list-style-type: disc;
+}
+.course2 .txt-box ul li a{
+    color: #606785;
+    text-decoration: underline;
+}
+
+.course2 .cartype-box .item{
+    font-size: 1.4rem;
+    width:auto;
+    margin-left: 1em;
+}
+.course2 .price .txt3{
+    color:#ff995b;
+}
+}

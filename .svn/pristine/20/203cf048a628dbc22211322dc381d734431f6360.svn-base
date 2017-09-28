@@ -1,0 +1,24 @@
+.items{
+    font-size: 1rem;
+    color: #606785;
+}
+.items table{
+    width: 100%;
+}
+.item{
+    padding: 0.6rem 0;
+    background-color: #fff;
+    margin-top: 0.833333rem
+}
+.item .btn{
+    font-size: 1.25rem;
+    line-height:2.5;
+    width: 90%;
+}
+.item td{
+    text-align: center;
+    height: 1.666667rem;
+}
+.first{
+    min-width: 3em;
+}

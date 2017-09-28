@@ -1,0 +1,89 @@
+.txt-panel{
+    margin: 0.5rem
+}
+
+.apply-list{
+    padding:0 0.25em;
+}
+.apply-wrap{
+    border-bottom:1px solid #f2f2f2;    
+    padding:1em 0;
+}
+.apply-item{
+    width: 49%;
+    display: inline-block;
+    vertical-align: top;
+}
+.apply-item:nth-child(2){
+    border-left:1px solid #f2f2f2;
+}
+.item-name{
+    font-size: 1.2rem;
+    color: #afb3c2;
+    margin-left: 4rem;
+    position: relative;
+}
+.item-name img{
+    position: absolute;
+    width: 24%;
+    top: .5em;
+    left: -3em;
+}
+.item-txt{
+    margin-left: 4rem;
+    font-size: 1.5rem;
+}
+.use-ticket{
+    padding:0.5em;
+}
+.costCount{
+    padding: 1em 0;
+    text-align: center;
+}
+.cost-des{
+    font-size: 1rem;
+    color: #afb3c2;
+}
+.cost-price em{
+    font-size: 1rem;
+}
+.cost-price{
+    font-size: 1.6rem;
+}
+.btn-blue{
+    margin: 0 0.25rem;
+}
+.blue-pay img{
+    width: 28.2%;
+}
+.pay-list{
+    background: #fff;
+    border-radius: 0.4rem;
+    margin:.5rem .8rem;
+    text-align: center;
+    padding: 2em 0;
+}
+.pay-list .pay-item{
+    margin-bottom: 2em;
+    display: block;
+}
+.pay-list img{
+    width:83%;
+}
+.useTickBox{
+    position: relative;
+    font-size: 1.4rem;
+    margin: .5rem;
+}
+.useTickBox a{
+    color:#4155af;
+}
+.use-ticket{
+    font-size: 1.4rem;
+}
+.error{
+    color: #ff995b;
+    position: absolute;
+    left:0;
+    bottom:-3rem;
+}

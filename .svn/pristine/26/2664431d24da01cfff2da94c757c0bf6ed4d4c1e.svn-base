@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>海豚驾校</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">    
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no, email=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body class="body-txt">
+    <div class="line-title">
+        <div class="txt">线下支付方式</div>
+        <div class="line"></div>
+    </div>
+    <div class="txt-panel">
+        <div class="txt-title-wrap">
+            <div class="txt-title">
+                到店支付
+            </div>
+            <div class="line"></div>
+        </div>
+        <div class="txt-data-table dt-nopoint">
+            <ul>
+                <li>
+                    <div class="name">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</div>
+                    <div class="ctx">北京市海淀区知春路豪景大厦108号B座302室</div>
+                </li>
+                <li>
+                    <div class="name">联&nbsp;&nbsp;系&nbsp;&nbsp;人</div>
+                    <div class="ctx">XXX</div>
+                </li>
+                <li>
+                    <div class="name">联系电话</div>
+                    <div class="ctx">400-010-053</div>
+                </li>
+                <li>
+                    <div class="name">支付方式</div>
+                    <div class="ctx">支持银联卡、信用卡、现金支付</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="txt-panel">
+        <div class="txt-title-wrap">
+            <div class="txt-title">
+                去驾校支付
+            </div>
+            <div class="line"></div>
+        </div>
+        <div class="txt-data-table dt-nopoint">
+            <ul>
+                <li>
+                    <div class="name">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</div>
+                    <div class="ctx">北京市顺义区后沙峪玉马教练场</div>
+                </li>
+                <li>
+                    <div class="name">联&nbsp;&nbsp;系&nbsp;&nbsp;人</div>
+                    <div class="ctx">XXX</div>
+                </li>
+                <li>
+                    <div class="name">联系电话</div>
+                    <div class="ctx">400-010-053</div>
+                </li>
+                <li>
+                    <div class="name">支付方式</div>
+                    <div class="ctx">支持银联卡、信用卡、现金支付</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <a href="#" class="btn btn-blue">
+        我决定线下支付
+    </a>
+	<script src="js/zepto.min.js"></script>
+</body>
+</html>

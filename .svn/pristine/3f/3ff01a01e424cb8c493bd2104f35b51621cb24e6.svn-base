@@ -1,0 +1,175 @@
+﻿using Dapper;
+using DapperExtensions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using YY.Edu.Sys.Comm.Helper;
+
+namespace YY.Edu.Sys.Api.Services
+{
+    public class TeachingScheduleService
+    {
+        private static readonly log4net.ILog logs = Comm.Helper.LogHelper.GetInstance();
+
+        /// <summary>
+        /// 检测是否有人约课
+        /// </summary>
+        /// <param name="pKID"></param>
+        /// <returns></returns>
+        public static bool IsBeBook(int pKID, int venueID)
+        {
+
+            var teachingInfo = DapperHelper.Instance.Get<Sys.Models.TeachingSchedule>(pKID);
+            if (teachingInfo.VenueID != venueID)
+                throw new Comm.YYException.YYException("操作非法");
+
+            var isStudentBuySql = "SELECT COUNT(CurriculumID)  FROM [SportsDB].[dbo].[Curriculum]  where PKID=@pkId and [State]=@state";
+            var isStudentBuy = DapperHelper.Instance.Query<int>(isStudentBuySql, new
+            {
+                pkId = pKID,
+                state = Sys.Models.StateEnum.Curriculum.BookTeachingScheDone
+            });
+
+            return isStudentBuy.FirstOrDefault() > 0;
+        }
+
+        /// <summary>
+        /// 取消学生预约的课程(适用于学校停课、学生请假、教练请假)
+        /// </summary>
+        /// <param name="pKID">课程编号</param>
+        /// <param name="venueID">场馆编号</param>
+        /// <param name="teachState">排课表编号</param>
+        /// <param name="curriculumState">学生排课关联表状态</param>
+        /// <param name="classHoursDetailedState">学生课时明细状态</param>
+        /// <param name="remark">备注</param>
+        /// <returns></returns>
+        public static bool CancelTeachingSche(int pKID, int venueID,
+            Sys.Models.StateEnum.TeachingSchedule teachState,
+            Sys.Models.StateEnum.Curriculum curriculumState,
+            Sys.Models.StateEnum.ClassHoursDetailed classHoursDetailedState,
+            string remark)
+        {
+
+            /*
+             检测该操作是否合法
+
+             修改约课表状态
+             回写学生约课课时、添加日志记录
+             修改排课表信息
+
+             */
+
+            System.Data.IDbConnection connection = Comm.Helper.DapperHelper.Instance;
+            connection.Open();
+            System.Data.IDbTransaction transaction = connection.BeginTransaction();
+
+            try
+            {
+
+                var teachingInfo = DapperHelper.Instance.Get<Sys.Models.TeachingSchedule>(pKID);
+                if (teachingInfo.VenueID != venueID)
+                    throw new Comm.YYException.YYException("操作非法");
+
+                var sql = "SELECT StudentID  FROM [SportsDB].[dbo].[Curriculum]  where PKID=@pkID and [State]=@state";
+
+                var result = DapperHelper.Instance.Query<int>(sql, new
+                {
+                    pkId = pKID,
+                    state = Sys.Models.StateEnum.Curriculum.BookTeachingScheDone
+                });
+
+                //没有约课成功的学生则认为已经处理完成
+                if (result == null || result.Count() == 0)
+                    return true;
+
+                //修改排课状态
+                var updateCurriculumSql = "update Curriculum set State=@state where PKID=@pkId";
+                int updateCurriculum = connection.Execute(updateCurriculumSql, new
+                {
+                    pkId = pKID,
+                    state = Convert.ToInt32(curriculumState)
+                }, transaction);
+
+                var updateClassHoursNumberSql = "update ClassHoursNumber set ClassNumber=ClassNumber+1 where StudentID=@studentID and CoachID=@coachID and VenueID=@venueID";
+                foreach (var item in result)
+                {
+                    //修改学生课时数量
+                    int updateClassHoursNumber = connection.Execute(updateClassHoursNumberSql, new
+                    {
+                        studentID = item,
+                        coachID = teachingInfo.CoachID,
+                        venueID = venueID,
+                    }, transaction);
+
+                    //添加学生课时数操作日志
+                    connection.Insert<Sys.Models.ClassHoursDetailed>(new Sys.Models.ClassHoursDetailed()
+                    {
+                        AddTime = DateTime.Now,
+                        DNumber = 1,
+                        CoachID = teachingInfo.CoachID.Value,
+                        StudentID = item,
+                        VenueID = venueID,
+                        DType = Convert.ToInt32(classHoursDetailedState),
+                        Remark = remark
+                    }, transaction);
+                }
+
+                teachingInfo.State = Convert.ToInt32(teachState);
+                connection.Update(teachingInfo, transaction);
+
+                transaction.Commit();
+                return true;
+            }
+            catch (Comm.YYException.YYException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                logs.Error("取消课程失败", ex);
+                transaction.Rollback();
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+        }
+
+
+        /// <summary>
+        /// 变更排课表状态
+        /// </summary>
+        /// <param name="pkId"></param>
+        /// <param name="venueID"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        public static bool ChangeTeachingScheState(int pkId, int venueID, Sys.Models.StateEnum.TeachingSchedule state)
+        {
+            try
+            {
+                if (pkId <= 0)
+                    throw new Comm.YYException.YYException("参数不能为空");
+
+                var result = DapperHelper.Instance.Get<Sys.Models.TeachingSchedule>(pkId);
+                if (result.VenueID != venueID)
+                    throw new Comm.YYException.YYException("操作非法");
+
+                result.State = Convert.ToInt32(state);
+                return DapperHelper.Instance.Update(result);
+            }
+            catch (Comm.YYException.YYException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                logs.Error("停课失败", ex);
+                return false;
+            }
+        }
+
+    }
+}

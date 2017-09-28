@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>汕头市润信物流有限公司</title>
+		<meta name="keywords" content="汕头市润信物流有限公司,汕头物流配送,汕头物流,汕头物流货运,汕头货运,全国货运,厦门物流配送,深圳物流配送,广州物流配送,物流配送,物流货运,货运配送" />
+	    <meta name="description" content="汕头市润信物流有限公司是一家承接全国各地门到门配送业务的专业第三方物流，为企业量身定做仓储、配送物流方案，针对大小客户配备专业项目小组进行专人专车对接。" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <link rel="stylesheet" href="css/amazeui.min.css" type="text/css" />
+	    <link rel="stylesheet" href="css/style.css" type="text/css" />
+	    <script type="text/javascript" src="js/jquery.min.js" ></script>
+	    <script type="text/javascript" src="js/amazeui.min.js" ></script>
+	</head>
+	<body>
+		<header data-am-widget="header" class="am-header am-header-default header-green1">
+	      <div class="am-header-left am-header-nav ">
+		        <a href="javascript:history.back()" style="color: #fff;"><i class="am-icon-chevron-left"></i></a>
+	        </div>
+		  <h1 class="am-header-title" style="color: #fff;">消息</h1>
+       </header>
+       <div class="jl"></div>
+       <ul class="m-menu">
+       	  <li class="current"><a href="">全部</a></li>
+       	  <li><a href="">交易</a></li>
+       	  <li><a href="">资讯</a></li>
+       	  <li><a href="">系统</a></li>
+       </ul>
+       <ul class="message">
+       	  <li>
+       	  	<a href="massage-con.html">
+       	  		<h2>司机管理制度</h2>
+       	  		<p class="time">2016-9-06</p>
+       	  		<p class="text">第一条公司司机必须遵守《中华人民共和国道路交通管理条例》及有关交通安全管理的规章规则，安全驾车。并应遵守本公司其他相关的规章制度。</p>
+       	  		<i class="iconfont">&#xe611;</i>
+       	  	</a>
+       	  </li>
+       	  <li>
+       	  	<a href="massage-con.html">
+       	  		<h2>司机管理制度</h2>
+       	  		<p class="time">2016-9-06</p>
+       	  		<p class="text">第一条公司司机必须遵守《中华人民共和国道路交通管理条例》及有关交通安全管理的规章规则，安全驾车。并应遵守本公司其他相关的规章制度。</p>
+       	  		<i class="iconfont">&#xe611;</i>
+       	  	</a>
+       	  </li>
+       	  <li>
+       	  	<a href="massage-con.html">
+       	  		<h2>司机管理制度</h2>
+       	  		<p class="time">2016-9-06</p>
+       	  		<p class="text">第一条公司司机必须遵守《中华人民共和国道路交通管理条例》及有关交通安全管理的规章规则，安全驾车。并应遵守本公司其他相关的规章制度。</p>
+       	  		<i class="iconfont">&#xe611;</i>
+       	  	</a>
+       	  </li>
+       	  
+       </ul>
+	</body>
+</html>

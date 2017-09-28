@@ -1,0 +1,4 @@
+@using YY.Edu.Sys.Api.Areas.HelpPage
+@model ImageSample
+
+<img src="@Model.Src" />

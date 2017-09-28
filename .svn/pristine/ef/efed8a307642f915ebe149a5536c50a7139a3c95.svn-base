@@ -1,0 +1,233 @@
+﻿using Dapper;
+using DapperExtensions;
+using log4net;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using YY.Edu.Sys.Comm.Helper;
+
+namespace YY.Edu.Sys.Api.Controllers
+{
+    [Authorize]
+    [RoutePrefix("api/VenueNotice")]
+    public class VenueNoticeController : ApiController
+    {
+        private static readonly ILog logs = Comm.Helper.LogHelper.GetInstance();
+
+        // GET: api/VenueNotice
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "value1", "value2" };
+        }
+
+        // GET: api/VenueNotice/5
+       
+        public IHttpActionResult Get(int id)
+        {
+            try
+            {
+                var result = Comm.Helper.DapperHelper.Instance.Get<Sys.Models.VenueNotice>(id);
+                return Ok(new Comm.ResponseModel.ResponseModel4Res<Sys.Models.VenueNotice>()
+                {
+                    Info = result
+                });
+            }
+            catch (Exception ex)
+            {
+                logs.Error("公告查询失败", ex);
+                return BadRequest();
+            }
+        }
+
+        [HttpPost]
+        public IHttpActionResult Create(Sys.Models.VenueNotice venueNoticeInfo)
+        {
+
+            logs.Info(Newtonsoft.Json.JsonConvert.SerializeObject(venueNoticeInfo));
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            try
+            {
+
+                venueNoticeInfo.State = 1;
+                var result = Comm.Helper.DapperHelper.Instance.Insert(venueNoticeInfo);
+
+                if (result > 0)
+                {
+                    return Ok(Comm.ResponseModel.ResponseModelBase.Success());
+                }
+                else
+                {
+                    return Content(HttpStatusCode.OK, Comm.ResponseModel.ResponseModelBase.GetRes(Comm.ResponseModel.ResponseModelErrorEnum.SystemError));
+                }
+
+            }
+            catch (Exception ex)
+            {
+                logs.Error("通知添加失败", ex);
+                return BadRequest();
+            }
+
+        }
+
+        [HttpPost]
+        public IHttpActionResult Reply(Sys.Models.VenueNotice venueNoticeInfo)
+        {
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            try
+            {
+                var result = Comm.Helper.DapperHelper.Instance.Update(venueNoticeInfo);
+
+                if (result)
+                {
+                    return Ok(Comm.ResponseModel.ResponseModelBase.Success());
+                }
+                else
+                {
+                    return Content(HttpStatusCode.OK, Comm.ResponseModel.ResponseModelBase.GetRes(Comm.ResponseModel.ResponseModelErrorEnum.SystemError));
+                }
+            }
+            catch (Exception ex)
+            {
+                logs.Error("通知回复失败", ex);
+                return BadRequest();
+            }
+
+        }
+
+        [HttpGet]
+        public IHttpActionResult Page(string query)
+        {
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            Comm.RequestModel.RequestModelBase<Sys.Models.VenueNotice> oData = Newtonsoft.Json.JsonConvert.DeserializeObject<Comm.RequestModel.RequestModelBase<Sys.Models.VenueNotice>>(query);
+
+            if (oData.PageIndex < 0 || oData.PageSize <= 0 || oData.SearchCondition == null||oData.SearchCondition.VenueID<=0)
+                return BadRequest();
+
+            try
+            {
+
+                IList<IPredicate> predList = new List<IPredicate>();
+
+                predList.Add(Predicates.Field<Sys.Models.VenueNotice>(f => f.VenueID, Operator.Eq, oData.SearchCondition.VenueID));
+                if (oData.SearchCondition.State > -1)
+                    predList.Add(Predicates.Field<Sys.Models.VenueNotice>(f => f.State, Operator.Eq, oData.SearchCondition.State));
+
+                IPredicateGroup predGroup = Predicates.Group(GroupOperator.And, predList.ToArray());
+
+                var result = Comm.Helper.DapperHelper.Instance.GetPage<Sys.Models.VenueNotice>(
+                    predGroup,
+                    new List<ISort>() {
+                        new Sort { PropertyName = "NoticeId", Ascending = false},
+                    },
+                    oData.PageIndex,
+                    oData.PageSize
+                );
+
+                long allRowsCount = Comm.Helper.DapperHelper.Instance.Count<YY.Edu.Sys.Models.VenueNotice>(predGroup);
+
+                return Ok(new Comm.ResponseModel.ResponseModel4Page<YY.Edu.Sys.Models.VenueNotice>()
+                {
+                    data = result.AsList(),
+                    recordsFiltered = allRowsCount,
+                    recordsTotal = allRowsCount,
+                });
+
+            }
+            catch (Exception ex)
+            {
+                logs.Error("公告分页查询失败", ex);
+                return BadRequest();
+            }
+        }
+
+        // POST: api/VenueNotice
+        public void Post([FromBody]string value)
+        {
+        }
+
+        // PUT: api/VenueNotice/5
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        // DELETE: api/VenueNotice/5
+        public void Delete(int id)
+        {
+        }
+
+        [HttpGet]
+        /// <summary>
+        /// 取的我的消息(学生，教练)
+        /// </summary>
+        /// <param name="CoachID"></param>
+        /// <returns></returns>
+        public IHttpActionResult GetMyNotice(string query)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest();
+
+                Comm.RequestModel.RequestModelBase<Sys.Models.VenueNotice> oData = Newtonsoft.Json.JsonConvert.DeserializeObject<Comm.RequestModel.RequestModelBase<Sys.Models.VenueNotice>>(query);
+
+
+                if (oData.PageIndex < 0 || oData.PageSize <= 0)
+                    return BadRequest();
+
+                PageCriteria criteria = new PageCriteria();
+
+                if (oData.SearchCondition.StudentID > 0)
+                {
+                    criteria.Condition += string.Format(" state = 2 and((NoticeRange in(4, 5, 6, 7) and StudentID = 0) or StudentID ={0}) ", oData.SearchCondition.StudentID);
+
+                }
+                else
+                {
+                    if (oData.SearchCondition.CoachID > 0)
+                    {
+                        criteria.Condition += string.Format(" state = 2 and((NoticeRange in(2,3,6,7) and CoachID = 0) or CoachID ={0}) ", oData.SearchCondition.CoachID);
+                    }
+                }
+
+
+
+                criteria.CurrentPage = oData.PageIndex;
+                criteria.Fields = "NoticeId, NoticeType, SendTime, source, NoticeTitle";
+                criteria.PageSize = oData.PageSize;
+                criteria.TableName = "VenueNotice";
+                criteria.PrimaryKey = "NoticeId";
+                
+                    criteria.Sort = "SendTime desc ,NoticeId desc ";
+               
+
+                var r = Comm.Helper.DapperHelper.GetPageData<Sys.Models.VenueNotice>(criteria);
+
+                return Ok(new Comm.ResponseModel.ResponseModel4Page<Sys.Models.VenueNotice>()
+                {
+                    data = r.Items,
+                    recordsFiltered = r.TotalNum,
+                    recordsTotal = r.TotalNum,
+                });
+
+            }
+            catch (Exception ex)
+            {
+                logs.Error("取的学生的消息", ex);
+                return BadRequest();
+            }
+        }
+
+    }
+}

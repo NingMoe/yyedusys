@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>核对订单</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/order.css">
+</head>
+<body>
+    <div class="blue-wrapbox blue-pay">
+        <h2>选择支付方式</h2>
+        <div class="price-wrap">
+            <div class="price-des">课程费用（元）</div>
+            <div class="price-num"><span>￥</span>3,799.00</div>
+        </div>
+        <img src="images/order-pay.jpg" alt="">
+    </div>
+    <div class="pay-list">
+        <a href="#" class="pay-item">
+            <img src="images/pay-wx.jpg" alt="">
+        </a>
+        <a href="#" class="pay-item">
+            <img src="images/pay-zfb.jpg" alt="">
+        </a>
+        <a href="#" class="pay-item">
+            <img src="images/pay-xx.jpg" alt="">
+        </a>
+    </div>
+</body>
+</html>

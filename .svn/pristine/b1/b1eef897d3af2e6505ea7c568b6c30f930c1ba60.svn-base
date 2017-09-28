@@ -1,0 +1,122 @@
+﻿@{
+    ViewBag.Title = "场馆系统";
+    ViewBag.SubTitle = "课程详情";
+}
+
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+}
+
+@Styles.Render("~/AdminLTE/plugins/datatables/css")
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">课程详情</h3>
+            </div>
+            <form id="campusfrom" class="form-horizontal">
+                <div class="box-body">
+                    <div class="form-group">
+                        <input type="hidden" id="PKID" name="PKID" value="@ViewBag.pkId" />
+                        <input type="hidden" id="VenueID" name="VenueID" value="@ViewBag.venueId" />
+                        <label for="Title" class="col-sm-2 control-label">课程标题</label>
+                        <div class="col-sm-3">
+                            <span id="Title" name="Title" placeholder="课程标题" />
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="CoachFullName" class="col-sm-2 control-label">教练姓名</label>
+                        <div class="col-sm-3">
+                            <span id="CoachFullName" name="CoachFullName" placeholder="教练姓名" />
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="Wage" class="col-sm-2 control-label">工资</label>
+                        <div class="col-sm-5">
+                            <span id="Wage" name="Wage" placeholder="工资" />
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="Price" class="col-sm-2 control-label">课时费</label>
+                        <div class="col-sm-5">
+                            <span id="Price" name="Price" placeholder="课时费" />
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="CurriculumDate" class="col-sm-2 control-label">上课日期</label>
+                        <div class="col-sm-5">
+                            <span id="CurriculumDate" name="CurriculumDate" placeholder="上课日期" />
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="CurriculumBeginTime" class="col-sm-2 control-label">上课时间</label>
+                        <div class="col-sm-5">
+                            <span id="CurriculumBeginTime" name="CurriculumBeginTime" placeholder="上课时间" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="CurriculumEndTime" class="col-sm-2 control-label">下课时间</label>
+                        <div class="col-sm-5">
+                            <span id="CurriculumEndTime" name="CurriculumEndTime" placeholder="下课时间" />
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="AddTime" class="col-sm-2 control-label">排课时间</label>
+                        <div class="col-sm-5">
+                            <span id="AddTime" name="AddTime" placeholder="排课时间" />
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="State" class="col-sm-2 control-label">课程状态</label>
+                        <div class="col-sm-5">
+                            <span id="State" name="State" placeholder="课程状态" />
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="Info" class="col-sm-2 control-label">课程信息</label>
+                        <div class="col-sm-5">
+                            <textarea rows="5" cols="18" class="form-control" id="Info" name="Info" placeholder="课时信息"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    @*<button type="submit" class="btn btn-default">取消</button>*@
+                    @*<button type="button" class="btn btn-info pull-right" onclick="return create();">添加</button>*@
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/AdminLTE/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")
+    @Scripts.Render("~/Scripts/SysManage/ManageBase")
+    @Scripts.Render("~/Scripts/SysManage/TeachingSchedule")
+    @Scripts.Render("~/Scripts/SysManage/jquery.serializejson.min")
+    <script>
+        $(function () {
+            showdetail();
+        });
+    </script>
+}

@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "场馆系统";
+    ViewBag.SubTitle = "教练详情";
+}
+
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+}
+
+@Styles.Render("~/AdminLTE/plugins/datatables/css")
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">教练详情</h3>
+            </div>
+            <form id="campusfrom" class="form-horizontal">
+                <div class="box-body">
+                    <div class="form-group">
+                        <input type="hidden" id="CoachID" name="CoachID" value="@ViewBag.coachID" />
+                        <input type="hidden" id="VenueID" name="VenueID" value="@ViewBag.venueId" />
+                        <label for="FullName" class="col-sm-2 control-label">教练姓名</label>
+                        <div class="col-sm-3">
+                            <span id="FullName" name="FullName" placeholder="教练姓名"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="UserName" class="col-sm-2 control-label">用户名</label>
+                        <div class="col-sm-3">
+                            <span id="UserName" name="UserName" placeholder="用户名"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="Wage" class="col-sm-2 control-label">工资</label>
+                        <div class="col-sm-5">
+                            <span id="Wage" name="Wage" placeholder="工资" />
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="Price" class="col-sm-2 control-label">课时费</label>
+                        <div class="col-sm-5">
+                            <span id="Price" name="Price" placeholder="课时费" />
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="HeadUrl" class="col-sm-2 control-label">头像</label>
+                        <div class="col-sm-5">
+                            <img src="" id="HeadUrl" />
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="CardPositiveUrl" class="col-sm-2 control-label">身份证正面照片</label>
+                        <div class="col-sm-3">
+                            <img src="" id="CardPositiveUrl" />
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="CardReverseUrl" class="col-sm-2 control-label">身份证反面照片</label>
+                        <div class="col-sm-3">
+                            <img src="" id="CardReverseUrl" />
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="State" class="col-sm-2 control-label">审核状态</label>
+                        <div class="col-sm-5">
+                            <span id="State" class="btn btn-xs btn-warning" name="State" placeholder="审核状态"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="NickName" class="col-sm-2 control-label">昵称</label>
+                        <div class="col-sm-5">
+                            <span id="NickName" name="NickName" placeholder="昵称"/>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="Address" class="col-sm-2 control-label">地址</label>
+                        <div class="col-sm-5">
+                            <span id="Address" name="Address" placeholder="地址"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="Introduce" class="col-sm-2 control-label">介绍</label>
+                        <div class="col-sm-5">
+                            <span id="Introduce" name="Introduce" placeholder="介绍"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="Sex" class="col-sm-2 control-label">性别</label>
+                        <div class="col-sm-5">
+                            <span id="Sex" name="Sex" placeholder="性别"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    @*<button type="submit" class="btn btn-default">取消</button>*@
+                    @*<button type="button" class="btn btn-info pull-right" onclick="return create();">添加</button>*@
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/AdminLTE/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")
+    @Scripts.Render("~/Scripts/SysManage/ManageBase")
+    @Scripts.Render("~/Scripts/SysManage/Coach")
+    @Scripts.Render("~/Scripts/SysManage/jquery.serializejson.min")
+    <script>
+        $(function () {
+            showdetail();
+        });
+    </script>
+}

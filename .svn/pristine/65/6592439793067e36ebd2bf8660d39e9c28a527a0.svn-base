@@ -1,0 +1,349 @@
+﻿using Dapper;
+using DapperExtensions;
+using log4net;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using YY.Edu.Sys.Comm.Helper;
+
+namespace YY.Edu.Sys.Api.Controllers
+{
+    [Authorize]
+    [RoutePrefix("api/CoachWages")]
+    public class CoachWagesController : ApiController
+    {
+
+        private static readonly ILog logs = Comm.Helper.LogHelper.GetInstance();
+
+        /// <summary>
+        /// 分页查询录入工资
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public IHttpActionResult GetCoachWages(string query)
+        {
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            try
+            {
+                Comm.RequestModel.RequestModelBase<Models.RequestModel.CoachWageRequest> oData = Newtonsoft.Json.JsonConvert.DeserializeObject<Comm.RequestModel.RequestModelBase<Models.RequestModel.CoachWageRequest>>(query);
+
+                if (oData.PageIndex < 0 || oData.PageSize <= 0)
+                    return BadRequest();
+
+                PageCriteria criteria = new PageCriteria();
+                criteria.Condition = "1=1";
+
+                criteria.Condition += string.Format(" and c.VenueID = {0}", oData.SearchCondition.VenueID);
+
+                if (oData.SearchCondition.CoachID > 0)
+                    criteria.Condition += string.Format(" and c.CoachID = {0}", oData.SearchCondition.CoachID);
+                if (oData.SearchCondition.State >= 0)
+                    criteria.Condition += string.Format(" and c.State = {0}", oData.SearchCondition.State);
+                if (!string.IsNullOrEmpty(oData.SearchCondition.StartWorkDate))
+                    criteria.Condition += string.Format(" and c.WorkDate >= '{0}'", Convert.ToDateTime(oData.SearchCondition.StartWorkDate));
+                if (!string.IsNullOrEmpty(oData.SearchCondition.EndWorkDate))
+                    criteria.Condition += string.Format(" and c.WorkDate < '{0}'", Convert.ToDateTime(oData.SearchCondition.EndWorkDate).AddMonths(1));
+
+                criteria.CurrentPage = oData.PageIndex + 1;
+                criteria.Fields = "[WagesID],[CoachID],[AddTime],[Price],[Remark],[VenueID],[CoachFullName],[WorkDate],State,PayTime";
+                criteria.PageSize = oData.PageSize;
+                criteria.TableName = "[CoachWages] as c ";
+                criteria.PrimaryKey = "c.[WagesID]";
+
+                var r = Comm.Helper.DapperHelper.GetPageData<Sys.Models.CoachWages>(criteria);
+
+                return Ok(new Comm.ResponseModel.ResponseModel4Page<Sys.Models.CoachWages>()
+                {
+                    data = r.Items,
+                    recordsFiltered = r.TotalNum,
+                    recordsTotal = r.TotalNum,
+                });
+            }
+            catch (Exception ex)
+            {
+                logs.Error("查询录入工资异常", ex);
+                return BadRequest();
+            }
+        }
+
+        /// <summary>
+        /// 工资发放完毕
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IHttpActionResult SetWagesOver(dynamic query)
+        {
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            System.Data.IDbConnection connection = Comm.Helper.DapperHelper.Instance;
+            connection.Open();
+            System.Data.IDbTransaction transaction = connection.BeginTransaction();
+
+            try
+            {
+                var venueId = (Newtonsoft.Json.Linq.JObject.Parse(query.ToString()))["VenueID"].ToString();
+                Newtonsoft.Json.Linq.JArray ids = ((Newtonsoft.Json.Linq.JObject.Parse(query.ToString()))["WagesIDs"]);
+
+                using (connection)
+                {
+                    foreach (var item in ids.ToArray())
+                    {
+                        connection.Execute("UPDATE[dbo].[CoachWages] SET [State] =1, [PayTime]=@payTime WHERE WagesID=@wagesID and VenueID=@venueId", new
+                        {
+                            wagesID = Convert.ToInt32(item),
+                            venueId = Convert.ToInt32(query.VenueID),
+                            payTime = DateTime.Now,
+                        }, transaction);
+                    }
+
+                    transaction.Commit();
+                }
+
+                return Ok(Comm.ResponseModel.ResponseModelBase.Success());
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                logs.Error("设置工资发放完毕失败", ex);
+                return BadRequest();
+            }
+        }
+
+        /// <summary>
+        /// 发工资
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public IHttpActionResult Create(dynamic query)
+        {
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            IList<string> errCoach = new List<string>();
+            IList<Sys.Models.CoachWages_Sub> coachWageSubList = new List<Sys.Models.CoachWages_Sub>();
+
+            try
+            {
+                Models.RequestModel.CreateCoachWageRequest oData = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.RequestModel.CreateCoachWageRequest>(query.ToString());
+
+                var result = GetCurriculums(oData.VenueID, oData.WorkDate, oData.CurriculumIds);
+
+                oData.CurrentCoachId = result.FirstOrDefault().CoachID;
+                oData.CurrentCoachFullName = result.FirstOrDefault().CoachFullName;
+
+                foreach (var item in result)
+                {
+                    if (item.CoachID == oData.CurrentCoachId)
+                    {
+                        //工资详情表
+                        coachWageSubList.Add(new Sys.Models.CoachWages_Sub()
+                        {
+                            CoachPrice = item.CoachPrice,
+                            CurriculumID = item.CurriculumID,
+                            PKID = item.PKID,
+                            AddTime = DateTime.Now
+                        });
+                        continue;
+                    }
+
+                    try
+                    {
+                        AddToDB(oData, coachWageSubList);
+                    }
+                    catch (Comm.YYException.YYException ex)
+                    {
+                        errCoach.Add(ex.Message);
+                    }
+
+                    oData.CurrentCoachId = item.CoachID;
+                    oData.CurrentCoachFullName = item.CoachFullName;
+                }
+
+                try
+                {
+                    AddToDB(oData, coachWageSubList);
+                }
+                catch (Comm.YYException.YYException ex)
+                {
+                    errCoach.Add(ex.Message);
+                }
+
+                return Ok(new Comm.ResponseModel.ResponseModel4Res<string>()
+                {
+                    Error = errCoach.Count > 0,
+                    Msg = string.Join(",", errCoach)
+                });
+            }
+            catch (Comm.YYException.YYException ex)
+            {
+                return Ok(Comm.ResponseModel.ResponseModelBase.GetRes(ex.Message));
+            }
+            catch (Exception ex)
+            {
+                logs.Error("录入工资失败", ex);
+                return BadRequest();
+            }
+
+        }
+
+        /// <summary>
+        /// 添加到数据库
+        /// </summary>
+        /// <param name="oData"></param>
+        /// <param name="coachWageSubList"></param>
+        /// <exception cref="Comm.YYException.YYException"></exception>
+        private void AddToDB(Models.RequestModel.CreateCoachWageRequest oData, IList<Sys.Models.CoachWages_Sub> coachWageSubList)
+        {
+
+            if (coachWageSubList == null || coachWageSubList.Count == 0)
+                return;
+
+            Sys.Models.CoachWages coachWage = new Sys.Models.CoachWages()
+            {
+                AddTime = DateTime.Now,
+                CoachFullName = oData.CurrentCoachFullName,
+                CoachID = oData.CurrentCoachId,
+                VenueID = oData.VenueID,
+                WorkDate = Convert.ToDateTime(oData.WorkDate),
+                Price = coachWageSubList.Sum(c => c.CoachPrice),
+                State = 0,
+                Remark = "待发工资录入",
+            };
+
+            bool isExist = IsExist(coachWage.CoachID.Value, coachWage.VenueID.Value, coachWage.WorkDate.Value.ToString("yyyy-MM-dd"));
+            if (isExist)
+            {
+                throw new Comm.YYException.YYException(string.Format("{0} {1} 工资已经录入", coachWage.CoachFullName, oData.WorkDate));
+            }
+            else
+            {
+                bool flag = PrePayCoachMoney(coachWage, coachWageSubList);
+                if (!flag)
+                    throw new Comm.YYException.YYException(string.Format("{0} {1} 工资已经录入", coachWage.CoachFullName, oData.WorkDate));
+            }
+        }
+
+        /// <summary>
+        /// 获取上课完成课程
+        /// </summary>
+        /// <param name="venueId"></param>
+        /// <param name="workDate"></param>
+        /// <param name="curriculumId"></param>
+        /// <returns></returns>
+        private IEnumerable<dynamic> GetCurriculums(int venueId, string workDate, List<int> curriculumId)
+        {
+
+            var sql = @"select c.CurriculumID,t.PKID,t.VenueID,t.CampusID,t.CoachID,t.Title,t.CurriculumDate,t.CurriculumBeginTime,t.CurriculumEndTime,t.AddTime,t.Price,t.CoachPrice,t.PKType,t.State,c.State as cstate,c2.FullName as CoachFullName,c.studentfullname 
+from Curriculum as c join TeachingSchedule as t on t.pkid = c.pkid join Coach as c2 on t.CoachID = c2.CoachID 
+where t.VenueID=@venueID and c.CurriculumID in @ids and c.State=@State 
+and t.CurriculumDate>=@startCurriculumDate and t.CurriculumDate <@endCurriculumDate order by t.CoachID";
+
+            var result = DapperHelper.Instance.Query(sql, new
+            {
+                ids = curriculumId.ToArray(),
+                State = Convert.ToInt32(Sys.Models.StateEnum.Curriculum.ClassOverTeachingSche),
+                venueID = venueId,
+                startCurriculumDate = Convert.ToDateTime(workDate),
+                endCurriculumDate = Convert.ToDateTime(workDate).AddMonths(1),
+            });
+
+            if (result == null || result.Count() == 0)
+                throw new Comm.YYException.YYException("工资已经录入，请查看教练工资情况");
+
+            return result;
+        }
+
+        /// <summary>
+        /// 检测是否插入
+        /// </summary>
+        /// <param name="coachID"></param>
+        /// <param name="venueId"></param>
+        /// <param name="workDate"></param>
+        /// <returns></returns>
+        private bool IsExist(int coachID, int venueId, string workDate)
+        {
+
+            var sql = @"SELECT COUNT([WagesID]) FROM[dbo].[CoachWages] 
+                where CoachID =@coachID and VenueID =@venueID and WorkDate =@workDate ";
+
+            var count = DapperHelper.Instance.Query<int>(sql, new
+            {
+                coachID = coachID,
+                venueID = venueId,
+                workDate = workDate
+            });
+
+            return (count.FirstOrDefault() > 0);
+
+        }
+
+        /// <summary>
+        /// 插入工资表 修改课程表
+        /// </summary>
+        /// <param name="coachWage"></param>
+        /// <param name="coachWageSubList"></param>
+        /// <returns></returns>
+        private bool PrePayCoachMoney(Sys.Models.CoachWages coachWage, IList<Sys.Models.CoachWages_Sub> coachWageSubList)
+        {
+
+            System.Data.IDbConnection connection = Comm.Helper.DapperHelper.Instance;
+            connection.Open();
+            System.Data.IDbTransaction transaction = connection.BeginTransaction();
+
+            using (connection)
+            {
+                try
+                {
+
+                    //插入工资主表
+                    var coachWageId = connection.Insert<Sys.Models.CoachWages>(coachWage, transaction);
+
+                    //更新这个排课表、约课表
+                    coachWageSubList.ToList().ForEach((c) =>
+                    {
+                        c.WagesID = coachWageId;
+                        //更新这个排课表
+                        connection.Execute("UPDATE[dbo].[TeachingSchedule] SET [State] =@state WHERE PKID=@pkID", new
+                        {
+                            state = Convert.ToInt32(Sys.Models.StateEnum.TeachingSchedule.PayCoachMoney),
+                            pkID = c.PKID
+                        }, transaction);
+
+                        //更新约课表
+                        connection.Execute("UPDATE[dbo].[Curriculum] SET [State] =@state WHERE CurriculumID=@curriculumID", new
+                        {
+                            state = Convert.ToInt32(Sys.Models.StateEnum.Curriculum.PayCoachMoney),
+                            curriculumID = c.CurriculumID
+                        }, transaction);
+
+                    });
+
+                    //插入工资字表
+                    connection.Insert<Sys.Models.CoachWages_Sub>(coachWageSubList, transaction);
+
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    logs.Error("预发工资失败", ex);
+                    transaction.Rollback();
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+    }
+}

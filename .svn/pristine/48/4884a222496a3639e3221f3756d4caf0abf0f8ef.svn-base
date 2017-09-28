@@ -1,0 +1,35 @@
+
+
+SELECT t1.student_id, t1.s, t2.s FROM  (SELECT SUM(hours) s, student_id FROM income_coach WHERE income_type = 1 GROUP BY student_id ORDER BY SUM(hours) DESC) t1
+LEFT JOIN (SELECT COUNT(*)*2 s, student_id FROM subject_course WHERE is_cancel = 2 AND is_confirm = 1 AND is_attend_course = 1 AND course_date > '2016-10-01' GROUP BY student_id) t2
+ON t1.student_id = t2.student_id
+WHERE t1.s != t2.s
+
+
+
+SELECT id, student_name, coach_id, used_hours FROM dlph_student WHERE used_hours > 50;
+
+SELECT COUNT(*)*2 s, student_id, coach_id FROM subject_course WHERE is_cancel = 2 AND is_confirm = 1 AND is_attend_course = 1 AND course_date > '2016-10-01' GROUP BY student_id HAVING s > 50;
+
+
+SELECT COUNT(*)*2 s, coach_id FROM subject_course WHERE is_cancel = 2 AND is_confirm = 1 AND is_attend_course = 1 AND course_date > '2016-10-01' AND course_date < '2017-02-02' AND coach_id IN (66,68,79,82) GROUP BY coach_id
+
+
+SELECT SUM(hours) FROM income_coach WHERE coach_id = 66 AND create_time < '2017-02-02'
+
+SELECT * FROM subject_course WHERE group_id = 'a81c885a408740db9cd29676ff19ba1d'
+
+SELECT * FROM income_coach WHERE group_id = 'a81c885a408740db9cd29676ff19ba1d'
+
+SELECT * FROM income_coach WHERE coach_id = 79 AND group_id NOT IN (SELECT group_id FROM subject_course WHERE is_cancel = 2 AND is_confirm = 1 AND is_attend_course = 1 AND course_date > '2016-10-01' AND course_date < '2017-02-02' ) ORDER BY create_time;
+
+SELECT group_id FROM subject_course WHERE is_cancel = 2 AND is_confirm = 1 AND is_attend_course = 1 AND course_date > '2016-10-01' AND course_date < '2017-02-02' AND group_id = 'a81c885a408740db9cd29676ff19ba1d'
+SELECT * FROM subject_course WHERE group_id IN ('d846659d3ee64fc0a778a3eed3f821dd','5644dab2b40048749d560cb460471baa');
+
+SELECT *  FROM dlph_student WHERE id IN (1174,1200,1033,794)
+
+
+SELECT * FROM income_coach WHERE coach_id = 79 AND income_type = 1;
+SELECT SUM(hours) FROM income_coach WHERE coach_id = 79 AND create_time < '2017-02-02';
+
+

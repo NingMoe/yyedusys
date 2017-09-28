@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>海豚驾校</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">    
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no, email=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body class="body-txt">
+    <div class="txt-wrap">
+        为了保障您准时上课，请于09月10号前将报告证寄送我们或上门提交证件。
+    </div>
+    <div class="txt-panel">
+        <div class="txt-title-wrap">
+            <div class="txt-title">
+                报名所需证件
+            </div>
+            <div class="line"></div>
+        </div>
+        <ul class="txt-ul">
+            <li><em></em> 8张白底一寸照片</li>
+            <li><em></em>身份证原件</li>
+            <li><em></em>三家级医院机动车驾驶员体检表原件（可免费代办）</li> 
+            <li><em></em>外市户口需提供暂住证原件</li>
+        </ul>
+    </div>
+    <div class="txt-des">
+        若到期未送达，您的开课时间将顺延至下一期
+    </div>
+    <div class="txt-panel">
+        <div class="txt-title-wrap">
+            <div class="txt-title">
+                暂住证办理须知
+            </div>
+            <div class="line"></div>
+        </div>
+        <ul class="txt-ul">
+            <li><em></em> 外市户口在京学车需有效期半年以上有效暂住证</li>
+        </ul>
+    </div>    
+    <div class="txt-panel">
+        <div class="txt-title-wrap">
+            <div class="txt-title">
+                快递方式
+            </div>
+            <div class="line"></div>
+        </div>
+        <div class="txt-data-table">
+            <ul>
+                <li>
+                    <div class="name">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</div>
+                    <div class="ctx">北京市海淀区知春路豪景大厦108号B座302室</div>
+                </li>
+                <li>
+                    <div class="name">快&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;递</div>
+                    <div class="ctx">北京市海淀区知春路豪景大厦108号B座302室</div>
+                </li>
+                <li>
+                    <div class="name">收&nbsp;件&nbsp;人</div>
+                    <div class="ctx">北京市海淀区知春路豪景大厦108号B座302室</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="txt-des">
+        若到期未送达，您的开课时间将顺延至下一期
+    </div>    
+    <a href="#" class="btn btn-blue">
+        联系客服 400-010-6053
+    </a>
+	<script src="js/zepto.min.js"></script>
+</body>
+</html>

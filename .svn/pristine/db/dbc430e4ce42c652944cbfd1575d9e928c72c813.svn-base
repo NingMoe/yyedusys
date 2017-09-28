@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>汕头市润信物流有限公司</title>
+		<meta name="keywords" content="汕头市润信物流有限公司,汕头物流配送,汕头物流,汕头物流货运,汕头货运,全国货运,厦门物流配送,深圳物流配送,广州物流配送,物流配送,物流货运,货运配送" />
+	    <meta name="description" content="汕头市润信物流有限公司是一家承接全国各地门到门配送业务的专业第三方物流，为企业量身定做仓储、配送物流方案，针对大小客户配备专业项目小组进行专人专车对接。" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <link rel="stylesheet" href="css/amazeui.min.css" type="text/css" />
+	    <link rel="stylesheet" href="css/style.css" type="text/css" />
+	    <link rel="stylesheet" href="css/check.css" type="text/css" />
+	    <script type="text/javascript" src="js/jquery.min.js" ></script>
+	    <script type="text/javascript" src="js/amazeui.min.js" ></script>
+	</head>
+	<body>
+		<header data-am-widget="header" class="am-header am-header-default header-green1">
+	      <div class="am-header-left am-header-nav ">
+		        <a href="javascript:history.back()" style="color: #fff;"><i class="am-icon-chevron-left"></i></a>
+	        </div>
+		  <h1 class="am-header-title" style="color: #fff;">设置</h1>
+		  <div class="am-header-right am-header-nav">
+	      	<a href="feedback.html" style="color: #fff;"><i class="iconfont">&#xe615;</i></a>
+	      </div>
+        </header>
+        <div class="jl"></div>
+        <ul class="safty">
+	    	<li>
+	    		<a href="">
+	    			<img src="images/2-icon.png" width="40" />
+	    			<i>接收新消息通知</i>
+	    			 <section class="model-10">
+						  <div class="checkbox">
+						    <input type="checkbox"/>
+						    <label></label>
+						  </div>
+    		         </section>
+	    		</a>
+	    	</li>
+	    	<li>
+	    		<a href="">
+	    			<img src="images/2icon1.png" width="40" />
+	    			<i>清空缓存</i>
+	    			<span class="am-icon-angle-right"></span>
+	    			<i style="float: right; padding-right: 10px;">1.89 MB</i>	    			
+	    		</a>
+	    	</li>
+	    	<li>
+	    		<a href="">
+	    			<img src="images/2icon2.png" width="40" />
+	    			<i>检查更新</i>
+	    			<span class="am-icon-angle-right"></span>
+	    			<i style="float: right; padding-right: 10px;">已经是最新版</i>
+	    		</a>
+	    	</li><li>
+	    		<a href="about.html">
+	    			<img src="images/2icon3.png" width="40" />
+	    			<i>关于我们</i>
+	    			<span class="am-icon-angle-right"></span>
+
+	    		</a>
+	    	</li>
+	    </ul>
+        <button class="save" type="button">退出登录</button>
+	</body>
+</html>

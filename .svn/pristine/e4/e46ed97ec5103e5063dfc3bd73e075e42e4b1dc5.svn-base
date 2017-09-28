@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>汕头市润信物流有限公司</title>
+		<meta name="keywords" content="汕头市润信物流有限公司,汕头物流配送,汕头物流,汕头物流货运,汕头货运,全国货运,厦门物流配送,深圳物流配送,广州物流配送,物流配送,物流货运,货运配送" />
+	    <meta name="description" content="汕头市润信物流有限公司是一家承接全国各地门到门配送业务的专业第三方物流，为企业量身定做仓储、配送物流方案，针对大小客户配备专业项目小组进行专人专车对接。" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <link rel="stylesheet" href="css/amazeui.min.css" type="text/css" />
+	    <link rel="stylesheet" href="css/style.css" type="text/css" />
+	    <script type="text/javascript" src="js/jquery.min.js" ></script>
+	    <script type="text/javascript" src="js/amazeui.min.js" ></script>
+	</head>
+	<body class=" bgcolor">
+		<header data-am-widget="header" class="am-header am-header-default header-green1">
+	      <div class="am-header-left am-header-nav ">
+		        <a href="javascript:history.back()" style="color: #fff;"><i class="am-icon-chevron-left"></i></a>
+	        </div>
+		  <h1 class="am-header-title" style="color: #fff;">我的银行卡</h1>
+		  <div class="am-header-right am-header-nav">
+	      	<a href="addcard.html" style="color: #fff; font-size: 26px;">+</a>
+	      </div>
+       </header>
+       <div class="jl"></div>
+       <ul class="bank">
+       	 <li>
+       	 	<img src="images/zgyh.png" />
+       	 	<div class="bankname">
+       	 		<p class="name">中国银行</p>
+       	 		<p class="text">尾号1234  储蓄卡</p>
+       	 	</div>
+       	 	<i class="am-icon-angle-right"></i>
+       	 </li>
+       	 <li>
+       	 	<img src="images/jtyh.png" />
+       	 	<div class="bankname">
+       	 		<p class="name">交通银行</p>
+       	 		<p class="text">尾号1234  储蓄卡</p>
+       	 	</div>
+       	 	<i class="am-icon-angle-right"></i>
+       	 </li>
+       	 <li>
+       	 	<img src="images/gsyh.png" />
+       	 	<div class="bankname">
+       	 		<p class="name">工商银行</p>
+       	 		<p class="text">尾号1234  储蓄卡</p>
+       	 	</div>
+       	 	<i class="am-icon-angle-right"></i>
+       	 </li>
+       </ul>
+	</body>
+</html>

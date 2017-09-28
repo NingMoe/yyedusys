@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "场馆系统";
+    ViewBag.SubTitle = "添加缴费记录";
+}
+
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+}
+
+@Styles.Render("~/AdminLTE/plugins/datatables/css")
+@Styles.Render("~/AdminLTE/plugins/daterangepicker/css")
+@Styles.Render("~/AdminLTE/plugins/icheck/css")
+@Styles.Render("~/AdminLTE/plugins/colorpicker/css")
+@Styles.Render("~/AdminLTE/plugins/timepicker/css")
+@Styles.Render("~/AdminLTE/plugins/select2/css")
+@Styles.Render("~/AdminLTE/dist/css")
+@Styles.Render("~/AdminLTE/dist/css/skins")
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">添加缴费记录</h3>
+            </div>
+            <form id="applybuyhoursfrom" class="form-horizontal">
+                <div class="box-body">
+                    <div class="form-group">
+                        <input type="hidden" id="VenueID" name="VenueID" value="@ViewBag.VenueId" />
+                        <label for="StudentID" class="col-sm-2 control-label">选择学生</label>
+                        <div class="col-sm-3">
+                            <select id="StudentID" name="StudentID" class="form-control"></select>
+                        </div>
+                        <input type="hidden" id="StudentFullName" name="StudentFullName" value="" />
+                    </div>
+                </div>
+                <div class="box-body">
+                    <input type="hidden" id="CoachFullName" name="CoachFullName" value="" />
+                    <div class="form-group">
+                        <label for="CoachID" class="col-sm-2 control-label">选择教练</label>
+                        <div class="col-sm-3">
+                            <select id="CoachID" name="CoachID" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="PKType" class="col-sm-2 control-label">课程类型</label>
+                        <div class="col-sm-2">
+                            <select id="PKType" name="PKType" class="form-control">
+                                <option value="1" selected>一对一</option>
+                                <option value="2">一对多</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="Price" class="col-sm-2 control-label">课时费用</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="Price" name="Price" placeholder="课时费用">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="ClassNumber" class="col-sm-2 control-label">课时数</label>
+                        <div class="col-sm-1">
+                            <input type="text" class="form-control" id="ClassNumber" name="ClassNumber" placeholder="课时数">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="PayMoney" class="col-sm-2 control-label">应付费用</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="PayMoney" name="PayMoney" placeholder="应付费用">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="PaidMoney" class="col-sm-2 control-label">实付费用</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="PaidMoney" name="PaidMoney" placeholder="实付费用">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <div class="col-sm-2">
+                            @*<button type="button" id="preview" class="btn btn-info pull-right" >预览</button>*@
+
+                            <button type="button" id="save" class="btn btn-info pull-right">添加</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/AdminLTE/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")
+    @Scripts.Render("~/Scripts/SysManage/ManageBase")
+    @Scripts.Render("~/Scripts/SysManage/LoadData")
+    @Scripts.Render("~/Scripts/SysManage/ApplyBuyHours")
+    @Scripts.Render("~/Scripts/SysManage/jquery.serializejson.min")
+    @*@Scripts.Render("~/Scripts/SysManage/StateTranstion")*@
+
+    @Scripts.Render("~/AdminLTE/plugins/select2/js")
+    @Scripts.Render("~/AdminLTE/plugins/input-mask/js")
+    @Scripts.Render("~/AdminLTE/plugins/momentjs/js")
+    @Scripts.Render("~/AdminLTE/plugins/daterangepicker/js")
+    @Scripts.Render("~/AdminLTE/plugins/colorpicker/js")
+    @Scripts.Render("~/AdminLTE/plugins/timepicker/js")
+    @Scripts.Render("~/AdminLTE/plugins/icheck/js")
+    @Scripts.Render("~/Scripts/SysManage/AdvancedDate")
+
+    <script>
+        $(function () {
+
+            var venueId = $("#VenueID").val();
+            showCoach(venueId);
+            showStudent(venueId);
+
+        });
+    </script>
+}

@@ -1,0 +1,144 @@
+.topbar-2 span{
+    padding:.2rem .4rem;
+    background: #fff;
+    color: #4155af;
+    -webkit-border-radius: .2rem;
+    border-radius: .2rem;
+}
+.caseable-wrap{
+	line-height: 3;
+	font-size: 1.2rem;
+	text-align: center;
+    background-color: #fff;	
+}
+.case-item{
+	width: 20%;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+}
+.case-item:first-child{
+	margin-right: 2rem;
+}
+.case-item img{
+	width: 40%;
+	margin-right:.5em;
+	vertical-align: middle;
+}
+.teach-item{
+	position: relative;
+	padding:.5rem;
+}
+.teach-item img{
+	width: 1rem;
+}
+.teach-item .avator{
+	width: 18%;
+	float: left;
+	-webkit-transform:translate(0, 30%);
+	transform:translate(0, 30%);
+}
+.teach-item{
+	position: relative;
+	background-color: #fff;
+	margin: .5rem .5rem;
+	color: #606785;
+}
+
+.teach-item .teach-wrap{
+	margin-left: 20%;
+}
+
+.teach-name{
+	font-size: 1.4rem;
+	font-weight: 900;
+	position: relative;
+}
+.teach-name span{
+	font-size: 1.2rem;
+	color: #82d2ff;
+	border:1px solid #82d2ff;
+	padding: 0 .2rem;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	-webkit-transform:translateY(-50%);
+	transform:translateY(-50%);
+    font-weight: normal;
+}
+.teach-des{
+	font-size: 1.2rem;
+	line-height: 2;
+}
+.teach-times .time{
+	width: 6em;
+    padding: 0;
+}
+.teach-times table{
+	/*background-color: red;*/
+	max-width: 34rem;
+	line-height: 1.5;
+}
+.teach-times table img{
+	width: 80%;
+	margin-bottom: .2rem;
+}
+.teach-times table td{
+	text-align: center;
+    padding: 0 .2rem;
+    width: 2.5em;
+}
+
+.teach-item .arrow{
+	width:3%;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	-webkit-transform:translateY(-30%);
+	transform:translateY(-30%);
+}
+
+.teach-date{
+    padding:1rem 0 .5rem 0;
+    text-align: center;
+    font-size: 0;
+    background-color: #fff;
+}
+.teach-date-wrap{
+    display: inline-block;
+    border: 1px solid #82d2ff;
+    -webkit-border-radius: .5rem;
+    border-radius: .5rem;
+    overflow: hidden;
+}
+.teach-date .td-item{
+    font-size: 1.4rem;
+    display: inline-block;
+    width: 9em;
+    line-height: 3;
+}
+.teach-date .td-item.active{
+    background-color: #82d2ff;
+}
+.teach-date .td-item.active a{
+    color: #fff;
+}
+.teach-date .td-item a{
+    text-align: center;
+    display: block;
+    color: #82d2ff;
+}
+
+@media screen and (min-width: 360px){
+    .teach-times table td{
+        text-align: center;
+        width: 3em;
+    }
+    .teach-item .arrow{
+        right: .4rem;
+    }
+}
+.teach-none{
+    line-height: 3;
+    font-size: 1.4rem;
+}

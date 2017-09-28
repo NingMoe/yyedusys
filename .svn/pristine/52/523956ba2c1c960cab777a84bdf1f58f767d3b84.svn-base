@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>汕头市润信物流有限公司</title>
+		<meta name="keywords" content="汕头市润信物流有限公司,汕头物流配送,汕头物流,汕头物流货运,汕头货运,全国货运,厦门物流配送,深圳物流配送,广州物流配送,物流配送,物流货运,货运配送" />
+	    <meta name="description" content="汕头市润信物流有限公司是一家承接全国各地门到门配送业务的专业第三方物流，为企业量身定做仓储、配送物流方案，针对大小客户配备专业项目小组进行专人专车对接。" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <link rel="stylesheet" href="css/amazeui.min.css" type="text/css" />
+	    <link rel="stylesheet" href="css/style.css" type="text/css" />
+	    <script type="text/javascript" src="js/jquery.min.js" ></script>
+	    <script type="text/javascript" src="js/amazeui.min.js" ></script>
+	</head>
+	<body class="bgcolor">
+		<header data-am-widget="header" class="am-header am-header-default header-white">
+	      <h1 class="am-header-title">车辆信息</h1>
+	      <div class="am-header-right am-header-nav">
+	      	<a href="tel:10086">帮助</a>
+	      </div>
+        </header>
+        <div class="jl"></div>
+        <h2 class="reg-title">个人车辆信息</h2>
+        <ul class="reg-infor">
+        	<li>
+        		<em>*</em><span>车牌号码：</span>
+        		<i class="am-icon-angle-right"></i>
+        		<input type="text" placeholder="必填" class="bt" />
+        	</li>
+        	<li>
+        		<em>*</em><span>车长（米）：</span>
+        		<i class="am-icon-angle-right"></i>
+        		<input type="text" placeholder="必填" class="bt" />
+        	</li>
+        	<li>
+        		<em>*</em><span>载重（吨 ) ：</span>
+        		<i class="am-icon-angle-right"></i>
+        		<input type="text" placeholder="必填" class="bt" />
+        	</li>
+        	<li>
+        		<em>*</em><span>出厂年份 ：</span>
+        		<i class="am-icon-angle-right"></i>
+        		<input type="text" placeholder="必填" class="bt" />
+        	</li>
+        	<li>
+        		<em>*</em><span>车型 ：</span>
+        		<i class="am-icon-angle-right"></i>
+        		<input type="text" placeholder="必填" class="bt" />
+        	</li>
+        </ul>
+        <h2 class="reg-title">长跑线路（选填）</h2>
+        <a href="addroute.html" class="add-rote">+ 添加长跑线路</a>
+        <button class="save" type="button">保存</button>
+	</body>
+</html>

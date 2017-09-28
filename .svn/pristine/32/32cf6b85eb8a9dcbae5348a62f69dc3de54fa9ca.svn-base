@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TA的学车进度</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" type="text/css" href="css/student_progress.css">
+</head>
+<body>
+    <div class="blue-wrapbox">
+        <h2>TA的学车进度</h2>
+    </div>
+    <div class="user-content">
+        <ul class="list list2">
+            <li>
+                <div class="left-item">
+                    <div class="item-blue">已完成</div>
+                    <div class="item-info">
+                        <span >原地驾驶</span>
+                        <span>2015-08-31丨王岳红教练讲授</span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="left-item ">
+                    <div class="item-gray">进行中</div>中速行车驾驶
+                </div>
+            </li>
+            <li>
+                <div class="left-item ">
+                    <div class="item-gray">进行中</div>直角、曲线行驶
+                </div>
+            </li>
+            <li>
+                <div class="left-item ">
+                    <div class="item-gray">进行中</div>侧方位停车
+                </div>
+            </li>
+            <li>
+                <div class="left-item ">
+                    <div class="item-gray">进行中</div>坡道定点停车和起步
+                </div>
+            </li>
+            <li>
+                <div class="left-item ">
+                    <div class="item-gray">进行中</div>倒车入库
+                </div>
+            </li>
+            <li>
+                <div class="left-item ">
+                    <div class="item-gray">进行中</div>科二考前复习
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="btn-wrap">
+        <a class="btn btn-blue">
+            我已阅读  
+        </a>
+    </div>
+</body>
+</html>

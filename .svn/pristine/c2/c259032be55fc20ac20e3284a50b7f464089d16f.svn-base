@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>汕头市润信物流有限公司</title>
+		<meta name="keywords" content="汕头市润信物流有限公司,汕头物流配送,汕头物流,汕头物流货运,汕头货运,全国货运,厦门物流配送,深圳物流配送,广州物流配送,物流配送,物流货运,货运配送" />
+	    <meta name="description" content="汕头市润信物流有限公司是一家承接全国各地门到门配送业务的专业第三方物流，为企业量身定做仓储、配送物流方案，针对大小客户配备专业项目小组进行专人专车对接。" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <link rel="stylesheet" href="css/amazeui.min.css" type="text/css" />
+	    <link rel="stylesheet" href="css/style.css" type="text/css" />
+	    <script type="text/javascript" src="js/jquery.min.js" ></script>
+	    <script type="text/javascript" src="js/amazeui.min.js" ></script>
+	</head>
+	<body>
+		<header data-am-widget="header" class="am-header am-header-default header-green1">
+	      <div class="am-header-left am-header-nav ">
+		        <a href="javascript:history.back()" style="color: #fff;"><i class="am-icon-chevron-left"></i></a>
+	        </div>
+		  <h1 class="am-header-title" style="color: #fff;">货源详情</h1>
+		  <div class="am-header-right am-header-nav">
+	      	<a href="complaint.html" style="color: #fff;">投诉</a>
+	      </div>
+       </header>
+	   <div class="jl"></div>
+       <ul class="find">
+       	  <li style="border: 0;">
+	       	  	<img class="tx" src="images/tx.png"/>
+	       	  	<div class="find-left">
+	       	  		<p class="name">青岛 — 滨州</p>
+	       	  		<p class="style" style="color: #2b9f55;">普货/8.0吨/9.6米</em></p>
+	       	  		<p class="car">
+	       	  			<i class="mingzi">你好你好</i>
+	       	  			<i class="iconfont">&#xe605;</i>
+	       	  			<i class="shijian">已注册3年</i>
+	       	  			<i class="iconfont">&#xe612;</i>
+	       	  			<i class="num">发货120条</i>
+	       	  		</p>
+	       	  	</div>
+	       	  	<a href="" class="rote">
+	       	  		<i class="iconfont">&#xe600;</i>路线>
+	       	  	</a>
+       	  </li>
+        </ul>
+        <div style="height: 5px; background: #e8e8e8;"></div>
+        <div class="infor">
+        	<h2>青岛—滨州，有普货8吨，求9.6米车，装64方</h2>
+        	<p>刚刚来自江西省抚州市南和县城</p>
+        </div>
+        <ul class="contact">
+        	<li>
+        		<a href="tel:10086">
+        			<span>153***8547</span>
+        			<i class="iconfont">&#xe613;</i>
+        		</a>
+        	</li>
+        	<li>
+        		<a href="tel:10086">
+        			<span>153***8547</span>
+        			<i class="iconfont">&#xe613;</i>
+        		</a>
+        	</li>
+        </ul>
+        <div class="huo-money">
+        	<span>放空赔付</span>
+        	<ul>
+        		<li>5元担保最高赔付500放空费<i>￥5</i></li>
+        		<li>8元担保最高赔付1000放空费<i>￥8</i></li>
+        		<li style="height: 60px;">
+        			<em class="iconfont">&#xe614;</em>
+        			<b>120元/年 全年 无限次 担保<br/>最高赔付￥1000放空费</b>
+        			<i class="money">￥120</i>
+        		</li>
+        	</ul>
+        </div>
+        <div class="transaction">
+        	<span>担保交易</span>
+        	<ul>
+        		<li style="height: 100px;">
+        			<h2>即将支付高额信息费或运费差价？</h2>
+        			<p>谨防汇款等诈骗手段，请使用润信物流支付，出现问题全额赔付</p>
+        		</li>
+        		<li>
+        			<em>￥</em>
+        			<input type="text" placeholder="请填写协商信息费" />
+        			<i class="money">支付</i>
+        		</li>
+        	</ul>
+        </div>
+        <div class="jl"></div>
+		 <div data-am-widget="navbar" class="am-navbar  dream-foot am-no-layout" id="">
+		      <ul class="am-navbar-nav1 am-cf am-avg-sm-5">   
+		          <li>
+		            <a href="index.html" class="">
+		                <span class="iconfont">&#xe60b;</span>
+		                <p class="am-navbar-label">首页</p>
+		            </a>
+		          </li>
+		          <li>
+		            <a href="nearby.html" class="">
+		                <span class="iconfont">&#xe60c;</span>
+		                <p class="am-navbar-label">附近</p>
+		            </a>
+		          </li>
+		       <li>
+		            <a href="find.html" class="">
+		                <span class="add"><i class="iconfont" style="font-size: 30px; line-height: 40px;">&#xe60e;</i></span>
+		                <p class="am-navbar-label" style="margin-top: -36px;">找货</p>
+		            </a>
+		          </li>
+		          <li>
+		            <a href="message.html" class="">
+		                <span class="iconfont">&#xe60d;</span>
+		                <p class="am-navbar-label">货源消息</p>
+		            </a>
+		          </li>
+		          <li>
+		            <a href="member.html" class="curr">
+		                <span class="iconfont">&#xe609;</span>
+		                <p class="am-navbar-label">个人中心</p>
+		            </a>
+		          </li>
+		      </ul>
+		</div>
+	</body>
+</html>

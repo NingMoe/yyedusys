@@ -1,0 +1,201 @@
+﻿@model YY.Edu.Sys.Models.CreateVenue
+@{
+    ViewBag.Title = "运营系统";
+    ViewBag.SubTitle = "添加场馆";
+}
+
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+}
+
+@Styles.Render("~/AdminLTE/plugins/datatables/css")
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">添加场馆</h3>
+            </div>
+            @using (Html.BeginForm("Create", "Account", FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="CityID" class="col-sm-2 control-label">所在城市</label>
+                        <div class="col-sm-2">
+                            <select id="CityID" name="CityID" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="VenueName" class="col-sm-2 control-label">场馆名称</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="VenueName" name="VenueName" placeholder="场馆名称">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="LinkMan" class="col-sm-2 control-label">联系人</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="LinkMan" name="LinkMan" placeholder="联系人">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="LinkManEmail" class="col-sm-2 control-label">联系人邮箱</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="LinkManEmail" name="LinkManEmail" placeholder="联系人邮箱">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="LinkManMobile" class="col-sm-2 control-label">联系电话</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="LinkManMobile" name="LinkManMobile" placeholder="联系电话">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="Password" class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-3">
+                            <input type="password" class="form-control" id="Password" name="Password" placeholder="密码">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="VenueFax" class="col-sm-2 control-label">传真</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="VenueFax" name="VenueFax" placeholder="传真">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="LegalPerson" class="col-sm-2 control-label">法人</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="LegalPerson" name="LegalPerson" placeholder="法人">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="CardNumber" class="col-sm-2 control-label">法人身份证号</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="CardNumber" name="CardNumber" placeholder="法人身份证号">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="VenueAddress" class="col-sm-2 control-label">场馆地址</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="VenueAddress" name="VenueAddress" placeholder="场馆地址">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-info pull-right" onclick="return create();">添加</button>
+                </div>
+            }
+            @*<form id="venuefrom" class="form-horizontal">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="CityID" class="col-sm-2 control-label">所在城市</label>
+                            <div class="col-sm-2">
+                                <select id="CityID" name="CityID" class="form-control"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="VenueName" class="col-sm-2 control-label">场馆名称</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="VenueName" name="VenueName" placeholder="场馆名称">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="LinkMan" class="col-sm-2 control-label">联系人</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="LinkMan" name="LinkMan" placeholder="联系人">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="LinkManMobile" class="col-sm-2 control-label">联系电话</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="LinkManMobile" name="LinkManMobile" placeholder="联系电话">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="VenueFax" class="col-sm-2 control-label">传真</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="VenueFax" name="VenueFax" placeholder="传真">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="LegalPerson" class="col-sm-2 control-label">法人</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="LegalPerson" name="LegalPerson" placeholder="法人">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="CardNumber" class="col-sm-2 control-label">法人身份证号</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="CardNumber" name="CardNumber" placeholder="法人身份证号">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="file" class="col-sm-2 control-label">选择文件</label>
+                            <div class="col-sm-3">
+                                <input type="file" id="file" name="file">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="VenueAddress" class="col-sm-2 control-label">场馆地址</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="VenueAddress" name="VenueAddress" placeholder="场馆地址">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-default">取消</button>
+                        <button type="button" class="btn btn-info pull-right" onclick="return create();">添加</button>
+                    </div>
+                </form>*@
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/AdminLTE/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")
+    @Scripts.Render("~/Scripts/SysManage/ManageBase")
+    @Scripts.Render("~/Scripts/SysManage/Venue")
+    @Scripts.Render("~/Scripts/SysManage/jquery.serializejson.min")
+
+    <script>
+        $(function () {
+            show_city();
+        });
+    </script>
+}

@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+
+    @Styles.Render("~/Content/amazeui.min.css")
+    @Styles.Render("~/Content/style.css")
+    @Scripts.Render("~/Scripts/jquery.min.js")
+    @Scripts.Render("~/Scripts/amazeui.min.js")
+
+
+
+</head>
+<body>
+    <input type="hidden" id="hdID" name="hdID" value="@ViewBag.PKID" />
+    <input type="hidden" id="hdSID" name="hdSID" value="@ViewBag.SID" />
+    <input type="hidden" id="hdCID" name="hdCID" value="@ViewBag.CID" />
+    <header data-am-widget="header" class="am-header am-header-default header-green1">
+        <div class="am-header-left am-header-nav ">
+            <a href="javascript:history.back()" style="color: #fff;"><i class="am-icon-chevron-left"></i></a>
+        </div>
+        <h1 class="am-header-title" style="color: #fff;">课时学生</h1>
+
+    </header>
+    <div class="jl"></div>
+    <ul class="find">
+        <li>
+            <a href="huo-detail.html">
+                <img class="tx" src="/images/2icon3.png" />
+                <div class="find-left">
+
+                </div>
+            </a>
+        </li>
+    </ul>
+    <div class="jl"></div>
+    <ul class="order-list">
+
+    </ul>
+    <div class="jl"></div>
+    <script src="/Scripts/Coash/CurriculumStudent.js"></script>
+   
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>课程考试</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/course.css">
+</head>
+<body>
+    <div class="blue-wrapbox">
+        <h2>驾考课程</h2>
+        <div class="time-info">
+            <div class="info-item">
+                <div class="info-title">资料提交时间</div>
+                <div class="info-text">09 - 17</div>
+            </div>
+            <div class="info-item">
+                <div class="line"></div>
+                <div class="info-title">上课时间</div>
+                <div class="info-text">09 - 21</div>
+            </div>
+        </div>
+    </div>
+    <div class="txt-panel">
+        <div class="txt-title-wrap">
+            <div class="txt-title">
+                递交个人资料
+            </div>
+            <div class="line"></div>
+        </div>
+        <div class="txt-box">
+            <div class="txt1">
+                <img src="images/icalender.png"> 提交时间 09-17
+                <a href="#">查看详情</a>
+            </div>
+            <p>请在此日期前将报名证件提交至海豚驾考，否则上课时间将延至下期。</p>
+            <p>非本市户籍需暂住证，暂住证办理时间通常为10个工作日请安排好您的资料递交时间。</p>
+        </div>
+    </div>
+    <div class="txt-panel">
+        <div class="txt-title-wrap">
+            <div class="txt-title">
+                练习场地
+            </div>
+            <div class="line"></div>
+        </div>
+        <div class="txt-box">
+            <div class="txt1">
+                <img src="images/iloc2.png">  北部校区 <span>北京顺义区后沙峪玉马教练场</span>
+            </div>
+        </div>
+    </div>
+    <div class="txt-panel">
+        <div class="txt-title-wrap">
+            <div class="txt-title">
+                车型选择
+            </div>
+            <div class="line"></div>
+        </div>
+        <div class="cartype-box">
+            <div class="item">
+                <label><img src="images/car-handle.png" alt=""><br/>
+                <em class="iradio iradio-checked" data-value="1"></em></label>
+            </div>
+            <div class="item">
+                <label><img src="images/car-auto.png" alt=""><br/>
+                <em class="iradio" data-value="2"></em></label>
+            </div>            
+        </div>
+    </div>
+    <div class="txt-panel">
+        <div class="txt-title-wrap">
+            <div class="txt-title">
+                学车费用
+            </div>
+            <div class="line"></div>
+        </div>
+        <div class="txt-box price">
+            <div class="txt1">
+                <em>￥</em>3799
+            </div>
+        </div>
+    </div>
+    <div class="bnt-wrap">
+        <a href="#" class="btn btn-blue">
+            满意，我要报名
+        </a>
+    </div>
+    <script src="js/zepto.min.js"></script>
+    <script>
+        $(function(){
+            var CLS = 'iradio-checked';
+            $('.iradio').parent().click(function(){
+                var ele = $('.iradio', this);
+                if($(ele).hasClass(CLS)){
+                    return;
+                }
+                $('.'+CLS).removeClass(CLS);
+                $(ele).addClass(CLS);
+            });
+            //报名
+            $('.btn-blue').click(function(e){
+                e.preventDefault();
+                $.ajax({
+                    url:'',
+                    data:{
+                        type:$('.'+CLS).attr('data-value')
+                    },
+                    success:function(){
+                        //TODO
+                    }
+                })
+            })
+        });
+    </script>
+</body>
+</html>

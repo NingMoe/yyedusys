@@ -1,0 +1,185 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using Dapper;
+using DapperExtensions;
+using YY.Edu.Sys.Comm.Helper;
+
+namespace YY.Edu.Sys.Api.Services
+{
+    public class VenueService
+    {
+
+        private static readonly log4net.ILog logs = Comm.Helper.LogHelper.GetInstance();
+
+        public bool Create()
+        {
+
+            return true;
+
+            //var query = Helper.DapperHelper.Instance.Query<Models.City>("select * from city where CityID=@id", new { Id = 1 });
+        }
+
+        /// <summary>
+        /// 检测场馆编码是否生成
+        /// </summary>
+        /// <param name="venudId"></param>
+        /// <returns></returns>
+        public static bool IsExistVenueCode(int venudId)
+        {
+
+            if (venudId <= 0)
+                throw new Comm.YYException.YYException("参数错误");
+
+            var result = Comm.Helper.DapperHelper.Instance.Get<Sys.Models.Venue>(venudId);
+
+            if (result == null)
+                return false;
+
+            return !string.IsNullOrWhiteSpace(result.VenueCode);
+        }
+
+        /// <summary>
+        /// 检测是否有相同的场馆编码
+        /// </summary>
+        /// <param name="venueCode"></param>
+        /// <returns></returns>
+        public static bool IsExistSameCode(string venueCode)
+        {
+
+            if (string.IsNullOrWhiteSpace(venueCode))
+                throw new Comm.YYException.YYException("参数不能为空");
+
+            var sql = "SELECT COUNT(VenueID)  FROM [SportsDB].[dbo].[Venue] where VenueCode=@venueCode";
+            var count = Comm.Helper.DapperHelper.Instance.Query<int>(sql,
+                new
+                {
+                    venueCode = venueCode
+                });
+
+            return (count.FirstOrDefault() > 0);
+
+        }
+
+        /// <summary>
+        /// 检测是否有相同的场馆
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public static bool IsExist(string email)
+        {
+
+            if (string.IsNullOrWhiteSpace(email))
+                throw new Comm.YYException.YYException("参数不能为空");
+
+            var sql = "select COUNT(v.VenueID) from venue as v join AspNetUsers as a on v.UserId=a.id where a.[NameIdentifier]=@NameIdentifier";
+            var count = Comm.Helper.DapperHelper.Instance.Query<int>(sql, new
+            {
+                NameIdentifier = email
+            });
+
+            return (count.FirstOrDefault() > 0);
+
+        }
+
+        /// <summary>
+        /// 生成场馆编码
+        /// </summary>
+        /// <param name="venue"></param>
+        /// <returns></returns>
+        public string GenVenueCode(YY.Edu.Sys.Models.Venue venue)
+        {
+
+            Random r = new Random();
+            //string code = venue.VenueID.ToString().PadLeft(6, Convert.ToChar(r.Next(1, 9)));
+
+            while (true)
+            {
+                string code = r.Next(1000, 9999).ToString();
+                if (!IsExistSameCode(code))
+                    return code;
+            }
+
+        }
+
+        /// <summary>
+        /// 简易验证登录是否成功
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        public static bool VenueLogin(string userName)
+        {
+
+            try
+            {
+
+                var sql = @"SELECT [Id],[NameIdentifier],[Email],[EmailConfirmed],[PasswordHash],[SecurityStamp],[PhoneNumber],[PhoneNumberConfirmed],[TwoFactorEnabled],[LockoutEndDateUtc],[LockoutEnabled],[AccessFailedCount],[UserName] FROM [dbo].[AspNetUsers] where UserName=@userName";
+                var result = DapperHelper.Instance.Query<Sys.Models.AspNetUsers>(sql, new
+                {
+                    username = userName
+                });
+
+                if (result == null || result.Count() == 0)
+                    return false;
+
+                var venueSql = "SELECT COUNT([VenueID]) FROM[SportsDB].[dbo].[Venue] WHERE [UserId]=@UserId";
+                var venueResult = DapperHelper.Instance.Query<int>(venueSql, new
+                {
+                    UserId = result.FirstOrDefault().Id
+                });
+
+                return (venueResult.FirstOrDefault() > 0);
+
+            }
+            catch (Exception ex)
+            {
+                logs.Error("登录失败", ex);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 获取用户信息
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public static Sys.Models.PCLoginUser GetMe(string email)
+        {
+
+            try
+            {
+
+                var sql = @"SELECT [Id],[NameIdentifier],[Email],[EmailConfirmed],[PasswordHash],[SecurityStamp],[PhoneNumber],[PhoneNumberConfirmed],[TwoFactorEnabled],[LockoutEndDateUtc],[LockoutEnabled],[AccessFailedCount],[UserName] FROM [dbo].[AspNetUsers] where UserName=@userName";
+                var result = DapperHelper.Instance.QueryFirst<Sys.Models.AspNetUsers>(sql, new
+                {
+                    username = email
+                });
+
+                if (result == null)
+                    throw new YY.Edu.Sys.Comm.YYException.YYException("用户不存在");
+
+
+                var venueSql = "SELECT [VenueID],[CityID],[UserName],[Pwd],[VenueCode],[VenueName],[VenueAddress],[LinkMan],[LinkManMobile],[LinkManWX],[VenueFax],[LegalPerson],[CardNumber],[AddTime],[BusinessLicense],[LogoUrl],[AddUser],[Status],[SystemRoleIDS],[UserId] FROM[SportsDB].[dbo].[Venue] WHERE [UserId]=@UserId";
+                var venueResult = DapperHelper.Instance.QueryFirst<Sys.Models.Venue>(venueSql, new
+                {
+                    UserId = result.Id
+                });
+
+                Sys.Models.PCLoginUser login = new Sys.Models.PCLoginUser()
+                {
+                    Users = result as Sys.Models.AspNetUsers,
+                    VenueInfo = venueResult as Sys.Models.Venue
+                };
+
+                return login;
+            }
+            catch (Exception ex)
+            {
+                logs.Error("登录失败", ex);
+                throw new YY.Edu.Sys.Comm.YYException.YYException("用户不存在");
+            }
+        }
+
+    }
+}

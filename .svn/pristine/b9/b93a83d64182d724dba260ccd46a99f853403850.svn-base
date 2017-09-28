@@ -1,0 +1,94 @@
+.topbar-3{
+    height: auto;
+    font-size: 1.2rem;
+    padding-bottom: 1rem;
+}
+.topbar-3 img{
+    border-radius:5.5rem; 
+    width:8rem;
+    margin: 1rem 0;
+}
+.topbar-3 h3{
+	font-size: 1.4rem;
+}
+.topbar-3 span{
+	display: block;
+	text-align: center;
+	line-height: 1.5;
+}
+.list{
+	margin-top: .5rem;
+	color: #606785;
+}
+.list .date{
+	font-size: 1.4rem;
+	line-height: 2;
+	font-weight: 900;
+	padding-left: .5rem;
+}
+.list .time-wrap{
+	width: 6.5em;
+	text-align: center;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	-webkit-transform:translateY(-50%);
+	transform:translateY(-50%);
+	/*font-size: 1.2rem;*/
+}
+.list  .details{
+	margin-left: 6.5em;
+    min-height: 4rem;
+    position: relative;
+}
+.list  .detail-wrap{
+	position: absolute;
+	top: 50%;
+	-webkit-transform:translateY(-50%);
+	transform:translateY(-50%);
+}
+.list  .details table{
+	max-width: 30rem;
+}
+.list  .details td{
+	text-align: center;
+}
+.item{
+	border-top: 1px solid #f2f2f2;
+	padding: 1rem .5rem;
+	position: relative;
+}
+.list-wrap{
+	background-color: #fff;
+	border-radius: .5rem;
+	margin: 0 .5rem;
+}
+.list .item:first-child{
+	border-top:none;
+}
+.person img{
+    width: 2rem;;
+    float: left;
+    margin-top: .2rem;
+    vertical-align: middle;
+}
+.person-v{
+	text-align: center;
+	line-height: 2;
+}
+.person-v img{
+	/*display: block;*/
+	float: none;
+}
+.txt{
+	padding-left: 3em;
+}
+.txt-line img{
+	width: 2em;
+    margin-top: .5em;
+}
+.buttons{
+	width: auto;
+    padding: .5rem 0 0;
+    max-width:30rem;
+}

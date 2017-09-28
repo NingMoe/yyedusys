@@ -1,0 +1,214 @@
+﻿@model Senparc.Weixin.MP.Helpers.JsSdkUiPackage
+@{
+    Layout = null;
+}
+@*
+    使用JSSDK，首先要到微信公众平台【公众号设置】下的【功能设置】里面设置“JS接口安全域名”
+*@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>公众号JSSDK演示</title>
+    <!--jQuery非JS-SDK必须-->
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.serializejson.min.js"></script>
+    <script src="@(Request.Url.Scheme)://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="~/Scripts/Jquery_Extention.js"></script>
+    <script>
+
+        function create() {
+
+            console.log(JSON.stringify($('#locationform').serializeJSON()));
+            //添加
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:53262/api/WxUserInfo/Edit",
+                contentType: "application/json",
+                data: JSON.stringify($('#locationform').serializeJSON()),
+                success: function (data, status) {
+                    if (status == "success") {
+                        console.log(data);
+                    }
+                },
+                error: function (e) {
+                    console.log('error');
+                },
+                complete: function () {
+
+                }
+            });
+        }
+
+    </script>
+    <script>
+        wx.config({
+            debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: '@Model.AppId', // 必填，公众号的唯一标识
+            timestamp: '@Model.Timestamp', // 必填，生成签名的时间戳
+            nonceStr: '@Model.NonceStr', // 必填，生成签名的随机串
+            signature: '@Model.Signature',// 必填，签名
+            jsApiList: [
+                    'checkJsApi',
+                    'openLocation',
+                    'getLocation'
+                    //'checkJsApi',
+                    //'onMenuShareTimeline',
+                    //'onMenuShareAppMessage',
+                    //'onMenuShareQQ',
+                    //'onMenuShareWeibo',
+                    //'hideMenuItems',
+                    //'showMenuItems',
+                    //'hideAllNonBaseMenuItem',
+                    //'showAllNonBaseMenuItem',
+                    //'translateVoice',
+                    //'startRecord',
+                    //'stopRecord',
+                    //'onRecordEnd',
+                    //'playVoice',
+                    //'pauseVoice',
+                    //'stopVoice',
+                    //'uploadVoice',
+                    //'downloadVoice',
+                    //'chooseImage',
+                    //'previewImage',
+                    //'uploadImage',
+                    //'downloadImage',
+                    //'getNetworkType',
+                    //'openLocation',
+                    //'getLocation',
+                    //'hideOptionMenu',
+                    //'showOptionMenu',
+                    //'closeWindow',
+                    //'scanQRCode',
+                    //'chooseWXPay',
+                    //'openProductSpecificView',
+                    //'addCard',
+                    //'chooseCard',
+                    //'openCard'
+            ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2。详见：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
+        });
+
+        wx.error(function (res) {
+            console.log(res);
+            alert('验证失败');
+        });
+
+
+         wx.ready(function () {
+                var url = '@(Request.Url.Scheme)://www.yy.com';
+                var link = url + '@(Request.Url.PathAndQuery)';
+                var imgUrl = url + '/images/v2/ewm_01.png';
+
+                wx.checkJsApi({
+                    jsApiList: [
+                        'getLocation'
+                    ],
+                    success: function (res) {
+                        // alert(JSON.stringify(res));
+                        // alert(JSON.stringify(res.checkResult.getLocation));
+                        if (res.checkResult.getLocation == false) {
+                            alert('你的微信版本太低，不支持微信JS接口，请升级到最新的微信版本！');
+                            return;
+                        }
+                    }
+                });
+
+
+                wx.getLocation({
+                    success: function (res) {
+                        var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+                        var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+                        var speed = res.speed; // 速度，以米/每秒计
+                        var accuracy = res.accuracy; // 位置精度
+                        console.log(latitude);
+                        console.log(longitude);
+                        console.log(speed);
+                        console.log(accuracy);
+
+                        $("#Latitude").val(latitude);
+                        $("#Longitude").val(longitude);
+                        $("#Speed").val(speed||'0');
+                        $("#Accuracy").val(accuracy||'0');
+                        create();
+
+                    },
+                    cancel: function (res) {
+                        alert('用户拒绝授权获取地理位置');
+                    }
+                });
+
+                //转发到朋友圈
+                wx.onMenuShareTimeline({
+                    title: 'JSSDK朋友圈转发测试',
+                    link: link,
+                    imgUrl: imgUrl,
+                    success: function () {
+                        alert('转发成功！');
+                    },
+                    cancel: function () {
+                        alert('转发失败！');
+                    }
+                });
+                //转发给朋友
+                wx.onMenuShareAppMessage({
+                    title: 'JSSDK朋友圈转发测试',
+                    desc: '转发给朋友',
+                    link: link,
+                    imgUrl: imgUrl,
+                    type: 'link',
+                    dataUrl: '',
+                    success: function () {
+                        alert('转发成功！');
+                    },
+                    cancel: function () {
+                        alert('转发失败！');
+                    }
+                });
+            });
+    </script>
+</head>
+<body>
+    @Html.Action("Default", "Base")
+    <h1>公众号JSSDK演示</h1>
+    <div>
+        <h2>@ViewBag.OpenId</h2>
+        <h2>教练系统:@ViewBag.Me</h2>
+        <form name="locationform" id="locationform">
+            <input type="hidden" name="OpenId" value="@ViewBag.OpenId" />
+            <input type="hidden" name="Latitude" id="Latitude" />
+            <input type="hidden" name="Longitude" id="Longitude" />
+            <input type="hidden" name="Speed" id="Speed" value="0" />
+            <input type="hidden" name="Accuracy" id="Accuracy" value="0" />
+        </form>
+        <button id="test" onclick="return show_city();">测试</button>
+        <textarea id="test_result"></textarea>
+    </div>
+</body>
+</html>
+<script>
+
+
+    function show_city() {
+
+        //查询
+        $.ajax({
+            type: "get",
+            url: "http://localhost:53262/api/city/get/1",
+            contentType: 'application/json',
+            success: function (data, status) {
+                console.log(data);
+                //if (status == "success") {
+                $("#test_result").val(data[0].CityName);
+                //}
+            },
+            error: function (e) {
+            },
+            complete: function () {
+
+            }
+        });
+    }
+
+
+</script>

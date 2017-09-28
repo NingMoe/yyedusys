@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>海豚驾校</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/phone.css">
+    <link rel="stylesheet" type="text/css" href="css/date.css">
+</head>
+<body class="body-txt phone typeinfo">
+    <div class="line-title">
+        <div class="txt">完善资料</div>
+        <div class="line"></div>
+    </div>
+    <form>
+        <div class="form-item form-phone">
+            <input data-name="姓名" name="name" placeholder="输入您的姓名" type="phone" maxlength="11" />
+            <!-- <div class="error">请输入姓名</div> -->
+        </div>
+        <div class="form-item form-sex">
+            <div class="sex-item" data-value="1">
+                <span class="man">
+                    <img class="i1" src="images/man.jpg" alt="">
+                    <img class="i2" src="images/man-sel.jpg" alt="">
+                </span>男生
+            </div>
+            <div class="sex-item selected" data-value="0">
+                <span class="woman">
+                    <img class="i1" src="images/woman.jpg" alt="">
+                    <img class="i2" src="images/woman-sel.jpg" alt="">
+                    </span>女生
+            </div>
+        </div>
+        <div class="form-item">
+            <input data-name="身份证号" name="idnumber" value="" placeholder="输入您的身份证号" />
+        </div>
+        <div class="form-item height">
+            <input data-name="身高" name="height" value="" placeholder="输入您的身高" type="phone" />
+            <span>CM</span>
+        </div>
+        <div class="form-item case_down birthday">
+            <input data-name="生日" readonly="readonly" data-type="select" name="birthday" placeholder="选择您的生日" />
+            <img src="images/case_down.jpg" />
+        </div>
+        <div class="form-item">
+            <input data-name="证件住址" name="address" placeholder="输入您的证件住址" />
+        </div>
+        <div class="form-item case_down hj">
+            <input data-name="户籍" readonly data-type="select" name="itype" placeholder="请选择您的户籍类型" />
+            <img src="images/case_down.jpg" />
+        </div>
+        <a href="#" class="btn btn-blue">
+            提交信息
+        </a>
+    </form>
+    <div class="mask" style="display:none;"></div>
+    <div class="select-list select-list-box" style="display:none">
+        <div class="list-title">
+            户籍类型
+        </div>
+        <ul>
+            <li>本市</li>
+            <li>非本市</li>
+            <li class="last">外籍</li>
+        </ul>
+    </div>
+    <div id="datePlugin"></div>
+    <script src="js/zepto.min.js"></script>
+    <script src="js/iscroll.min.js"></script>
+    <script src="js/date.js"></script>
+    <script src="js/typeinfo.js"></script>
+</body>
+</html>

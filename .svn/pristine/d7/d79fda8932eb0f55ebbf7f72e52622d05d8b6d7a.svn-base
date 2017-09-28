@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en" style="overflow: auto;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>教练介绍</title>
+    <link rel="stylesheet" href="/Content/amazeui.min.css" />
+    <link rel="stylesheet" href="/Content/admin.css">
+    <link rel="stylesheet" href="/Content/CoachIndex.css">
+    <link rel="stylesheet" href="/fonts/FontAwesome.otf">
+    <link rel="stylesheet" href="/fonts/fontawesome-webfont.eot">
+    <link rel="stylesheet" href="/fonts/fontawesome-webfont.ttf">
+    <link rel="stylesheet" href="/fonts/fontawesome-webfont.woff">
+    <link rel="stylesheet" href="/fonts/fontawesome-webfont.woff2">
+</head>
+<body>
+    @Html.Action("Default", "Base")
+    <div class="_teacDeatil">
+        <!-- 头部导航 -->
+        <header data-am-widget="header" class="am-header am-header-default">
+            <div class="am-header-left am-header-nav">
+                <a href="#left-link" class="">
+                    <i class="am-header-icon am-icon-arrow-left"></i>
+                </a>
+            </div>
+            <h1 class="am-header-title">
+                <a href="#title-link" class="">教练介绍</a>
+            </h1>
+        </header>
+        <!-- 内容部分 -->
+        <div class="teacherDeta">
+            <div class="am-g _TdateFIR">
+                <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" alt="" class="am-u-sm-4 am-u-md-4 am-u-lg-4">
+                <div class="am-u-sm-8 am-u-md-8 am-u-lg-8">
+
+                    <p id="pName"></p>
+                    <p id="pAge"></p>
+                    <div class="clear am-g"><p class="le am-u-sm-10 am-u-md-10 am-u-lg-10" id="pTel"></p><a href="" class="am-icon-phone le am-u-sm-2 am-u-md-2 am-u-lg-2"></a></div>
+                </div>
+            </div>
+            <div class="_TdateFour">
+                <p>个人介绍：</p>
+                <p id="pInfo"></p>
+            </div>
+            <div class="_TdateSEC">
+                <p>学生评价：</p>
+                <ul>
+                    <li class="am-g">
+                        <p class="am-u-sm-4 am-u-md-4 am-u-lg-4">体验评价：</p>
+                        <p class="am-u-sm-4 am-u-md-4 am-u-lg-4" id="pTY">
+                        
+                        </p>
+                        <p class="am-u-sm-2 am-u-md-2 am-u-lg-2" id="PJSF">记算中...</p>
+                    </li>
+                    <li class="am-g">
+                        <p class="am-u-sm-4 am-u-md-4 am-u-lg-4">效果评价：</p>
+                        <p class="am-u-sm-4 am-u-md-4 am-u-lg-4" id="pXG">
+
+                        </p>
+                        <p class="am-u-sm-2 am-u-md-2 am-u-lg-2" id="PXGF">记算中...</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="_TdateTIR">
+                <p>教师风采：</p>
+                <ul class="am-avg-sm-3 am-avg-md-3 am-avg-lg-3 am-thumbnails" id="ulFC">
+                  
+                </ul>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="hdID" value="@ViewBag.CoachID" />
+
+    <input type="hidden" id="hdVenveID" value="@ViewBag.VenueID" />
+    <script src="/Scripts/jquery-1.12.0.min.js"></script>
+    <script src="/Scripts/Jquery_Extention.js"></script>
+    <script src="/Scripts/app.js"></script>
+    <script src="/Scripts/amazeui.min.js"></script>
+    <script src="/Scripts/amazeui.ie8polyfill.min.js"></script>
+    <script src="/Scripts/Coash/MyInfo.js"></script>
+</body>
+
+
+</html>

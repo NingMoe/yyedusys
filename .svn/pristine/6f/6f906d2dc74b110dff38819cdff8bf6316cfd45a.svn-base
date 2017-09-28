@@ -1,0 +1,25 @@
+﻿using Senparc.Weixin.MP.AdvancedAPIs.OAuth;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace YY.Edu.Sys.Web.Services
+{
+    public class WxUserService
+    {
+
+        public static bool FollowMP(OAuthUserInfo userInfo) {
+            return true;
+            //var client = new RestClient("http://localhost:53262/api/Student/PostFormData");
+            //var request = new RestRequest(Method.POST);
+            //request.AddHeader("postman-token", "ce0ccc36-a09e-ab7f-57e9-da2729637d22");
+            //request.AddHeader("cache-control", "no-cache");
+            //request.AddHeader("content-type", "application/json");
+            //request.AddParameter("application/json", "{\"VenueID\":\"1\",\"CityID\":\"1\",\"CampusName\":\"北京大兴校区\",\"LinkMan\":\"郭金龙\",\"LinkTel\":\"13800138001\",\"Address\":\"北京大兴校区\"}", ParameterType.RequestBody);
+            //IRestResponse response = client.Execute(request);
+
+        }
+
+    }
+}

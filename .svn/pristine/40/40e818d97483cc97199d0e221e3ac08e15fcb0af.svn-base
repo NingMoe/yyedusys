@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>体育培训系统-学员</title>
+		<meta name="keywords" content="体育,培训,系统" />
+	    <meta name="description" content="体育培训系统" /><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <link rel="stylesheet" href="css/amazeui.min.css" type="text/css" />
+	    <link rel="stylesheet" href="css/style.css" type="text/css" />
+	    <script type="text/javascript" src="js/jquery.min.js" ></script>
+	    <script type="text/javascript" src="js/amazeui.min.js" ></script>
+	</head>
+	<body>
+		<header data-am-widget="header" class="am-header am-header-default header-green1">
+	      <div class="am-header-left am-header-nav ">
+		        <a href="javascript:history.back()" style="color: #fff;"><i class="am-icon-chevron-left"></i></a>
+	        </div>
+		  <h1 class="am-header-title" style="color: #fff;">课程详情</h1>
+		  <div class="am-header-right am-header-nav">
+	      	<a href="complaint.html" style="color: #fff;">投诉</a>
+	      </div>
+       </header>
+	   <div class="jl"></div>
+       <ul class="find">
+       	  <li style="border: 0;">
+	       	  	<!-- <img class="tx" src="images/tx.png"/> -->
+	       	  	<div class="find-left">
+	       	  		<p class="name">金冠台球俱乐部-东校区(北京)</p>
+					<p class="style" style="color: #2b9f55;">丁俊晖(台球基础课程)</em></p>
+	       	  		 <p class="car">
+	       	  			<i class="iconfont">&#xe605;</i>
+	       	  			<i class="shijian">已学6节课</i>
+	       	  			<i class="iconfont">&#xe612;</i>
+	       	  			<i class="num">下节课-缩杆打法</i>
+	       	  		</p> 
+	       	  	</div>
+	       	  	<!-- <a href="" class="rote">
+	       	  		<i class="iconfont">&#xe600;</i>路线>
+	       	  	</a> -->
+       	  </li>
+        </ul>
+        <div style="height: 5px; background: #e8e8e8;"></div>
+        <div class="infor">
+        	<h2>跟我学台球,小妹泡到手</h2>
+        	<p>描述</p>
+        </div>
+        <ul class="contact">
+        	<li>
+        		<a href="tel:10086">
+        			<span>153***8547</span>
+        			<i class="iconfont">&#xe613;</i>
+        		</a>
+        	</li>
+        </ul>
+        <div class="huo-money">
+        	<span>课时详情</span>
+        	<ul>
+				<li><a href="javascript:void(0)">第一节课 2016-9-5 17:02<i>80分</i></a></li>
+        		<li style="height: 60px;">
+        			<em class="iconfont">&#xe614;</em>
+					<b>还要多多努力<br/>缩杆的手法不错</b>
+        			<!-- <i class="money">￥120</i> -->
+				</li>
+				<li>
+					<a href="comment.html"><i class="money">评价</i></a>
+				</li>
+				<li><a href="javascript:void(0)">第二节课 2016-9-5 17:02<i>80分</i></a></li>
+				<li style="height: 60px;">
+						<em class="iconfont">&#xe614;</em>
+						<b>还要多多努力<br/>缩杆的手法不错</b>
+						<!-- <i class="money">￥120</i> -->
+				</li>
+				<li>
+						<a href="comment.html"><i class="money">评价</i></a>
+				</li>
+				<li><a href="javascript:void(0)">第二节课 2016-9-5 17:02<i>80分</i></a></li>
+				<li style="height: 60px;">
+						<em class="iconfont">&#xe614;</em>
+						<b>还要多多努力<br/>缩杆的手法不错</b>
+						<!-- <i class="money">￥120</i> -->
+				</li>
+				<li>
+						<a href="comment.html"><i class="money">评价</i></a>
+				</li>
+        	</ul>
+        </div>
+        <!-- <div class="transaction">
+        	<span>担保交易</span>
+        	<ul>
+        		<li style="height: 100px;">
+        			<h2>即将支付高额信息费或运费差价？</h2>
+        			<p>谨防汇款等诈骗手段，请使用润信物流支付，出现问题全额赔付</p>
+        		</li>
+        		<li>
+        			<em>￥</em>
+        			<input type="text" placeholder="请填写协商信息费" />
+        			<i class="money">支付</i>
+        		</li>
+        	</ul>
+		</div> -->
+		
+        <div class="jl"></div>
+		 <div data-am-widget="navbar" class="am-navbar  dream-foot am-no-layout" id="">
+				<ul class="am-navbar-nav1 am-cf am-avg-sm-5">   
+						<li>
+						  <a href="index.html" class="curr">
+							  <span class="iconfont">&#xe60b;</span>
+							  <p class="am-navbar-label">首页</p>
+						  </a>
+						</li>
+						<li>
+						  <a href="nearby.html" class="">
+							  <span class="iconfont">&#xe60c;</span>
+							  <p class="am-navbar-label">附近</p>
+						  </a>
+						</li>
+						<li>
+						  <a href="find.html" class="">
+							  <span class="add"><i class="iconfont" style="font-size: 30px; line-height: 40px;">&#xe60e;</i></span>
+							  <p class="am-navbar-label" style="margin-top: -36px;">选课</p>
+						  </a>
+						</li>
+						<li>
+						  <a href="message.html" class="">
+							  <span class="iconfont">&#xe60d;</span>
+							  <p class="am-navbar-label">消息</p>
+						  </a>
+						</li>
+						<li>
+						  <a href="member.html" class="">
+							  <span class="iconfont">&#xe609;</span>
+							  <p class="am-navbar-label">个人中心</p>
+						  </a>
+						</li>
+					</ul>
+		</div>
+	</body>
+</html>

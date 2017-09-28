@@ -1,0 +1,119 @@
+.phone{
+    background-color: #fff;
+    font-size: 1.5rem;
+    padding:.5em 1em;
+}
+.phone .line-title .txt{
+    width:13em;
+    padding: 0 .5em;
+    /*color: #afb3c2;*/
+    background-color: #fff;
+}
+.typeinfo .line-title .txt{
+    width:4em;
+    font-size: 1.4rem;
+}
+.phone .btn{
+    margin-top: 2em;
+}
+.phone .line-title{
+    margin:1.5em 0;
+}
+.typeinfo .line-title{
+    margin:.5em 0;
+}
+.txt-des a{
+    color: #606785;
+    text-decoration: underline;
+}
+
+.sex-item{
+    vertical-align: middle;
+    width: 49%;
+    /*-webkit-box-pack: left;
+    -moz-box-pack: left;
+    -ms-box-pack: left;
+    -o-box-pack: left;
+    box-pack: left;
+    -webkit-box-align: left;
+    -moz-box-align: left;
+    -ms-box-align: left;
+    -o-box-align: left;
+    box-align: left;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
+    display: -o-box;
+    display: box;
+    -webkit-box-pack: justify;
+    box-pack: justify;*/
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -o-box;
+  display: box;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -moz-box-align: left;
+  -webkit-box-align: left;
+  box-align: left;
+  -moz-box-pack: left;
+  -webkit-box-pack: left;
+  box-pack: left;    
+}
+.sex-item .i2{
+    display: none;
+}
+.sex-item.selected .man .i1{
+    display: none;
+}
+.sex-item.selected .man .i2{
+    display: inherit;
+}
+.sex-item.selected .woman .i1{
+    display: none;
+}
+.sex-item.selected .woman .i2{
+    display: inherit;
+}
+.sex-item img{
+    width: 1.5em;
+    vertical-align:-.4rem;
+    margin-right: .5rem;
+}
+.height span{
+    width: 50%;
+}
+.case_down img{
+    display: block;
+    height: .6em;
+    margin-top: 1.2rem;
+    width: 1.2em;
+    position: absolute;
+    right: 1em;
+    top: .1em;
+}
+.form-item {
+    margin-top: 0.85rem;
+    position: relative;
+}
+.error{
+    position: absolute;
+    left: 0;
+    line-height: 1;
+    z-index: 10;
+    bottom: -1.2em;
+    color: #c33242;
+}
+
+#sel_sh{
+    position: absolute;
+    width:100%;
+    height: 100%;
+    /*visibility: hidden;*/
+    left: 0;
+    top: 0;
+}

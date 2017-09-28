@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>课程考试</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div class="wrap-box">
+        <img src="images/jx_location_title.png" alt="" >
+    </div>
+    <div class="change-nav">
+        <div class="change-nav-item">
+            <img src="images/iloc-lsit.png" />列表查看
+        </div>
+        <div class="change-nav-item">
+            <img src="images/iloc-map.png" />地图查看
+        </div>
+    </div>
+    <div class="change-city2">
+        <img class="i1" src="images/iloc_blue.png" />北京<img src="images/arrow_down_blue.png" class="i2" />
+    </div>
+    <div class="city-list">
+        <a href="#">
+            <span>北部校区</span>
+            顺义区后沙峪玉马教练场
+       </a>
+        <a href="#">
+            <span>南部校区</span>
+            大兴区天堂河卫区司训大队基地
+        </a>
+    </div>
+
+    <div class="change-city-pre">
+        <div class="title">
+            <img src="images/itime3.png" alt="">预招场地
+        </div>
+        <a class="wrap" href="#">
+            <span>南部校区</span>
+            大兴区天堂河卫区司训大队基地
+            <div class="ptime">
+                开放时间：2015年9月31日之前
+            </div>
+        </a>
+    </div>
+
+    <div class="select-list" style="display:none">
+        <div class="selected">北京</div>
+        <div class="split">已开通服务的城市</div>
+        <ul>
+            <li><a href="?city=1">北京</a></li>
+            <li><a href="?city=2">上海</a></li>
+            <li><a href="?city=3">哈尔滨</a></li>
+        </ul>
+    </div>  
+    <script src="js/zepto.min.js"></script>
+    <script>
+        $('.change-city2').on('click',function(e){
+            var ele = $('.select-list');
+            ele.find(".selected").text($('.change-city2').text()+'[当前城市]');
+            ele.show();
+    });
+        $(".selected").on('tap',function(){
+            var ele = $('.select-list');
+            ele.hide();
+        });
+    </script>
+</body>
+</html>

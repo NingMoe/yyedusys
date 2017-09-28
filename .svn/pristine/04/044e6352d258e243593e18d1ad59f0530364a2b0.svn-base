@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en" style="overflow: auto;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title></title>
+    <link rel="stylesheet" href="/Content/amazeui.min.css" />
+    <link rel="stylesheet" href="/Content/admin.css">
+    <link rel="stylesheet" href="/Content/index.css">
+    <link rel="stylesheet" href="/Content/iconfont.css">
+    <link rel="stylesheet" href="/font/iconfont.woff">
+    <link rel="stylesheet" href="/font/iconfont.eot">
+    <link rel="stylesheet" href="/font/iconfont.svg">
+    <link rel="stylesheet" href="/font/iconfont.ttf">
+</head>
+<body>
+    <div class="_CHOOSE">
+        <!-- 头部导航 -->
+        <header data-am-widget="header" class="am-header am-header-default">
+            <div class="am-header-left am-header-nav">
+                <a href="javascript:history.back()"  class="">
+                    <i class="am-header-icon am-icon-arrow-left"></i>
+                </a>
+            </div>
+            <h1 class="am-header-title">
+                <a href="#title-link" class="">我要评价</a>
+            </h1>
+        </header>
+        <!-- 内容部分 -->
+        <div class="_Remark">
+            <div class="remaekFir">
+              
+            </div>
+            <div class="remaekSec">
+                <div class="_TdateSEC">
+                    <p>学生评价：</p>
+                    <ul>
+                        <li class="am-g" >
+                            <p class="am-u-sm-4 am-u-md-4 am-u-lg-4">体验评价：</p>
+                            <p class="am-u-sm-4 am-u-md-4 am-u-lg-4" id="Typj">
+                            <span class="am-icon-star-o"></span>
+                            <span class="am-icon-star-o"> </span>
+                            <span class="am-icon-star-o">
+                                </span>
+                            <span class="am-icon-star-o"></span>
+                            <span class="am-icon-star-o"></span></p>
+                            <p class="am-u-sm-2 am-u-md-2 am-u-lg-2"><span id="Tpf">8</span>分</p>
+                        </li>
+                        <li class="am-g">
+                            <p class="am-u-sm-4 am-u-md-4 am-u-lg-4">效果评价：</p>
+                            <p class="am-u-sm-4 am-u-md-4 am-u-lg-4" id="Ggpj">
+                            <span class="am-icon-star"></span>
+                            <span class="am-icon-star"></span>
+                            <span class="am-icon-star"></span>
+                            <span class="am-icon-star"></span>
+                            <span class="am-icon-star-o"></span></p>
+                            <p class="am-u-sm-2 am-u-md-2 am-u-lg-2"><span  id="Gpf">8</span>分</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="remaekJy">
+                    <div class="am-form-group">
+                        <label for="doc-ta-1" class="widthMax">请输入您的意见和建议：</label>
+                        <textarea class="" rows="6"maxlength="100" cols="48" id="doc-ta-1" placeholder="建议词汇：态度好、有耐心、进步很大、态度不好、没有耐心、进步一步"></textarea>
+                    </div>
+                </div>
+                               <p class="reBUT textAlign" id="save">提交</p>
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+    <input type="hidden" id="hdID" name="hdID" value="@ViewBag.PKID" />
+    <input type="hidden" id="hdSID" name="hdSID" value="@ViewBag.SID" />
+    <input type="hidden" id="hdCID" name="hdCID" value="@ViewBag.CID" />
+    <script src="/Scripts/jquery-1.12.0.min.js"></script>
+    <script src="/Scripts/app.js"></script>
+    <script src="/Scripts/amazeui.min.js"></script>
+    <script src="/Scripts/amazeui.ie8polyfill.min.js"></script>  
+    <script src="/Scripts/Student/MyEvaluate.js"></script>
+</body>
+</html>

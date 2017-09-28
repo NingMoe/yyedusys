@@ -1,0 +1,70 @@
+﻿using Dapper;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using YY.Edu.Sys.Comm.Helper;
+
+namespace YY.Edu.Sys.Api.Services
+{
+    public class CoachService
+    {
+
+        private static readonly log4net.ILog logs = Comm.Helper.LogHelper.GetInstance();
+        public static IEnumerable<dynamic> GetCoachTeachingSche(int coachID, string curriculumStartDate,string curriculumEndDate)
+        {
+
+            var sql = @"select CurriculumDate,CurriculumStr = ( STUFF(( SELECT    ',' + CurriculumBeginTime+'-'+CurriculumEndTime+'|'+CONVERT(varchar(1), [State])+'|'+CONVERT(varchar(1), VenueID)+'|'+CONVERT(varchar(1), CampusID) FROM TeachingSchedule WHERE  CurriculumDate = t.CurriculumDate FOR XML PATH('') ), 1, 1, '') )  
+from TeachingSchedule as t where CoachID = @CoachID and CurriculumDate>= @CurriculumDateStart and CurriculumDate< @CurriculumDateEnd
+group by CurriculumDate";
+
+            try
+            {
+
+                //string[] curriculumDateArr = curriculumDate
+                //    .Split("to".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+
+                var result = DapperHelper.Instance.Query(sql,
+                    new
+                    {
+                        CoachID = coachID,
+                        CurriculumDateStart = curriculumStartDate,
+                        CurriculumDateEnd = curriculumEndDate
+                    });
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logs.Error("获取教练排课失败", ex);
+                return null;
+            }
+        }
+
+        public static IEnumerable<dynamic> GetCoachTeachingScheByDay(int coachID, string curriculumStartDate, string curriculumEndDate)
+        {
+
+            var sql = @"select CurriculumDate, CurriculumBeginTime,CurriculumEndTime, [State]
+from TeachingSchedule where CoachID = @CoachID and CurriculumDate>= @CurriculumDateStart and CurriculumDate< @CurriculumDateEnd ";
+
+            try
+            {
+                var result = DapperHelper.Instance.Query(sql,
+                    new
+                    {
+                        CoachID = coachID,
+                        CurriculumDateStart = curriculumStartDate,
+                        CurriculumDateEnd = curriculumEndDate
+                    });
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logs.Error("获取教练排课失败", ex);
+                return null;
+            }
+        }
+
+    }
+}

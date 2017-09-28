@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>汕头市润信物流有限公司</title>
+		<meta name="keywords" content="汕头市润信物流有限公司,汕头物流配送,汕头物流,汕头物流货运,汕头货运,全国货运,厦门物流配送,深圳物流配送,广州物流配送,物流配送,物流货运,货运配送" />
+	    <meta name="description" content="汕头市润信物流有限公司是一家承接全国各地门到门配送业务的专业第三方物流，为企业量身定做仓储、配送物流方案，针对大小客户配备专业项目小组进行专人专车对接。" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <link rel="stylesheet" href="css/amazeui.min.css" type="text/css" />
+	    <link rel="stylesheet" href="css/style.css" type="text/css" />
+	    <script type="text/javascript" src="js/jquery.min.js" ></script>
+	    <script type="text/javascript" src="js/amazeui.min.js" ></script>
+	</head>
+	<body class="bgcolor">
+		<header data-am-widget="header" class="am-header am-header-default header-green1">
+	      <div class="am-header-left am-header-nav ">
+		        <a href="javascript:history.back()" style="color: #fff;"><i class="am-icon-chevron-left"></i></a>
+	        </div>
+		  <h1 class="am-header-title" style="color: #fff;">评价</h1>
+        </header>
+        <div class="jl"></div>
+        <ul class="comment">
+        	<li>
+        		<img src="images/tx.png" />
+        		<div class="comment-text">
+        			<h3>北京 — 深圳</h3>
+        			<p class="time"><i class="iconfont">&#xe605;</i>2016-9-5   12:00</p>
+        			<p class="con">价格优惠，服务到位，给好评</p>
+        		</div>
+        	</li>
+        	<li>
+        		<img src="images/tx.png" />
+        		<div class="comment-text">
+        			<h3>北京 — 深圳</h3>
+        			<p class="time"><i class="iconfont">&#xe605;</i>2016-9-5   12:00</p>
+        			<p class="con">价格优惠，服务到位，给好评</p>
+        		</div>
+        	</li>
+        	<li>
+        		<img src="images/tx.png" />
+        		<div class="comment-text">
+        			<h3>北京 — 深圳</h3>
+        			<p class="time"><i class="iconfont">&#xe605;</i>2016-9-5   12:00</p>
+        			<p class="con">很满意的一次服务。送货时期还可以实时了解进度，不错。而且价格也很优惠</p>
+        		</div>
+        	</li>
+        </ul>
+        <a href="" class="seeall">查看全部评论></a>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>汕头市润信物流有限公司</title>
+		<meta name="keywords" content="汕头市润信物流有限公司,汕头物流配送,汕头物流,汕头物流货运,汕头货运,全国货运,厦门物流配送,深圳物流配送,广州物流配送,物流配送,物流货运,货运配送" />
+	    <meta name="description" content="汕头市润信物流有限公司是一家承接全国各地门到门配送业务的专业第三方物流，为企业量身定做仓储、配送物流方案，针对大小客户配备专业项目小组进行专人专车对接。" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <link rel="stylesheet" href="css/amazeui.min.css" type="text/css" />
+	    <link rel="stylesheet" href="css/style.css" type="text/css" />
+	    <script type="text/javascript" src="js/jquery.min.js" ></script>
+	    <script type="text/javascript" src="js/amazeui.min.js" ></script>
+	</head>
+	<body class="bgcolor">
+		<header data-am-widget="header" class="am-header am-header-default header-green1">
+	      <div class="am-header-left am-header-nav ">
+		        <a href="javascript:history.back()" style="color: #fff;"><i class="am-icon-chevron-left"></i></a>
+	        </div>
+		  <h1 class="am-header-title" style="color: #fff;">钱包</h1>
+       </header>
+       <div class="jl"></div>
+       <div class="qian">
+       	  <h2>0.00</h2>
+       	  <p>账号余额（元）</p>
+       </div>
+       <ul class="contact">
+        	<li>
+        		<a href="recharge.html" style="color: #4b505a;">
+        			<i class="iconfont">&#xe617;</i>
+        			<span>充值</span>
+        		</a>
+        	</li>
+        	<li>
+        		<a href="cash.html" style="color: #4b505a;">
+        			<i class="iconfont">&#xe618;</i>
+        			<span>提现</span>
+        		</a>
+        	</li>
+        </ul>
+         <ul class="member-list">
+			<li>
+				<a href="bankcard.html">
+					<span>我的银行卡</span>
+					<i class="am-icon-angle-right"></i>
+				</a>
+			</li>
+			<li>
+				<a href="moneydetailed.html">
+					<span>交易明细</span>
+					<i class="am-icon-angle-right"></i>
+				</a>
+			</li>
+			<li>
+				<a href="advantage.html">
+					<span>车身广告</span>
+					<i class="am-icon-angle-right"></i>
+				</a>
+			</li>
+		</ul>
+	</body>
+</html>

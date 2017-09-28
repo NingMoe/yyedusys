@@ -1,0 +1,27 @@
+.itys{
+    padding: 2.5rem 9%;
+    font-size: 1.416667rem;
+    line-height: 3;
+    text-align: center;
+    margin: 0 auto;
+    color: #fff;
+    background-color: #fff;
+    margin-top: 0.833333rem;
+    vertical-align: middle;
+}
+.itys img{
+    height: 1.2em;
+    vertical-align: -3px;
+    margin-right: .5em;
+}
+.ity1,.ity2{
+    border-radius: 0.833333rem;
+    display: block;
+}
+.ity1{
+    background-color: #af9141;
+}
+.ity2{
+    margin-top: 1.666667rem;
+    background-color: #49b267;
+}

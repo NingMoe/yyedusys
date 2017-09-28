@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>进度详情</title>
+        <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="format-detection" content="telephone=no, email=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="stylesheet" type="text/css" href="css/common.css">
+        <link rel="stylesheet" type="text/css" href="css/progress.css">
+    </head>
+    <body>
+        <div class="topbar">
+            <h2>原地驾驶</h2>
+        </div>
+        <div class="line-title">
+            <div class="line"></div>
+            <div class="title">设置教学结果</div>
+        </div>
+
+        <div class="input-area-wrap">
+            <textarea class="input-area" rows="5" placeholder="请输入教学评语（200字以内）。"></textarea>
+        </div>
+
+        <div class="btn-wrap-2">
+            <div class="btn btn-gray">学员未通过</div>
+            <div class="btn btn-blue">学员已完成</div>
+        </div>        
+        <div class="line-title">
+            <div class="line"></div>
+            <div class="title">教学大纲</div>
+        </div>
+        <div class="txt-detail">
+            <p>
+            <b>初级阶段目标：</b>完成五大操作部件的单项操作和组合动作，掌握 起步、增挡、减挡、停车，具备一定的操作配合能力。
+            </p>
+            <p><b>一、教学内容</b></p>
+            <p>本课时教学重点：油离配合起步、停车掌握打轮手法和方向控               制，正确试用灯光、观察后视镜。</p>
+            <p>第一学时：上车前的准备，上车后的准备，讲解操作五大部件，点火开关的试用，起步、方向、停车，组合训练。</p>
+            <p>第二学时：方向盘控制、打轮手法、起步、增挡，停车（轻踩长磨）组合训练，观察后视镜。
+            注：</p>
+            <ul>
+                <li>学员从上实车第一次开始，在起步、转弯等训练中，始终要          强调转向灯光和后视镜的作用。</li>
+                <li>在每课时实操训练中，教练员应根据学员具体情况，为学员进行操作演示。</li>
+                <li>教练员做示范让学员了解什么是离合器的接触点？离合器在结合实车时车身与发动机的迹象表现？接触点的强、弱点带给车辆的变化？首先是发动机转速降低、车头上扬、随即车身抖动。训练中强调转向灯光的试用。</li>
+                <li>实车训练严禁停车打轮，可采用示意的方法。</li>
+            </ul>
+            <p><b>
+            二、  教学方法</b></p>
+            <ul>
+                <li>上车前的准备;<br>
+                    简介车辆概况，介绍发动机、电瓶、水箱等作用和位置，讲      解如何检查机油标尺，观察和添加防冻液的标准。<br>
+                介绍车辆前后示廓灯、转向灯、前照灯、制动灯的位置及用途，备胎、灭火器、警告标志存放位置等</li>
+                <li>上车后的准备：调整座椅、松系安全带、调整后视镜、各操作开关部件。</li>
+                <li>灯光的试用：灯光的使用应贯穿整个训练之中。</li>
+                <li>汽车起步的操作方法。</li>
+                <li>方向盘控制：
+                    <br>操作方法：交叉式和非交叉式两种。
+                <br>方向盘的握法：身体正坐于方向盘前，两手握于方向盘3、9点两个点位，两肘自然下垂，平视前方。</li>
+                <li>点火开关，是用于接通或切断起动机、点火和电气线路。</li>
+            </ul>
+            <p>
+            <b>操作：（教练员操作演示）</b>
+            </p>
+            <ul>
+
+            </ul>
+            <li>起步方法：左脚抬至离合器接触点位置右脚轻加油，进行油离配合。</li>
+            <li>方向讲解训练：两手要有交替操作的互换意识，了解视线观察位置。</li>
+            <li>停车：“轻踩长磨”轻踩刹车找到摩擦点，长距离的减速停车。</li>
+            <li>增挡：两脚踩、抬同步，并体会离合器接触点位置的高低。</li>
+            <li>反复操作起步、增挡、减挡、停车的组合训练，达到熟练操作</li>
+        </div>
+    </div>
+</body>
+</html>

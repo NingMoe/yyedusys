@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>汕头市润信物流有限公司</title>
+		<meta name="keywords" content="汕头市润信物流有限公司,汕头物流配送,汕头物流,汕头物流货运,汕头货运,全国货运,厦门物流配送,深圳物流配送,广州物流配送,物流配送,物流货运,货运配送" />
+	    <meta name="description" content="汕头市润信物流有限公司是一家承接全国各地门到门配送业务的专业第三方物流，为企业量身定做仓储、配送物流方案，针对大小客户配备专业项目小组进行专人专车对接。" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <link rel="stylesheet" href="css/amazeui.min.css" type="text/css" />
+	    <link rel="stylesheet" href="css/style.css" type="text/css" />
+	    <script type="text/javascript" src="js/jquery.min.js" ></script>
+	    <script type="text/javascript" src="js/amazeui.min.js" ></script>
+	</head>
+	<body>
+		<header data-am-widget="header" class="am-header am-header-default header-green1">
+	      <div class="am-header-left am-header-nav ">
+		        <a href="javascript:history.back()" style="color: #fff;"><i class="am-icon-chevron-left"></i></a>
+	        </div>
+		  <h1 class="am-header-title" style="color: #fff;">关于我们 </h1>
+        </header>
+        <div class="jl"></div>
+        <div class="about">
+        	<p style="text-indent: 24px; line-height: 30px;">润信物流是一家承接全国各地门到门配送业务的专业第三方物流，为企业量身定做仓储、配送物流方案，针对大小客户配备专业项目小组进行专人专车对接。重点整合潮汕地区发往全国各地的货源，进行快速分拣、分流，方便、快捷、安全可靠。公司致力于改变现有物流运作模式，降低物流成本，优化网络资源，提高门到门配送服务标准，为大、中、小企业量身定做物流解决方案。</p>
+        	<p style="text-indent: 24px; line-height: 30px;">公司本着服务安全、快捷、放心、省心、领先、专业的精神，树立新时代物流新型服务创始人，领导者。  润信物流已经在粤东地区设立5个自营网点，厦门、深圳、广州设立办事处，管理人员达20人之多，拥有自有和整合车辆100多辆，以汕头为分拨中心，覆盖广东省，安徽、上海、江苏、北京等全国各级城市，现已建立多家上市企业长期战略合作伙伴关系。</p>
+        	<p style="text-indent: 24px; line-height: 30px;">目前我司主要与粤东地区知名医药企业、IT电子类、服装企业、化工类企业等，达成长期战略合作协议。</p>
+        	<img src="images/about.jpg" />
+        </div>
+	</body>
+</html>

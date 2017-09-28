@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>海豚驾校</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">    
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no, email=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body class="body-txt">
+    <div class="order-offline-pay">
+        <div class="title"><img src="images/right.jpg" alt=""> 您已确认线下支付</div>
+        为了保障您准时上课，请于<span>2015年09月10日</span>前将报名证件寄送我们或上门提交证件。
+    </div>
+    <div class="txt-panel">
+        <div class="txt-title-wrap">
+            <div class="txt-title">
+                报名所需证件
+            </div>
+            <div class="line"></div>
+        </div>
+        <div class="txt-data-table">
+            <ul class="txt-ul">
+                <li><em></em>8张白底一寸铜板白底彩照</li>
+                <li><em></em>
+                    身份证原件
+                </li>
+                <li><em></em>
+                    三甲级医院机动车驾驶员体检表原件（可免费代办）
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="txt-panel">
+        <div class="txt-title-wrap">
+            <div class="txt-title">
+                快递方式
+            </div>
+            <div class="line"></div>
+        </div>
+        <div class="txt-data-table">
+            <ul class="txt-ul">
+                <li><em></em>外市户口在京学车需有效期半年以上有效暂住证</li>
+                <li><em></em>暂住证请您联系您的房东、公司、学校或到您就近
+居住地的派出所申请办理。</li>
+                <li><em></em>暂住证中的户籍地址要与身份证上地址完全一致</li>
+                <li><em></em>办理暂住证时间预计为10个工作日左右</li>
+            </ul>
+        </div>
+    </div>
+    <div class="txt-panel">
+        <div class="txt-title-wrap">
+            <div class="txt-title">
+                快递方式
+            </div>
+            <div class="line"></div>
+        </div>
+        <div class="txt-data-table">
+            <ul>
+                <li>
+                    <div class="name">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</div>
+                    <div class="ctx">北京市海淀区知春路豪景大厦108号B座302室</div>
+                </li>
+                <li>
+                    <div class="name">快&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;递</div>
+                    <div class="ctx">顺丰快递，支持到付<br/>010- 57178609</div>
+                </li>
+                <li>
+                    <div class="name">收&nbsp;件&nbsp;人</div>
+                    <div class="ctx">某某某<br/>13301085947</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <a href="#" class="btn btn-blue">
+        我决定线下支付
+    </a>
+	<script src="js/zepto.min.js"></script>
+</body>
+</html>

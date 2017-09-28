@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>预招须知</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">    
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no, email=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body class="body-txt">
+    <div class="order-offline-pay pre-title">
+        <div class="title">海豚驾考预招须知</div>
+    </div>
+    <div class="txt-panel pre-txt-panel">
+        <div class="txt-title-wrap">
+            <div class="txt-title">
+                海豚驾考义务
+            </div>
+            <div class="line"></div>
+        </div>
+        <div class="txt-data-table">
+            <ul class="txt-ul">
+                <li><em></em>海豚驾考承诺将在指定时间段内开放相应场地，以保证学员可以正常学车。</li>
+                <li><em></em>
+                    如发生特殊情况不能如期开放场地，我们承诺将退还所有学费，或者按照您的意愿免费转移到我们就近的校区并提前安排上课。
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="txt-panel pre-txt-panel">
+        <div class="txt-title-wrap">
+            <div class="txt-title">
+                学员责任
+            </div>
+            <div class="line"></div>
+        </div>
+        <div class="txt-data-table">
+            <ul class="txt-ul">
+                <li><em></em>由于新校区刚刚成立，有些服务可能不能尽如人意，故我们将放出更多优惠给我们的预招学员作为补偿，请参加预找的学员帮我们指出相关问题，让我们走的更远。</li>
+            </ul>
+        </div>
+    </div>
+    <a href="#" class="btn btn-blue">
+        我已阅读
+    </a>
+	<script src="js/zepto.min.js"></script>
+</body>
+</html>

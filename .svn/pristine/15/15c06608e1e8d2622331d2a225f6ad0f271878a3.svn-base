@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>选择教练</title>
+        <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="format-detection" content="telephone=no, email=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="stylesheet" type="text/css" href="css/common.css">
+        <link rel="stylesheet" type="text/css" href="css/selectteacher.css">
+    </head>
+    <body>
+        <div class="topbar-2">
+            <h3>请选择教练</h3>
+            <span>周一至周五练车</span>
+        </div>
+<!--         <div class="teach-date">
+            <div class="teach-date-wrap">
+                <div class="td-item active">
+                    <a href="#">周一至周五练车</a>
+                </div>
+                <div class="td-item">
+                    <a href="#">周六至周日练车</a>
+                </div>
+            </div>
+        </div>
+ -->        
+        <div class="caseable-wrap">
+            <div class="case-item">
+                <img src="img/course/i-enable.png" alt="">可约
+            </div>
+            <div class="case-item">
+                <img src="img/course/i-unenable1.png" alt="">已满
+            </div>
+        </div>
+        <div class="teach-item">
+            <img src="img/course/avator.jpg" class="avator" alt="">
+            <div class="teach-wrap">
+                <div class="teach-name">刘华
+                    <span>预约过</span>
+                </div>
+                <div class="teach-des">35岁 · 6年驾龄 · 3年教龄</div>
+                <div class="teach-times">
+                    <table>
+                        <tr>
+                            <td class="time">08:00-12:00</td>
+                            <td><img src="img/course/i-unenable.png" alt=""></td>
+                            <td><img src="img/course/i-unenable1.png" alt=""></td>
+                            <td><img src="img/course/i-enable.png" alt=""></td>
+                            <td><img src="img/course/i-enable.png" alt=""></td>
+                            <td><img src="img/course/i-enable.png" alt=""></td>
+                        </tr>
+                        <tr>
+                            <td class="time">13:00-15:00</td>
+                            <td><img src="img/course/i-enable.png" alt=""></td>
+                            <td><img src="img/course/i-enable.png" alt=""></td>
+                            <td><img src="img/course/i-enable.png" alt=""></td>
+                            <td><img src="img/course/i-enable.png" alt=""></td>
+                            <td><img src="img/course/i-enable.png" alt=""></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>11.04</td>
+                            <td>11.04</td>
+                            <td>11.04</td>
+                            <td>11.04</td>
+                            <td>11.04</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <img src="img/course/arrow.png" alt="" class="arrow">
+        </div>
+        <div class="teach-item">
+            <img src="img/course/avator.jpg" class="avator" alt="">
+            <div class="teach-wrap">
+                <div class="teach-name">刘华</div>
+                <div class="teach-des">35岁 · 6年驾龄 · 3年教龄</div>
+                <div class="teach-times">
+                    <table>
+                        <tr>
+                            <td class="time">08:00-12:00</td>
+                            <td><img src="img/course/i-unenable.png" alt=""></td>
+                            <td><img src="img/course/i-unenable1.png" alt=""></td>
+                            <td><img src="img/course/i-enable.png" alt=""></td>
+                            <td><img src="img/course/i-enable.png" alt=""></td>
+                            <td><img src="img/course/i-enable.png" alt=""></td>
+                        </tr>
+                        <tr>
+                            <td class="time">13:00-15:00</td>
+                            <td><img src="img/course/i-enable.png" alt=""></td>
+                            <td><img src="img/course/i-enable.png" alt=""></td>
+                            <td><img src="img/course/i-enable.png" alt=""></td>
+                            <td><img src="img/course/i-enable.png" alt=""></td>
+                            <td><img src="img/course/i-enable.png" alt=""></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>11.04</td>
+                            <td>11.04</td>
+                            <td>11.04</td>
+                            <td>11.04</td>
+                            <td>11.04</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <img src="img/course/arrow.png" alt="" class="arrow">
+        </div>
+        <!-- 11.04到11.04 -->
+        <div class="teach-item">
+            <img src="img/course/avator.jpg" class="avator" alt="">
+            <div class="teach-wrap">
+                <div class="teach-name">刘华</div>
+                <div class="teach-des">35岁 · 6年驾龄 · 3年教龄</div>
+                <div class="teach-times">
+                    <table>
+                        <tr>
+                            <td class="time">08:00-12:00</td>
+                            <td><img src="img/course/i-unenable.png" alt=""></td>
+                            <td><img src="img/course/i-unenable1.png" alt=""></td>
+                        </tr>
+                        <tr>
+                            <td>13:00-15:00</td>
+                            <td><img src="img/course/i-enable.png" alt=""></td>
+                            <td><img src="img/course/i-enable.png" alt=""></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>11.04</td>
+                            <td>11.04</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <img src="img/course/arrow.png" alt="" class="arrow">
+        </div>
+        <div class="teach-item">
+            <img src="img/course/avator.jpg" class="avator" alt="">
+            <div class="teach-wrap">
+                <div class="teach-name">刘华</div>
+                <div class="teach-des">35岁 · 6年驾龄 · 3年教龄</div>
+                <div class="teach-times teach-none">
+                    课程安排中，请稍后...
+                </div>
+            </div>
+            <img src="img/course/arrow.png" alt="" class="arrow">
+        </div>
+</body>
+</html>

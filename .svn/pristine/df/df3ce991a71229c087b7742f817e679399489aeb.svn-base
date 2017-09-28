@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>海豚驾校</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/phone.css">
+</head>
+<body class="body-txt phone">
+    <div class="line-title">
+        <div class="txt">填写资料前请验证您的手机号</div>
+        <div class="line"></div>
+    </div>
+    <form>
+        <div class="form-item">
+            <input name="name" data-name="姓名" placeholder="姓名" maxlength="11" />
+        </div>
+        <div class="form-item height">
+            <input name="heigh" data-name="身高" placeholder="身高" type="phone"/>
+            <span>CM</span>
+        </div>
+        <div class="form-item case_down hj">
+            <input data-name="户籍" readonly data-type="select" name="itype" placeholder="请选择您的户籍类型" />
+            <img src="images/case_down.jpg" />
+        </div>
+        <div class="form-item form-cdoe">
+            <input name="code" data-name="验证码" placeholder="验证码" maxlength="4" />
+            <a class="sendcode" href="javascript:;">发送验证码</a>
+        </div>
+<!--         <div class="form-item form-cdoe">
+            <input name="password" data-name="密码" placeholder="密码6-16位字符 区分大小写" type="password" />
+        </div> -->
+        <a href="#" class="btn btn-blue">
+            提交
+        </a>
+        <div class="txt-des">
+            注册则表示你已阅读并同意 <a href="#">海豚驾考学员培训协议书</a>
+        </div>    
+    </form>
+    <div class="mask" style="display:none;"></div>
+    <div class="select-list select-list-box" style="display:none">
+        <div class="list-title">
+            户籍类型
+        </div>
+        <ul>
+            <li>本市</li>
+            <li>非本市</li>
+            <li class="last">外籍</li>
+        </ul>
+    </div>
+    <script src="js/zepto.min.js"></script>
+    <script src="js/phone.js"></script>    
+</body>
+</html>

@@ -1,0 +1,175 @@
+﻿using Dapper;
+using DapperExtensions;
+using log4net;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+
+namespace YY.Edu.Sys.Api.Controllers
+{
+    [Authorize]
+    [RoutePrefix("api/FeedBackLog")]
+    public class FeedBackLogController : ApiController
+    {
+        private static readonly ILog logs = Comm.Helper.LogHelper.GetInstance();
+
+        // GET: api/FeedBackLog
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "value1", "value2" };
+        }
+
+        // GET: api/VenueNotice/5
+        public IHttpActionResult Get(int id)
+        {
+            try
+            {
+                var result = Comm.Helper.DapperHelper.Instance.Get<Sys.Models.FeedBackLog>(id);
+                return Ok(new Comm.ResponseModel.ResponseModel4Res<Sys.Models.FeedBackLog>()
+                {
+                    Info = result
+                });
+            }
+            catch (Exception ex)
+            {
+                logs.Error("反馈查询失败", ex);
+                return BadRequest();
+            }
+        }
+
+        [HttpPost]
+        public IHttpActionResult Create(Sys.Models.FeedBackLog feedBackLogInfo)
+        {
+
+            logs.Info(Newtonsoft.Json.JsonConvert.SerializeObject(feedBackLogInfo));
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            try
+            {
+
+                var result = Comm.Helper.DapperHelper.Instance.Insert(feedBackLogInfo);
+
+                if (result > 0)
+                {
+                    return Ok(Comm.ResponseModel.ResponseModelBase.Success());
+                }
+                else
+                {
+                    return Content(HttpStatusCode.OK, Comm.ResponseModel.ResponseModelBase.GetRes(Comm.ResponseModel.ResponseModelErrorEnum.SystemError));
+                }
+
+            }
+            catch (Exception ex)
+            {
+                logs.Error("反馈添加失败", ex);
+                return BadRequest();
+            }
+
+        }
+
+        [HttpPost]
+        public IHttpActionResult Reply(Sys.Models.FeedBackLog feedBackLogInfo)
+        {
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            try
+            {
+
+                var model = Comm.Helper.DapperHelper.Instance.Get<Sys.Models.FeedBackLog>(feedBackLogInfo.FDId);
+                model.ReplyMsg = feedBackLogInfo.ReplyMsg;
+                model.State = 1;
+                var result = Comm.Helper.DapperHelper.Instance.Update(model);
+
+                if (result)
+                {
+                    return Ok(Comm.ResponseModel.ResponseModelBase.Success());
+                }
+                else
+                {
+                    return Content(HttpStatusCode.OK, Comm.ResponseModel.ResponseModelBase.GetRes(Comm.ResponseModel.ResponseModelErrorEnum.SystemError));
+                }
+            }
+            catch (Exception ex)
+            {
+                logs.Error("反馈回复失败", ex);
+                return BadRequest();
+            }
+
+        }
+
+        [HttpGet]
+        public IHttpActionResult Page(string query)
+        {
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            Comm.RequestModel.RequestModelBase<Sys.Models.FeedBackLog> oData = Newtonsoft.Json.JsonConvert.DeserializeObject<Comm.RequestModel.RequestModelBase<Sys.Models.FeedBackLog>>(query);
+
+            if (oData.PageIndex < 0 || oData.PageSize <= 0 || oData.SearchCondition == null || oData.SearchCondition.VenueID <= 0)
+                return BadRequest();
+
+            try
+            {
+
+                IList<IPredicate> predList = new List<IPredicate>();
+
+                predList.Add(Predicates.Field<Sys.Models.FeedBackLog>(f => f.VenueID, Operator.Eq, oData.SearchCondition.VenueID));
+                if (oData.SearchCondition.StudentID > 0)
+                    predList.Add(Predicates.Field<Sys.Models.FeedBackLog>(f => f.StudentID, Operator.Eq, oData.SearchCondition.StudentID));
+                if (!string.IsNullOrWhiteSpace(oData.SearchCondition.FullName))
+                    predList.Add(Predicates.Field<Sys.Models.FeedBackLog>(f => f.FullName, Operator.Like, "%" + oData.SearchCondition.FullName + "%"));
+                if (oData.SearchCondition.State > 0)
+                    predList.Add(Predicates.Field<Sys.Models.FeedBackLog>(f => f.State, Operator.Eq, oData.SearchCondition.State));
+
+                IPredicateGroup predGroup = Predicates.Group(GroupOperator.And, predList.ToArray());
+
+                var result = Comm.Helper.DapperHelper.Instance.GetPage<Sys.Models.FeedBackLog>(
+                    predGroup,
+                    new List<ISort>() {
+                        new Sort { PropertyName = "FDId", Ascending = false},
+                    },
+                    oData.PageIndex,
+                    oData.PageSize
+                );
+
+                long allRowsCount = Comm.Helper.DapperHelper.Instance.Count<YY.Edu.Sys.Models.FeedBackLog>(predGroup);
+
+                return Ok(new Comm.ResponseModel.ResponseModel4Page<YY.Edu.Sys.Models.FeedBackLog>()
+                {
+                    data = result.AsList(),
+                    recordsFiltered = allRowsCount,
+                    recordsTotal = allRowsCount,
+                });
+
+            }
+            catch (Exception ex)
+            {
+                logs.Error("公告分页查询失败", ex);
+                return BadRequest();
+            }
+        }
+
+        // POST: api/FeedBackLog
+        public void Post([FromBody]string value)
+        {
+        }
+
+        // PUT: api/FeedBackLog/5
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        // DELETE: api/FeedBackLog/5
+        public void Delete(int id)
+        {
+        }
+    }
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>价格日历</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/pricelist.css">
+</head>
+<body class="price-list pre-baoming pre-baoming2">
+    <div class="price-title">
+        西部校区开放啦<br/>
+        地址场地：石景山区老山西街5号老山训练场地<br/>
+        预计开放时间：2015-9-30
+        <div>
+            <a href="#" class="showIt">查看预招须知</a>            
+        </div>
+    </div>
+    <div class="price-items">
+        <div class="price-item">
+            <div class="date">10月开课
+                <div class="per-bm"><a href="#">课程详情 &gt;</a></div>
+            </div>
+            <ul class="price-info">
+                <li class="price">
+                    <em>折扣价</em>
+                    <div class="price-num">
+                        <div class="price-wrap">￥3699
+                            <div class="dis">9.5折</div>
+                            <s>3899</s>
+                        </div>
+                    </div>
+                </li>
+                <li class="count"></li>
+                <li class="percent">
+                    <input class="knob" data-displayInput="false" data-thickness="0.25" data-readOnly="true" value="35">
+                </li>
+            </ul>
+            <ul class="txt-ul">
+                <li><em></em>我们将分为四期安排学员上课，每周为一期。</li>
+                <li><em></em>上课顺序将按照报名顺序依次通知。</li>
+            </ul>
+        </div>
+
+        <div class="price-item">
+            <div class="date">11月开课
+                <div class="per-bm"><a href="#">课程详情 &gt;</a></div>
+            </div>
+            <ul class="price-info">
+                <li class="price">
+                    <em>折扣价</em>
+                    <div class="price-num">
+                        <div class="price-wrap">￥3699
+                            <div class="dis">9.5折</div>
+                            <s>3899</s>
+                        </div>
+                    </div>
+                </li>
+                <li class="count"></li>
+                <li class="percent">
+                    <input class="knob" data-displayInput="false" data-thickness="0.25" data-readOnly="true" value="100">
+                </li>
+            </ul>
+            <ul class="txt-ul">
+                <li><em></em>我们将分为四期安排学员上课，每周为一期。</li>
+                <li><em></em>上课顺序将按照报名顺序依次通知。</li>
+            </ul>
+        </div>        
+    </div>
+    <div class="knowit" style="display:none;">
+        <div class="mask"></div>
+        <div class="knowit-wrap">
+            <div class="title">海豚驾考预招须知</div>
+            <div class="txt-title">
+                海豚驾考义务
+            </div>
+            <div class="txt-data-table">
+                <ul class="txt-ul">
+                    <li>海豚驾考承诺将在指定时间段内开放相应场地，以保证学员可以正常学车。</li>
+                    <li>
+                        如发生特殊情况不能如期开放场地，我们承诺将退还所有学费，或者按照您的意愿免费转移到我们就近的校区并提前安排上课。
+                    </li>
+                </ul>
+            </div>
+            <div class="txt-title">
+                学员责任
+            </div>
+            <div class="txt-data-table">
+                <ul class="txt-ul">
+                    <li>由于新校区刚刚成立，有些服务可能不能尽如人意，故我们将放出更多优惠给我们的预招学员作为补偿，请参加预找的学员帮我们指出相关问题，让我们走的更远。</li>
+                </ul>
+            </div>
+            <a href="#" class="btn btn-blue">
+                我已阅读
+            </a>  
+        </div>      
+    </div>
+    <script src="http://libs.useso.com/js/jquery/1.7.2/jquery.min.js"></script>
+    <script src="js/jquery.knob.js"></script>
+    <script>
+        $(function(){
+            if(!localStorage.readed){
+                $('.knowit').show();
+                localStorage.readed = true;
+            }
+            $('.showIt').on('click', function(){
+                $('.knowit').show();
+            });
+            $('.knowit .btn-blue').on('click', function(){
+                $('.knowit').hide();
+            });
+
+            // 报名圆圈
+            var pWidth = $('.percent').width();
+            $(".knob").each(function(){
+                $(this).attr({
+                    'data-width': pWidth*1
+                });
+                if(this.value == 100){
+                    $(this).parent().append('<span class="full">已报满</span>');
+                    $(this).knob({
+                        bgColor:'#dfdfdf',
+                        fgColor:'#dfdfdf'
+                        // ticks: 8
+                    });
+                }else{
+                    $(this).parent().append('<span>报名</span>');
+                    $(this).knob({
+                        bgColor:'#82d2ff',
+                        fgColor:'#dfdfdf'
+                        // ticks: 8
+                    });
+
+                }
+            });
+        });
+    </script>
+</body>
+</html>

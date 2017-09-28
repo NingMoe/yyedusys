@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>海豚驾考</title>
+        <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="format-detection" content="telephone=no, email=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="stylesheet" type="text/css" href="css/common.css">
+        <link rel="stylesheet" type="text/css" href="css/amortize/selectperiods.css">
+    </head>
+    <body>
+        <div class="topbar">
+            <h2>选择分期期数</h2>
+        </div>
+        <div class="items">
+            <div class="item">
+                <table>
+                    <tr>
+                        <td>期数</td>
+                        <td class="first">首付</td>
+                        <td>分期利率</td>
+                        <td>每期应还</td>
+                        <td rowspan="2">
+                            <a href="#" class="btn btn-blue">我要分期</a>                 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td class="first">500</td>
+                        <td>0%</td>
+                        <td>1000</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="item">
+                <table>
+                    <tr>
+                        <td>期数</td>
+                        <td class="first">首付</td>
+                        <td>分期利率</td>
+                        <td>每期应还</td>
+                        <td rowspan="2">
+                            <a href="#" class="btn btn-blue">我要分期</a>                 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td class="first">500</td>
+                        <td>0%</td>
+                        <td>1000</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

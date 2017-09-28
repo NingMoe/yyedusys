@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>汕头市润信物流有限公司</title>
+		<meta name="keywords" content="汕头市润信物流有限公司,汕头物流配送,汕头物流,汕头物流货运,汕头货运,全国货运,厦门物流配送,深圳物流配送,广州物流配送,物流配送,物流货运,货运配送" />
+	    <meta name="description" content="汕头市润信物流有限公司是一家承接全国各地门到门配送业务的专业第三方物流，为企业量身定做仓储、配送物流方案，针对大小客户配备专业项目小组进行专人专车对接。" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <link rel="stylesheet" href="css/amazeui.min.css" type="text/css" />
+	    <link rel="stylesheet" href="css/style.css" type="text/css" />
+	    <script type="text/javascript" src="js/jquery.min.js" ></script>
+	    <script type="text/javascript" src="js/amazeui.min.js" ></script>
+	</head>
+	<body>
+		<header data-am-widget="header" class="am-header am-header-default header-green1">
+	      <div class="am-header-left am-header-nav ">
+		        <a href="javascript:history.back()" style="color: #fff;"><i class="am-icon-chevron-left"></i></a>
+	        </div>
+		  <h1 class="am-header-title" style="color: #fff;">个人信息</h1>
+        </header>
+        <div class="jl"></div>
+        <div class="discussion">
+		       	  <div class="hd">
+		               <span class="avatar"> 
+		               	<b class="pic loaded" style="font-weight: normal;">
+		                <img src="images/tx.png" width="70px" height="70px">	
+		                </b>
+		               </span>
+			           <div class="info">
+			           	        胡金华
+			           	   <p><i class="iconfont" style="font-size: 16px; color: #666;">&#xe600;</i>青岛</p>
+			            	<span class="meta"> 
+			            		<p class="time">[厢式车]4.2米箱货</p>
+			            	</span> 
+			            </div>
+	                    <div class="lu">
+	                    	拒单率：<span>5% </span>   准点率：<span>95% </span>
+	                    </div>
+		           </div>
+       </div>
+       <div style="height: 5px; background: #ddd;"></div>
+       <ul class="contact-sty">
+       	  <li><a href="tel:10086"><i class="iconfont">&#xe610;</i>拨号</a></li>
+       	  <li><a href="">关注</a></li>
+       </ul>
+       <ul class="information">
+       	  <li>
+       	  	<i class="iconfont">&#xe606;</i>
+       	  	<span>车牌号：京B888</span>
+       	  </li>
+       	  <li>
+       	  	<i class="iconfont">&#xe61b;</i>
+       	  	<span>车型：重型卡车</span>
+       	  </li>
+       	  <li>
+       	  	<i class="iconfont">&#xe619;</i>
+       	  	<span>大小：4.2立方米</span>
+       	  </li>
+       	  <li>
+       	  	<i class="iconfont">&#xe61c;</i>
+       	  	<span>状态：空载</span>
+       	  </li>
+       	  <li>
+       	  	<i class="iconfont">&#xe61a;</i>
+       	  	<span>备注：出门在外，只做正当买卖，不拉非法买卖</span>
+       	  </li>
+       </ul>
+       <a href="elseconmment.html" class="green-btn">查看评论</a>
+	</body>
+</html>

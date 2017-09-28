@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace YY.Edu.Sys.Models.StateEnum
+{
+    public enum TeachingSchedule
+    {
+
+        //0 排课完成 1学生约课完成，2学校停课（需要判断，有没有学生预约）,3请假申请 4请假 5上课中 6上课完成
+        InitTeachingSche,
+        BookTeachingScheDone,
+        StopTeachingSche,
+        LeaveTeachingScheIng,
+        LeaveTeachingScheDone,
+        InClassTeachingSche,
+        ClassOverTeachingSche,
+
+    }
+}

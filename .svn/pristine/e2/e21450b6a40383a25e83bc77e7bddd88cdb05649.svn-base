@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>汕头市润信物流有限公司</title>
+		<meta name="keywords" content="汕头市润信物流有限公司,汕头物流配送,汕头物流,汕头物流货运,汕头货运,全国货运,厦门物流配送,深圳物流配送,广州物流配送,物流配送,物流货运,货运配送" />
+	    <meta name="description" content="汕头市润信物流有限公司是一家承接全国各地门到门配送业务的专业第三方物流，为企业量身定做仓储、配送物流方案，针对大小客户配备专业项目小组进行专人专车对接。" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <link rel="stylesheet" href="css/amazeui.min.css" type="text/css" />
+	    <link rel="stylesheet" href="css/style.css" type="text/css" />
+	    <script type="text/javascript" src="js/jquery.min.js" ></script>
+	    <script type="text/javascript" src="js/amazeui.min.js" ></script>
+	    <style>
+	        .member-menu { margin-bottom: 1.5rem;}
+	     	.member-menu li a{ color: #000;}
+	    	.member-menu li{ border-right: 1px solid #ddd;}
+	    </style>
+	</head>
+	<body>
+		<header data-am-widget="header" class="am-header am-header-default header-green1">
+	      <div class="am-header-left am-header-nav ">
+		        <a href="javascript:history.back()" style="color: #fff;"><i class="am-icon-chevron-left"></i></a>
+	        </div>
+		  <h1 class="am-header-title" style="color: #fff;">我的关注</h1>
+       </header>
+       <div class="jl"></div>
+	   <div class="discussion">
+		       	  <div class="hd">
+		               <span class="avatar"> 
+		               	<b class="pic loaded" style="font-weight: normal;">
+		                <img src="images/tx.png" width="60px" height="60px">	
+		                </b>
+		               </span>
+			           <div class="info">
+			           	        胡金华
+			            	<span class="meta"> 
+			            		<p class="time">关注 <em>318</em>   粉丝 <em>41</em>  </p>
+			            	</span>
+			            	<p style="font-size: 14px; color: #666;">地址：青岛</p>
+			           </div>
+		           </div>
+
+       </div>
+        <div class="discussion">
+		       	  <div class="hd">
+		               <span class="avatar"> 
+		               	<b class="pic loaded" style="font-weight: normal;">
+		                <img src="images/tx.png" width="60px" height="60px">	
+		                </b>
+		               </span>
+			           <div class="info">
+			           	        胡金华
+			            	<span class="meta"> 
+			            		<p class="time">关注 <em>318</em>   粉丝 <em>41</em>  </p>
+			            	</span>
+			            	<p style="font-size: 14px; color: #666;">地址：青岛</p>
+			           </div>
+		           </div>
+
+       </div>
+        <div class="discussion">
+		       	  <div class="hd">
+		               <span class="avatar"> 
+		               	<b class="pic loaded" style="font-weight: normal;">
+		                <img src="images/tx.png" width="60px" height="60px">	
+		                </b>
+		               </span>
+			           <div class="info">
+			           	        胡金华
+			            	<span class="meta"> 
+			            		<p class="time">关注 <em>318</em>   粉丝 <em>41</em>  </p>
+			            	</span>
+			            	<p style="font-size: 14px; color: #666;">地址：青岛</p>
+			            </div>
+			           
+			          
+		           </div>
+
+       </div>
+       
+       <div class="jl"></div>
+		 <div data-am-widget="navbar" class="am-navbar  dream-foot am-no-layout" id="">
+		      <ul class="am-navbar-nav1 am-cf am-avg-sm-5">   
+		          <li>
+		            <a href="index.html" class="">
+		                <span class="iconfont">&#xe60b;</span>
+		                <p class="am-navbar-label">首页</p>
+		            </a>
+		          </li>
+		          <li>
+		            <a href="nearby.html" class="">
+		                <span class="iconfont">&#xe60c;</span>
+		                <p class="am-navbar-label">附近</p>
+		            </a>
+		          </li>
+		       <li>
+		            <a href="find.html" class="">
+		                <span class="add"><i class="iconfont" style="font-size: 30px; line-height: 40px;">&#xe60e;</i></span>
+		                <p class="am-navbar-label" style="margin-top: -36px;">找货</p>
+		            </a>
+		          </li>
+		          <li>
+		            <a href="message.html" class="">
+		                <span class="iconfont">&#xe60d;</span>
+		                <p class="am-navbar-label">货源消息</p>
+		            </a>
+		          </li>
+		          <li>
+		            <a href="member.html" class="">
+		                <span class="iconfont">&#xe609;</span>
+		                <p class="am-navbar-label">个人中心</p>
+		            </a>
+		          </li>
+		      </ul>
+		</div>
+	</body>
+</html>

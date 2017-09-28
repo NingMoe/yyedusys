@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>首页</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" type="text/css" href="css/student_progress.css">
+</head>
+<body>
+    <div class="blue-wrapbox">
+        <div class="nav">
+            <a href="#" class="nav-left"></a>
+            <a href="#" class="nav-right"></a>
+        </div>
+        <h2>科目二</h2>
+        <div class="txt3">
+            等待中
+        </div>
+        <div class="yuyue-wrap">
+            <div class="yy-notice">
+                请点击底部“预约练车”按钮进行约车
+            </div>
+            <div class="yy-title">
+                <div class="line"></div>
+                <span>预约练车时间</span>
+            </div>
+            <ul class="yy-list ">
+               <li class="yy-item yy-item-d yy-am">
+                   <div class="yy-item-date">2015-09-01</div>
+                   <div class="yy-item-time">8:00 -12:00</div>
+                   <div class="yy-item-call"><a href="#">呼叫教练姓名</a></div>
+               </li>
+               <li class="yy-item yy-item-d yy-am">
+                   <div class="yy-item-date">2015-09-02</div>
+                   <div class="yy-item-time">8:00 -12:00</div>
+                   <div class="yy-item-call"><a href="#">呼叫教练姓名</a></div>
+               </li>
+               <li class="yy-item yy-item-d yy-am">
+                   <div class="yy-item-date">2015-09-03</div>
+                   <div class="yy-item-time">8:00 -12:00</div>
+                   <div class="yy-item-call"><a href="#">呼叫教练姓名</a></div>
+               </li>
+               <li class="yy-item yy-item-d yy-pm">
+                   <div class="yy-item-date">2015-09-04</div>
+                   <div class="yy-item-time">8:00 -12:00</div>
+                   <div class="yy-item-call"><a href="#">呼叫教练姓名</a></div>
+               </li>               
+               <li class="yy-item yy-pm">
+                   <div class="yy-item-date">2015-09-05</div>
+                   <div class="yy-item-time">8:00 -12:00</div>
+                   <div class="yy-item-call"><a href="#">呼叫教练姓名</a></div>
+               </li>               
+               <li class="yy-item yy-pm">
+                   <div class="yy-item-date">2015-09-06</div>
+                   <div class="yy-item-time">8:00 -12:00</div>
+                   <div class="yy-item-call"><a href="#">呼叫教练姓名</a></div>
+               </li>               
+            </ul>
+            <div class="yy-toggle">
+                <span>查看全部预约时间</span>
+                <span class="yy-close">收起↑</span>
+            </div>
+        </div>
+    </div>
+    <div class="user-content">
+        <ul class="list list2">
+            <li>
+                <div class="left-item">
+                    <div class="item-blue">已完成</div>
+                    <div class="item-info">
+                        <span >原地驾驶</span>
+                        <span>2015-08-31丨王岳红教练讲授</span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="left-item ">
+                    <div class="item-gray">进行中</div>中速行车驾驶
+                </div>
+            </li>
+            <li>
+                <div class="left-item ">
+                    <div class="item-gray">进行中</div>直角、曲线行驶
+                </div>
+            </li>
+            <li>
+                <div class="left-item ">
+                    <div class="item-gray">进行中</div>侧方位停车
+                </div>
+            </li>
+            <li>
+                <div class="left-item ">
+                    <div class="item-gray">进行中</div>坡道定点停车和起步
+                </div>
+            </li>
+            <li>
+                <div class="left-item ">
+                    <div class="item-gray">进行中</div>倒车入库
+                </div>
+            </li>
+            <li>
+                <div class="left-item ">
+                    <div class="item-gray">进行中</div>科二考前复习
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="btn-wrap">
+        <a class="btn btn-blue">
+            我已阅读  
+        </a>
+    </div>
+</body>
+</html>

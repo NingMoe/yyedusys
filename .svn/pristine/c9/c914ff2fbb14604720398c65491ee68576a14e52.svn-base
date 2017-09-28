@@ -1,0 +1,152 @@
+﻿jQuery.support.cors = true;
+
+function LoadInfo() {
+    
+    var str = "";
+    $.ajax({
+        type: "get",
+        url: "http://localhost:53262/api/Student/GetStudentCurriculumByID/",
+        dataType: "json",
+        async: false,
+        data: { PKID: $("#hdID").val() },
+        //beforeSend: function () {
+        //},
+        success: function (data) {
+    
+            var c = data[0];
+          
+          
+            str += ' <p>' + c.Title + '</p> ';
+            str += '<p> <span>课时</span> <span>' + dateformat(c.CurriculumDate, "yyyy-MM-dd") + '</span> <span>' + c.CurriculumBeginTime + "-" + c.CurriculumEndTime + '</span></p> ';
+            str += ' <img src="' + c.HeadUrl + '" alt="" class="am-circle"> ';
+            str += '<p class="textAlign reFirName">' + c.FullName + '</p> ';
+         
+            $(".remaekFir").html(str);
+        }
+    });
+}
+$(document).ready(function () {
+
+   LoadInfo();
+   
+
+  GetPJ();
+
+});
+
+
+function GetPJ()
+{
+    var str = "";
+    $.ajax({
+        type: "get",
+        url: "http://localhost:53262/api/Student/GetCurriculumEvaluateByID/",
+        dataType: "json",
+        async: false,
+        data: { StudentID: $("#hdSID").val(), CurriculumID: $("#hdCID").val() },
+        //beforeSend: function () {
+        //},
+        success: function (data) {
+            var c = data[0];
+            if (c != null && c != "") {
+                var starT = c.StarLevel - 1;
+                var starG = c.EffectStarLevel - 1;
+
+                $("#Typj span").each(function (index) {
+                    if (starT >= index) {
+                        $(this).attr("class", "am-icon-star");
+                    }
+                    else { $(this).attr("class", "am-icon-star-o"); }
+                });
+
+                $("#Ggpj span").each(function (index) {
+                    if (starG >= index) {
+                        $(this).attr("class", "am-icon-star");
+                    }
+                    else { $(this).attr("class", "am-icon-star-o"); }
+                });
+
+                $("#Tpf").text(c.StarLevel * 2);
+                $("#Gpf").text(c.EffectStarLevel * 2);
+
+                $("#doc-ta-1").val(c.Info);
+
+                $("#save").hide();
+            }
+        }
+    });
+}
+
+
+
+$('#Typj span').bind('mouseover', function () {
+
+    var c = $(this).attr("class");
+    var fs = parseInt($("#Tpf").text());
+    if (c == 'am-icon-star') {
+        $(this).attr("class", "am-icon-star-o");
+        fs = fs - 2;
+    }
+    else { $(this).attr("class", "am-icon-star"); fs = fs + 2; }
+    $("#Tpf").text(fs);
+});
+
+
+$('#Ggpj span').bind('mouseover', function () {
+
+    var c = $(this).attr("class");
+    var fs = parseInt($("#Gpf").text());
+    if (c == 'am-icon-star') {
+        $(this).attr("class", "am-icon-star-o");
+        fs = fs - 2;
+    }
+    else { $(this).attr("class", "am-icon-star"); fs = fs + 2; }
+    $("#Gpf").text(fs);
+});
+
+
+$("#save").bind("click", function () {
+    var icount1 = 0;
+    var icount2 = 0;
+    $('#Typj span').each(function () {
+        var c = $(this).attr("class");
+        if (c == '"am-icon-star') {
+            icount1 = icount1 + 1;
+        }
+    });
+
+    $('#Ggpj span').each(function () {
+        var c = $(this).attr("class");
+        if (c == '"am-icon-star') {
+            icount2 = icount2 + 1;
+        }
+    });
+
+    var parm = { CurriculumID: $("#hdCID").val(), StudentID: $("#hdSID").val(), Info: $("#doc-ta-1").val(), StarLevel: icount1, EffectStarLevel: icount2 };
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:53262/api/Student/AddCurriculumEvaluate",
+        contentType: "application/json",
+        data: JSON.stringify(parm),
+        success: function (data, status) {
+            if (status == "success") {
+                alert("评价成功");
+                console.log('ok');
+            }
+        },
+        error: function (e) {
+            console.log('error');
+        },
+        complete: function () {
+
+        }
+    });
+
+});
+
+
+
+function dateformat(date) {
+    var myDate = new Date(date);
+    return myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate();
+}

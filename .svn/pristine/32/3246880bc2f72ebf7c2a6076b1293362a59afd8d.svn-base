@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>海豚驾校</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/baoming.css">
+</head>
+<body class="body-txt baoming">
+    <div class="line-title">
+        <div class="txt">海豚驾考学院培训协议书</div>
+        <div class="line"></div>
+    </div>
+    <div class="txt-wrap">
+        <h3>报名所需材料</h3>
+        <div class="txt-ctx txt-blue">
+            8张白底一寸同版彩照］身份证原件］三甲级医院机动车驾驶员体检表原件可代办］外市户口需提供暂住证原件，如有代办项目需将在填写会员基本资料中备注。
+        </div>
+    </div>
+    <div class="g-line"></div>
+    <div class="txt-wrap">
+        <h3>我们的承诺</h3>
+        <div class="txt-ctx">
+            <p>甲方承诺通过其提供的培训，乙方按照甲方教学计划完成培训的，乙方未能一次通过考试，甲方负责为乙方免费安排补练，由此产生的费用均由甲方承担。如乙方因个人原因未能参加考试，如未带证件，空考，未遵守考场规则，由此产生的费用均有乙方承担。</p>
+            <p>甲方承诺通过其提供的培训，乙方按照甲方教学计划完成培训的，乙方未能一次通过考试，甲方负责为乙方免费安排补练，由此产生的费用均由甲方承担。如乙方因个人原因未能参加考试，如未带证件，空考，未遵守考场规则，由此产生的费用均有乙方承担。</p>
+            <p>甲方承诺通过其提供的培训，乙方按照甲方教学计划完成培训的，乙方未能一次通过考试，甲方负责为乙方免费安排补练，由此产生的费用均由甲方承担。如乙方因个人原因未能参加考试，如未带证件，空考，未遵守考场规则，由此产生的费用均有乙方承担。</p>
+        </div>
+    </div>
+    <div class="line"></div>
+    <div class="btn-wrap-c2">
+        <a href="#" class="btn btn-blue">
+            同意
+        </a>
+        <a href="#" class="btn btn-gray">
+            不同意
+        </a>
+    </div>
+    <div class="mask" id="dialog" style="display:none;">
+        <div class="dialog-box">
+            <div class="title">
+                <img src="images/ilogo.png" alt="">
+            </div>
+            <div class="dia-ctx">
+                若不同意<br /> 海豚将无法为您提供驾考服务
+            </div>
+            <a href="#" class="btn btn-blue btn-rc">重新选择</a>
+        </div>
+    </div>
+    <script src="js/zepto.min.js"></script>
+    <script>
+        $('.btn-gray').click(function(e){
+            e.preventDefault();
+            $('#dialog').show();
+        });
+        $('.btn-rc').click(function(e){
+            e.preventDefault();
+            $('#dialog').hide();
+        })
+        
+    </script>
+</body>
+</html>

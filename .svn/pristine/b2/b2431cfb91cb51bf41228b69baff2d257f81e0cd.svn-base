@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "运营系统";
+    ViewBag.SubTitle = "学生管理";
+}
+
+@section Menu {
+    @Scripts.Render("~/Scripts/Tables/Data/menu")
+}
+
+@Styles.Render("~/AdminLTE/plugins/datatables/css")
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">查询条件</h3>
+            </div>
+            <form id="studentfrom" class="form-horizontal">
+                <div class="box-body">
+                    <div class="form-group">
+                        <input type="hidden" id="VenueID" name="VenueID" value="@ViewBag.venueId" />
+                        <label for="FullName" class="col-sm-2 control-label">学生姓名</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="FullName" name="FullName" placeholder="学生姓名">
+                        </div>
+                        <label for="ParentFullName" class="col-sm-2 control-label">家长姓名</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="ParentFullName" name="ParentFullName" placeholder="家长姓名">
+                        </div>
+                        <label for="ParentMobile" class="col-sm-2 control-label">家长手机号</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="ParentMobile" name="ParentMobile" placeholder="家长手机号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-info pull-right" onclick="return bind_data();">查询</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">学生列表</h3>
+            </div>
+
+            <div class="box-body" id="demo">
+                <table id="studenttable" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>编号</th>
+                            <th>头像</th>
+                            <th>用户名</th>
+                            <th>姓名</th>
+                            <th>手机号</th>
+                            <th>家长姓名</th>
+                            <th>家长手机号</th>
+                            <th>场馆联系人</th>
+                            <th>场馆联系人电话</th>
+                            <th>学生住址</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/AdminLTE/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")
+    @Scripts.Render("~/Scripts/SysManage/ManageBase")
+    @Scripts.Render("~/Scripts/SysManage/Student")
+    @Scripts.Render("~/Scripts/SysManage/jquery.serializejson.min")
+
+}

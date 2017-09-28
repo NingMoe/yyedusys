@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>首页</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" type="text/css" href="css/student_progress.css">
+</head>
+<body>
+    <div class="blue-wrapbox">
+        <h2>张三的学车进度</h2>
+    </div>
+    <div class="user-content">
+        <ul class="list list2">
+            <li>
+                <div class="left-item">
+                    <div class="item-blue">已完成</div>科目一交规课一
+                </div>
+                <a class="right-item-opt">
+                    设置进度 <img src="img/ucenter/arror-right.png" alt="">
+                </a>
+            </li>
+            <li>
+                <div class="left-item ">
+                    <div class="item-gray">进行中</div>科目一交规课二
+                </div>
+                <a class="right-item-opt">
+                    设置进度 <img src="img/ucenter/arror-right.png" alt="">
+                </a>
+            </li>
+            <li>
+                <div class="left-item ">
+                    <div class="item-gray">进行中</div>科目一交规课三
+                </div>
+                <a class="right-item-opt">
+                    设置进度 <img src="img/ucenter/arror-right.png" alt="">
+                </a>
+            </li>
+            <li>
+                <div class="left-item">
+                    <div class="item-gray">进行中</div>科目一考试
+                </div>
+                <a class="right-item-opt">
+                    设置进度 <img src="img/ucenter/arror-right.png" alt="">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="btn-wrap">
+      <div class="btn btn-blue">完成本次课程</div>
+      <div class="btn btn-gray">学员没来，结束课程</div>
+    </div>
+</body>
+</html>

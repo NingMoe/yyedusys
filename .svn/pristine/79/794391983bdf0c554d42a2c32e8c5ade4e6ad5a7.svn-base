@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>核对订单</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/order.css">
+</head>
+<body>
+    <div class="blue-wrapbox">
+        <h2>我的订单</h2>
+        <div class="price-wrap">
+            <div class="price-des">课程费用（元）</div>
+            <div class="price-num"><span>￥</span>3,799.00</div>
+        </div>
+        <img src="images/order-tip.jpg" alt="">
+    </div>
+    <div class="txt-panel">
+        <div class="txt-title-wrap">
+            <div class="txt-title">
+                报名信息核对
+            </div>
+            <div class="line"></div>
+        </div>
+        <div class="apply-list">
+            <div class="apply-wrap">
+                <div class="apply-item">
+                    <div class="item-name">手机号码
+                    <img src="images/iphone.png" />
+                    </div>
+                    <div class="item-txt">17777777777</div>    
+                </div>
+                <div class="apply-item">
+                    <div class="item-name">开课时间
+                    <img src="images/itime.png" />
+                    </div>
+                    <div class="item-txt">2015-09-21</div>    
+                </div>
+            </div>
+            <div class="apply-wrap">
+                <div class="apply-item">
+                    <div class="item-name">训练车型
+                    <img src="images/icar.png" />
+                    </div>
+                    <div class="item-txt">桑塔纳手动挡</div>    
+                </div>
+                <div class="apply-item">
+                    <div class="item-name">训练时间
+                    <img src="images/itime2.png" />
+                    </div>
+                    <div class="item-txt">待定</div>    
+                </div>
+            </div>
+            <div class="apply-wrap">
+                <div class="apply-item">
+                    <div class="item-name">开课场地
+                    <img src="images/iloc2.png" />
+                    </div>
+                    <div class="item-txt">北部校区</div>    
+                </div>
+                <div class="apply-item">
+                    <div class="item-name">场地地址
+                    <img src="images/imap.png" />
+                    </div>
+                    <div class="item-txt">北京顺义区后沙峪玉马教练场</div>    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="txt-panel">
+        <div class="txt-title-wrap">
+            <div class="txt-title">
+                核对费用
+            </div>
+            <div class="line"></div>
+        </div>
+        <div class="use-ticket">
+            <em class="iradio"></em>使用优惠码
+        </div>
+        <div class="form-item useTickBox" style="display:none">
+            <input class="ipt-ticket" name="code" placeholder="输入优惠码" />
+            <a class="useTicket" href="javascript:;">验证优惠码</a>
+            <div class="error" style="display:none"></div>
+        </div>
+        <!-- <div class="line"></div> -->
+        <div class="costCount">
+            <span class="cost-des">应付金额</span>
+            <span class="cost-price"><em>￥</em>3,799.00</span>
+        </div>
+    </div>
+    <div class="bnt-wrap">
+        <a href="#" class="btn btn-blue submit">
+            我决定线下支付
+        </a>
+    </div>
+    <script src="js/zepto.min.js"></script>
+    <script src="js/submit.js"></script>
+</body>
+</html>

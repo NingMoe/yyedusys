@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>核对订单</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div class="blue-wrapbox blue-pay">
+        <h2>支付成功</h2>
+        <div class="price-wrap">
+            <div class="price-des">课程费用（元）</div>
+            <div class="price-num"><span>￥</span>3,799.00</div>
+        </div>
+        <img src="images/order-payed.jpg" alt="">
+    </div>
+    <div class="form">
+        <div class="form-item">
+            <div class="fitem-name">支付金额</div>
+            <div class="fitem-txt">￥3,799.00</div>
+        </div>
+        <div class="form-item">
+            <div class="fitem-name">支付时间</div>
+            <div class="fitem-txt">2015-08-22</div>
+        </div>
+        <div class="form-item">
+            <div class="fitem-name">所选驾校</div>
+            <div class="fitem-txt">海豚驾考</div>
+        </div>
+        <div class="form-item">
+            <div class="fitem-name">训练车型</div>
+            <div class="fitem-txt">桑塔纳手动</div>
+        </div>
+        <div class="form-item">
+            <div class="fitem-name">训练时间</div>
+            <div class="fitem-txt">周一到周五训练</div>
+        </div>
+        <div class="form-item last">
+            <div class="fitem-name">服务电话</div>
+            <div class="fitem-txt">400-015-06053</div>
+        </div>
+    </div>
+    <div class="bnt-wrap">
+        <a href="#" class="btn btn-blue">
+            缴费成功，去完善一下个人资料吧
+        </a>
+    </div>
+</body>
+</html>
