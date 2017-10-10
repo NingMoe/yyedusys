@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Senparc.Weixin.MP.AdvancedAPIs;
+using Senparc.Weixin.MP.AdvancedAPIs.TemplateMessage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,26 +11,63 @@ using System.Web.Mvc;
 
 namespace YY.Edu.Sys.Web.Controllers
 {
-    
+
     public class StudentController : BaseStudentController
     {
-        public System.Web.Mvc.ActionResult Index()
+        public async Task<ActionResult> Index()
         {
+            string Url = "";
+            if (Session["OpenId"] != null)
+            {
 
-            return View();
+                ViewBag.Me = Newtonsoft.Json.JsonConvert.SerializeObject(await base.Me());
+
+                if (ViewBag.Me == null || ViewBag.Me == "null")
+                {
+                    string url = string.Format("Student/BindingUser/?opid={0}&url={1}&name={2}", OpenId, WxUserInfo.headimgurl, WxUserInfo.nickname);
+                    Response.Redirect(url);
+                    return View();
+                }
+                else
+                {
+                    var templateId = Comm.WeiXin.NoticeTemplates.OrderPayTemplate;
+                    var data = new
+                    {
+                        first = new TemplateDataItem("学生登录成功"),
+                        keyword1 = new TemplateDataItem("飞翔的企鹅"),
+                        keyword2 = new TemplateDataItem("123456789"),
+                        keyword3 = new TemplateDataItem("1000", "#ff0000"),//显示为红色
+                        keyword4 = new TemplateDataItem("购买课时"),
+                        remark = new TemplateDataItem("详细信息,查看 http://www.baidu.com")
+                    };
+
+                    var result = TemplateApi.SendTemplateMessage(base.AppId, Session["OpenId"].ToString(), templateId, "http://www.baidu.com", data);
+                    return View();
+                }
+
+            }
+
+            ViewBag.Title = "Home Page";
+            if (Url == "")
+            {
+                Url = Request.Url.AbsoluteUri;
+            }
+            var jssdkUiPackage = Senparc.Weixin.MP.Helpers.JSSDKHelper.GetJsSdkUiPackage(base.AppId, base.AppSecret, Url);
+            return View(jssdkUiPackage);
+            //return View();
         }
 
 
         public async Task<System.Web.Mvc.ActionResult> MyCurriculum()
         {
-            var obj =await base.Me();
+            var obj = await base.Me();
             Sys.Models.Student s = obj;
             ViewBag.VenueID = s.VenueID;
             ViewBag.StudentID = s.StudentID;
             return View();
         }
 
-        public ActionResult MyEvaluate(int pkid,int sid,int cid)
+        public ActionResult MyEvaluate(int pkid, int sid, int cid)
         {
             ViewBag.PKID = pkid;
             ViewBag.SID = sid;
@@ -44,7 +83,7 @@ namespace YY.Edu.Sys.Web.Controllers
         /// <returns></returns>
         public async Task<System.Web.Mvc.ActionResult> BuyHourClass()
         {
-            var obj =await base.Me();
+            var obj = await base.Me();
             Sys.Models.Student s = obj;
             ViewBag.VenueID = s.VenueID;
             ViewBag.StudentID = s.StudentID;
@@ -53,7 +92,7 @@ namespace YY.Edu.Sys.Web.Controllers
 
         public async Task<System.Web.Mvc.ActionResult> SubscribeCurriculum()
         {
-            var obj =await base.Me();
+            var obj = await base.Me();
             Sys.Models.Student s = obj;
             ViewBag.VenueID = s.VenueID;
             ViewBag.StudentID = s.StudentID;
@@ -64,7 +103,7 @@ namespace YY.Edu.Sys.Web.Controllers
 
         public async Task<System.Web.Mvc.ActionResult> StudentGrowth()
         {
-            var obj =await base.Me();
+            var obj = await base.Me();
             Sys.Models.Student s = obj;
             ViewBag.VenueID = s.VenueID;
             ViewBag.StudentID = s.StudentID;
@@ -74,7 +113,7 @@ namespace YY.Edu.Sys.Web.Controllers
 
         public async Task<System.Web.Mvc.ActionResult> MyMessage()
         {
-            var obj =await base.Me();
+            var obj = await base.Me();
             Sys.Models.Student s = obj;
             ViewBag.VenueID = s.VenueID;
             ViewBag.StudentID = s.StudentID;
@@ -84,7 +123,7 @@ namespace YY.Edu.Sys.Web.Controllers
 
         public async Task<System.Web.Mvc.ActionResult> MyClassHoursDetailed()
         {
-            var obj =await base.Me();
+            var obj = await base.Me();
             Sys.Models.Student s = obj;
             ViewBag.VenueID = s.VenueID;
             ViewBag.StudentID = s.StudentID;
@@ -92,7 +131,7 @@ namespace YY.Edu.Sys.Web.Controllers
         }
 
 
-        public ActionResult BindingUser(string opid,string url,string name)
+        public ActionResult BindingUser(string opid, string url, string name)
         {
             ViewBag.OpenID = opid;
             ViewBag.HeadUrl = url;
@@ -101,16 +140,19 @@ namespace YY.Edu.Sys.Web.Controllers
         }
 
 
-        public async Task<System.Web.Mvc.ActionResult> CurriculumDetail(int cid,int pkid)
+        public async Task<System.Web.Mvc.ActionResult> CurriculumDetail(int cid, int pkid, int cuid)
         {
-            var obj =await base.Me();
+            var obj = await base.Me();
             Sys.Models.Student s = obj;
             ViewBag.VenueID = s.VenueID;
             ViewBag.StudentID = s.StudentID;
             ViewBag.CID = cid;
-       
+            ViewBag.CUID = cuid;
+
             ViewBag.PKID = pkid;
             return View();
         }
+
+
     }
 }

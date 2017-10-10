@@ -14,7 +14,7 @@ function LoadMyCurriculum() {
     var requestPrm = " { PageIndex: " + $("#hdPageIndex").val() + ", PageSize:" + $("#hdPageSize").val() + ", RequestType:1,CurrentDate:'" + CurrentDate + "',SearchCondition:{StudentID:" + $("#hdStudentID").val() + "}}";
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Student/GetStudentCurriculum/",
+        url: ApiUrl + "/Student/GetStudentCurriculum/",
         dataType: "json",
         async: false,
         data: { query: requestPrm },
@@ -121,7 +121,7 @@ function LoadMyCurriculum4WaitClass() {
     var requestPrm = " { PageIndex: " + $("#hdPageIndex4WaitClass").val() + ", PageSize:" + $("#hdPageSize4WaitClass").val() + ", RequestType:2,CurrentDate:'" + CurrentDate + "',SearchCondition:{StudentID:" + $("#hdStudentID").val() + "}}";
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Student/GetStudentCurriculum/",
+        url: ApiUrl + "/Student/GetStudentCurriculum/",
         dataType: "json",
         async: false,
         data: { query: requestPrm },
@@ -207,7 +207,7 @@ function LoadMyCurriculum4History() {
     var requestPrm = " { PageIndex: " + $("#hdPageIndex4History").val() + ", PageSize:" + $("#hdPageSize4History").val() + ", RequestType:3,CurrentDate:'" + CurrentDate + "',SearchCondition:{StudentID:" + $("#hdStudentID").val() + "}}";
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Student/GetStudentCurriculum/",
+        url: ApiUrl + "/Student/GetStudentCurriculum/",
         dataType: "json",
         async: false,
         data: { query: requestPrm },

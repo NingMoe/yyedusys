@@ -1,28 +1,28 @@
 ﻿
 
-$(".save").bind("click", function () {
+$("#save").bind("click", function () {
 
     if ($("#hdStudentID").val() == "")
     {
         alert("请选择要点评的学生");
         return false;
     }
-
+    alert($("#hdCommentID").val());
     if ($("#hdCommentID").val() != "")//修改
     {
         var parm = { CommentID: $("#hdCommentID").val(), Info: $("#txtInfo").val() };
         $.ajax({
             type: "POST",
-            url: "http://localhost:53262/api/Coash/UpdateCoachComment",
+            url: ApiUrl+"/Coach/UpdateCoachComment",
             contentType: "application/json",
             data: JSON.stringify(parm),
             success: function (data, status) {
                 if (status == "success") {
-                    alert("修改点评成功");                   
+                    alert("点评信息提交成功");                   
                 }
             },
             error: function (e) {
-                alert("修改点评信息失败，再操作一次吧");
+                alert("点评信息提交失败，再操作一次吧");
             },
             complete: function () {
 
@@ -31,10 +31,10 @@ $(".save").bind("click", function () {
     }
     else
     {
-        var parm = { CurriculumID: $("#hdCommentID").val(), StudentID: $("#hdStudentID").val(), Info: $("#txtInfo").val(), CoachID: $("#hdCoachID").val(), PKID: $("#hdPKID").val() };
+        var parm = { CurriculumID: $("#hdCurriculumID").val(), StudentID: $("#hdStudentID").val(), Info: $("#txtInfo").val(), CoachID: $("#hdCoachID").val(), PKID: $("#hdPKID").val() };
         $.ajax({
             type: "POST",
-            url: "http://localhost:53262/api/Coash/AddCoachComment",
+            url: ApiUrl+"/Coach/AddCoachComment",
             contentType: "application/json",
             data: JSON.stringify(parm),
             success: function (data, status) {
@@ -59,7 +59,7 @@ function LoadInfo() {
     var str = ""; 
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/GetCurriculumStudentByPKID/",
+        url: ApiUrl+"/Coach/GetCurriculumStudentByPKID/",
         dataType: "json",
         async: false,
         data: { PKID: $("#hdPKID").val() },
@@ -75,17 +75,23 @@ function LoadInfo() {
             $("#cStudent").html(str);
 
             $("#cStudent li a").on("click", function () {
+                $("#hdCommentID").val('');
+                $("#txtInfo").text('');
                 $("#hdStudentID").val($(this).attr("data-id"));
-                $("#hdCommentID").val($(this).attr("data-cid"))
+                $("#hdCurriculumID").val($(this).attr("data-cid"))
+                $("#xyInfo").html($(this).text() + '<span class="am-icon-caret-down"></span>');
                 $.ajax({
-                    type: "POST",
-                    url: "http://localhost:53262/api/Coash/GetCoachCommentDetail",
+                    type: "get",
+                    url: ApiUrl+"/Coach/GetCoachCommentDetail",
                     contentType: "application/json",
-                    data: { StudentID: $(this).attr("data-id"), CurriculumID: $("#hdCommentID").val() },
+                    data: { StudentID: $(this).attr("data-id"), CurriculumID: $("#hdCurriculumID").val() },
                     success: function (data) {
-                        var c = data[0];
-                        $("#txtInfo").text(c.Info);
-                        $("#hdCommentID").val(c.CommentID);
+                       
+                        if (data != null&&data!="") {
+                            var c = data[0];
+                            $("#txtInfo").text(c.Info);
+                            $("#hdCommentID").val(c.CommentID);
+                        }
                     },
                     error: function (e) {
                         console.log('error');

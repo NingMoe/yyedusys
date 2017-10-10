@@ -3,7 +3,7 @@ function LoadInfo() {
     var str = "";
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/GetCoachCurriculumByID/",
+        url: ApiUrl+"/Coach/GetCoachCurriculumByID/",
         dataType: "json",
         async: false,
         data: { PKID: $("#hdID").val() },
@@ -35,7 +35,7 @@ function GetStudent()
     var str = "";
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/GetCurriculumStudentByPKID/",
+        url: ApiUrl+"/Coach/GetCurriculumStudentByPKID/",
         dataType: "json",
         async: false,
         data: { pkid: $("#hdID").val() },
@@ -83,11 +83,11 @@ function Comment(pkid, coachid, cid) {
 
 function StudentLeave(pkid, coachid, studentid,venueid)
 {
-    alert(1);
+
     //0预约成功，1上课成功，2学生请假，3老师请假4场馆停课
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/UpdateCurriculumState/",
+        url: ApiUrl+"/Coach/UpdateCurriculumState/",
         dataType: "json",
         async: false,
         data: { State:2, StudentIDs:studentid, pkid:pkid,VenueID:venueid,CoachID:coachid },
@@ -107,7 +107,7 @@ function SignLeave(pkid, coachid, studentid) {
     //0预约成功，1上课成功，2学生请假，3老师请假4场馆停课
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/UpdateCurriculumState/",
+        url: ApiUrl+"/Coach/UpdateCurriculumState/",
         dataType: "json",
         async: false,
         data: { State: 1, StudentIDs: studentid, pkid: pkid },

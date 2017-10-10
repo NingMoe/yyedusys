@@ -39,6 +39,25 @@ namespace YY.Edu.Sys.Api.Services
         }
 
         /// <summary>
+        /// 通过openid检查用户是否绑定
+        /// </summary>
+        /// <param name="openId"></param>
+        /// <returns></returns>
+        public static bool IsExistByOpenId(string openId)
+        {
+
+            if (string.IsNullOrWhiteSpace(openId))
+                throw new Comm.YYException.YYException("参数不能为空");
+
+            var sql = "select count(studentID) from student where openId=@openId";
+            var count = Comm.Helper.DapperHelper.Instance.Query<int>(sql, new { openId = openId });
+
+            return (count.FirstOrDefault() > 0);
+
+        }
+
+
+        /// <summary>
         /// 通过用户名查找学生
         /// </summary>
         /// <param name="userName">用户名</param>
@@ -187,35 +206,45 @@ where s.UserName=@userName and sv.VenueID=@venueID";
         /// <returns></returns>
         public static bool Reginster(Sys.Models.Student student)
         {
+
+            if (!string.IsNullOrWhiteSpace(student.OpenID))
+            {
+                var sql = "select * from WxUserInfo where OpenId=@openId";
+                var wxuserInfo = Comm.Helper.DapperHelper.Instance.QueryFirst<Sys.Models.WxUserInfo>(sql, new
+                {
+                    openId = student.OpenID
+                });
+
+                student.NickName = wxuserInfo.NickName;
+                student.HeadUrl = wxuserInfo.HeadImgUrl;
+            }
+
+            System.Data.IDbConnection connection = Comm.Helper.DapperHelper.Instance;
+            connection.Open();
+            System.Data.IDbTransaction transaction = connection.BeginTransaction();
+
             try
             {
-
-                if (!string.IsNullOrWhiteSpace(student.OpenID))
+                int student_id = connection.Insert<Sys.Models.Student>(student, transaction);
+                var student_venue_result = connection.Insert<Sys.Models.Student_Venue>(new Sys.Models.Student_Venue()
                 {
-                    var sql = "select * from WxUserInfo where OpenId=@openId";
-                    var wxuserInfo = Comm.Helper.DapperHelper.Instance.QueryFirst<Sys.Models.WxUserInfo>(sql, new
-                    {
-                        openId = student.OpenID
-                    });
+                    AddTime = DateTime.Now,
+                    StudentID = student_id,
+                    VenueID = student.VenueID,
+                }, transaction);
 
-                    student.NickName = wxuserInfo.NickName;
-                    student.HeadUrl = wxuserInfo.HeadImgUrl;
-                }
-
-                int coach_id = Comm.Helper.DapperHelper.Instance.Insert<Sys.Models.Student>(student);
-                //var student_venue_result = Comm.Helper.DapperHelper.Instance.Insert<Sys.Models.Coach_Venue>(new Sys.Models.Coach_Venue()
-                //{
-                //    AddTime = DateTime.Now,
-                //    CoachID = coach_id,
-                //    VenueID = student.VenueID,
-                //});
-
+                transaction.Commit();
                 return true;
             }
             catch (Exception ex)
             {
                 logs.Error("学生注册失败", ex);
+                transaction.Rollback();
                 return false;
+            }
+            finally
+            {
+                connection.Close();
             }
         }
 

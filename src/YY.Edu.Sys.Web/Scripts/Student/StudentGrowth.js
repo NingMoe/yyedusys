@@ -10,7 +10,7 @@ function LoadMyCurriculumV() {
 
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Student/GetStudentGrowth/",
+        url: ApiUrl + "/Student/GetStudentGrowth/",
         dataType: "json",
         async: false,
         data: { VenueID: 1, StudentID: $("#hdStudentID").val(), FCType: 2 },
@@ -49,7 +49,7 @@ function LoadMyCurriculumImg() {
 
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Student/GetStudentGrowth/",
+        url: ApiUrl + "/Student/GetStudentGrowth/",
         dataType: "json",
         async: false,
         data: { VenueID: 1, StudentID: $("#hdStudentID").val(), FCType: 1 },
@@ -174,7 +174,7 @@ function uploadFile(file) {
                     var parm = { Title: $("#txtTitle").val(), FCType: $("input[name='docInlineRadio']:checked").val(), FCUrl: data.msg, StudentID: $("#hdStudentID").val(), FCState: 1, VenueID: $("#selVenue").val() };
                     $.ajax({
                         type: "POST",
-                        url: "http://localhost:53262/api/Student/AddStudentGrowth",
+                        url: ApiUrl + "/Student/AddStudentGrowth",
                         contentType: "application/json",
                         data: JSON.stringify(parm),
                         success: function (data, status) {

@@ -18,6 +18,7 @@ namespace YY.Edu.Sys.Web.Controllers
             ViewBag.OpenId = Session["OpenId"];
             ViewBag.Token = AccessToken;
             ViewBag.RefreshToken = RefreshToken;
+            ViewBag.ApiUrl = WebConfigurationManager.AppSettings["ApiUrl"]; ;
             return View();
         }
 
@@ -72,6 +73,16 @@ namespace YY.Edu.Sys.Web.Controllers
             }
         }
 
+        /// <summary>
+        /// 获取到的微信信息
+        /// </summary>
+        protected Senparc.Weixin.MP.AdvancedAPIs.OAuth.OAuthUserInfo WxUserInfo
+        {
+            get
+            {
+                return Session["WxUserInfo"] as Senparc.Weixin.MP.AdvancedAPIs.OAuth.OAuthUserInfo;
+            }
+        }
 
         /// <summary>
         /// 登录 并获取信息 存放到session中
@@ -81,13 +92,13 @@ namespace YY.Edu.Sys.Web.Controllers
         /// <param name="passWord"></param>
         protected async System.Threading.Tasks.Task<bool> LoginSuccess(string domain, string openId, string passWord)
         {
-            string info = domain + "|" + openId + "|" + passWord+"|";
+            string info = domain + "|" + openId + "|" + passWord + "|";
             var service = new Services.WxUserService();
             var tokenValue = await service.GetToken(domain, openId, passWord);
 
             if (tokenValue.Contains("invalid_client"))
             {
-                throw new Comm.YYException.YYException("登录失败"+ info+ tokenValue+",请联系管理员");
+                throw new Comm.YYException.YYException("登录失败" + info + tokenValue + ",请联系管理员");
             }
             //if (tokenValue.Contains("invalid_grant"))
             //{
@@ -101,7 +112,7 @@ namespace YY.Edu.Sys.Web.Controllers
             if (tokenValue.Contains("invalid_grant")) //没有权限
             {
                 Session["Binding"] = "0";
-               
+
             }
             else
             {
@@ -111,7 +122,7 @@ namespace YY.Edu.Sys.Web.Controllers
                 Session["accessToken"] = tokenInfo.access_token;
                 Session["refreshToken"] = tokenInfo.refresh_token;
             }
-           
+
             return true;
         }
 

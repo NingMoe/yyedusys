@@ -10,7 +10,7 @@ function LoadMyCurriculum() {
     var requestPrm = " { PageIndex: " + $("#hdPageIndex").val() + ", PageSize:" + $("#hdPageSize").val() + ", RequestType: 1,CurrentDate:'" + CurrentDate + "',PKType:1,SearchCondition:{StudentID: " + $("#hdSID").val() + "}}";
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Student/GetTeachingScheduleByStudent/",
+        url: ApiUrl + "/Student/GetTeachingScheduleByStudent/",
         dataType: "json",
         async: false,
         data: { query: requestPrm },
@@ -122,7 +122,7 @@ function LoadMyCurriculum2() {
     var requestPrm = " { PageIndex: " + $("#hdPageIndex2").val() + ", PageSize:" + $("#hdPageSize2").val() + ", RequestType: 1,CurrentDate:'" + CurrentDate + "',PKType:2,SearchCondition:{StudentID: " + $("#hdSID").val() + "}}";
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Student/GetTeachingScheduleByStudent/",
+        url: ApiUrl + "/Student/GetTeachingScheduleByStudent/",
         dataType: "json",
         async: false,
         data: { query: requestPrm },
@@ -256,7 +256,7 @@ function Subscribe(pkid, sid, VenueID, cid, obj) {
 
     $.ajax({
         type: "Post",
-        url: "http://localhost:53262/api/Student/SubscribeCurriculum/",
+        url: ApiUrl + "/Student/SubscribeCurriculum/",
         contentType: "application/json",
         //data: { sid: sid, pkid: pkid, cid: cid, vid: VenueID, sname: FullName },
         data: JSON.stringify({ PKID: pkid, VenueID: VenueID, SID: sid, CID: cid, SName: FullName }),

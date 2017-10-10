@@ -9,7 +9,7 @@ function LoadClassHoursDetailed() {
         CurrentDate = myCuDate.getFullYear() + "-" + (myCuDate.getMonth() + 1) + "-" + myCuDate.getDate();
    $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Student/GetClassHoursDetailedByStudentID/",
+        url: ApiUrl + "/Student/GetClassHoursDetailedByStudentID/",
         dataType: "json",
         async: false,
         data: { StudentID: $("#hdStudentID").val(),PageIndex:$("#hdPageIndex").val(),PageSize: $("#hdPageSize").val()  },

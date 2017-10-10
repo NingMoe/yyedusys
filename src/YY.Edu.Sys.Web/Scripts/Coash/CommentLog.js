@@ -5,7 +5,7 @@ function LoadInfo() {
     var str = "";
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/GetCoachCommentByPKID/",
+        url: ApiUrl+"/Coach/GetCoachCommentByPKID/",
         dataType: "json",
         async: false,
         data: { PKID: $("#hdPKID").val() },

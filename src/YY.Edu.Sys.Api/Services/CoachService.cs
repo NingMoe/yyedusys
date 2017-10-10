@@ -136,6 +136,24 @@ from TeachingSchedule where CoachID = @CoachID and CurriculumDate>= @CurriculumD
         }
 
         /// <summary>
+        /// 通过openid检查用户是否绑定
+        /// </summary>
+        /// <param name="openId"></param>
+        /// <returns></returns>
+        public static bool IsExistByOpenId(string openId)
+        {
+
+            if (string.IsNullOrWhiteSpace(openId))
+                throw new Comm.YYException.YYException("参数不能为空");
+
+            var sql = "select count(CoachID) from Coach where openId=@openId";
+            var count = Comm.Helper.DapperHelper.Instance.Query<int>(sql, new { openId = openId });
+
+            return (count.FirstOrDefault() > 0);
+
+        }
+
+        /// <summary>
         /// 通过用户名查找教练
         /// </summary>
         /// <param name="userName">用户名</param>
@@ -297,7 +315,6 @@ where c.UserName=@userName and cv.VenueID=@venueID";
                     PriceMore = 0,
                     Price = 0,
                     Wage=0
-                
                 });
 
                 return true;

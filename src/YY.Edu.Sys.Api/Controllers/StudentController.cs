@@ -158,6 +158,7 @@ namespace YY.Edu.Sys.Api.Controllers
         /// </summary>
         /// <param name="student"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpPost]
         public IHttpActionResult Create(YY.Edu.Sys.Models.Student student)
         {
@@ -167,6 +168,14 @@ namespace YY.Edu.Sys.Api.Controllers
 
             try
             {
+                bool isExist = Services.StudentService.IsExist(student);
+                if (isExist)
+                    return Ok(Comm.ResponseModel.ResponseModelBase.GetRes("该手机号已经注册"));
+
+                bool isExistByOpenid = Services.StudentService.IsExistByOpenId(student.OpenID);
+                if (isExistByOpenid)
+                    return Ok(Comm.ResponseModel.ResponseModelBase.GetRes("该微信号已经绑定"));
+
                 bool flag = Services.StudentService.Reginster(student);
 
                 return flag ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
@@ -1080,7 +1089,7 @@ where v.VenueID = @VenueID and s.state=1 ";
         }
         #endregion
 
-
+        [AllowAnonymous]
         [HttpGet]
         public IHttpActionResult IsExisitVenueByVCode(string VenueCode)
         {

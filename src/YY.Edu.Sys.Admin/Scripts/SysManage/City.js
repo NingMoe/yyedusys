@@ -27,7 +27,7 @@ function bindTable() {
         "processing": true,
         "serverSide": true,    //true代表后台处理分页，false代表前台处理分页 
         //"draw":false,
-        "aLengthMenu": [1, 3, 4],
+        "aLengthMenu": [50],
         "paginationType": "full_numbers", //详细分页组，可以支持直接跳转到某页  
         "deferRender": true,//当处理大数据时，延迟渲染数据，有效提高Datatables处理能力 
         "ajax": {

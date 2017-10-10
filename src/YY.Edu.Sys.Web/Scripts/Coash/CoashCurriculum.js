@@ -1,7 +1,7 @@
 ﻿
 jQuery.support.cors = true;
 function LoadMyCurriculum() {
-
+  
     nextPagePlus();
     var CurrentDate = "";
 
@@ -11,7 +11,7 @@ function LoadMyCurriculum() {
     var requestPrm = " { PageIndex: " + $("#hdPageIndex").val() + ", PageSize:" + $("#hdPageSize").val() + ", RequestType:1,CurrentDate:'" + CurrentDate + "',SearchCondition:{CoachID: " + $("#hdCoachID").val() + "}}";
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/GetCoachCurriculum/",
+        url: ApiUrl+"/Coach/GetCoachCurriculum/",
         dataType: "json",
         async: false,
         data: { query: requestPrm },
@@ -23,25 +23,26 @@ function LoadMyCurriculum() {
             var dataCu = data.data;
             if (dataCu.length > 0) $("#more").show();
 
-            //    1有效，2学校停课（需要判断，有没有学生预约）,3老师请假,4上课
+            // 0 排课完成 1学生约课完成，2学校停课（需要判断，有没有学生预约）,3请假申请 4请假 5上课中 6上课完成 7发放工资完成
 
             $.each(dataCu, function (i, c) {
 
                 var KSstate = c.State;
+               
                 var strState = "有预约";
                 if (KSstate == 1) {
-                    var myDate = new Date();
-                    var currTime = myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate() + " " + myDate.getHours() + ":" + myDate.getMinutes() + ":00";
-                    var endTime = dateformat(c.CurriculumDate, "yyyy-MM-dd") + " " + c.CurriculumEndTime + ":00";
+                    //var myDate = new Date();
+                    //var currTime = myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate() + " " + myDate.getHours() + ":" + myDate.getMinutes() + ":00";
+                    //var endTime = dateformat(c.CurriculumDate, "yyyy-MM-dd") + " " + c.CurriculumEndTime + ":00";
 
-                    var dcTime = NewDateTime(currTime);
-                    var deTime = NewDateTime(endTime);
+                    //var dcTime = NewDateTime(currTime);
+                    //var deTime = NewDateTime(endTime);
 
-                    if (dcTime >= deTime) {
-                        strState = "未签到";
-                    }
+                    //if (dcTime >= deTime) {
+                    //    strState = "未签到";
+                    //}
                 }
-                else if (KSstate == 4) {
+                else if (KSstate == 6 || KSstate == 5) {
                     strState = "完成";
                     var myDate = new Date();
                     var currTime = myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate() + " " + myDate.getHours() + ":" + myDate.getMinutes() + ":00";
@@ -55,16 +56,20 @@ function LoadMyCurriculum() {
                         strState = "上课中";
                     }
 
-                    if (dcTime < dbTime) {
-                        strState = "签到中";
-                    }
+                    //if (dcTime < dbTime) {
+                    //    strState = "签到中";
+                    //}
                 }
-                else if (KSstate == 3) {
+                else if (KSstate == 3 || KSstate == 4) {
                     strState = "老师请假";
                 }
                 else if (KSstate == 2) {
                     strState = "场馆停课";
                 }
+                else if (KSstate == 7) {
+                    strState = "已发工资";
+                }
+                //0 排课完成 1学生约课完成，2学校停课（需要判断，有没有学生预约）,3请假申请 4请假 5上课中 6上课完成 7发放工资完成
 
 
                 str += '<li class="courseT am-g">';
@@ -121,7 +126,7 @@ function LoadMyCurriculum2() {
     var requestPrm = " { PageIndex: " + $("#hdPageIndex1").val() + ", PageSize:" + $("#hdPageSize1").val() + ", RequestType:2,CurrentDate:'" + CurrentDate + "',SearchCondition:{CoachID:" + $("#hdCoachID").val() + "}}";
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/GetCoachCurriculum/",
+        url: ApiUrl+"/Coach/GetCoachCurriculum/",
         dataType: "json",
         async: false,
         data: { query: requestPrm },
@@ -138,20 +143,21 @@ function LoadMyCurriculum2() {
             $.each(dataCu, function (i, c) {
 
                 var KSstate = c.State;
+
                 var strState = "有预约";
                 if (KSstate == 1) {
-                    var myDate = new Date();
-                    var currTime = myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate() + " " + myDate.getHours() + ":" + myDate.getMinutes() + ":00";
-                    var endTime = dateformat(c.CurriculumDate, "yyyy-MM-dd") + " " + c.CurriculumEndTime + ":00";
+                    //var myDate = new Date();
+                    //var currTime = myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate() + " " + myDate.getHours() + ":" + myDate.getMinutes() + ":00";
+                    //var endTime = dateformat(c.CurriculumDate, "yyyy-MM-dd") + " " + c.CurriculumEndTime + ":00";
 
-                    var dcTime = NewDateTime(currTime);
-                    var deTime = NewDateTime(endTime);
+                    //var dcTime = NewDateTime(currTime);
+                    //var deTime = NewDateTime(endTime);
 
-                    if (dcTime >= deTime) {
-                        strState = "未签到";
-                    }
+                    //if (dcTime >= deTime) {
+                    //    strState = "未签到";
+                    //}
                 }
-                else if (KSstate == 4) {
+                else if (KSstate == 6 || KSstate == 5) {
                     strState = "完成";
                     var myDate = new Date();
                     var currTime = myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate() + " " + myDate.getHours() + ":" + myDate.getMinutes() + ":00";
@@ -165,17 +171,19 @@ function LoadMyCurriculum2() {
                         strState = "上课中";
                     }
 
-                    if (dcTime < dbTime) {
-                        strState = "签到中";
-                    }
+                    //if (dcTime < dbTime) {
+                    //    strState = "签到中";
+                    //}
                 }
-                else if (KSstate == 3) {
+                else if (KSstate == 3 || KSstate == 4) {
                     strState = "老师请假";
                 }
                 else if (KSstate == 2) {
                     strState = "场馆停课";
                 }
-
+                else if (KSstate == 7) {
+                    strState = "已发工资";
+                }
 
                 str += '<li class="courseT am-g">';
                 str += ' <a href="CurriculumDetail/?cuid=' + c.CurriculumID + '&pkid=' + c.PKID + '"> <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" alt="" class="am-u-sm-3 am-u-md-3 am-u-lg-3">';
@@ -231,14 +239,14 @@ function LoadMyCurriculum3() {
     var requestPrm = " { PageIndex: " + $("#hdPageIndex2").val() + ", PageSize:" + $("#hdPageSize2").val() + ", RequestType:3,CurrentDate:'" + CurrentDate + "',SearchCondition:{CoachID: " + $("#hdCoachID").val() + "}}";
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/GetCoachCurriculum/",
+        url: ApiUrl+"/Coach/GetCoachCurriculum/",
         dataType: "json",
         async: false,
         data: { query: requestPrm },
         //beforeSend: function () {
         //},
         success: function (data) {
-
+         
             var str = "";
             var dataCu = data.data;
             if (dataCu.length > 0) $("#moreHistory").show();
@@ -248,20 +256,21 @@ function LoadMyCurriculum3() {
             $.each(dataCu, function (i, c) {
 
                 var KSstate = c.State;
+
                 var strState = "有预约";
                 if (KSstate == 1) {
-                    var myDate = new Date();
-                    var currTime = myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate() + " " + myDate.getHours() + ":" + myDate.getMinutes() + ":00";
-                    var endTime = dateformat(c.CurriculumDate, "yyyy-MM-dd") + " " + c.CurriculumEndTime + ":00";
+                    //var myDate = new Date();
+                    //var currTime = myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate() + " " + myDate.getHours() + ":" + myDate.getMinutes() + ":00";
+                    //var endTime = dateformat(c.CurriculumDate, "yyyy-MM-dd") + " " + c.CurriculumEndTime + ":00";
 
-                    var dcTime = NewDateTime(currTime);
-                    var deTime = NewDateTime(endTime);
+                    //var dcTime = NewDateTime(currTime);
+                    //var deTime = NewDateTime(endTime);
 
-                    if (dcTime >= deTime) {
-                        strState = "未签到";
-                    }
+                    //if (dcTime >= deTime) {
+                    //    strState = "未签到";
+                    //}
                 }
-                else if (KSstate == 4) {
+                else if (KSstate == 6 || KSstate == 5) {
                     strState = "完成";
                     var myDate = new Date();
                     var currTime = myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate() + " " + myDate.getHours() + ":" + myDate.getMinutes() + ":00";
@@ -275,15 +284,18 @@ function LoadMyCurriculum3() {
                         strState = "上课中";
                     }
 
-                    if (dcTime < dbTime) {
-                        strState = "签到中";
-                    }
+                    //if (dcTime < dbTime) {
+                    //    strState = "签到中";
+                    //}
                 }
-                else if (KSstate == 3) {
+                else if (KSstate == 3 || KSstate == 4) {
                     strState = "老师请假";
                 }
                 else if (KSstate == 2) {
                     strState = "场馆停课";
+                }
+                else if (KSstate == 7) {
+                    strState = "已发工资";
                 }
 
 

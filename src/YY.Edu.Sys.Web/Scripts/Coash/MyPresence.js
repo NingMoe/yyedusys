@@ -10,7 +10,7 @@ function LoadMyCurriculumV() {
 
   $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/GetCoachingPresence/",
+        url: ApiUrl+"/Coach/GetCoachingPresence/",
         dataType: "json",
         async: false,
         data: { VenueID: $("#hdVenueID").val(), CoachID: $("#hdCoachID").val(), FCType: 2 },
@@ -47,7 +47,7 @@ function LoadMyCurriculumImg() {
 
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/GetCoachingPresence/",
+        url: ApiUrl+"/Coach/GetCoachingPresence/",
         dataType: "json",
         async: false,
         data: { VenueID: $("#hdVenueID").val(), CoachID: $("#hdCoachID").val(), FCType: 1 },
@@ -167,7 +167,7 @@ function uploadFile(file) {
                     var parm = { Title: $("#txtTitle").val(), FCType: $("input[name='docInlineRadio']:checked").val(), FCUrl: data.msg, CoachID: $("#hdCoachID").val(), FCState: 1, VenueID: $("#hdVenueID").val() };
                     $.ajax({
                         type: "POST",
-                        url: "http://localhost:53262/api/Coach/AddCoachingPresence",
+                        url: ApiUrl+"/Coach/AddCoachingPresence",
                         contentType: "application/json",
                         data: JSON.stringify(parm),
                         success: function (data, status) {

@@ -2,11 +2,6 @@
 jQuery.support.cors = true;
 
 
-
-
-
-
-
 //读取图片实例,并上传到服务器
 var fileBox = document.getElementById('file');
 var fileBox2 = document.getElementById('file2');
@@ -107,7 +102,7 @@ function uploadFileF(file,url) {
 }
 function Save(url,furl)
 {
-    var PostUrl = "http://localhost:53262/api/Coach/Create/";
+    var PostUrl = ApiUrl+"/Coach/Create/";
    
     var parm = { FullName: $("#txtFullName").val(), CardPositiveUrl: url, CardReverseUrl: furl, UserName: $("#txtMobile").val(), Pwd: $("#txtMobile").val(), Introduce: "", NickName: $("#txtNickName").val(), HeadUrl: $("#imgHurl").attr("src"), Address: $("#txtAddress").val(), Mobile: $("#txtMobile").val(), Sex: 1, VenueID: $("#hdVenueID").val(), OpenID: $("#hdOpenID").val() };
    
@@ -123,7 +118,9 @@ function Save(url,furl)
                     alert('绑定成功');
                     location.href = '../index';
                 }
-                else { alert('添加失败，再来一次吧'); }
+                else {
+                    alert(data.Msg);
+                }
             }
         },
         error: function (e) {
@@ -182,7 +179,7 @@ $('#btnSave').bind('click', function () {
 
 function IsExisitVCode() {
    
-    var PostUrl = "http://localhost:53262/api/Coach/IsExisitVenueByVCode/";  
+    var PostUrl = ApiUrl+"/Coach/IsExisitVenueByVCode/";  
     $.ajax({
         type: "get",
         url: PostUrl,

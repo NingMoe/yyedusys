@@ -95,6 +95,7 @@ namespace YY.Edu.Sys.Web.Controllers
             {
                 OAuthUserInfo userInfo = OAuthApi.GetUserInfo(result.access_token, result.openid);
                 Session["OpenId"] = userInfo.openid;
+                Session["WxUserInfo"] = userInfo;
 
                 //获取微信信息并写入数据库
                 new Services.WxUserService().FollowMP(userInfo);

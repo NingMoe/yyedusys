@@ -216,6 +216,15 @@ namespace YY.Edu.Sys.Api.Controllers
 
             try
             {
+
+                bool isExist = Services.CoachService.IsExist(coach);
+                if (isExist)
+                    return Ok(Comm.ResponseModel.ResponseModelBase.GetRes("该手机号已经注册"));
+
+                bool isExistByOpenid = Services.CoachService.IsExistByOpenId(coach.OpenID);
+                if (isExistByOpenid)
+                    return Ok(Comm.ResponseModel.ResponseModelBase.GetRes("该微信号已经绑定"));
+
                 StringBuilder sql = new StringBuilder();
 
                 sql.Append("");
@@ -691,7 +700,7 @@ group by CurriculumDate";
 
 
         #region 课程
-
+        [HttpGet]
         /// <summary>
         /// 教练申请请假
         /// </summary>
@@ -700,7 +709,7 @@ group by CurriculumDate";
         /// <returns></returns>
         public IHttpActionResult ApplyLeaveByPKID(int PKID, int State)
         {
-            string sql = " update TeachingSchedule set State=@State where PKID=@PKID ";
+            string sql = " update TeachingSchedule set State=@State where PKID=@PKID where State in(0,1) ";
             if (!ModelState.IsValid)
                 return BadRequest();
 
@@ -710,7 +719,7 @@ group by CurriculumDate";
 
             if (result > 0)
             {
-                return Ok(new { error = false, code = "1000", message = "操作成功" });
+                return Ok(new { error = false, code = "1001", message = "操作成功" });
             }
             else
             {
@@ -853,10 +862,10 @@ group by CurriculumDate";
                     }
                 }
 
-                //0 排课完成 1学生约课完成，2学校停课（需要判断，有没有学生预约）,3请假申请 4请假 5上课中 6上课完成 7发放工资完成
+                
                 if (oData.RequestType == 2)
                 {
-                    criteria.Condition += string.Format(" and t.State<>{0} ",1);
+                    criteria.Condition += " and t.State in (1,2,3,4) ";
                 }
                 else if (oData.RequestType == 3)
                 {
@@ -1048,10 +1057,11 @@ group by CurriculumDate";
 
             try
             {
+                string sql= "update CoachComment set Info=@Info,ModifyTime=getdate() where CommentID=@CommentID";
                 // Comm.Helper.DapperHelper.Instance.Delete(cm);
-                var result = Comm.Helper.DapperHelper.Instance.Update(cm);
+                var result = Comm.Helper.DapperHelper.Instance.Execute(sql, new { Info = cm.Info, CommentID = cm.CommentID });
 
-                if (result)
+                if (result>0)
                 {
                     return Ok(Comm.ResponseModel.ResponseModelBase.Success());
                 }
@@ -1082,6 +1092,7 @@ group by CurriculumDate";
             return Ok(query);
         }
 
+        [HttpGet]
         /// <summary>
         /// 取的教练的对某一学生某一课时的点评信息
         /// </summary>

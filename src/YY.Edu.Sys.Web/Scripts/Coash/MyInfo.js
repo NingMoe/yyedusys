@@ -2,7 +2,7 @@
     var str = "";
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/Get/",
+        url: ApiUrl+"/Coach/Get/",
         dataType: "json",
         async: false,
         data: { id: $("#hdID").val() },
@@ -21,7 +21,7 @@ function LoadPJInfo() {
     var str = "";
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/GetCurriculumEvaluateByCoachID/",
+        url: ApiUrl+"/Coach/GetCurriculumEvaluateByCoachID/",
         dataType: "json",
         async: false,
         data: { CoachID: $("#hdID").val() },
@@ -108,7 +108,7 @@ function LoadPresenceInfo() {
     var str = "";
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/GetCoachingPresence/",
+        url: ApiUrl+"/Coach/GetCoachingPresence/",
         dataType: "json",
         async: false,
         data: { VenueID: $("#hdVenveID").val(), CoachID: $("#hdID").val(), FCType: 1 },

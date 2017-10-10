@@ -5,7 +5,7 @@ function LoadInfo() {
     var str = "";
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Student/GetStudentCurriculumByID/",
+        url: ApiUrl + "/Student/GetStudentCurriculumByID/",
         dataType: "json",
         async: false,
         data: { PKID: $("#hdID").val() },
@@ -40,7 +40,7 @@ function GetPJ()
     var str = "";
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Student/GetCurriculumEvaluateByID/",
+        url: ApiUrl + "/Student/GetCurriculumEvaluateByID/",
         dataType: "json",
         async: false,
         data: { StudentID: $("#hdSID").val(), CurriculumID: $("#hdCID").val() },
@@ -125,7 +125,7 @@ $("#save").bind("click", function () {
     var parm = { CurriculumID: $("#hdCID").val(), StudentID: $("#hdSID").val(), Info: $("#doc-ta-1").val(), StarLevel: icount1, EffectStarLevel: icount2 };
     $.ajax({
         type: "POST",
-        url: "http://localhost:53262/api/Student/AddCurriculumEvaluate",
+        url: ApiUrl + "/Student/AddCurriculumEvaluate",
         contentType: "application/json",
         data: JSON.stringify(parm),
         success: function (data, status) {

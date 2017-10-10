@@ -8,7 +8,7 @@ function LoadCoach() {
       
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/GetCoachListByHourClass/",
+        url: ApiUrl + "/Coach/GetCoachListByHourClass/",
         dataType: "json",
         async: false,
         data: { StudentID: $("#hdStudentID").val(), VenueID: $("#hdVenueID").val(),PKType:1 },
@@ -70,7 +70,7 @@ function LoadCoachMore() {
 
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/GetCoachListByHourClass/",
+        url: ApiUrl + "/Coach/GetCoachListByHourClass/",
         dataType: "json",
         async: false,
         data: { StudentID: $("#hdStudentID").val(), VenueID: $("#hdVenueID").val(), PKType: 2},
@@ -154,7 +154,7 @@ function Buy(coachid, sid1, obj,price,vid,pktype) {
 
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Student/ApplyBuy/",//BuyCurriculum(int StudentID,int CoachID,int number)
+        url: ApiUrl + "/Student/ApplyBuy/",//BuyCurriculum(int StudentID,int CoachID,int number)
         dataType: "json",
         async: false,
         data: { StudentID: sid, CoachID: coachid, ClassNumber: inumber, VenueID: vid, PayMoney: CMoney, Status: 0, PKType: pktype, PaidMoney:CMoney },

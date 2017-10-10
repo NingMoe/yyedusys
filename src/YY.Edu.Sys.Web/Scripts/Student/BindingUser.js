@@ -3,7 +3,7 @@ jQuery.support.cors = true;
 
 function Save(url,furl,VenueID)
 {
-    var PostUrl = "http://localhost:53262/api/Student/Create/";
+    var PostUrl = ApiUrl+"/Student/Create/";
   
 
     parm = { UserName: $("#txtMobile").val(), Pwd: $("#txtMobile").val(), NickName: $("#txtNickName").val(), FullName: $("#txtFullName").val(), NickName: $("#txtTitle").val(), Mobile: $("#txtMobile").val(), Address: $("#txtAddress").val(), ParentFullName: $("#txtParentFullName").val(), ParentMobile: $("#txtParentMobile").val(), HeadUrl: $("#hdHeadUrl").val(), VenueID: VenueID, BirthDate: $("#txtBirthDate").val(), OpenID: $("#hdOpenID").val() };
@@ -19,7 +19,9 @@ function Save(url,furl,VenueID)
                 if (data.Code == 1001) {
                     alert('添加成功');                 
                 }
-                else { alert('添加失败，再来一次吧'); }
+                else {
+                    alert(data.Msg);
+                }
             }
         },
         error: function (e) {
@@ -79,7 +81,7 @@ $('#btnSave').bind('click', function () {
 
 function IsExisitVCode()
 {
-    var PostUrl = "http://localhost:53262/api/Student/IsExisitVenueByVCode/";
+    var PostUrl = ApiUrl + "/Student/IsExisitVenueByVCode/";
    
     $.ajax({
         type: "get",

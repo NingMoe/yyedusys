@@ -6,7 +6,7 @@ function LoadNotice() {
 
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/VenueNotice/GetMyNotice/",
+        url: ApiUrl + "/VenueNotice/GetMyNotice/",
         dataType: "json",
         async: false,
         data: { query: requestPrm },

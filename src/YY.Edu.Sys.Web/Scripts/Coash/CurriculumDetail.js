@@ -5,7 +5,7 @@ function LoadPJInfo() {
     var str = "";
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/GetCurriculumEvaluateByPKID/",
+        url: ApiUrl+"/Coach/GetCurriculumEvaluateByPKID/",
         dataType: "json",
         async: false,
         data: { pkid: $("#hdPKID").val() },
@@ -86,7 +86,7 @@ function LoadInfo() {
     var str = "";
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/GetCoachCurriculumByID/",
+        url: ApiUrl+"/Coach/GetCoachCurriculumByID/",
         dataType: "json",
         async: false,
         data: { PKID:$("#hdPKID").val() },
@@ -194,14 +194,14 @@ $("#btnSign").on('click', function () {
 
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/UpdateCurriculumState/",
+        url: ApiUrl+"/Coach/UpdateCurriculumState/",
         dataType: "json",
         data: {State:1, StudentIDs:StudentIDs , pkid:$("#hdPKID").val(), VenueID:0, CoachID:0},
         success: function (data, status) {  
             if (status == "success") {
                 if (data.Code == 1001) {
                     alert('签到提交成功，快上课吧');
-                    $("#my-confirm2").hide();
+                    $("#my-confirm2").modal('close');
                 }
                 else { alert('签到提交失败，再来一次吧1'); }
             }
@@ -223,7 +223,7 @@ function ckJA()
     var parm = { PKID: $("#hdPKID").val(), PlanContent: $("#txtJA").val() };
     $.ajax({
         type: "POST",
-        url: "http://localhost:53262/api/Coach/AddCurriculumTeachingPlan/",
+        url: ApiUrl+"/Coach/AddCurriculumTeachingPlan/",
         contentType: "application/json",
         data: JSON.stringify(parm),
         success: function (data, status) {
@@ -250,7 +250,7 @@ function ckZJ() {
     var parm = { PKID: $("#hdPKID").val(), SContent: $("#txtZJ").val() };
     $.ajax({
         type: "POST",
-        url: "http://localhost:53262/api/Coach/AddCurriculumSummary/",
+        url: ApiUrl+"/Coach/AddCurriculumSummary/",
         contentType: "application/json",
         data: JSON.stringify(parm),
         success: function (data, status) {
@@ -272,37 +272,37 @@ function ckZJ() {
 }
 
 //请假
-function ApplyLeave()
-{
+$("#btnConfirm").on("click", function () {
     $.ajax({
-    type: "POST",
-    url: "http://localhost:53262/api/Coach/ApplyLeaveByPKID/",
-    contentType: "application/json",
-    data: {PKID:$("#hdPKID").val(),State:3},
-    success: function (data, status) {
-        if (status == "success") {
-            if (data.Code == 1001) {
-                alert('提交请假申请成功');
+        type: "get",
+        url: ApiUrl+"/Coach/ApplyLeaveByPKID/",
+        contentType: "application/json",
+        data: { PKID: $("#hdPKID").val(), State: 3 },
+        success: function (data, status) {
+            if (status == "success") {
+                if (data.Code == 1001) {
+                    alert('提交请假申请成功');
+                }
+                else { alert('请核实下课程的状态吧'); }
             }
-            else { alert('提交请假申请失败，再来一次吧'); }
+            else { alert('请核实下课程的状态吧.'); }
+        },
+        error: function (e) {
+            alert('提交请假申请失败，再来一次吧');
+        },
+        complete: function () {
+
         }
-    },
-    error: function (e) {
-        alert('提交请假申请失败，再来一次吧');
-    },
-    complete: function () {
+    });
 
-    }
 });
-
-}
 
 
 //取的学生列表
 function GetStudent() {
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/GetCurriculumStudentByPKID/",
+        url: ApiUrl+"/Coach/GetCurriculumStudentByPKID/",
         dataType: "json",
         data: { pkid: $("#hdPKID").val() },
         success: function (data) {
@@ -341,7 +341,6 @@ function StudentSign()
 }
 
 //点评
-function StudentCommit()
-{
-    location.href = "../MyComment/?pkid="+$("#hdPKID")+"&cid=0";
-}
+$("#btnCom").on("click", function () {
+    location.href = "../MyComment/?pkid=" + $("#hdPKID").val() + "&cid=0";
+});

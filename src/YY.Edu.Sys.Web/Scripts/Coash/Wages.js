@@ -13,7 +13,7 @@ function LoadCoach() {
     var str = "";
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/GetWages/",
+        url: ApiUrl+"/Coach/GetWages/",
         dataType: "json",
         async: false,
         data: { CoachID: $("#hdCoachID").val() },
@@ -52,7 +52,7 @@ function LoadNoWages()
     alert($("#hdCoachID").val());
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/GetWagesSumMoney/",
+        url: ApiUrl+"/Coach/GetWagesSumMoney/",
         dataType: "json",
         data: {CoachID:$("#hdCoachID").val(),State:6},
         success: function (data) {
@@ -72,9 +72,9 @@ function LoadWages() {
     alert($("#hdCoachID").val());
     $.ajax({
         type: "get",
-        url: "http://localhost:53262/api/Coach/GetWagesSumMoney/",
+        url: ApiUrl + "/Coach/GetWagesSumMoney/",
         dataType: "json",
-        data: { CoachID: $("#hdCoachID").val(), State: 7},
+        data: { CoachID: $("#hdCoachID").val(), State: 7 },
         success: function (data) {
             $("#spMoney").text(data);
         },
