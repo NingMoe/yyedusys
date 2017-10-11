@@ -15,5 +15,4 @@ AppID： wxc4e7d155648eaee4
 AppSecret： bf47c7eea1c982e73842f8aee8f16d8f
 EncodingAESKey :8FoZDbSN6383CtcrUd5SAlyGNF51JiAzLWLkZRbivEx
 
-http://m.yiyust.com/oauth2/UserInfoCallback?returnUrl=http://m.yiyust.com/Student/index
-&code=061dQedy0AdZJj1wmCey0eGsdy0dQedp&state=FromSenparc|636432276241585503
+http://m.yiyust.com/Student/index
