@@ -1,0 +1,85 @@
+﻿
+jQuery.support.cors = true;
+function LoadFeedBack() {
+
+    var requestPrm = " { PageIndex: " + $("#hdPageIndex").val() + ", PageSize:" + $("#hdPageSize").val() + ",SearchCondition:{StudentID: " + $("#hdStudentID").val() + ",VenueID:" + $("#hdVenueID").val() + "}}";
+    var str = "";
+    $.ajax({
+        type: "get",
+        url: ApiUrl + "/FeedBackLog/GetFeedBackLog/",
+        dataType: "json",
+        async: false,
+        data: { query: requestPrm },
+        //beforeSend: function () {
+        //},
+        success: function (data) {
+        
+         
+            var dataCu = data.data;
+          
+            //	4	NoticeType			int	4	10	0			公告类型 1公告 2活动 3微信消息 4短信消息 5提醒
+            //	11	source			int	4	10	0		((1))	来源，1场馆，2运营平台，3场馆教练 
+            $.each(dataCu, function (i, c) {          
+             
+                var strState = "未回复";
+                if (c.State == 1)
+                {
+                    strState = "已回复";
+                }
+                str += '<li>';
+                str += ' <a href="FeedBackReply/?fdid=' + c.FDId + '">';
+                str += '  <p><span>留言时间：' + dateformat(c.AddTime, "yyyy-MM-dd HH:mm:ss") + '</span><span></span><span><font color="red">' + strState + '</font></span></p>';
+                str +=' <p>'+c.FDMsg+'</p>';
+                str +=' </a>';
+                str +=' </li> ';   
+
+            });
+   
+            $("#FList").html(str);
+
+        }
+    });
+}
+
+
+function dateformat(date, strgs) {
+    var myDate = new Date(date);
+
+    if (strgs == "yyyy-MM-dd") {
+        return myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate();
+    }
+    else {
+        return myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate() + " " + myDate.getHours() + ":" + myDate.getMinutes() + ":" + myDate.getSeconds();  //获取系统时，
+    }
+}
+
+function NewDateTime(str) {
+    str = str.replace("-", "/").replace("-", "/");
+    var arr = str.split(' ');
+
+    var strY = arr[0].split('/');
+    var date = new Date();
+    date.setFullYear(Number(strY[0]));
+    date.setMonth(Number(strY[1]) - 1);
+    date.setDate(Number(strY[2]));
+    if (arr.length > 1) {
+        var strH = arr[1].split(':');
+        date.setHours(Number(strH[0]));
+        date.setMinutes(Number(strH[1]));
+        date.setSeconds(Number(strH[2]));
+        date.setMilliseconds(0);
+    } else {
+        date.setHours(0, 0, 0, 0);
+    }
+    return date;
+}
+
+$(document).ready(function () {
+
+    LoadFeedBack();
+
+
+});
+
+
+

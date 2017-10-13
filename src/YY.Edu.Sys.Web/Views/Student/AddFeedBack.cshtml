@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en" style="overflow: auto;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>我要留言</title>
+    <link rel="stylesheet" href="/Content/amazeui.min.css" />
+    <link rel="stylesheet" href="/Content/admin.css">
+    <link rel="stylesheet" href="/Content/Coachindex.css">
+    <link rel="stylesheet" href="/Content/iconfont.css">
+    <link rel="stylesheet" href="/font/iconfont.woff">
+    <link rel="stylesheet" href="/font/iconfont.eot">
+    <link rel="stylesheet" href="/font/iconfont.svg">
+    <link rel="stylesheet" href="/font/iconfont.ttf">
+</head>
+<body>
+    @Html.Action("Default", "Base")
+    <div class="_REMARK">
+        <!-- 头部导航 -->
+        <header data-am-widget="header" class="am-header am-header-default">
+            <div class="am-header-left am-header-nav">
+                <a href="javascript:history.back()" class="">
+                    <i class="icon iconfont icon-back"></i>
+                </a>
+            </div>
+            <h1 class="am-header-title">
+                <a href="#title-link" class="">我要留言</a>
+            </h1>
+        </header>
+
+        <!-- 内容部分 -->
+        <div class="_remarkCon">
+            <div data-am-widget="tabs" class="am-tabs am-tabs-default">
+              
+                <div>                   
+                    <div class="am-tab-panel">
+                        <!-- 阶段总结 -->
+                        <div class="_CD_NOTsc">
+                            <textarea name="txtContent" id="txtContent" cols="30" rows="6" placeholder="请填写留言内容" class="widthMax"></textarea>                          
+                          <p class="_CD_sc textAlign" id="save">保存</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="hdStudentID" value="@ViewBag.StudentID" />
+    <input type="hidden" id="hdVenueID" value="@ViewBag.VenueID" />
+    <input type="hidden" id="hdFullName" value="@ViewBag.FullName" />
+    <script src="/Scripts/jquery-1.12.0.min.js"></script>
+    <script src="/Scripts/amazeui.min.js"></script>
+    <script src="/Scripts/app.js"></script>
+    <script src="/Scripts/Student/AddFeedBack.js"></script>
+</body>
+</html>
