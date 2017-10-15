@@ -2,14 +2,14 @@
 li, dl, dt, dd, form, a, fieldset, input, th, td
 {margin: 0; padding: 0; border: 0; outline: none;}
 html{ height: 100%;}
-body{ font-family: "微软雅黑"; font-size:14px; height: 100%;}
+body{ font-family: "微软雅黑"; font-size:14px; height: 100%; }
 h1, h2, h3, h4, h5, h6{}
 ul, ol{list-style: none;}
 a{color: black;text-decoration: none;}
 a:hover{text-decoration: none;}
 @font-face {
   font-family: 'iconfont';
-  src: url('../fonts/font_1474352518_1483889.eot'); /* IE9*/
+  src: url('../fonts/font_1474352518_1483889.eot'); /* IE9 7bbfea*/
   src: url('../fonts/font_1474352518_1483889.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
   url('../fonts/font_1474352518_1483889.woff') format('woff'), /* chrome、firefox */
   url('../fonts/font_1474352518_1483889.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
@@ -263,7 +263,7 @@ border-radius: 50%; width: 100px; height: 100px;
 .order{ background: #fff; overflow: hidden; border-bottom: 1px solid #ddd;}
 .order li{ float: left; width: 33.33%; line-height: 45px; text-align: center;}
 .order .current{ border-bottom: 1px solid #008B31;}
-.order-list{ margin-top: 1rem;  }
+.order-list{ margin-top: 0rem;  }
 .order-list .time{ line-height: 50px; border-bottom: 1px solid #ddd; padding:0 1rem ; font-size: 18px; color: #333;}
 .order-list .address{ line-height: 30px; padding-left: 1rem; font-size: 16px; padding-top: 1rem;}
 .order-list .cx{ line-height: 30px; padding-left: 1rem; font-size: 16px;}

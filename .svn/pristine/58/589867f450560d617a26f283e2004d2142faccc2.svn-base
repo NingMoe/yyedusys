@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en" style="overflow: auto;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title></title>
+    <link rel="stylesheet" href="/Content/amazeui.min.css" />
+    <link rel="stylesheet" href="/Content/admin.css">
+    <link rel="stylesheet" href="/Content/index.css">
+    <link rel="stylesheet" href="/Content/iconfont.css">
+    <link rel="stylesheet" href="/font/iconfont.woff">
+    <link rel="stylesheet" href="/font/iconfont.eot">
+    <link rel="stylesheet" href="/font/iconfont.svg">
+    <link rel="stylesheet" href="/font/iconfont.ttf">
+</head>
+<body>
+    @Html.Action("Default", "Base")
+    <div class="_Course_D">
+        <!-- 头部导航 -->
+        <header data-am-widget="header" class="am-header am-header-default">
+            <div class="am-header-left am-header-nav">
+                <a href="javascript:history.back()"  class="">
+                    <i class="am-header-icon am-icon-arrow-left"></i>
+                </a>
+            </div>
+            <h1 class="am-header-title">
+                <a href="#title-link" class="">购买课时</a>
+            </h1>
+            <div class="am-header-right am-header-nav">
+                <a href="#right-link" class=""></a>
+            </div>
+        </header>
+        <!-- 搜索框 -->
+        <div class="courseSearh">
+
+        </div>
+
+        <div data-am-widget="tabs" class="am-tabs am-tabs-d2">
+            <ul class="am-tabs-nav am-cf">
+                <li class="am-active">
+                    <a href="[data-tab-panel-0]">一对一课程</a>
+                </li>
+                <li class="">
+                    <a href="[data-tab-panel-1]">一对多课程</a>
+                </li>
+            </ul>
+            <div class="am-tabs-bd">
+                <div data-tab-panel-0 class="am-tab-panel am-active" id="panel0">
+                                    
+                </div>
+                <div data-tab-panel-1 class="am-tab-panel " id="panel1">
+
+                </div>
+                
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <input type="hidden" id="hdStudentID" value="@ViewBag.StudentID" />
+    <input type="hidden" id="hdVenueID" value="@ViewBag.VenueID" />
+    <input type="hidden" id="hdFullName" value="@ViewBag.FullName" />
+</body>
+
+<script src="/Scripts/jquery-1.12.0.min.js"></script>
+<script src="/Scripts/Jquery_Extention.js"></script>
+<script src="/Scripts/app.js"></script>
+<script src="/Scripts/amazeui.min.js"></script>
+<script src="/Scripts/amazeui.ie8polyfill.min.js"></script>
+<script src="/Scripts/Student/BuyHourClass.js"></script>
+
+<script type="text/javascript">
+    LoadCoach();
+    LoadCoachMore();
+</script>
+</html>
