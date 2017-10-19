@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="en" style="overflow: auto;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>今日待办</title>
+    <link rel="stylesheet" href="/Content/amazeui.min.css" />
+    <link href="~/Content/style_me.css" rel="stylesheet" />
+    <link href="~/Content/iscrollstyle.css" rel="stylesheet" />
+</head>
+<body class="bgcolor">
+    @Html.Action("Default", "Base")
+    <!-- 头部导航 -->
+    <header data-am-widget="header" class="am-header am-header-default am-no-layout">
+        <div class="am-header-left am-header-nav">
+            <a href="javascript:history.back()" class="">
+                <i class="am-header-icon am-icon-arrow-left"></i>
+            </a>
+        </div>
+        <h1 class="am-header-title">
+            <a href="javascript:void(0);" class="">今日待办</a>
+        </h1>
+        <div class="am-header-right am-header-nav">
+            <a href='@Url.Action("Index","Coach")' class=""><i class="icon am-icon-home iconfont textAlign"></i></a>
+        </div>
+    </header>
+
+    <ul class="order">
+        <li class="current" id="tab01"><a href="javascript:void(0);">今日课程</a></li>
+        <li id="tab02"><a href="javascript:void(0);">未点评学员</a></li>
+    </ul>
+
+    <div id="wrapper01" class="o" style="display:none">
+        <div class="scroller" id="scroller">
+            <ul id="panel0" class="order-list"></ul>
+            <div class="more" id="more"><i class="pull_iconx" id="pull_icon"></i><span>点击加载...</span></div>
+        </div>
+    </div>
+    <div id="wrapper02" class="o" style="display:none">
+        <div class="scroller" id="scrollerWaitClass">
+            <ul id="panelWaitClass" class="order-list"></ul>
+            <div class="more" id="moreWaitClass"><i class="pull_iconx" id="pull_iconWaitClass"></i><span>点击加载...</span></div>
+        </div>
+    </div>
+
+    <div class="am-modal am-modal-no-btn" tabindex="-1" id="my-confirm2">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">
+                课程学生
+                <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+            </div>
+            <div class="am-modal-bd">
+                <div class="_ClassD_CON">
+                    <div data-tab-panel-1 class="am-tab-panel">
+                        <div class="_CD_NOTsc">
+                            <div class="_CD_jiaoan textAlign">
+                                <textarea class="" rows="2" id="txtZJ" style="width:90%;height:100px"></textarea>
+
+                            </div>
+                            <p class="_CD_sc textAlign" onclick="ckZJ()">点评</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" id="hdPageIndex" value="0" />
+    <input type="hidden" id="hdPageSize" value="7" />
+
+    <input type="hidden" id="hdPageIndex1" value="0" />
+    <input type="hidden" id="hdPageSize1" value="7" />
+
+
+    <input type="hidden" id="hdCoachID" value="1" />
+
+    <script src="/Scripts/Jquery_Extention.js"></script>
+    <script src="~/Scripts/Coash/ToDayAWait.js"></script>
+    <script src="~/Scripts/jquery.serializejson.min.js"></script>
+
+
+    <script>
+
+        $(function () {
+
+            $(".o").hide();
+            $(".o").first().show();
+
+            LoadMyCurriculum();
+            NoCommentStudent();
+
+
+            $("#more").on("click", function () {
+                setTimeout(function () {
+                    LoadMyCurriculum();
+                }, 100)
+            });
+
+            $("#moreWaitClass").on("click", function () {
+                setTimeout(function () {
+                    NoCommentStudent();
+                    //myscrollWaitClass.refresh();
+                }, 100)
+            });
+
+
+            $(".order li").on('click', function () {
+                $(".order li").removeClass('current');
+                $(this).addClass('current');
+                $(".o").hide();
+                $("#wrapper" + $(this).attr("id").replace("tab", "")).show();
+            });
+        });
+
+
+
+    </script>
+</body>
+</html>
