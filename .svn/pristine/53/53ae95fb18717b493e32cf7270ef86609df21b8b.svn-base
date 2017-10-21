@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "场馆系统";
+    ViewBag.SubTitle = "城市管理";
+}
+
+@Html.Action("Default", "Base")
+
+<link href="~/AdminLTE/plugins/datatables/css/dataTables.bootstrap.css" rel="stylesheet" />
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">添加城市</h3>
+            </div>
+            <form id="cityfrom" class="form-horizontal" >
+                <div class="box-body">
+                    
+                    <div class="form-group">
+                        <label for="CityName" class="col-sm-2 control-label">城市名称</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="CityName" name="CityName" placeholder="城市名称" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button type="button" class="btn btn-info pull-right" onclick="return create();">添加</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">查询条件</h3>
+            </div>
+            <form id="cityfrom_query" class="form-horizontal">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="CityName" class="col-sm-2 control-label">城市名称</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="CityName" name="CityName" placeholder="城市名称">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button type="button" class="btn btn-info pull-right" onclick="return bindTable();">查询</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">城市列表</h3>
+            </div>
+                
+            <div class="box-body" id="demo">
+                <table id="example" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>编号</th>
+                            <th>名称</th>
+                        </tr>
+                    </thead>
+
+                    <tfoot>
+                        <tr>
+                            <th>编号</th>
+                            <th>名称</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            </div>
+    </div>
+</div>
+
+<script src="~/Scripts/SysManage/City.js"></script>
+@*<script src="~/Scripts/Tables/Data-menu.js"></script>*@

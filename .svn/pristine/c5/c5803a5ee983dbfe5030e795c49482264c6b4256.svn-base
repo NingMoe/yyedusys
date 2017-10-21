@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "场馆系统";
+    ViewBag.SubTitle = "场馆信息";
+}
+
+<link href="~/AdminLTE/plugins/datatables/css/dataTables.bootstrap.css" rel="stylesheet" />
+
+@Html.Action("Default", "Base")
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">场馆信息</h3>
+            </div>
+            <input type="hidden" id="IsEdit" name="IsEdit" />
+            <form id="venueinfofrom" class="form-horizontal">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="xxx" class="col-sm-2 control-label">场馆编码</label>
+                        <div class="col-sm-1">
+                            <span id="VenueCode" class="input-group-addon">场馆编码</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" id="VenueID" name="VenueID" value="@ViewBag.venueId" />
+                        <input type="hidden" id="VInfoID" name="VInfoID" />
+                        <label for="Introduce" class="col-sm-2 control-label">场馆介绍</label>
+                        <div class="col-sm-6">
+                            <textarea type="text" class="form-control" id="Introduce" name="Introduce" placeholder="场馆介绍"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="BusinessTime" class="col-sm-2 control-label">营业时间介绍</label>
+                        <div class="col-sm-6">
+                            <textarea type="text" class="form-control" id="BusinessTime" name="BusinessTime" placeholder="营业时间介绍"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <button type="button" class="btn btn-info pull-right" onclick="return save();">编辑</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    @*<button type="submit" class="btn btn-default">取消</button>*@
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/Tables/Data-menu.js"></script>
+<script src="~/Scripts/SysManage/VenueInfo.js"></script>
+    @*@Scripts.Render("~/AdminLTE/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")
+    @Scripts.Render("~/Scripts/SysManage/ManageBase")
+    @Scripts.Render("~/Scripts/SysManage/VenueInfo")
+    @Scripts.Render("~/Scripts/SysManage/jquery.serializejson.min")*@

@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en" style="overflow: auto;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>查看记录</title>
+    <link rel="stylesheet" href="/Content/amazeui.min.css" />
+    <link rel="stylesheet" href="/Content/admin.css">
+    <link rel="stylesheet" href="/Content/CoachIndex.css">
+    <link rel="stylesheet" href="/Content/iconfont.css">
+    <link rel="stylesheet" href="/font/iconfont.woff">
+    <link rel="stylesheet" href="/font/iconfont.eot">
+    <link rel="stylesheet" href="/font/iconfont.svg">
+    <link rel="stylesheet" href="/font/iconfont.ttf">
+</head>
+<body class="_check">
+    <!-- 头部导航 -->
+    @Html.Action("Default", "Base")
+    <header data-am-widget="header" class="am-header am-header-default">
+        <div class="am-header-left am-header-nav">
+            <a href="javascript:history.back()" class="">
+                <i class="icon iconfont icon-back"></i>
+            </a>
+        </div>
+        <h1 class="am-header-title">
+            <a href='@Url.Action("Index","Coach")' class=""><i class="icon am-icon-home iconfont textAlign"></i></a>
+            <a href="#title-link" class="">点评记录</a>
+        </h1>
+    </header>
+    <!-- 内容部分 -->
+    <div class="_commentCon">
+        <div data-am-widget="tabs" class="am-tabs am-tabs-default">
+           
+            <div class="am-tabs-bd">
+                <div data-tab-panel-0 class="am-tab-panel am-active">
+                    <ul class="_SMS_con1" id="ulDP"></ul>
+                </div>               
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" id="hdPKID" name="hdPKID" value="@ViewBag.PKID" />
+    <script src="/Scripts/Jquery_Extention.js"></script>
+    @*<script src="/Scripts/amazeui.min.js"></script>*@
+    <script src="/Scripts/app.js"></script>
+    <script src="/Scripts/coash/Commentlog.js"></script>
+    <script type="text/javascript">LoadInfo();</script> 
+</body>
+</html>

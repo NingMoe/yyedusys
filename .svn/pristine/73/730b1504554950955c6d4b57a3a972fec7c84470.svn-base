@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en" style="overflow: auto;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>课程详情</title>
+    <link rel="stylesheet" href="/Content/amazeui.min.css" />
+    <link rel="stylesheet" href="/Content/admin.css">
+    <link rel="stylesheet" href="/Content/CoachIndex.css">
+    <link rel="stylesheet" href="/Content/iconfont.css">
+    <link rel="stylesheet" href="/font/iconfont.woff">
+    <link rel="stylesheet" href="/font/iconfont.eot">
+    <link rel="stylesheet" href="/font/iconfont.svg">
+    <link rel="stylesheet" href="/font/iconfont.ttf">
+</head>
+<body class="pr">
+    @Html.Action("Default", "Base")
+    <div class="_Cdetail ">
+        <!-- 头部导航 -->
+        <header data-am-widget="header" class="am-header am-header-default am-no-layout">
+            <div class="am-header-left am-header-nav">
+                <a href="javascript:history.back()" class="">
+                    <i class="am-header-icon am-icon-arrow-left"></i>
+                </a>
+            </div>
+            <h1 class="am-header-title">
+                <a href="javascript:void(0);" class="">课程详情</a>
+            </h1>
+            <div class="am-header-right am-header-nav">
+                <a href='@Url.Action("Index","Student")' class=""><i class="icon am-icon-home iconfont textAlign"></i></a>
+            </div>
+        </header>
+        @*<header data-am-widget="header" class="am-header am-header-default">
+            <div class="am-header-left am-header-nav">
+                <a href="javascript:history.back()" class="">
+                    <i class="icon iconfont icon-back"></i>
+                </a>
+            </div>
+            <h1 class="am-header-title">
+                <a href="#title-link" class="">课程详情</a>
+            </h1>
+        </header>*@
+        <!-- 内容部分 -->
+        <div class="_CdetailCON">
+            <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" alt="" class="widthMax">
+            <div class="_CDList">
+                <div data-am-widget="tabs" class="am-tabs am-tabs-default">
+                    <ul class="am-tabs-nav am-cf">
+                        <li class="am-active"><a href="[data-tab-panel-0]">课程信息</a></li>
+                        <li class=""><a href="[data-tab-panel-1]">课程教案</a></li>
+                        <li class=""><a href="[data-tab-panel-2]">课程总结</a></li>
+                        <li class=""><a href="[data-tab-panel-3]">老师点评</a></li>
+                    </ul>
+                    <div class="am-tabs-bd">
+                        <div data-tab-panel-0 class="am-tab-panel am-active">
+                            <!-- 老师及学员信息 -->
+                            <ul class="_CDlIST_UL">
+                                <li><p>场馆：<span id="sVenue"></span></p></li>
+                                <li><p>时间：<span id="Cdate"></span><span id="CTime"></span></p></li>
+                                <li><p>老师：<span id="SJL"></span></p></li>
+                                <li><p>学员：共<span id="Scount">0</span>人   请假 ：<span id="Sqjcount">0</span>人</p></li>
+                            </ul>
+                            <!-- 学员评价 -->
+                            <p class="_CDLIST_evaluate">体验评价：<span id="pTY"></span></p>
+                            <p class="_CDLIST_evaluate">效果评价：<span id="pXG"></span></p>
+                        </div>
+                        <div data-tab-panel-1 class="am-tab-panel " id="JA">
+
+                        </div>
+
+                        <div data-tab-panel-2 class="am-tab-panel" id="ZJ">
+
+                        </div>
+                        <div data-tab-panel-3 class="am-tab-panel" id="DP">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="CD_footer widthMax am-g">
+                <div class="am-u-sm-4 am-u-md-4 am-u-lg-4 textAlign">
+                    <p class="icon iconfont icon-dianping"></p>
+                    <p id="btndp">评价</p>
+
+                </div>
+              
+                <div class="am-u-sm-4 am-u-md-4 am-u-lg-4 textAlign">
+                  
+                </div>
+                <div class="am-u-sm-4 am-u-md-4 am-u-lg-4 textAlign">
+                    <p class="icon iconfont icon-qingjia"></p>
+                    <p id="pQJ">请假</p>
+
+
+                    <!-- 遮罩层 -->
+                    <div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
+                        <div class="am-modal-dialog">
+                            <div class="am-modal-bd">
+                                亲，确定要请假吗？
+                            </div>
+                            <div class="am-modal-footer">
+                                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                                <span class="am-modal-btn" data-am-modal-confirm id="btnqj">确定</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="hdPKID" name="hdPKID" value="@ViewBag.PKID" />
+        <input type="hidden" id="hdCID" name="hdCID" value="@ViewBag.CID" />
+        <input type="hidden" id="hdStudentID" name="hdStudentID" value="@ViewBag.StudentID" />
+        <input type="hidden" id="hdCUID" name="hdCUID" value="@ViewBag.CUID" />
+        <script src="/Scripts/Jquery_Extention.js"></script>
+        @*<script src="/Scripts/amazeui.min.js"></script>*@
+        <script src="/Scripts/app.js"></script>
+        <script src="/Scripts/Student/CurriculumDetail.js"></script>
+        <script type="text/javascript">
+                LoadInfo();
+                LoadPJInfo();
+                GetComment();
+        </script>
+</body>
+</html>

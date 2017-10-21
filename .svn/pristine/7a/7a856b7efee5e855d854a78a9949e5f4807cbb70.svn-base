@@ -1,0 +1,135 @@
+﻿@{
+    ViewBag.Title = "场馆系统";
+    ViewBag.SubTitle = "学生请假";
+}
+
+@*@section Menu {
+    <script src="~/Scripts/Tables/Data-menu.js"></script>
+}*@
+<link href="~/AdminLTE/plugins/datatables/css/dataTables.bootstrap.css" rel="stylesheet" />
+
+@Html.Action("Default", "Base")
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">查询条件</h3>
+            </div>
+            <form id="teachingschedulefrom" class="form-horizontal">
+                <div class="box-body">
+                    <div class="form-group">
+                        <input type="hidden" id="VenueID" name="VenueID" value="@ViewBag.venueId" />
+                        <label for="CampusID" class="col-sm-1 control-label">校区</label>
+                        <div class="col-sm-3">
+                            <select id="CampusID" name="CampusID" class="form-control"></select>
+                        </div>
+                        <label for="StudentID" class="col-sm-1 control-label">学生</label>
+                        <div class="col-sm-3">
+                            <select id="StudentID" name="StudentID" class="form-control"></select>
+                        </div>
+                        <label for="PKType" class="col-sm-1 control-label">课程类型</label>
+                        <div class="col-sm-2">
+                            <select id="PKType" name="PKType" class="form-control">
+                                <option value="-1" selected>全部类型</option>
+                                <option value="1">一对一</option>
+                                <option value="2">一对多</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="State" class="col-sm-1 control-label">状态</label>
+                        <div class="col-sm-2">
+                            <select id="State" name="State" class="form-control">
+                                <option value="-1" selected>全部状态</option>
+                                <option value="0">学生约课完成</option>
+                                <option value="1">上课完成</option>
+                                <option value="2">学生请假</option>
+                                <option value="3">教练请假</option>
+                                <option value="4">学校停课</option>
+                                <option value="5">发放工资完成</option>
+                                <option value="6">请假申请</option>
+                            </select>
+                        </div>
+                        <label for="CurriculumEndTime" class="col-sm-1 control-label">时间</label>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="date" class="form-control" id="CurriculumBeginTime" name="CurriculumBeginTime">
+                                <span class="input-group-addon">到</span>
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="date" class="form-control" id="CurriculumEndTime" name="CurriculumEndTime">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="box-body">
+                    <div class="form-group">
+
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-info pull-right" onclick="return bind_data();">查询</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">请假列表</h3>
+            </div>
+            <div class="box-body" id="demo">
+                <table id="teachingscheduletable" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>编号</th>
+                            <th>场馆</th>
+                            <th>校区</th>
+                            <th>学生</th>
+                            <th>教练</th>
+                            <th>课时标题</th>
+                            <th>排课日期</th>
+                            <th>上课时间</th>
+                            <th>下课时间</th>
+                            <th>课时费用</th>
+                            <th>课时工资</th>
+                            <th>课程类型</th>
+                            <th>状态</th>
+                            <th>排课时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+
+}
+    <script src="~/Scripts/SysManage/Curriculum.js"></script>
+    <script src="~/Scripts/SysManage/StateTranstion.js"></script>
+    <script src="~/Scripts/SysManage/LoadData.js"></script>
+
+
+    <script>
+
+        $(function () {
+            initDate();
+        })
+
+    </script>
+

@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en" style="overflow: auto;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>教学风采</title>
+    <link rel="stylesheet" href="/Content/amazeui.min.css" />
+    <link rel="stylesheet" href="/Content/admin.css">
+    <link rel="stylesheet" href="/Content/CoachIndex.css">
+    <link rel="stylesheet" href="/Content/iconfont.css">
+    <link rel="stylesheet" href="/font/iconfont.woff">
+    <link rel="stylesheet" href="/font/iconfont.eot">
+    <link rel="stylesheet" href="/font/iconfont.svg">
+    <link rel="stylesheet" href="/font/iconfont.ttf">
+</head>
+<body class="GROW">
+    @Html.Action("Default", "Base")
+    <!-- 头部导航 -->
+    <header data-am-widget="header" class="am-header am-header-default">
+        <div class="am-header-left am-header-nav">
+            <a href="javascript:history.back()" class="">
+                <i class="am-header-icon am-icon-arrow-left"></i>
+            </a>
+        </div>
+        <h1 class="am-header-title">
+            <a href="#title-link" class="">教学风采</a>
+        </h1>
+        <div class="am-header-right am-header-nav">
+            <a href='@Url.Action("Index","Coach")' class=""><i class="icon am-icon-home iconfont textAlign"></i></a>
+        </div>
+        <div class="am-header-right am-header-nav">
+            <a href='@Url.Action("Index","Coach")' class=""><i class="icon am-icon-home iconfont textAlign"></i></a>
+            <button type="button" class="am-btn am-btn-primary" data-am-modal="{target: '#my-alert'}">上传</button>
+            <!-- 弹出层文件 -->
+            <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+                <div class="am-modal-dialog">
+                    <div class="am-modal-hd">上传我的风采<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a></div>
+                    <div class="am-modal-bd am-g">
+                        <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">标题</p>
+                        <input type="text" class="am-u-sm-8 am-u-md-8 am-u-lg-8" placeholder="标题" id="txtTitle" name="txtTitle">
+                    </div>
+                    @*<div class="am-form-group am-g">
+                        <label for="doc-select-1" class="am-u-sm-5 am-u-md-5 am-u-lg-5">场馆</label>
+                        <select id="doc-select-1 " class="am-u-sm-5 am-u-md-5 am-u-lg-5">
+                            <option value="option1">选项一...</option>
+                            <option value="option2">选项二.....</option>
+                            <option value="option3">选项三........</option>
+                        </select>
+                        <span class="am-form-caret"></span>
+                    </div>*@
+                    <div class="am-g">
+                        <div class="am-radio am-u-sm-6 am-u-md-6 am-u-lg-6">
+                            <label>
+                                <input type="radio" value="1" checked name="docInlineRadio"> 图片
+                                
+                            </label>
+                        </div>
+                        <div class="am-radio am-u-sm-6 am-u-md-6 am-u-lg-6">
+                            <label>
+                                <input type="radio" value="2" name="docInlineRadio"> 视频
+                               
+                            </label>
+                        </div>
+                    </div>
+                    <div class="am-form-group am-form-file ">
+                        <button type="button" class="am-btn am-btn-default am-btn-sm _GR_send">
+                            <i class="am-icon-cloud-upload"></i> 选择要上传的文件
+                        </button>
+                        <input type="file" id="file" name="file" multiple>
+
+                    </div>
+                    <div class="am-modal-footer">
+                        <button type="button" class="am-btn am-btn-default" id="btnSave">提交</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- 内容部分 -->
+    <div class="_GROW">
+        <div data-am-widget="tabs" class="am-tabs am-tabs-d2">
+            <ul class="am-tabs-nav am-cf">
+                <li class="am-active"><a href="[data-tab-panel-0]">照片</a></li>
+                <li class=""><a href="[data-tab-panel-1]">视频</a></li>
+            </ul>
+            <div class="am-tabs-bd">
+                <div data-tab-panel-0 class="am-tab-panel am-active">
+                    <ul class="am-avg-sm-3 am-avg-md-3 am-avg-lg-3 am-thumbnails" id="imgList"></ul>
+                </div>
+                <div data-tab-panel-1 class="am-tab-panel ">
+                    <ul class="am-avg-sm-3 am-avg-md-3 am-avg-lg-3 am-thumbnails" id="imgLis2"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
+        <div class="am-modal-dialog">
+            <div class="am-modal-bd">
+                确定要删除吗？
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                <span class="am-modal-btn" data-am-modal-confirm id="btnDel">确定</span>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="hdID" />
+    <input type="hidden" id="hdType" value="1" />
+    <input type="hidden" id="hdVenueID" name="hdID" value="@ViewBag.VenueID" /> 
+    <input type="hidden" id="hdCoachID" name="hdCID" value="@ViewBag.CoachID" />
+    <script src="/Scripts/Jquery_Extention.js"></script>
+    @*<script src="/Scripts/amazeui.min.js"></script>*@
+    <script src="/Scripts/app.js"></script>
+    <script src="/Scripts/Coash/MyPresence.js"></script>
+    <script type="text/javascript">LoadMyCurriculumImg();
+        LoadMyCurriculumV();</script>
+</body>
+</html>

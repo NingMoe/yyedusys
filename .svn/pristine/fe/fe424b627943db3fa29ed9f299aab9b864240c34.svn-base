@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+
+<link href="~/AdminLTE/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/AdminLTE/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+<link href="~/AdminLTE/plugins/ionicons/css/ionicons.min.css" rel="stylesheet" />
+<link href="~/AdminLTE/dist/css/admin-lte.min.css" rel="stylesheet" />
+<link href="~/AdminLTE/dist/css/skins/_all-skins.min.css" rel="stylesheet" />
+
+<script src="~/AdminLTE/plugins/jquery/js/jQuery-2.1.4.min.js"></script>
+<script src="~/AdminLTE/bootstrap/js/bootstrap.min.js"></script>
+<script src="~/AdminLTE/plugins/datatables/js/jquery.dataTables.min.js"></script>
+<script src="~/AdminLTE/plugins/datatables/js/dataTables.bootstrap.min.js"></script>
+@*<script src="~/Scripts/Tables/Data.js"></script>*@
+
+<script src="~/Scripts/SysManage/jquery.serializejson.min.js"></script>
+<script src="~/Scripts/SysManage/ManageBase.js"></script>
+<script src="~/Scripts/SysManage/StateTranstion.js"></script>
+
+<script type="text/javascript">
+    var Token = '@ViewBag.Token';
+    var RefreshToken = '@ViewBag.RefreshToken';
+    var ApiUrl = '@ViewBag.ApiUrl';
+    //var VenueID = '1';
+</script>

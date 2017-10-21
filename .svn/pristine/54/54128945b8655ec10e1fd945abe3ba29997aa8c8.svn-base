@@ -1,0 +1,132 @@
+﻿@{
+    ViewBag.Title = "场馆系统";
+    ViewBag.SubTitle = "添加公告";
+}
+
+@section Menu {
+}
+    @*<script src="~/Scripts/Tables/Data-menu.js"></script>*@
+    @*@Scripts.Render("~/Scripts/Tables/Data/menu")*@
+
+<link href="~/AdminLTE/plugins/datatables/css/dataTables.bootstrap.css" rel="stylesheet" />
+<link href="~/AdminLTE/plugins/daterangepicker/css/daterangepicker-bs3.css" rel="stylesheet" />
+<link href="~/AdminLTE/plugins/icheck/css/all.css" rel="stylesheet" />
+<link href="~/AdminLTE/plugins/colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
+<link href="~/AdminLTE/plugins/timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" />
+<link href="~/AdminLTE/plugins/select2/css/select2.min.css" rel="stylesheet" />
+<link href="~/AdminLTE/dist/css/admin-lte.min.css" rel="stylesheet" />
+<link href="~/AdminLTE/dist/css/skins/_all-skins.min.css" rel="stylesheet" />
+
+@*@Styles.Render("~/AdminLTE/plugins/datatables/css")
+    @Styles.Render("~/AdminLTE/plugins/daterangepicker/css")
+    @Styles.Render("~/AdminLTE/plugins/icheck/css")
+    @Styles.Render("~/AdminLTE/plugins/colorpicker/css")
+    @Styles.Render("~/AdminLTE/plugins/timepicker/css")
+    @Styles.Render("~/AdminLTE/plugins/select2/css")
+    @Styles.Render("~/AdminLTE/dist/css")
+    @Styles.Render("~/AdminLTE/dist/css/skins")*@
+
+@Html.Action("Default", "Base")
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">公告</h3>
+            </div>
+            <form id="venuenoticefrom" class="form-horizontal">
+                @*<div class="box-body">
+                    <div class="form-group">
+                        <label for="source" class="col-sm-2 control-label">通知来源</label>
+                        <div class="col-sm-3">
+                            <select id="NoticeRange" name="source" class="form-control">
+                                <option value="1" selected>场馆</option>
+                                <option value="2">运营</option>
+                                <option value="3">教练</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>*@
+                <div class="box-body">
+                    <div class="form-group">
+                        <input type="hidden" id="NoticeRange" name="NoticeRange" value="1" />
+                        <input type="hidden" id="VenueID" name="VenueID" value="@ViewBag.VenueId" />
+                        <input type="hidden" id="UserId" name="UserId" value="@ViewBag.UserId" />
+                        <input type="hidden" id="UserName" name="UserName" value="@ViewBag.UserName" />
+                        <input type="hidden" id="source" name="source" value="1" />
+                        
+                        <label for="NoticeType" class="col-sm-2 control-label">公告类型</label>
+                        <div class="col-sm-3">
+                            <select id="NoticeType" name="NoticeType" class="form-control">
+                                <option value="1" selected>公告</option>
+                                <option value="2">活动</option>
+                                <option value="3">微信消息</option>
+                                <option value="4">短信消息</option>
+                                <option value="5">提醒</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="NoticeRange" class="col-sm-2 control-label">通知范围</label>
+                        <div class="col-sm-3">
+                            <select id="NoticeRange" name="NoticeRange" class="form-control">
+                                @*<option value="1" selected>场馆</option>*@
+                                <option value="2">教练</option>
+                                @*<option value="3">场馆教练</option>*@
+                                <option value="4">学生</option>
+                                @*<option value="5">场馆学生</option>*@
+                                <option value="6">教练学生</option>
+                                @*<option value="7">全部</option>*@
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="NoticeTitle" class="col-sm-2 control-label">通知标题</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" id="NoticeTitle" name="NoticeTitle" placeholder="通知标题" style="width:200px" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="NoticeMsg" class="col-sm-2 control-label">通知内容</label>
+                        <div class="col-sm-2">
+                            <textarea rows="5" cols="25" class="form-control" id="NoticeMsg" name="NoticeMsg" placeholder="通知内容" required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <div class="col-sm-2">
+                            <button type="button" id="Save" class="btn btn-info pull-right">添加</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+}
+   <script src="~/Scripts/SysManage/VenueNotice.js"></script>
+<script src="~/Scripts/SysManage/StateTranstion.js"></script>
+
+@*@Scripts.Render("~/AdminLTE/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")
+    @Scripts.Render("~/Scripts/SysManage/ManageBase")
+    @Scripts.Render("~/Scripts/SysManage/VenueNotice")
+    @Scripts.Render("~/Scripts/SysManage/jquery.serializejson.min")
+    @Scripts.Render("~/Scripts/SysManage/StateTranstion")*@
+
+    <script>
+        $(function () {
+            //show_city();
+        });
+    </script>
+

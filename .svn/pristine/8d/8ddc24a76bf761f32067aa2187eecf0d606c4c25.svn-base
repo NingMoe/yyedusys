@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "场馆系统";
+    ViewBag.SubTitle = "校区管理";
+}
+
+<link href="~/AdminLTE/plugins/datatables/css/dataTables.bootstrap.css" rel="stylesheet" />
+@*@Styles.Render("~/AdminLTE/plugins/datatables/css")*@
+
+@Html.Action("Default", "Base")
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">校区列表</h3>
+                <a href="@Url.Action("Create", "Campus")" class="btn btn-info pull-right">
+                    添加
+                </a>
+            </div>
+
+            <form id="campusform" class="form-horizontal">
+                <input type="hidden" id="VenueID" name="VenueID" value="@ViewBag.venueId" />
+            </form>
+            <div class="box-body" id="demo">
+                <table id="campustable" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>编号</th>
+                            <th>校区</th>
+                            <th>联系人</th>
+                            <th>联系人电话</th>
+                            <th>所属城市</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/SysManage/Campus.js"></script>
+@*<script src="~/Scripts/Tables/Data-menu.js"></script>*@
+
+<script>
+        $(function () {
+            bind_data();
+        });
+    </script>

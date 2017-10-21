@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "场馆系统";
+    ViewBag.SubTitle = "导入老师";
+}
+
+@section Menu {
+
+}
+    @*<script src="~/Scripts/Tables/Data-menu.js"></script>*@
+    @*@Scripts.Render("~/Scripts/Tables/Data/menu")*@
+
+<link href="~/AdminLTE/plugins/datatables/css/dataTables.bootstrap.css" rel="stylesheet" />
+@*@Styles.Render("~/AdminLTE/plugins/datatables/css")*@
+
+@Html.Action("Default", "Base")
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">导入老师</h3>
+            </div>
+
+            <form role="form" id="uploadForm" name="uploadForm" enctype="multipart/form-data">
+                <div class="box-body">
+                    <div class="form-group">
+                        <div class="col-sm-2">
+                            <a href="~/Template/老师.xls" download="w3logo">下载老师信息模板</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <input type="hidden" id="VenueID" name="VenueID" value="@ViewBag.VenueId" />
+                        <label for="exampleInputFile">选择文件</label>
+                        <input type="file" id="file" name="file">
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button type="button" id="import" class="btn btn-primary">导入</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+}
+<script src="~/Scripts/SysManage/Coach.js"></script>
+    @*@Scripts.Render("~/AdminLTE/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")
+    @Scripts.Render("~/Scripts/SysManage/ManageBase")
+    @Scripts.Render("~/Scripts/SysManage/Coach")
+    @Scripts.Render("~/Scripts/SysManage/jquery.serializejson.min")*@
+    <script>
+        $(function () {
+            //show_city();
+        });
+    </script>
+

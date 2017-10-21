@@ -1,0 +1,40 @@
+﻿
+@{
+    Layout = null;
+}
+
+@*<link href="~/AdminLTE/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/AdminLTE/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+<link href="~/AdminLTE/plugins/ionicons/css/ionicons.min.css" rel="stylesheet" />
+<link href="~/AdminLTE/dist/css/admin-lte.min.css" rel="stylesheet" />
+<link href="~/AdminLTE/dist/css/skins/_all-skins.min.css" rel="stylesheet" />*@
+@*<style>
+    body {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+</style>*@
+
+<section class="content-header">
+    <h1>
+        @ViewBag.Title
+        <small>@ViewBag.SubTitle</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>@ViewBag.SubTitle</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+</section>
+
+<section class="content">
+    @RenderBody()
+</section>
+@*<script src="~/AdminLTE/plugins/jquery/js/jQuery-2.1.4.min.js"></script>
+<script src="~/AdminLTE/bootstrap/js/bootstrap.min.js"></script>
+<script src="~/AdminLTE/plugins/datatables/js/jquery.dataTables.min.js"></script>
+<script src="~/AdminLTE/plugins/datatables/js/dataTables.bootstrap.min.js"></script>
+
+<script src="~/Scripts/SysManage/jquery.serializejson.min.js"></script>
+<script src="~/Scripts/SysManage/ManageBase.js"></script>
+<script src="~/Scripts/SysManage/StateTranstion.js"></script>
+<script src="~/Scripts/SysManage/LoadData.js"></script>*@
+
