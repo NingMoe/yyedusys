@@ -1,0 +1,210 @@
+﻿@using YY.Edu.Sys.Admin.Extensions
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>体育培训系统-场馆系统</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="~/AdminLTE/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/AdminLTE/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/AdminLTE/plugins/ionicons/css/ionicons.min.css" rel="stylesheet" />
+    <link href="~/AdminLTE/dist/css/admin-lte.min.css" rel="stylesheet" />
+    <link href="~/AdminLTE/dist/css/skins/_all-skins.min.css" rel="stylesheet" />
+    <style>
+        body{margin:0; padding:0;}
+    </style>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    @*@Html.Action("Default", "Base")*@
+
+    <div class="wrapper">
+        <header class="main-header">
+            <a href="@Url.Action("Index", "Home")" class="logo">
+                <span class="logo-mini"><b>场馆</b></span>
+                <span class="logo-lg">场馆系统</span>
+            </a>
+            <nav class="navbar navbar-static-top" role="navigation">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        @Html.Partial("_LoginPartial")
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="~/AdminLTE/dist/img/user.svg" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>@User.Identity.GetUserNameIdentifier()</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+                <ul class="sidebar-menu">
+                    <li class="header">页面导航</li>
+                    <li class="treeview">
+                        <a href="@Url.Action("Welcome", "Home")" target="menuFrame">
+                            <i class="fa fa-dashboard"></i> <span>学校总览</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        @*<ul class="treeview-menu">
+                                <li id="left-sidebar-menu-dashboard-dashboardV1"><a href="@Url.Action("Index", "Home")" target="menuFrame" ><i class="fa fa-circle-o"></i>场馆总览</a></li>
+                                <li id="left-sidebar-menu-dashboard-dashboardV2"><a href="@Url.Action("DashboardV2", "Home")"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                            </ul>*@
+                    </li>
+                    <li class="treeview">
+                        <a href="javascript:void(0);">
+                            <i class="fa fa-cog"></i> <span>系统管理</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            @*<li id="left-sidebar-menu-forms-general"><a href="@Url.Action("Index", "City")" target="menuFrame"><i class="fa fa-circle-o"></i> 城市管理</a></li>*@
+                            <li id="left-sidebar-menu-forms-advanced"><a href="@Url.Action("Index", "Campus")" target="menuFrame"><i class="fa fa-circle-o"></i> 校区管理</a></li>
+                            <li id="left-sidebar-menu-forms-editors"><a href="@Url.Action("Index", "VenueInfo")" target="menuFrame"><i class="fa fa-circle-o"></i> 场馆设置</a></li>
+                            @*<li id="left-sidebar-menu-forms-editors"><a href="@Url.Action("Import", "Coach")"><i class="fa fa-circle-o"></i> 老师导入</a></li>
+                                <li id="left-sidebar-menu-forms-editors"><a href="@Url.Action("Import", "Student")"><i class="fa fa-circle-o"></i> 学生导入</a></li>*@
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="@Url.Action("Index", "Student")" target="menuFrame">
+                            <i class="fa fa-child"></i> <span>学生管理</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        @*<ul class="treeview-menu">
+                                <li id="left-sidebar-menu-forms-general"><a href="@Url.Action("Index", "Student")"><i class="fa fa-circle-o"></i> 学生管理</a></li>
+                            </ul>*@
+                    </li>
+                    <li class="treeview">
+                        <a href="@Url.Action("Index", "Coach")" target="menuFrame">
+                            <i class="fa fa-users"></i> <span>老师管理</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        @*<ul class="treeview-menu">
+                                <li id="left-sidebar-menu-forms-general"><a href="@Url.Action("Index", "Coach")"><i class="fa fa-circle-o"></i> 老师管理</a></li>
+                            </ul>*@
+                    </li>
+                    <li class="treeview">
+                        <a href="javascript:void(0);">
+                            <i class="fa fa-pencil"></i> <span>课程管理</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="left-sidebar-menu-forms-general"><a href="@Url.Action("Index", "TeachingSchedule")" target="menuFrame"><i class="fa fa-circle-o"></i> 课程查询</a></li>
+                            @*<li id="left-sidebar-menu-forms-general"><a href="@Url.Action("LeaveIndex", "TeachingSchedule")" target="menuFrame"><i class="fa fa-circle-o"></i> 老师请假</a></li>*@
+                            <li id="left-sidebar-menu-forms-general"><a href="@Url.Action("Index", "Curriculum")" target="menuFrame"><i class="fa fa-circle-o"></i> 学生请假</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="@Url.Action("Index", "VenueNotice")" target="menuFrame">
+                            <i class="fa fa-envelope"></i> <span>公告管理</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        @*<ul class="treeview-menu">
+                                <li id="left-sidebar-menu-forms-general"><a href="@Url.Action("Index", "VenueNotice")"><i class="fa fa-circle-o"></i> 公告管理</a></li>
+                            </ul>*@
+                    </li>
+                    <li class="treeview">
+                        <a href="@Url.Action("Index", "FeedBackLog")" target="menuFrame">
+                            <i class="fa fa-commenting"></i> <span>反馈管理</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        @*<ul class="treeview-menu">
+                                <li id="left-sidebar-menu-forms-general"><a href="@Url.Action("Index", "FeedBackLog")"><i class="fa fa-circle-o"></i> 反馈管理</a></li>
+                            </ul>*@
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-th"></i> <span>财务管理</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="left-sidebar-menu-forms-general"><a href="@Url.Action("Index", "ApplyBuyHours")" target="menuFrame"><i class="fa fa-circle-o"></i> 学生缴费</a></li>
+                            <li id="left-sidebar-menu-forms-general"><a href="@Url.Action("Index", "ClassHoursDetailed")" target="menuFrame"><i class="fa fa-circle-o"></i> 收入管理</a></li>
+                            <li id="left-sidebar-menu-forms-general"><a href="@Url.Action("GetClassOverTeachingSches", "CoachWages")" target="menuFrame"><i class="fa fa-circle-o"></i> 录入工资</a></li>
+                            <li id="left-sidebar-menu-forms-general"><a href="@Url.Action("Index", "CoachWages")" target="menuFrame"><i class="fa fa-circle-o"></i> 工资管理</a></li>
+                        </ul>
+                    </li>
+                 </ul>
+            </section>
+        </aside>
+        <div class="content-wrapper">
+            <iframe id="menuFrame" name="menuFrame" onload="changeFrameHeight()" src="~/Views/Home/hello.html" style="overflow:visible;" scrolling="yes" frameborder="no" height="100%" width="100%"></iframe>
+
+            @*<section class="content-header">
+                <h1>
+                    首页
+                    <small>@ViewBag.SubTitle</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i>@ViewBag.SubTitle</a></li>
+                    <li class="active">首页</li>
+                </ol>
+            </section>
+
+            <section class="content">
+                <iframe id="menuFrame" name="menuFrame" onload="changeFrameHeight()" src="~/Views/Home/hello.html" style="overflow:visible;" scrolling="yes" frameborder="no" height="100%" width="100%">
+                </iframe>
+            </section>*@
+        </div>
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                @*<b>Version</b> 2.3.2*@
+            </div>
+            <strong>Copyrights | 2017-2017  | Layout &copy; <a href="javascript:void(0)">北京易宇科技有限公司</a></strong> All rights
+            reserved.
+        </footer>
+        <aside class="control-sidebar control-sidebar-dark">
+            <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+                <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+                <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+            </ul>
+            
+        </aside>
+        <div class="control-sidebar-bg"></div>
+    </div>
+
+    <script src="~/AdminLTE/plugins/jquery/js/jQuery-2.1.4.min.js"></script>
+    <script src="~/AdminLTE/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/AdminLTE/plugins/slimscroll/js/jquery.slimscroll.min.js"></script>
+    <script src="~/AdminLTE/plugins/fastclick/js/fastclick.min.js"></script>
+    <script src="~/AdminLTE/dist/js/app.min.js"></script>
+
+    <script src="~/AdminLTE/plugins/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/AdminLTE/plugins/datatables/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Scripts/Tables/Data.js"></script>
+
+    <script src="~/Scripts/Shared/_Layout.js"></script>
+    <script src="~/Scripts/SysManage/jquery.serializejson.min.js"></script>
+    <script src="~/Scripts/SysManage/ManageBase.js"></script>
+    <script src="~/Scripts/SysManage/StateTranstion.js"></script>
+    <script src="~/Scripts/SysManage/LoadData.js"></script>
+
+    <script>
+
+        function changeFrameHeight() {
+            var ifm = document.getElementById("menuFrame");
+            ifm.height = document.documentElement.clientHeight;
+        }
+        window.onresize = function () {
+            changeFrameHeight();
+        }
+
+    </script>
+      
+</body>
+</html>
