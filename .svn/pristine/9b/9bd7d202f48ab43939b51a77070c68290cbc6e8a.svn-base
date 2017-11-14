@@ -1,0 +1,203 @@
+﻿using Dapper;
+using DapperExtensions;
+using log4net;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+
+namespace YY.Edu.Sys.Api.Controllers
+{
+    [RoutePrefix("api/WxUserInfo")]
+    public class WxUserInfoController : BaseController
+    {
+
+        private static readonly ILog logs = Comm.Helper.LogHelper.GetInstance();
+
+        // GET: api/WxUserInfo
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "value1", "value2" };
+        }
+
+        /// <summary>
+        /// 获取用户信息
+        /// </summary>
+        /// <param name="openId"></param>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [HttpGet]
+        public IHttpActionResult Get(string openId)
+        {
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            try
+            {
+
+                var sql = @"SELECT [WxInfoID],[City],[Country],[HeadImgUrl],[NickName],[OpenId],[Province],[Sex],[AddTime],[State],[UnFollowTime],[LastLoginTime],[Latitude],[Longitude],[Speed],[Accuracy] FROM [dbo].[WxUserInfo] where OpenId=@OpenId";
+
+                var result = Comm.Helper.DapperHelper.Instance.Query<Sys.Models.WxUserInfo>(sql, new { OpenId = openId });
+
+                return Ok(new Comm.ResponseModel.ResponseModel4Res<Sys.Models.WxUserInfo>()
+                {
+                    Info = result.AsList().FirstOrDefault()
+                });
+            }
+            catch (Exception ex)
+            {
+                logs.Error("微信用户查询失败", ex);
+                return BadRequest();
+            }
+        }
+
+
+        [HttpPost]
+        public IHttpActionResult Create(Sys.Models.WxUserInfo wxUserInfo)
+        {
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            try
+            {
+                var sql = "select count(WxInfoID) from WxUserInfo where OpenId=@openId";
+                var result = Comm.Helper.DapperHelper.Instance.QueryFirst<int>(sql, new
+                {
+                    openId = wxUserInfo.OpenId
+                });
+
+                if (result == 0)
+                {
+                    wxUserInfo.AddTime = DateTime.Now;
+                    wxUserInfo.LastLoginTime = DateTime.Now;
+                    wxUserInfo.UnFollowTime = DateTime.Now;
+                    var flag = Comm.Helper.DapperHelper.Instance.Insert(wxUserInfo);
+                    return flag > 0 ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
+                }
+                else
+                {
+
+                    sql = "select * from WxUserInfo where OpenId=@openId";
+                    var wxuserInfo = Comm.Helper.DapperHelper.Instance.QueryFirst<Sys.Models.WxUserInfo>(sql, new
+                    {
+                        openId = wxUserInfo.OpenId
+                    });
+
+                    wxuserInfo.LastLoginTime = DateTime.Now;
+                    var flag = Comm.Helper.DapperHelper.Instance.Update(wxuserInfo);
+                    return flag ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
+                }
+
+            }
+            catch (Exception ex)
+            {
+                logs.Error("添加关注用户信息失败", ex);
+                return BadRequest();
+            }
+
+        }
+
+        /// <summary>
+        /// 设置位置
+        /// </summary>
+        /// <param name="wxUserInfo"></param>
+        /// <returns></returns>
+        [Authorize]
+        [HttpPost]
+        public IHttpActionResult SetPosition(Sys.Models.WxUserInfo wxUserInfo)
+        {
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            try
+            {
+                var sql = "UPDATE [WxUserInfo] SET [Latitude] = @Latitude,[Longitude] =@Longitude WHERE [OpenId]= @OpenId";
+
+                var flag = Comm.Helper.DapperHelper.Instance.Execute(sql, new
+                {
+                    Latitude = wxUserInfo.Latitude,
+                    Longitude = wxUserInfo.Longitude,
+                    OpenId = wxUserInfo.OpenId
+                });
+                return flag > 0 ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
+            }
+            catch (Exception ex)
+            {
+                logs.Error("设置位置失败", ex);
+                return BadRequest();
+            }
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IHttpActionResult Edit(Sys.Models.WxUserInfo wxUserInfo)
+        {
+
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            try
+            {
+
+                var sql = "select count(WxInfoID) from WxUserInfo where OpenId=@openId";
+                var result = Comm.Helper.DapperHelper.Instance.QueryFirst<int>(sql, new
+                {
+                    openId = wxUserInfo.OpenId
+                });
+
+                if (result == 0)
+                {
+                    //wxUserInfo.AddTime = DateTime.Now;
+                    //wxUserInfo.LastLoginTime = DateTime.Now;
+                    //wxUserInfo.UnFollowTime = DateTime.Now;
+                    //var flag = Comm.Helper.DapperHelper.Instance.Insert(wxUserInfo);
+                    return Ok(Comm.ResponseModel.ResponseModelBase.Success());
+                }
+                else
+                {
+
+                    sql = "select * from WxUserInfo where OpenId=@openId";
+                    var info = Comm.Helper.DapperHelper.Instance.QueryFirst<Sys.Models.WxUserInfo>(sql, new
+                    {
+                        openId = wxUserInfo.OpenId
+                    });
+
+                    info.LastLoginTime = DateTime.Now;
+                    info.Latitude = wxUserInfo.Latitude;
+                    info.Longitude = wxUserInfo.Longitude;
+                    info.Speed = wxUserInfo.Speed;
+                    info.Accuracy = wxUserInfo.Accuracy;
+                    var flag = Comm.Helper.DapperHelper.Instance.Update(info);
+                    return flag ? Ok(Comm.ResponseModel.ResponseModelBase.Success()) : Ok(Comm.ResponseModel.ResponseModelBase.SysError());
+                }
+
+            }
+            catch (Exception ex)
+            {
+                logs.Error("添加关注用户信息失败", ex);
+                return BadRequest();
+            }
+
+        }
+
+        // POST: api/WxUserInfo
+        public void Post([FromBody]string value)
+        {
+        }
+
+        // PUT: api/WxUserInfo/5
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        // DELETE: api/WxUserInfo/5
+        public void Delete(int id)
+        {
+        }
+    }
+}

@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Hello, World</title>
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #container {
+            height: 100%;
+        }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=YWsM64wX15iY4OASLbzBVMThNcZjOKjd">
+    </script>
+
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <input type="text" id="point" value="" />
+    <input type="text" id="address" value="" style="width:400px" />
+    <div id="r-result">请输入:<input type="text" id="suggestId" size="20" value="百度" style="width:150px;" /></div>
+    <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+    <div id="container"></div>
+    <script type="text/javascript">
+
+        // 百度地图API功能
+        function G(id) {
+            return document.getElementById(id);
+        }
+
+        //获取位置信息
+        function showAddress(point) {
+
+            var gc = new BMap.Geocoder();
+            var point = new BMap.Point(point.lng, point.lat);
+            gc.getLocation(point, function (rs) {
+                var addComp = rs.addressComponents;
+                var local = addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber;
+                $("#point").val(point.lng + "," + point.lat);
+                $("#address").val(local);
+            });
+        };
+
+        var map = new BMap.Map("container");
+        // 创建地图实例
+        var point = new BMap.Point(116.404, 39.915);
+        // 创建点坐标
+        map.centerAndZoom(point, 15);
+        
+        var pointA = new BMap.Point(106.486654, 29.490295);  // 创建点坐标A--大渡口区
+        var pointB = new BMap.Point(106.581515, 29.615467);  // 创建点坐标B--江北区
+        alert('从大渡口区到江北区的距离是：' + (map.getDistance(pointA, pointB)).toFixed(2) + ' 米。');  //获取两点距离,保留小数点后两位
+
+        // 初始化地图，设置中心点坐标和地图级别
+
+        //开启地图缩放
+        map.enableScrollWheelZoom(true);
+
+        //单击获取点击的经纬度以及地址
+        map.addEventListener("click", function (e) {
+            showAddress(e.point);
+        });
+
+        //----------------------------------------搜索----------------------------------------
+
+        var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+		{
+		    "input": "suggestId",
+		    "location": map
+		});
+
+        ac.addEventListener("onhighlight", function (e) {  //鼠标放在下拉列表上的事件
+            var str = "";
+            var _value = e.fromitem.value;
+            var value = "";
+            if (e.fromitem.index > -1) {
+                value = _value.province + _value.city + _value.district + _value.street + _value.business;
+            }
+            str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+
+            value = "";
+            if (e.toitem.index > -1) {
+                _value = e.toitem.value;
+                value = _value.province + _value.city + _value.district + _value.street + _value.business;
+            }
+            str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+            G("searchResultPanel").innerHTML = str;
+        });
+
+        var myValue;
+        ac.addEventListener("onconfirm", function (e) {    //鼠标点击下拉列表后的事件
+            var _value = e.item.value;
+            myValue = _value.province + _value.city + _value.district + _value.street + _value.business;
+
+            G("searchResultPanel").innerHTML = "onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+
+            map.clearOverlays();    //清除地图上所有覆盖物
+            var local = new BMap.LocalSearch(map, { //智能搜索
+                onSearchComplete: function () {
+                    var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+
+                    $("#point").val(pp.lng + "," + pp.lat);
+                    $("#address").val(myValue);
+
+                    map.centerAndZoom(pp, 18);
+                    var marker = new BMap.Marker(pp);
+                    map.addOverlay(marker);    //添加标注
+                }
+            });
+
+            local.search(myValue);
+            //setPlace();
+        });
+
+
+        function setPlace() {
+            map.clearOverlays();    //清除地图上所有覆盖物
+            function myFun() {
+
+                var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+
+                //右键菜单
+                var markerMenu = new BMap.ContextMenu();
+                markerMenu.addItem(new BMap.MenuItem('获取位置', function () {
+                    showAddress(pp);
+                }));
+
+                map.centerAndZoom(pp, 18);
+                var marker = new BMap.Marker(pp);
+                map.addOverlay(marker);    //添加标注
+                marker.addContextMenu(markerMenu);
+            }
+            var local = new BMap.LocalSearch(map, { //智能搜索
+                onSearchComplete: myFun
+            });
+            local.search(myValue);
+        }
+
+        //----------------------------------------搜索----------------------------------------
+
+    </script>
+
+</body>
+</html>

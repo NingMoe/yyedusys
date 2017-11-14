@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace YY.Edu.Sys.Comm.WeiXin
+{
+    public class NoticeTemplates
+    {
+        /// <summary>
+        /// 订单支付模板id(测试系统)
+        /// </summary>
+        public static string TestOrderPayTemplate = "jGWhXy1FpVQP2GaEki1ReAQAcbE6KyWEp5PmiNlnvhk";
+
+        /// <summary>
+        /// 购买成功通知
+        /// </summary>
+        public static string BuySuccessTemplate = "9vuVc0Rw2gH3C86x1ul8Klijsv3vMuEabVRPJ9hIZpQ";
+
+        /// <summary>
+        /// 预约课程开始提醒
+        /// </summary>
+        public static string ClassBeginTemplate = "eDskwPBHQ2kQStjgo0QsgNbkSiW9q9Kpe6prbmnW2oI";
+
+    }
+}

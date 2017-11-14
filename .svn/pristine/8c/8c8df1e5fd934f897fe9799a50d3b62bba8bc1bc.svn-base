@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace YY.Edu.Sys.Models
+{
+    public class ApplyTryoutCurriculum
+    {
+        public int id { get; set; }
+        public int TSMID { get; set; }
+
+        public int TryoutState { get; set; }
+        public string AduitTime { get; set; }
+        public int PayState { get; set; }
+        public decimal PayMoney { get; set; }
+        public string PayTime { get; set; }
+        public int PKID { get; set; }
+        public int StudentID { get; set; }
+        public decimal TryoutMoney { get; set; }
+
+        public int coachID { get; set; }
+
+    }
+}

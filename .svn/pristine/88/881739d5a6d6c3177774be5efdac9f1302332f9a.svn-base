@@ -1,0 +1,215 @@
+﻿
+jQuery.support.cors = true;
+function LoadCoach() {
+  
+    var CurrentDate = "";
+    
+    $.ajax({
+        type: "get",
+        url: ApiUrl + "/Coach/GetCoachListByHourClassNew/",
+        dataType: "json",//
+        async: false,
+        data: { StudentID: $("#hdStudentID").val(), VenueID: $("#hdVenueID").val(), PKType: 1, cType: $("#hdType").val(), Latitude: 39.926909, Longitude: 116.449353, classType: $("#hdclassType").val(), seach:$("#seach").val() }, //1离我最近2.项目类型3.人均最高4.老师等级
+        success: function (data) {
+           
+            var str = '<ul class="choseList">';
+            var str = '';
+            var dataCu = data;
+          
+            var  cType=$("#hdType").val();
+            //取得老师
+            $.each(dataCu, function (i, c) {      
+                var typeInfo = "";
+                if (cType == 1)
+                {
+                    typeInfo = '距你：'+c.Distance + "米";
+                }
+
+                if (cType ==3) {
+                    typeInfo = '已有：'+c.ZClassNumber + "人上过他的课";
+                }
+            
+                var CurriculumBeginDate = c.CurriculumBeginDate.substring(0, 10);
+                var CurriculumEndDate = c.CurriculumEndDate.substring(0, 10);
+                if (cType == 4) {
+                    typeInfo ='专业评级：' +c.StatLevel + "级";
+                }
+                str += ' <li >';
+                str += "<a href='javascript:void(0);'> ";
+                str += '<p class="address" style="text-align:right"><span ><font color="red">' + typeInfo + '</font></span></p>';
+                str += ' <p class="cx" onclick="MyInfo(' + c.CoachID + ',' + c.VenueID + ',' + c.TSMID + ')"><i class="iconfont">&#xe612;</i>' + c.CampusName + ' <span>' + c.CoachFullName + '</span></p>';
+                str += ' <p class="address"><i class="iconfont">&#xe605</i>日期：<span>' + CurriculumBeginDate + '~' + CurriculumEndDate + '</span></p>';
+                str += ' <p class="cx"><i class="iconfont">&#xe605</i>总课时：<span>' + c.TotalClassHour + '课时</span></p>';
+                str += ' <p class="cx"><i class="iconfont">&#xe612;</i>课时费：<span>' + c.Price + '/课时</span></p>';
+                str += ' <p class="cx"><i class="iconfont">&#xe612;</i>我的剩余：<span><font color="red">' + c.ClassNumber + '课时</font></span></p>';
+                str += '<p class="cx"><i class="iconfont">&#xe612;</i>购买课时：<input type="tel" name="mobile" placeholder="请输入购买的课时数" value="7" id="txtNumber" class=".am-input-group-sm buycount mt2" required></p>';
+                str += '  </a>';
+              
+                if (c.CanTry == 1) {
+                    if (c.TryoutState > -1)
+                    {
+                        str += '  <button type="button" class="order-btn" data-type="0"  onclick="return false;" style="background-color:#C0C0C0">试课</button>';
+
+                    }
+                    else
+                    {
+                        str += '  <button type="button" class="order-btn" data-type="0"  onclick="SKBuy(' + c.CoachID + ',1,this,' + c.Price + ',' + c.VenueID + ',2,\'' + c.CoachFullName + '\',' + c.TSMID + ',' + c.TotalClassHour + ',this)">试课</button>';
+                    }
+                }
+                str += '  <button type="button" class="order-btn" data-type="0"  style="margin-top:80px" onclick="Buy(' + c.CoachID + ',1,this,' + c.Price + ',' + c.VenueID + ',2,\'' + c.CoachFullName + '\',' + c.TSMID + ',' + c.TotalClassHour + ',this)">购买</button>';
+                str += '</li>';
+
+            });
+           
+            $("#panel0").html(str);
+        }
+    });
+}
+
+//1对多
+function LoadCoachMore() {
+
+    var CurrentDate = "";
+
+    $.ajax({
+        type: "get",
+        url: ApiUrl + "/Coach/GetCoachListByHourClass/",
+        dataType: "json",
+        async: false,
+        data: { StudentID: $("#hdStudentID").val(), VenueID: $("#hdVenueID").val(), PKType: 2},
+        success: function (data) {
+
+            var str = '<ul class="choseList">';
+            var dataCu = data;
+            $("#more02").show();
+
+            //取得老师
+            $.each(dataCu, function (i, c) {
+               
+                var typeInfo = "";
+                var strPkInfo = "(1对1课程)";
+                var pkType = c.PKType;
+                if (pkType == 2)
+                {
+                    strPkInfo = "(1对多课程)";
+                }
+                             str += ' <li >';
+                str += "<a href='javascript:void(0);'> ";
+                str += ' <p class="time" onclick="MyInfo(' + c.CoachID + ',' + c.VenueID + ',' + c.TSMID + ')"><i class="iconfont">&#xe612;</i>' + c.CampusName + ' <span><font color="red">' + c.FullName + '</font></span></p>';
+                str += ' <p class="address"><i class="iconfont">&#xe605</i>课程名称：<span><font color="red">' + c.Title + strPkInfo + '</font></span></p>';
+                str += ' <p class="address"><i class="iconfont">&#xe605</i>开课日期：<span><font color="red">' + c.CurriculumBeginDate + '-' + c.CurriculumEndDate + '</font></span></p>';
+                str += ' <p class="address"><i class="iconfont">&#xe605</i>总课时：<span><font color="red">' + c.TotalClassHour + '</font>次</span></p>';
+                str += ' <p class="cx"><i class="iconfont">&#xe612;</i>课时收费：<span>' + c.PriceMore + '/课时</span></p>';              
+                str += '<p class="cx"><i class="iconfont">&#xe612;</i>购买时数：<input type="tel" name="mobile" placeholder="请输入购买数" value="' + c.TotalClassHour + '" id="txtNumber" class=".am-input-group-sm buycount mt2" required></p>';
+                str += '  </a>';
+                str += '  <button type="button" class="order-btn" onclick="SKBuy(' + c.CoachID + ',1,this,' + c.PriceMore + ',' + c.VenueID + ',2,\'' + c.FullName + '\',' + c.TSMID + ',' + c.TotalClassHour + ',this)">试课</button>';
+                str += '  <button type="button" class="order-btn" onclick="Buy(' + c.CoachID + ',1,this,' + c.PriceMore + ',' + c.VenueID + ',2,\'' + c.FullName + '\',' + c.TSMID + ',' + c.TotalClassHour + ')">购买</button>';
+                str += '</li>';
+
+            });
+
+            $("#panel1").html(str);
+        }
+    });
+}
+
+function Buy(coachid, sid1, obj, price, vid, pktype, coachFullName, TSMID, TotalClassHour,obj) {
+
+    if ($(obj).attr("data-type") == 1) {
+        return false;
+    }
+    if (confirm('确定要提交购买课时申请吗？')) {
+        var sid = $("#hdStudentID").val();
+
+        //金额
+        var CMoney = 0;
+        var oj = $(obj).parent().find("input");
+
+        var inumber = 0;
+        if (oj.val() != "") {
+            inumber = parseInt(oj.val());
+        }
+        if (inumber == 0) {
+            model_alert('请输入要购买的课时数');
+            return false;
+        }
+
+        if (inumber > TotalClassHour) {
+            model_alert('该课程一共' + TotalClassHour + '课时，你买多了快修改下吧。');
+            return false;
+        }
+
+        CMoney = price * inumber;
+        // BuyCurriculum(int StudentID,int CoachID,int number)
+
+        var parm = { StudentID: sid, CoachID: coachid, ClassNumber: inumber, VenueID: vid, PayMoney: CMoney, Status: 0, PKType: pktype, PaidMoney: CMoney, StudentFullName: $("#hdFullName").val(), CoachFullName: coachFullName, TSMID: TSMID };
+        $.ajax({
+            type: "POST",
+            url: ApiUrl + "/Student/ApplyBuy",//BuyCurriculum(int StudentID,int CoachID,int number)
+            contentType: "application/json",
+            data: JSON.stringify(parm),
+            success: function (data, status) {
+                if (status == "success") {
+                    if (data.Code == 1001) {
+                        $(obj).attr("data-type", "1");
+                        $(obj).css({ 'background-color': '#C0C0C0' });
+                        // model_alert("申请购买课时提交成功，快去支付吧");
+                        jQuery('#qrcode').qrcode("http://www.baitour.qunar.com");
+                        $('#my-confirm').modal();
+                    }
+                    else {
+                        model_alert("申请购买课时失败，再操作一次吧");
+                    }
+                }
+                else {
+                    model_alert("申请购买课时失败，再操作一次吧");
+                }
+            }
+        });
+    }
+}
+
+function btnSel()
+{
+   LoadCoach();
+}
+function SKBuy(coachid, sid1, obj, price, vid, pktype, coachFullName, TSMID, TotalClassHour,obj) {
+    if ($(obj).attr("data-type") == 1) {
+        return false;
+    }
+    if (confirm('确定要提交试课申请吗？')) {
+        var sid = $("#hdStudentID").val();
+        var parm = { StudentID: sid, TSMID: TSMID, TryoutState: 0, PayMoney: 0, PayState: 0, PKID: 0, TryoutMoney: price};
+        $.ajax({
+            type: "POST",
+            url: ApiUrl + "/Student/ApplyTryout",//BuyCurriculum(int StudentID,int CoachID,int number)
+            contentType: "application/json",
+            data: JSON.stringify(parm),
+            success: function (data, status) {
+                if (status == "success") {
+                    if (data.Code == 1001) {
+                        $(obj).attr("data-type", "1");
+                        $(obj).css({ 'background-color': '#C0C0C0' });
+                        //model_alert("申请试课提交成功，快去支付吧");
+                        jQuery('#qrcode').qrcode("http://www.baitour.qunar.com");
+                        $('#my-confirm').modal();
+
+                    }
+                    else {
+                        model_alert("申请试课失败，再操作一次吧。");
+                    }
+                }
+                else {
+                    model_alert("申请试课失败，再操作一次吧");
+                }
+            }
+        });
+    }
+}
+
+
+function MyInfo(coachID,venueID)
+{
+    location.href = "/Student/CoachInfo/?coachid=" + coachID + "&venueid=" + venueID;
+}
+

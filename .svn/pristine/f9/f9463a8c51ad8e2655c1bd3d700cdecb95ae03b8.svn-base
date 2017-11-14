@@ -1,0 +1,139 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace YY.Edu.Sys.Models
+{
+    public class TeachingScheduleMaster
+    {
+
+        #region Model
+        private int _pkid;
+        private int? _venueid;
+        private int? _campusid;
+        private int? _coachid;
+        private string _title;
+        private DateTime? _addtime = DateTime.Now;
+        private decimal? _price;
+        private decimal? _coachprice;
+        private string _info;
+        /// <summary>
+        /// 
+        /// </summary>
+        public int PKID
+        {
+            set { _pkid = value; }
+            get { return _pkid; }
+        }
+        /// <summary>
+        /// 课程主表编号
+        /// </summary>
+        public int TSMID { get; set; }
+        /// <summary>
+        /// 场馆ID
+        /// </summary>
+        [Required(ErrorMessage = "场馆编号不能为空")]
+        public int? VenueID
+        {
+            set { _venueid = value; }
+            get { return _venueid; }
+        }
+        /// <summary>
+        /// 校区ID
+        /// </summary>
+        [Required(ErrorMessage = "校区编号不能为空")]
+        public int? CampusID
+        {
+            set { _campusid = value; }
+            get { return _campusid; }
+        }
+        /// <summary>
+        /// 教练ID
+        /// </summary>
+        [Required(ErrorMessage = "教练编号不能为空")]
+        public int? CoachID
+        {
+            set { _coachid = value; }
+            get { return _coachid; }
+        }
+        /// <summary>
+        /// 课时标题 
+        /// </summary>
+        [Required(ErrorMessage = "课时标题不能为空")]
+        [StringLength(20, MinimumLength = 2)]
+        public string Title
+        {
+            set { _title = value; }
+            get { return _title; }
+        }
+        /// <summary>
+        /// 添加时间
+        /// </summary>
+        public DateTime? AddTime
+        {
+            set { _addtime = value; }
+            get { return _addtime; }
+        }
+        /// <summary>
+        /// 对外学生价
+        /// </summary>
+        [Required(ErrorMessage = "课时费不能为空")]
+        public decimal? Price
+        {
+            set { _price = value; }
+            get { return _price; }
+        }
+        /// <summary>
+        /// 教练价络
+        /// </summary>
+        [Required(ErrorMessage = "课时工资不能为空")]
+        public decimal? CoachPrice
+        {
+            set { _coachprice = value; }
+            get { return _coachprice; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Info
+        {
+            set { _info = value; }
+            get { return _info; }
+        }
+        #endregion Model
+
+        /// <summary>
+        /// 纬度，浮点数，范围为90 ~ -90
+        /// </summary>
+        public decimal Latitude { get; set; }
+
+        /// <summary>
+        /// 经度，浮点数，范围为180 ~ -180
+        /// </summary>
+        public decimal Longitude { get; set; }
+        /// <summary>
+        /// 课程开始日期
+        /// </summary>
+        public DateTime CurriculumBeginDate { get; set; }
+        /// <summary>
+        /// 课程结束日期
+        /// </summary>
+        public DateTime CurriculumEndDate { get; set; }
+        /// <summary>
+        /// 总课时
+        /// </summary>
+        public int TotalClassHour { get; set; }
+
+        /// <summary>
+        /// 是否可以试课
+        /// </summary>
+        public int CanTry { get; set; }
+        /// <summary>
+        /// 课程类型 。。。
+        /// </summary>
+        public int CurriculumType { get; set; }
+    }
+}

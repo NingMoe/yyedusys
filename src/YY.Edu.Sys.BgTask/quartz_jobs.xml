@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<job-scheduling-data xmlns="http://quartznet.sourceforge.net/JobSchedulingData">
+  <processing-directives>
+    <overwrite-existing-data>true</overwrite-existing-data>
+  </processing-directives>
+
+  <schedule>
+    
+    <!--百度热点-->
+    <job>
+      <name>BaiduHotJob</name>
+      <group>HotJob</group>
+      <description>BaiduHotJob</description>
+      <job-type>QZJP.WXCrawler.ClientUI.BaiduHotJob, QZJP.WXCrawler.ClientUI</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+    <trigger>
+      <cron>
+        <name>BaiduHotTrigger</name>
+        <group>HotJobSimpleGroup</group>
+        <job-name>BaiduHotJob</job-name>
+        <job-group>HotJob</job-group>
+        <cron-expression>2 1 10 * * ? </cron-expression>
+      </cron>
+    </trigger>
+
+    <!--Sogou热点-->
+    <job>
+      <name>SogouHotJob</name>
+      <group>HotJob</group>
+      <description>SogouHotJob</description>
+      <job-type>QZJP.WXCrawler.ClientUI.SogouHotJob, QZJP.WXCrawler.ClientUI</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+    <trigger>
+      <cron>
+        <name>SogouHotJobTrigger</name>
+        <group>HotJobSimpleGroup</group>
+        <job-name>SogouHotJob</job-name>
+        <job-group>HotJob</job-group>
+        <cron-expression>2 1 10 * * ? </cron-expression>
+      </cron>
+    </trigger>
+
+    <!--微博热点-->
+    <job>
+      <name>WeiboHotJob</name>
+      <group>HotJob</group>
+      <description>WeiboHotJob</description>
+      <job-type>QZJP.WXCrawler.ClientUI.WeiboHotJob, QZJP.WXCrawler.ClientUI</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+    <trigger>
+      <cron>
+        <name>WeiboHotJobTrigger</name>
+        <group>HotJobSimpleGroup</group>
+        <job-name>WeiboHotJob</job-name>
+        <job-group>HotJob</job-group>
+        <cron-expression>2 1 10 * * ? </cron-expression>
+      </cron>
+    </trigger>
+
+    <!--头条热点-->
+    <job>
+      <name>ToutiaoHotJob</name>
+      <group>HotJob</group>
+      <description>ToutiaoHotJob</description>
+      <job-type>QZJP.WXCrawler.ClientUI.ToutiaoHotJob, QZJP.WXCrawler.ClientUI</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+    <trigger>
+      <cron>
+        <name>ToutiaoHotJobTrigger</name>
+        <group>HotJobSimpleGroup</group>
+        <job-name>ToutiaoHotJob</job-name>
+        <job-group>HotJob</job-group>
+        <cron-expression>2 1 10 * * ? </cron-expression>
+      </cron>
+    </trigger>
+
+
+    <!--百家热点-->
+    <job>
+      <name>BjHotJob</name>
+      <group>HotJob</group>
+      <description>BjHotJob</description>
+      <job-type>QZJP.WXCrawler.ClientUI.BjHotJob, QZJP.WXCrawler.ClientUI</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+    <trigger>
+      <cron>
+        <name>BjHotJobTrigger</name>
+        <group>HotJobSimpleGroup</group>
+        <job-name>BjHotJob</job-name>
+        <job-group>HotJob</job-group>
+        <cron-expression>2 1 10 * * ? </cron-expression>
+      </cron>
+    </trigger>
+
+    <!--一点资讯热点-->
+    <job>
+      <name>YdzxHotJob</name>
+      <group>HotJob</group>
+      <description>YdzxHotJob</description>
+      <job-type>QZJP.WXCrawler.ClientUI.YdzxHotJob, QZJP.WXCrawler.ClientUI</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+    <trigger>
+      <cron>
+        <name>YdzxHotJobTrigger</name>
+        <group>HotJobSimpleGroup</group>
+        <job-name>YdzxHotJob</job-name>
+        <job-group>HotJob</job-group>
+        <cron-expression>2 1 10 * * ? </cron-expression>
+      </cron>
+    </trigger>
+
+    <!--凤凰网热点-->
+    <job>
+      <name>IfengHotJob</name>
+      <group>HotJob</group>
+      <description>IfengHotJob</description>
+      <job-type>QZJP.WXCrawler.ClientUI.IfengHotJob, QZJP.WXCrawler.ClientUI</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+    <trigger>
+      <cron>
+        <name>IfengHotJobTrigger</name>
+        <group>HotJobSimpleGroup</group>
+        <job-name>IfengHotJob</job-name>
+        <job-group>HotJob</job-group>
+        <cron-expression>2 1 10 * * ? </cron-expression>
+      </cron>
+    </trigger>
+
+    <!--贴吧热点-->
+    <job>
+      <name>TiebaHotJob</name>
+      <group>HotJob</group>
+      <description>TiebaHotJob</description>
+      <job-type>QZJP.WXCrawler.ClientUI.TiebaHotJob, QZJP.WXCrawler.ClientUI</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+    <trigger>
+      <cron>
+        <name>TiebaHotJobTrigger</name>
+        <group>HotJobSimpleGroup</group>
+        <job-name>TiebaHotJob</job-name>
+        <job-group>HotJob</job-group>
+        <cron-expression>2 1 10 * * ? </cron-expression>
+      </cron>
+    </trigger>
+  </schedule>
+
+</job-scheduling-data>

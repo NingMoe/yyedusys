@@ -1,0 +1,3253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\publish\venue.yiyust.com</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="AdminLTE/bootstrap/css/bootstrap.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/bootstrap/css/bootstrap.css.map">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/bootstrap/css/bootstrap.min.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/bootstrap/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/bootstrap/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/bootstrap/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/bootstrap/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/bootstrap/fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/bootstrap/js/bootstrap.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/bootstrap/js/bootstrap.min.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/admin-lte.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/admin-lte.min.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-black-light.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-black-light.min.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-black.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-black.min.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-blue-light.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-blue-light.min.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-blue.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-blue.min.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-green-light.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-green-light.min.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-green.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-green.min.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-purple-light.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-purple-light.min.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-purple.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-purple.min.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-red-light.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-red-light.min.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-red.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-red.min.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-yellow-light.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-yellow-light.min.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-yellow.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/skin-yellow.min.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/_all-skins.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/css/skins/_all-skins.min.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/img/avatar.png">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/img/avatar04.png">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/img/avatar2.png">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/img/avatar3.png">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/img/avatar5.png">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/img/boxed-bg.jpg">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/img/boxed-bg.png">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/img/credit/american-express.png">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/img/credit/cirrus.png">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/img/credit/mastercard.png">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/img/credit/mestro.png">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/img/credit/paypal.png">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/img/credit/paypal2.png">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/img/credit/visa.png">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/img/default-50x50.gif">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/img/icons.png">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/img/photo1.png">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/img/photo2.png">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/img/photo3.jpg">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/img/photo4.jpg">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/img/user.svg">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/js/app.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/dist/js/app.min.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/documentation/css/style.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/documentation/js/docs.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/bootstrap-slider/css/slider.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/bootstrap-slider/js/bootstrap-slider.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/bootstrap-wysihtml5/css/bootstrap3-wysihtml5.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/bootstrap-wysihtml5/css/bootstrap3-wysihtml5.min.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/bootstrap-wysihtml5/js/bootstrap3-wysihtml5.all.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/bootstrap-wysihtml5/js/bootstrap3-wysihtml5.all.min.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/chartjs/js/chart.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/chartjs/js/chart.min.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/adapters/jquery.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/build-config.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/CHANGES.md">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/ckeditor.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/config.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/contents.css">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/af.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/ar.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/bg.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/bn.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/bs.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/ca.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/cs.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/cy.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/da.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/de.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/el.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/en-au.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/en-ca.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/en-gb.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/en.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/eo.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/es.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/et.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/eu.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/fa.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/fi.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/fo.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/fr-ca.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/fr.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/gl.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/gu.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/he.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/hi.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/hr.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/hu.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/id.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/is.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/it.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/ja.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/ka.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/km.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/ko.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/ku.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/lt.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/lv.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/mk.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/mn.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/ms.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/nb.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/nl.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/no.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/pl.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/pt-br.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/pt.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/ro.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/ru.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/si.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/sk.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/sl.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/sq.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/sr-latn.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/sr.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/sv.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/th.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/tr.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/ug.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/uk.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/vi.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/zh-cn.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/lang/zh.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/LICENSE.md">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/a11yhelp.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/ar.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/bg.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/ca.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/cs.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/cy.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/da.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/de.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/el.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/en.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/eo.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/es.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/et.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/fa.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/fi.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/fr-ca.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/fr.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/gl.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/gu.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/he.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/hi.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/hr.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/hu.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/id.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/it.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/ja.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/km.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/ko.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/ku.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/lt.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/lv.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/mk.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/mn.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/nb.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/nl.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/no.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/pl.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/pt-br.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/pt.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/ro.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/ru.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/si.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/sk.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/sl.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/sq.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/sr-latn.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/sr.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/sv.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/th.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/tr.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/ug.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/uk.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/vi.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/zh-cn.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/zh.js">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/a11yhelp/dialogs/lang/_translationstatus.txt">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/about/dialogs/about.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/about/dialogs/hidpi/logo_ckeditor.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/about/dialogs/logo_ckeditor.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/clipboard/dialogs/paste.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/dialog/dialogDefinition.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/fakeobjects/images/spacer.gif">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/icons.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/icons_hidpi.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/image/dialogs/image.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/image/images/noimage.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/link/dialogs/anchor.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/link/dialogs/link.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/link/images/anchor.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/link/images/hidpi/anchor.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/magicline/images/hidpi/icon.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/magicline/images/icon.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/pastefromword/filter/default.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/scayt/dialogs/options.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/scayt/dialogs/toolbar.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/scayt/LICENSE.md">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/scayt/README.md">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/ar.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/bg.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/ca.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/cs.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/cy.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/de.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/el.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/en.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/eo.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/es.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/et.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/fa.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/fi.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/fr-ca.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/fr.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/gl.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/he.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/hr.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/hu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/id.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/it.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/ja.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/km.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/ku.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/lv.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/nb.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/nl.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/no.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/pl.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/pt-br.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/pt.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/ru.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/si.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/sk.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/sl.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/sq.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/sv.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/th.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/tr.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/ug.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/uk.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/vi.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/zh-cn.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/zh.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/lang/_translationstatus.txt">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/specialchar/dialogs/specialchar.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/table/dialogs/table.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/tabletools/dialogs/tableCell.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/wsc/dialogs/ciframe.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/wsc/dialogs/tmp.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/wsc/dialogs/tmpFrameset.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/wsc/dialogs/wsc.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/wsc/dialogs/wsc.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/wsc/dialogs/wsc_ie.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/wsc/LICENSE.md">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/plugins/wsc/README.md">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/README.md">
+      <publishTime>08/17/2017 10:47:55</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/dialog.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/dialog_ie.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/dialog_ie7.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/dialog_ie8.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/dialog_iequirks.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/dialog_opera.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/editor.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/editor_gecko.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/editor_ie.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/editor_ie7.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/editor_ie8.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/editor_iequirks.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/icons.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/icons_hidpi.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/images/arrow.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/images/close.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/images/hidpi/close.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/images/hidpi/lock-open.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/images/hidpi/lock.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/images/hidpi/refresh.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/images/lock-open.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/images/lock.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/images/refresh.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/skins/moono/readme.md">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ckeditor/js/styles.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/colorpicker/css/bootstrap-colorpicker.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/colorpicker/css/bootstrap-colorpicker.min.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/colorpicker/img/alpha-horizontal.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/colorpicker/img/alpha.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/colorpicker/img/hue-horizontal.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/colorpicker/img/hue.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/colorpicker/img/saturation.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/colorpicker/js/bootstrap-colorpicker.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/colorpicker/js/bootstrap-colorpicker.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/css/dataTables.bootstrap.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/css/jquery.dataTables.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/css/jquery.dataTables.min.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/css/jquery.dataTables_themeroller.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/images/sort_asc.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/images/sort_asc_disabled.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/images/sort_both.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/images/sort_desc.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/images/sort_desc_disabled.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/dataTables.bootstrap.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/dataTables.bootstrap.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/AutoFill/css/dataTables.autoFill.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/AutoFill/css/dataTables.autoFill.min.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/AutoFill/examples/columns.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/AutoFill/examples/complete-callback.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/AutoFill/examples/fill-both.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/AutoFill/examples/fill-horizontal.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/AutoFill/examples/index.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/AutoFill/examples/scrolling.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/AutoFill/examples/simple.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/AutoFill/examples/step-callback.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/AutoFill/images/filler.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/AutoFill/js/dataTables.autoFill.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/AutoFill/js/dataTables.autoFill.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/AutoFill/Readme.txt">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/css/dataTables.colReorder.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/css/dataTables.colReorder.min.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/examples/alt_insert.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/examples/colvis.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/examples/col_filter.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/examples/fixedcolumns.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/examples/fixedheader.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/examples/index.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/examples/jqueryui.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/examples/new_init.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/examples/predefined.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/examples/realtime.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/examples/reset.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/examples/scrolling.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/examples/server_side.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/examples/simple.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/examples/state_save.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/images/insert.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/js/dataTables.colReorder.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/js/dataTables.colReorder.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/License.txt">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColReorder/Readme.md">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColVis/css/dataTables.colVis.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColVis/css/dataTables.colvis.jqueryui.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColVis/css/dataTables.colVis.min.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColVis/examples/button_order.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColVis/examples/exclude_columns.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColVis/examples/group_columns.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColVis/examples/index.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColVis/examples/jqueryui.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColVis/examples/mouseover.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColVis/examples/new_init.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColVis/examples/restore.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColVis/examples/simple.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColVis/examples/text.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColVis/examples/title_callback.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColVis/examples/two_tables.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColVis/examples/two_tables_identical.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColVis/js/dataTables.colVis.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColVis/js/dataTables.colVis.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColVis/License.txt">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/ColVis/Readme.md">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedColumns/css/dataTables.fixedColumns.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedColumns/css/dataTables.fixedColumns.min.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedColumns/examples/bootstrap.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedColumns/examples/colvis.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedColumns/examples/col_filter.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedColumns/examples/css_size.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedColumns/examples/index.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedColumns/examples/index_column.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedColumns/examples/left_right_columns.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedColumns/examples/right_column.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedColumns/examples/rowspan.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedColumns/examples/server-side-processing.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedColumns/examples/simple.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedColumns/examples/size_fixed.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedColumns/examples/size_fluid.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedColumns/examples/two_columns.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedColumns/js/dataTables.fixedColumns.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedColumns/js/dataTables.fixedColumns.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedColumns/License.txt">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedColumns/Readme.md">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedHeader/css/dataTables.fixedHeader.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedHeader/css/dataTables.fixedHeader.min.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedHeader/examples/header_footer.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedHeader/examples/index.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedHeader/examples/simple.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedHeader/examples/top_left_right.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedHeader/examples/two_tables.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedHeader/examples/zIndexes.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedHeader/js/dataTables.fixedHeader.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedHeader/js/dataTables.fixedHeader.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/FixedHeader/Readme.txt">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/KeyTable/css/dataTables.keyTable.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/KeyTable/css/dataTables.keyTable.min.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/KeyTable/examples/events.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/KeyTable/examples/html.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/KeyTable/examples/index.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/KeyTable/examples/scrolling.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/KeyTable/examples/simple.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/KeyTable/js/dataTables.keyTable.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/KeyTable/js/dataTables.keyTable.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/KeyTable/Readme.txt">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/css/dataTables.responsive.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/css/dataTables.responsive.scss">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/child-rows/column-control.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/child-rows/custom-renderer.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/child-rows/disable-child-rows.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/child-rows/index.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/child-rows/right-column.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/child-rows/whole-row-control.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/display-control/auto.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/display-control/classes.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/display-control/complexHeader.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/display-control/fixedHeader.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/display-control/index.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/display-control/init-classes.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/index.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/initialisation/ajax.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/initialisation/className.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/initialisation/default.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/initialisation/index.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/initialisation/new.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/initialisation/option.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/styling/bootstrap.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/styling/compact.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/styling/foundation.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/styling/index.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/examples/styling/scrolling.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/js/dataTables.responsive.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/js/dataTables.responsive.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/License.txt">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Responsive/Readme.md">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Scroller/css/dataTables.scroller.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Scroller/css/dataTables.scroller.min.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Scroller/examples/api_scrolling.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Scroller/examples/data/2500.txt">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Scroller/examples/data/ssp.php">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Scroller/examples/index.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Scroller/examples/large_js_source.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Scroller/examples/server-side_processing.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Scroller/examples/simple.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Scroller/examples/state_saving.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Scroller/images/loading-background.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Scroller/js/dataTables.scroller.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Scroller/js/dataTables.scroller.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/Scroller/Readme.txt">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/css/dataTables.tableTools.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/css/dataTables.tableTools.min.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/examples/ajax.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/examples/alter_buttons.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/examples/bootstrap.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/examples/button_text.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/examples/collection.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/examples/defaults.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/examples/index.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/examples/jqueryui.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/examples/multiple_tables.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/examples/multi_instance.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/examples/new_init.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/examples/pdf_message.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/examples/plug-in.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/examples/select_column.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/examples/select_multi.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/examples/select_os.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/examples/select_single.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/examples/simple.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/examples/swf_path.html">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/images/collection.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/images/collection_hover.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/images/copy.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/images/copy_hover.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/images/csv.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/images/csv_hover.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/images/pdf.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/images/pdf_hover.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/images/print.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/images/print_hover.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/images/psd/collection.psd">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/images/psd/copy document.psd">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/images/psd/file_types.psd">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/images/psd/printer.psd">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/images/xls.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/images/xls_hover.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/js/dataTables.tableTools.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/js/dataTables.tableTools.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/Readme.md">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/swf/copy_csv_xls.swf">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/extensions/TableTools/swf/copy_csv_xls_pdf.swf">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/jquery.dataTables.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datatables/js/jquery.dataTables.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/css/datepicker3.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/bootstrap-datepicker.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.ar.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.az.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.bg.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.ca.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.cs.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.cy.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.da.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.de.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.el.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.es.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.et.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.fa.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.fi.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.fr.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.gl.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.he.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.hr.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.hu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.id.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.is.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.it.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.ja.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.ka.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.kk.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.kr.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.lt.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.lv.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.mk.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.ms.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.nb.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.nl-BE.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.nl.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.no.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.pl.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.pt-BR.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.pt.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.ro.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.rs-latin.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.rs.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.ru.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.sk.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.sl.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.sq.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.sv.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.sw.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.th.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.tr.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.ua.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.vi.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.zh-CN.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/datepicker/js/locales/bootstrap-datepicker.zh-TW.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/daterangepicker/css/daterangepicker-bs3.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/daterangepicker/js/daterangepicker.js">
+      <publishTime>08/23/2017 23:48:34</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/daterangepicker/js/moment.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/daterangepicker/js/moment.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/fastclick/js/fastclick.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/fastclick/js/fastclick.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/excanvas.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/excanvas.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.colorhelpers.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.colorhelpers.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.canvas.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.canvas.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.categories.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.categories.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.crosshair.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.crosshair.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.errorbars.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.errorbars.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.fillbetween.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.fillbetween.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.image.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.image.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.navigate.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.navigate.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.pie.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.pie.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.resize.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.resize.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.selection.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.selection.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.stack.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.stack.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.symbol.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.symbol.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.threshold.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.threshold.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.time.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/flot/js/jquery.flot.time.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/font-awesome/css/font-awesome.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/font-awesome/css/font-awesome.min.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/font-awesome/fonts/fontawesome-webfont.eot">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/font-awesome/fonts/fontawesome-webfont.svg">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/font-awesome/fonts/fontawesome-webfont.ttf">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/font-awesome/fonts/fontawesome-webfont.woff">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/font-awesome/fonts/fontawesome-webfont.woff2">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/font-awesome/fonts/FontAwesome.otf">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/fullcalendar/css/fullcalendar.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/fullcalendar/css/fullcalendar.min.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/fullcalendar/css/print/fullcalendar.print.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/fullcalendar/js/fullcalendar.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/fullcalendar/js/fullcalendar.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/all.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/aero%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/aero.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/aero.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/blue%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/blue.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/blue.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/flat%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/flat.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/flat.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/green%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/green.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/green.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/grey%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/grey.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/grey.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/orange%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/orange.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/orange.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/pink%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/pink.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/pink.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/purple%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/purple.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/purple.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/red%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/red.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/red.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/yellow%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/yellow.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/yellow.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/flat/_all.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/futurico/futurico%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/futurico/futurico.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/futurico/futurico.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/line/aero.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/line/blue.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/line/green.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/line/grey.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/line/line%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/line/line.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/line/line.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/line/orange.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/line/pink.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/line/purple.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/line/red.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/line/yellow.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/line/_all.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/aero%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/aero.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/aero.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/blue%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/blue.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/blue.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/green%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/green.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/green.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/grey%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/grey.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/grey.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/minimal%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/minimal.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/minimal.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/orange%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/orange.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/orange.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/pink%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/pink.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/pink.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/purple%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/purple.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/purple.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/red%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/red.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/red.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/yellow%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/yellow.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/yellow.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/minimal/_all.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/polaris/polaris%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/polaris/polaris.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/polaris/polaris.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/aero%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/aero.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/aero.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/blue%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/blue.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/blue.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/green%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/green.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/green.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/grey%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/grey.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/grey.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/orange%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/orange.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/orange.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/pink%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/pink.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/pink.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/purple%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/purple.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/purple.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/red%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/red.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/red.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/square%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/square.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/square.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/yellow%402x.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/yellow.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/yellow.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/css/sqare/_all.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/js/icheck.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/icheck/js/icheck.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/input-mask/js/jquery.inputmask.date.extensions.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/input-mask/js/jquery.inputmask.extensions.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/input-mask/js/jquery.inputmask.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/input-mask/js/jquery.inputmask.numeric.extensions.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/input-mask/js/jquery.inputmask.phone.extensions.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/input-mask/js/jquery.inputmask.regex.extensions.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/input-mask/js/phone-codes/phone-be.json">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/input-mask/js/phone-codes/phone-codes.json">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/input-mask/js/phone-codes/readme.txt">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ionicons/css/ionicons.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ionicons/css/ionicons.min.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ionicons/fonts/ionicons.eot">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ionicons/fonts/ionicons.svg">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ionicons/fonts/ionicons.ttf">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ionicons/fonts/ionicons.woff">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ionslider/css/ion.rangeSlider.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ionslider/css/ion.rangeSlider.skinFlat.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ionslider/css/ion.rangeSlider.skinNice.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ionslider/img/sprite-skin-flat.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ionslider/img/sprite-skin-nice.png">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/ionslider/js/ion.rangeSlider.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/jquery-ui/js/jquery-ui.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/jquery-ui/js/jquery-ui.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/jquery-validate/js/jquery.validate.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/jquery-validate/js/jquery.validate.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/jquery-validate/js/jquery.validate.unobtrusive.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/jquery-validate/js/jquery.validate.unobtrusive.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/jquery/js/jQuery-2.1.4.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/jvectormap/css/jquery-jvectormap-1.2.2.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/jvectormap/js/jquery-jvectormap-1.2.2.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/jvectormap/js/jquery-jvectormap-usa-en.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/jvectormap/js/jquery-jvectormap-world-mill-en.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/knob/js/jquery.knob.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/momentjs/js/moment.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/morris/css/morris.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/morris/js/morris.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/morris/js/morris.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/pace/css/pace.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/pace/css/pace.min.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/pace/js/pace.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/pace/js/pace.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/raphael/js/raphael-min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/css/select2.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/css/select2.min.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/az.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/bg.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/ca.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/cs.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/da.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/de.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/en.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/es.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/et.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/eu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/fa.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/fi.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/fr.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/gl.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/he.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/hi.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/hr.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/hu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/id.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/is.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/it.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/ko.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/lt.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/lv.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/mk.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/nb.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/nl.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/pl.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/pt-BR.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/pt.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/ro.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/ru.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/sk.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/sr.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/sv.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/th.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/tr.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/uk.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/vi.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/zh-CN.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/i18n/zh-TW.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/select2.full.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/select2.full.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/select2.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/select2/js/select2.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/slimscroll/js/jquery.slimscroll.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/slimscroll/js/jquery.slimscroll.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/sparkline/js/jquery.sparkline.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/sparkline/js/jquery.sparkline.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/timepicker/css/bootstrap-timepicker.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/timepicker/css/bootstrap-timepicker.min.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/timepicker/js/bootstrap-timepicker.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="AdminLTE/plugins/timepicker/js/bootstrap-timepicker.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="bin/aliyun-net-sdk-core.dll">
+      <publishTime>09/28/2016 11:38:38</publishTime>
+    </File>
+    <File Include="bin/aliyun-net-sdk-dysmsapi.dll">
+      <publishTime>06/16/2017 07:52:14</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/Dapper.dll">
+      <publishTime>07/22/2016 14:52:40</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/ICSharpCode.SharpZipLib.dll">
+      <publishTime>01/03/2011 14:16:38</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>03/08/2017 19:26:22</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>08/17/2017 10:47:58</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>08/17/2017 10:47:58</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
+      <publishTime>08/17/2017 10:47:58</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>08/17/2017 10:47:58</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Facebook.dll">
+      <publishTime>08/17/2017 10:47:58</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Google.dll">
+      <publishTime>08/17/2017 10:47:58</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.MicrosoftAccount.dll">
+      <publishTime>08/17/2017 10:47:58</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
+      <publishTime>08/17/2017 10:47:58</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Twitter.dll">
+      <publishTime>08/17/2017 10:47:58</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>08/17/2017 10:47:58</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>08/17/2017 10:47:58</publishTime>
+    </File>
+    <File Include="bin/NPOI.dll">
+      <publishTime>03/21/2017 07:53:26</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>08/17/2017 10:47:58</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>08/17/2017 10:47:58</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>08/17/2017 10:47:58</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>08/17/2017 10:47:58</publishTime>
+    </File>
+    <File Include="bin/Senparc.Weixin.dll">
+      <publishTime>08/17/2017 10:47:58</publishTime>
+    </File>
+    <File Include="bin/Senparc.Weixin.MP.dll">
+      <publishTime>08/17/2017 10:47:58</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.Owin.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>08/17/2017 10:47:57</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>08/17/2017 10:47:58</publishTime>
+    </File>
+    <File Include="bin/YY.Edu.Sys.Admin.dll">
+      <publishTime>11/13/2017 22:02:23</publishTime>
+    </File>
+    <File Include="bin/YY.Edu.Sys.Comm.dll">
+      <publishTime>11/13/2017 21:56:26</publishTime>
+    </File>
+    <File Include="bin/YY.Edu.Sys.Models.dll">
+      <publishTime>11/13/2017 21:56:26</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/EntityFramework.resources.dll">
+      <publishTime>03/02/2015 09:32:38</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/EntityFramework.SqlServer.resources.dll">
+      <publishTime>03/02/2015 09:32:38</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.AspNet.Identity.Core.resources.dll">
+      <publishTime>04/03/2015 17:09:32</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.AspNet.Identity.EntityFramework.resources.dll">
+      <publishTime>04/03/2015 17:09:34</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.AspNet.Identity.Owin.resources.dll">
+      <publishTime>04/03/2015 17:09:34</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Owin.Host.SystemWeb.resources.dll">
+      <publishTime>02/13/2015 13:23:48</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Owin.resources.dll">
+      <publishTime>02/13/2015 13:23:48</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Owin.Security.Facebook.resources.dll">
+      <publishTime>02/13/2015 13:23:48</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Owin.Security.Google.resources.dll">
+      <publishTime>02/13/2015 13:23:50</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Owin.Security.MicrosoftAccount.resources.dll">
+      <publishTime>02/13/2015 13:23:50</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Owin.Security.resources.dll">
+      <publishTime>02/13/2015 13:23:50</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Owin.Security.Twitter.resources.dll">
+      <publishTime>02/13/2015 13:23:50</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
+      <publishTime>01/28/2015 04:02:44</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
+      <publishTime>01/28/2015 04:04:32</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.Owin.resources.dll">
+      <publishTime>01/28/2015 04:03:18</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.resources.dll">
+      <publishTime>01/28/2015 04:02:56</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.WebHost.resources.dll">
+      <publishTime>01/28/2015 04:03:48</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
+      <publishTime>01/28/2015 04:02:22</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Optimization.resources.dll">
+      <publishTime>02/11/2014 15:28:40</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Razor.resources.dll">
+      <publishTime>01/28/2015 04:02:34</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Deployment.resources.dll">
+      <publishTime>01/28/2015 04:04:32</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Razor.resources.dll">
+      <publishTime>01/28/2015 04:04:32</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.resources.dll">
+      <publishTime>01/28/2015 04:04:32</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>10/24/2017 12:13:42</publishTime>
+    </File>
+    <File Include="Scripts/Account/Login.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Account/Register.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Calendar/Calendar-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Calendar/Calendar.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Charts/ChartsJs-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Charts/ChartsJs.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Charts/Flot-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Charts/Flot.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Charts/Inline-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Charts/Inline.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Charts/Morris-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Charts/Morris.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Documentation/Documentation-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Elements/Buttons-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Elements/General-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Elements/Icons-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Elements/Modals-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Elements/Sliders-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Elements/Sliders.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Elements/Timeline-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Examples/Blank-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Examples/Invoice-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Examples/Lockscreen-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Examples/Login-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Examples/Login.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Examples/P404-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Examples/P500-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Examples/Pace-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Examples/Pace.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Examples/ProfileEx-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Examples/Register-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Examples/Register.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Forms/Advanced-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Forms/Advanced.js">
+      <publishTime>08/24/2017 12:53:55</publishTime>
+    </File>
+    <File Include="Scripts/Forms/Editors-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Forms/Editors.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Forms/General-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Home/DashboardV1-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Home/DashboardV1.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Home/DashboardV2-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Home/DashboardV2.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Mailbox/Compose-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Mailbox/Compose.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Mailbox/Inbox-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Mailbox/Inbox.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Mailbox/Read-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Shared/_Layout.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/SysManage/AddTeachingSchedule.js">
+      <publishTime>11/10/2017 14:54:04</publishTime>
+    </File>
+    <File Include="Scripts/SysManage/AdvancedDate.js">
+      <publishTime>08/24/2017 15:39:59</publishTime>
+    </File>
+    <File Include="Scripts/SysManage/ApplyBuyHours.js">
+      <publishTime>10/30/2017 22:33:00</publishTime>
+    </File>
+    <File Include="Scripts/SysManage/Campus.js">
+      <publishTime>11/12/2017 19:08:30</publishTime>
+    </File>
+    <File Include="Scripts/SysManage/City.js">
+      <publishTime>10/20/2017 11:15:31</publishTime>
+    </File>
+    <File Include="Scripts/SysManage/ClassHoursDetailed.js">
+      <publishTime>10/23/2017 21:25:41</publishTime>
+    </File>
+    <File Include="Scripts/SysManage/Coach.js">
+      <publishTime>11/13/2017 19:40:40</publishTime>
+    </File>
+    <File Include="Scripts/SysManage/CoachWages.js">
+      <publishTime>10/23/2017 21:25:41</publishTime>
+    </File>
+    <File Include="Scripts/SysManage/ControlPanel.js">
+      <publishTime>10/24/2017 12:26:04</publishTime>
+    </File>
+    <File Include="Scripts/SysManage/Curriculum.js">
+      <publishTime>10/23/2017 21:25:41</publishTime>
+    </File>
+    <File Include="Scripts/SysManage/FeedBackLog.js">
+      <publishTime>10/22/2017 21:28:14</publishTime>
+    </File>
+    <File Include="Scripts/SysManage/jquery.serializejson.min.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/SysManage/LoadData.js">
+      <publishTime>10/21/2017 23:10:55</publishTime>
+    </File>
+    <File Include="Scripts/SysManage/ManageBase.js">
+      <publishTime>10/23/2017 23:20:45</publishTime>
+    </File>
+    <File Include="Scripts/SysManage/StateTranstion.js">
+      <publishTime>10/23/2017 21:25:41</publishTime>
+    </File>
+    <File Include="Scripts/SysManage/Student.js">
+      <publishTime>10/25/2017 10:50:37</publishTime>
+    </File>
+    <File Include="Scripts/SysManage/TeachingSchedule.js">
+      <publishTime>10/24/2017 10:29:22</publishTime>
+    </File>
+    <File Include="Scripts/SysManage/Venue.js">
+      <publishTime>08/19/2017 13:52:16</publishTime>
+    </File>
+    <File Include="Scripts/SysManage/VenueInfo.js">
+      <publishTime>10/20/2017 10:03:24</publishTime>
+    </File>
+    <File Include="Scripts/SysManage/VenueNotice.js">
+      <publishTime>10/22/2017 21:24:46</publishTime>
+    </File>
+    <File Include="Scripts/SysManage/Widgets.js">
+      <publishTime>08/30/2017 22:31:44</publishTime>
+    </File>
+    <File Include="Scripts/Tables/Data-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Tables/Data.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Tables/Simple-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Scripts/Widgets/Widgets-menu.js">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Styles/Elements/General.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Styles/Elements/Icons.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Styles/Elements/Modals.css">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Template/学生.xls">
+      <publishTime>09/27/2017 10:04:48</publishTime>
+    </File>
+    <File Include="Template/教练.xls">
+      <publishTime>09/02/2017 17:06:31</publishTime>
+    </File>
+    <File Include="Views/Account/ConfirmEmail.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Account/ExternalLoginConfirmation.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Account/ExternalLoginFailure.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Account/ForgotPassword.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Account/ForgotPasswordConfirmation.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Account/Login.cshtml">
+      <publishTime>10/18/2017 11:48:58</publishTime>
+    </File>
+    <File Include="Views/Account/Register.cshtml">
+      <publishTime>08/18/2017 17:25:23</publishTime>
+    </File>
+    <File Include="Views/Account/ResetPassword.cshtml">
+      <publishTime>10/20/2017 11:53:34</publishTime>
+    </File>
+    <File Include="Views/Account/ResetPasswordConfirmation.cshtml">
+      <publishTime>10/22/2017 08:59:44</publishTime>
+    </File>
+    <File Include="Views/Account/SendCode.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Account/VerifyCode.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Account/_ExternalLoginsListPartial.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/ApplyBuyHours/Create.cshtml">
+      <publishTime>10/23/2017 21:25:42</publishTime>
+    </File>
+    <File Include="Views/ApplyBuyHours/Index.cshtml">
+      <publishTime>10/24/2017 09:47:12</publishTime>
+    </File>
+    <File Include="Views/Base/Default.cshtml">
+      <publishTime>10/20/2017 22:37:02</publishTime>
+    </File>
+    <File Include="Views/Calendar/Index.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Campus/baidump.html">
+      <publishTime>11/12/2017 19:35:50</publishTime>
+    </File>
+    <File Include="Views/Campus/Create.cshtml">
+      <publishTime>11/12/2017 19:06:34</publishTime>
+    </File>
+    <File Include="Views/Campus/Edit.cshtml">
+      <publishTime>11/12/2017 19:08:32</publishTime>
+    </File>
+    <File Include="Views/Campus/Index.cshtml">
+      <publishTime>10/25/2017 10:50:06</publishTime>
+    </File>
+    <File Include="Views/Charts/ChartJs.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Charts/Flot.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Charts/Inline.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Charts/Morris.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/City/Index.cshtml">
+      <publishTime>10/21/2017 09:46:37</publishTime>
+    </File>
+    <File Include="Views/ClassHoursDetailed/Index.cshtml">
+      <publishTime>10/24/2017 09:47:43</publishTime>
+    </File>
+    <File Include="Views/Coach/Details.cshtml">
+      <publishTime>11/13/2017 18:50:11</publishTime>
+    </File>
+    <File Include="Views/Coach/Edit.cshtml">
+      <publishTime>11/13/2017 19:36:10</publishTime>
+    </File>
+    <File Include="Views/Coach/Import.cshtml">
+      <publishTime>10/21/2017 09:49:18</publishTime>
+    </File>
+    <File Include="Views/Coach/Index.cshtml">
+      <publishTime>11/13/2017 19:17:46</publishTime>
+    </File>
+    <File Include="Views/CoachWages/GetClassOverTeachingSches.cshtml">
+      <publishTime>10/24/2017 09:47:58</publishTime>
+    </File>
+    <File Include="Views/CoachWages/Index.cshtml">
+      <publishTime>10/24/2017 09:48:05</publishTime>
+    </File>
+    <File Include="Views/CoachWagesSub/Index.cshtml">
+      <publishTime>10/21/2017 23:10:52</publishTime>
+    </File>
+    <File Include="Views/Curriculum/Index.cshtml">
+      <publishTime>10/23/2017 21:25:42</publishTime>
+    </File>
+    <File Include="Views/Documentation/Index.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Elements/Buttons.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Elements/General.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Elements/Icons.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Elements/Modals.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Elements/Sliders.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Elements/Timeline.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Examples/Blank.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Examples/Invoice.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Examples/InvoicePrint.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Examples/Lockscreen.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Examples/Login.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Examples/P404.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Examples/P500.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Examples/Pace.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Examples/ProfileEx.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Examples/Register.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/FeedBackLog/Create.cshtml">
+      <publishTime>08/30/2017 23:45:45</publishTime>
+    </File>
+    <File Include="Views/FeedBackLog/Index.cshtml">
+      <publishTime>10/22/2017 21:27:44</publishTime>
+    </File>
+    <File Include="Views/Forms/Advanced.cshtml">
+      <publishTime>08/24/2017 10:36:14</publishTime>
+    </File>
+    <File Include="Views/Forms/Editors.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Forms/General.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Home/DashboardV1.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Home/DashboardV2.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Home/hello.html">
+      <publishTime>10/20/2017 14:03:38</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>10/22/2017 11:36:19</publishTime>
+    </File>
+    <File Include="Views/Home/Welcome.cshtml">
+      <publishTime>10/24/2017 12:54:27</publishTime>
+    </File>
+    <File Include="Views/Home/welcomexxx.cshtml">
+      <publishTime>10/20/2017 09:27:46</publishTime>
+    </File>
+    <File Include="Views/Mailbox/Compose.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Mailbox/Inbox.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Mailbox/Read.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Manage/AddPhoneNumber.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Manage/ChangePassword.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Manage/Index.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Manage/ManageLogins.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Manage/SetPassword.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Manage/VerifyPhoneNumber.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Shared/Lockout.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Shared/_FooterPartial.cshtml">
+      <publishTime>10/20/2017 21:36:11</publishTime>
+    </File>
+    <File Include="Views/Shared/_HeaderPartial.cshtml">
+      <publishTime>10/20/2017 22:42:46</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>10/21/2017 23:10:52</publishTime>
+    </File>
+    <File Include="Views/Shared/_LoginPartial.cshtml">
+      <publishTime>10/20/2017 12:03:33</publishTime>
+    </File>
+    <File Include="Views/Student/Edit.cshtml">
+      <publishTime>10/22/2017 00:34:39</publishTime>
+    </File>
+    <File Include="Views/Student/Import.cshtml">
+      <publishTime>10/21/2017 09:50:15</publishTime>
+    </File>
+    <File Include="Views/Student/Index.cshtml">
+      <publishTime>10/25/2017 10:50:50</publishTime>
+    </File>
+    <File Include="Views/Tables/Data.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Tables/Simple.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/TeachingSchedule/Create.cshtml">
+      <publishTime>11/10/2017 14:39:25</publishTime>
+    </File>
+    <File Include="Views/TeachingSchedule/Details.cshtml">
+      <publishTime>10/21/2017 23:10:52</publishTime>
+    </File>
+    <File Include="Views/TeachingSchedule/Index.cshtml">
+      <publishTime>10/24/2017 10:29:11</publishTime>
+    </File>
+    <File Include="Views/TeachingSchedule/LeaveIndex.cshtml">
+      <publishTime>10/23/2017 21:25:42</publishTime>
+    </File>
+    <File Include="Views/TeachingSchedule/LeaveTeachingScheIng.cshtml">
+      <publishTime>10/22/2017 08:26:28</publishTime>
+    </File>
+    <File Include="Views/TeachingSchedule/Wait4ClassOver.cshtml">
+      <publishTime>10/23/2017 21:25:42</publishTime>
+    </File>
+    <File Include="Views/Venue/Index.cshtml">
+      <publishTime>10/20/2017 22:09:54</publishTime>
+    </File>
+    <File Include="Views/VenueInfo/Edit.cshtml">
+      <publishTime>10/21/2017 09:50:55</publishTime>
+    </File>
+    <File Include="Views/VenueInfo/Index.cshtml">
+      <publishTime>10/21/2017 09:50:58</publishTime>
+    </File>
+    <File Include="Views/VenueNotice/Create.cshtml">
+      <publishTime>10/21/2017 23:10:52</publishTime>
+    </File>
+    <File Include="Views/VenueNotice/Edit.cshtml">
+      <publishTime>08/29/2017 14:24:31</publishTime>
+    </File>
+    <File Include="Views/VenueNotice/Index.cshtml">
+      <publishTime>10/22/2017 21:26:44</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>10/20/2017 17:33:09</publishTime>
+    </File>
+    <File Include="Views/Widgets/Index.cshtml">
+      <publishTime>08/17/2017 10:47:56</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>10/20/2017 22:05:46</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>11/13/2017 22:02:24</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

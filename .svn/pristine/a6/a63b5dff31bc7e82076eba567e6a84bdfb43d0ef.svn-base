@@ -1,0 +1,145 @@
+﻿function transtionTeachingSchePKType(data) {
+
+    if (data == 1) {
+        return '<span class="btn btn-xs btn-info">私教</span>';
+    } else {
+        return '<span class="btn btn-xs btn-info">小班</span>';
+    }
+
+}
+
+function transtionTeachingScheState(data) {
+    //console.log(data);
+    if (data == 0) {
+        return '<span class="btn btn-xs btn-info">排课完成</span>';
+    } else if (data == 1) {
+        return '<span class="btn btn-xs btn-warning">约课完成</span>';
+    } else if (data == 2) {
+        return '<span class="btn btn-xs btn-danger">学校停课</span>';
+    } else if (data == 3) {
+        return '<span class="btn btn-xs btn-danger">请假申请</span>';
+    } else if (data == 4) {
+        return '<span class="btn btn-xs btn-danger">教练请假</span>';
+    } else if (data == 5) {
+        return '<span class="btn btn-xs btn-success">上课中</span>';
+    } else if (data == 6) {
+        return '<span class="btn btn-xs btn-success">上课完成</span>';
+    } else if (data == 7) {
+        return '<span class="btn btn-xs btn-success">工资已发</span>';
+    } else if (data == 8) {
+        return '<span class="btn btn-xs btn-danger">学生请假</span>';
+    } else {
+        return '<span class="btn btn-xs btn-danger">其他</span>';
+    }
+}
+
+
+function transtionTeachingScheStateHandle(state, pkId, venueId) {
+
+    var edithtml = '<a href="/TeachingSchedule/Details/' + pkId + '" class="btn btn-xs btn-success"><i class="fa fa-edit"> 查看 </i></a>&nbsp;&nbsp;';
+    if (state == 0) {
+        edithtml += '<button class="btn btn-xs btn-danger" onclick="return change_state(' + "'" + 'StopTeachingSche' + "'," + pkId + ',' + venueId + ');"><i class="fa fa-edit"> 停课 </i></button>&nbsp;&nbsp;';
+        return edithtml;
+    } else if (state == 1) {
+        edithtml += '<button class="btn btn-xs btn-danger" onclick="return change_state(' + "'" + 'StopTeachingSche' + "'," + pkId + ',' + venueId + ');"><i class="fa fa-edit"> 停课 </i></button>&nbsp;&nbsp;';
+        return edithtml;
+    } else if (state == 2) {
+        return edithtml;
+    } else if (state == 3) {
+        edithtml += '<button class="btn btn-xs btn-danger" onclick="return change_state(' + "'" + 'AgreeLeave' + "'," + pkId + ',' + venueId + ');"><i class="fa fa-edit"> 同意请假 </i></button>&nbsp;&nbsp;';
+        return edithtml;
+    } else if (state == 4) {
+        return edithtml;
+    } else if (state == 5) {
+        edithtml += '<button class="btn btn-xs btn-danger" onclick="return change_state(' + "'" + 'Done' + "'," + pkId + ',' + venueId + ');"><i class="fa fa-edit"> 上课完成 </i></button>&nbsp;&nbsp;';
+        return edithtml;
+    } else if (state == 6) {
+        return edithtml;
+    } else {
+        return edithtml;
+    }
+
+}
+
+
+function transtionleaveTeachingScheStateHandle(state, pkId, venueId) {
+
+    var edithtml = '<a href="/TeachingSchedule/Details/' + pkId + '" class="btn btn-xs btn-success"><i class="fa fa-edit"> 查看 </i></a>&nbsp;&nbsp;';
+    if (state == 0) {
+        edithtml += '<button class="btn btn-xs btn-danger" onclick="return change_leave_state(' + "'" + 'StopTeachingSche' + "'," + pkId + ',' + venueId + ');"><i class="fa fa-edit"> 停课 </i></button>&nbsp;&nbsp;';
+        return edithtml;
+    } else if (state == 1) {
+        edithtml += '<button class="btn btn-xs btn-danger" onclick="return change_leave_state(' + "'" + 'StopTeachingSche' + "'," + pkId + ',' + venueId + ');"><i class="fa fa-edit"> 停课 </i></button>&nbsp;&nbsp;';
+        return edithtml;
+    } else if (state == 2) {
+        return edithtml;
+    } else if (state == 3) {
+        edithtml += '<button class="btn btn-xs btn-danger" onclick="return change_leave_state(' + "'" + 'AgreeLeave' + "'," + pkId + ',' + venueId + ');"><i class="fa fa-edit"> 同意请假 </i></button>&nbsp;&nbsp;';
+        return edithtml;
+    } else if (state == 4) {
+        return edithtml;
+    } else if (state == 5) {
+        edithtml += '<button class="btn btn-xs btn-danger" onclick="return change_leave_state(' + "'" + 'Done' + "'," + pkId + ',' + venueId + ');"><i class="fa fa-edit"> 上课完成 </i></button>&nbsp;&nbsp;';
+        return edithtml;
+    } else if (state == 6) {
+        return edithtml;
+    } else {
+        return edithtml;
+    }
+
+}
+
+function transtionVenueNoticeRange(data) {
+    if (data == 1) {
+        return '<span class="btn btn-xs btn-info">场馆</span>';
+    } else if (data == 2) {
+        return '<span class="btn btn-xs btn-info">老师</span>';
+    }else if (data == 3) {
+        return '<span class="btn btn-xs btn-info">场馆老师</span>';
+    }else if (data == 4) {
+        return '<span class="btn btn-xs btn-info">学生</span>';
+    }else if (data == 5) {
+        return '<span class="btn btn-xs btn-info">场馆学生</span>';
+    }else if (data == 6) {
+        return '<span class="btn btn-xs btn-info">老师学生</span>';
+    }else if (data == 7) {
+        return '<span class="btn btn-xs btn-info">全部</span>';
+    }else{
+        return '<span class="btn btn-xs btn-info">全部</span>';
+    }
+
+}
+
+
+function transtionCoachWagesState(data) {
+    if (data == 0) {
+        return '<span class="btn btn-xs btn-danger">未发放</span>';
+    } else if (data == 1) {
+        return '<span class="btn btn-xs btn-success">已发</span>';
+    } else {
+        return '<span class="btn btn-xs btn-danger">其他</span>';
+    }
+}
+
+
+function transtionCurriculumScheState(data) {
+    if (data == 0) {
+        return '<span class="btn btn-xs btn-info">学生约课完成</span>';
+    } else if (data == 1) {
+        return '<span class="btn btn-xs btn-success">上课完成</span>';
+    } else if (data == 2) {
+        return '<span class="btn btn-xs btn-danger">学生请假</span>';
+    } else if (data == 3) {
+        return '<span class="btn btn-xs btn-danger">老师请假</span>';
+    } else if (data == 4) {
+        return '<span class="btn btn-xs btn-danger">学校停课</span>';
+    } else if (data == 5) {
+        return '<span class="btn btn-xs btn-success">发放工资完成</span>';
+    } else if (data == 6) {
+        return '<span class="btn btn-xs btn-danger">请假申请</span>';
+    } else if (data == 7) {
+        return '<span class="btn btn-xs btn-danger">上课中</span>';
+    } else {
+        return '<span class="btn btn-xs btn-danger">其他</span>';
+    }
+}

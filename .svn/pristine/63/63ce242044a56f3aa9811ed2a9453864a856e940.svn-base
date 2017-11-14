@@ -1,0 +1,171 @@
+﻿@{
+    ViewBag.Title = "场馆系统";
+    ViewBag.SubTitle = "老师管理";
+    Layout = "~/Views/Shared/_HeaderPartial.cshtml";
+}
+
+@*@section Menu {*@
+    @*<script src="~/Scripts/Tables/Data-menu.js"></script>*@
+    @*@Scripts.Render("~/Scripts/Tables/Data/menu")*@
+@*}*@
+
+@Html.Action("Default", "Base")
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">查询条件</h3>
+            </div>
+            <form id="coachform" class="form-horizontal">
+                <div class="box-body">
+                    <div class="form-group">
+                        <input type="hidden" id="VenueID" name="VenueID" value="@ViewBag.venueId" />
+                        <label for="FullName" class="col-sm-1 control-label">老师姓名</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="FullName" name="FullName" placeholder="老师姓名">
+                        </div>
+                        <label for="UserName" class="col-sm-1 control-label">老师用户名</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="UserName" name="UserName" placeholder="老师用户名">
+                        </div>
+                        <div class="col-sm-1">
+                            <button type="button" class="btn btn-info pull-right" onclick="return bind_data();">查询</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">老师列表</h3>
+            </div>
+            <div class="box-body" id="demo">
+                <table id="coachtable" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>编号</th>
+                            <th>头像</th>
+                            <th>姓名</th>
+                            <th>用户名</th>
+                            @*<th>昵称</th>*@
+                            <th>课时工资</th>
+                            <th>课时费用</th>
+                            <th>小班工资</th>
+                            <th>小班费用</th>
+                            <th>住址</th>
+                            <th>性别</th>
+                            <th>状态</th>
+                            <th>介绍</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="example-modal" >
+        <div class="modal" id="setcoachwagemodal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title">设置 <span class="btn btn-xs btn-success" id="coachname" name="coachname"></span> 老师工资</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form id="setcoachwageform" class="form-horizontal">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <input type="hidden" id="VenueID" name="VenueID" value="" />
+                                        <input type="hidden" id="CoachID" name="CoachID" value="" />
+                                        <label for="Wage" class="col-sm-3 control-label">私教工资</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" id="Wage" name="Wage" placeholder="私教工资" required>
+                                        </div>
+                                        <label for="WageMore" class="col-sm-3 control-label">小班工资</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" id="WageMore" name="WageMore" placeholder="小班工资" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+                            <button type="button" class="btn btn-primary" onclick="return setcoachwage();">保存</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>*@
+
+    <div class="example-modal">
+        <div class="modal" id="setcoachpricemodal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">设置 <span class="btn btn-xs btn-success" id="coachname" name="coachname"></span> 老师课时费</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="setcoachpriceform" class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <input type="hidden" id="VenueID" name="VenueID" value="" />
+                                    <input type="hidden" id="CoachID" name="CoachID" value="" />
+                                    <label for="Wage" class="col-sm-3 control-label">私教工资</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="Wage" name="Wage" placeholder="私教工资" required>
+                                    </div>
+                                    <label for="Price" class="col-sm-3 control-label">私教课时费</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="Price" name="Price" placeholder="私教课时费" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="WageMore" class="col-sm-3 control-label">小班工资</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="WageMore" name="WageMore" placeholder="小班工资" required>
+                                    </div>
+                                    <label for="PriceMore" class="col-sm-3 control-label">小班课时费</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="PriceMore" name="PriceMore" placeholder="小班课时费" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" onclick="return setcoachprice();">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@*@section Scripts {*@
+<script src="~/Scripts/SysManage/Coach.js"></script>
+   
+     @*@Scripts.Render("~/AdminLTE/plugins/datatables/js")
+    @Scripts.Render("~/Scripts/Tables/Data")
+    @Scripts.Render("~/Scripts/SysManage/ManageBase")
+    @Scripts.Render("~/Scripts/SysManage/Coach")
+    @Scripts.Render("~/Scripts/SysManage/jquery.serializejson.min")*@
+    <script>
+        $(function () {
+            bind_data();
+        });
+    </script>
+@*}*@

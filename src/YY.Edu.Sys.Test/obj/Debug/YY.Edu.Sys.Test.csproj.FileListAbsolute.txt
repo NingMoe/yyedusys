@@ -49,3 +49,5 @@ D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Test\obj\Debug\YY.Edu.Sys.Test.dll
 D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Test\obj\Debug\YY.Edu.Sys.Test.pdb
 D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Test\bin\Debug\aliyun-net-sdk-core.dll
 D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Test\bin\Debug\aliyun-net-sdk-dysmsapi.dll
+D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Test\bin\Debug\YY.Edu.Sys.Models.dll
+D:\junfu.zhao\project\yyedusys\src\YY.Edu.Sys.Test\bin\Debug\YY.Edu.Sys.Models.pdb

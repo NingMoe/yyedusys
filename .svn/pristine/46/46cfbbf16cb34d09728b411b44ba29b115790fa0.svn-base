@@ -1,0 +1,206 @@
+﻿
+
+function calculationSumPrice() {
+
+    var classNumber = $("#ClassNumber").val();
+    var price = $("#Price").val();
+    
+    var sumPrice = 0;
+    if (!isNaN(parseInt(classNumber)) && !isNaN(parseInt(price))) {
+        sumPrice = parseInt(classNumber) * parseInt(price);
+    }
+
+    $("#PayMoney").val(sumPrice);
+    $("#PaidMoney").val(sumPrice);
+}
+
+$("#StudentID").on("change", function () {
+    $("#StudentFullName").val($("#StudentID option:selected").text());
+})
+
+$("#PKType").on("change", function () {
+
+    var id = $("#CoachID").val();
+    var pkType = $("#PKType").val();
+    if (parseInt(id) < 0) 
+        return;
+    $.ajax({
+        type: "get",
+        url: ApiUrl + "api/coach/get/" + id,
+        contentType: 'application/json',
+        success: function (data, status) {
+            if (status == "success") {
+                if (data.Info == null) {
+                    alert('error');
+                } else {
+                    if (pkType == 1) {
+                        $("#Price").val(data.Info.Price);
+                    } else {
+                        $("#Price").val(data.Info.PriceMore);
+                    }
+                }
+            }
+        },
+        error: function (e) {
+        },
+        complete: function () {
+
+        }
+    });
+
+    calculationSumPrice();
+
+})
+
+$("#CoachID").on("change", function () {
+
+    var pkType = $("#PKType").val();
+    if (parseInt(pkType) < 0)
+        return;
+
+    $.ajax({
+        type: "get",
+        url: ApiUrl + "api/coach/get/" + $(this).val(),
+        contentType: 'application/json',
+        success: function (data, status) {
+            if (status == "success") {
+                if (data.Info == null) {
+                    alert('error');
+                } else {
+                    if (pkType == 1) {
+                        $("#Price").val(data.Info.Price);
+                    } else {
+                        $("#Price").val(data.Info.PriceMore);
+                    }
+                }
+            }
+        },
+        error: function (e) {
+        },
+        complete: function () {
+
+        }
+    });
+
+    $("#CoachFullName").val($("#CoachID option:selected").text());
+
+    calculationSumPrice();
+})
+
+$("#ClassNumber").on("change", function () {
+    calculationSumPrice();
+})
+
+
+$("#save").on('click', function () {
+
+    var data = $('#applybuyhoursfrom').serializeJSON();
+
+    //添加
+    $.ajax({
+        type: "POST",
+        url: ApiUrl + "api/ApplyBuyHours/create",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: function (data, status) {
+            if (status == "success") {
+                if (!data.Error) {
+                    alert("添加缴费记录成功");
+                } else {
+                    alert(data.Msg);
+                }
+            }
+        },
+        error: function (e) {
+            console.log('error');
+        },
+        complete: function () {
+
+        }
+    });
+});
+
+function bind_data() {
+
+    columns_data = [
+        { "data": "ApplyID" },
+        { "data": "StudentFullName" },
+        { "data": "CoachFullName" },
+        { "data": "ClassNumber" },
+        { "data": "PayMoney" },
+        { "data": "PaidMoney" },
+        {
+            "data": "PKType",
+            "render": function (data, type, full, meta) {
+                if (data == 1) {
+                    var edithtml = '<span class="btn btn-xs btn-info">私教</span>';
+                } else {
+                    var edithtml = '<span class="btn btn-xs btn-info">小班</span>';
+                }
+                return edithtml;
+            }
+        },
+        {
+            "data": "Status",
+            "render": function (data, type, full, meta) {
+                if (data == 1) {
+                    var edithtml = '<span class="btn btn-xs btn-success">缴费成功</span>';
+                } else {
+                    var edithtml = '<span class="btn btn-xs btn-info">待确认</span>';
+                }
+                return edithtml;
+            }
+        },
+        {
+            "data": "AddTime",
+            "render": function (data, type, full, meta) {
+                var dataStr = Date.parse(data);
+                return new Date(dataStr).Format("yyyy-MM-dd hh:mm:ss");
+            }
+        },
+        {
+            "data": "Status",
+            "render": function (data, type, full, meta) {
+                if (data == 0) {
+                    return '<button class="btn btn-xs btn-success" onclick="return setPayRecordAudited(' + full['ApplyID'] + ',' + full['VenueID'] + ');"><i class="fa fa-edit"> 确认缴费 </i></button>&nbsp;&nbsp;';
+                } else {
+                    return "";
+                }
+            }
+        },
+    ];
+
+    bindTable('applybuyhourstable', 'applybuyhoursfrom', 'api/ApplyBuyHours/Page4Venue', columns_data, false);
+}
+
+function setPayRecordAudited(applyID, venueId) {
+
+    var flag = confirm('确定缴费成功?');
+    if (flag) {
+
+        $.ajax({
+            type: "post",
+            url: ApiUrl + "api/ApplyBuyHours/setPayRecordAudited",
+            contentType: 'application/json',
+            data: JSON.stringify({ ApplyID: applyID, VenueID: venueId }),
+            success: function (data, status) {
+                if (status == "success") {
+                    console.log(data);
+                    if (data.Error) {
+                        alert(data.Msg);
+                    } else {
+                        bind_data();
+                        //alert('确定缴费成功');
+                    }
+                }
+            },
+            error: function (e) {
+            },
+            complete: function () {
+
+            }
+        });
+    } else {
+
+    }
+}

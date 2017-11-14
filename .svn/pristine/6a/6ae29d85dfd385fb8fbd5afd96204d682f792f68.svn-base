@@ -1,0 +1,152 @@
+﻿
+jQuery.support.cors = true;
+function LoadMyCurriculum() {
+   
+    nextPagePlus();
+
+    // RequestType 请求类型，1今日，2未上，3已上
+
+    var CurrentDate = "";
+
+    var myCuDate = new Date();
+    CurrentDate = myCuDate.getFullYear() + "-" + (myCuDate.getMonth() + 1) + "-" + myCuDate.getDate();
+
+    var requestPrm = " { PageIndex: " + $("#hdPageIndex").val() + ", PageSize:" + $("#hdPageSize").val() + ", RequestType:1,CurrentDate:'" + CurrentDate + "',StudentID:" + $("#hdStudentID").val() + ",SearchCondition:{}}";
+    $.ajax({
+        type: "get",
+        url: ApiUrl + "/Student/GetCoachList/",
+        dataType: "json",
+        async: false,
+        data: { query: requestPrm },
+        success: function (data) {
+           
+            var str = "";
+            var dataCu = data.data;
+            if (dataCu.length >= parseInt($("#hdPageSize").val())) {
+                $("#more").show();
+            } else {
+                $("#more").hide();
+            }
+
+            //0预约成功，1上课成功，2学生请假，3老师请假4场馆停课
+            $.each(dataCu, function (i, c) {
+                alert(JSON.stringify(c));
+                str=str+' <div class="discussion">';
+                str=str+' <div class="hd">';
+                str=str+'  <span class="avatar">';
+                str=str+'  <b class="pic loaded" style="font-weight: normal;">';
+                str = str + '    <img src="' + c.HeadUrl + '" width="60px" height="60px">';
+                str=str+'  </b>';
+                str=str+'   </span>';
+                str=str+'  <div class="info">';
+                str = str + '     ' + c.FullName + '';
+                str = str + '    <span class="meta">';               
+                str = str + '         <p>特长 <em>' + c.Specialty + '</em> </p>';
+                str=str+'    </span>';
+                str=str+'    <span class="meta">';
+                str = str + '           <p>教龄 <em>' + c.Seniority + '</em>年</p>';
+                str = str + '      </span>';
+              
+              
+                if (c.ApplyCoachID <=0)
+                { str = str + '       <p><button type="button" class="order-btnCoach" data-type="0" style="margin-top:-30px" onclick="SKBuy(' + c.CoachID + ',this)">试课</button></p>'; }
+                else{
+                    str = str + '<button type="button" class="order-btnCoach" data-type="0" style="margin-top:-30px;background-color:#C0C0C0" onclick="return false;" >试课</button>';
+                }
+              
+                str=str+'   </div>';
+                str=str+'   </div>';
+                str = str + '   </div>';
+
+            });          
+            $("#panel0").append(str);
+        }
+    });
+}
+
+function SKBuy(coachid,obj) {
+    if ($(obj).attr("data-type") == 1) {
+        return false;
+    }
+    if (confirm('确定要提交试课申请吗？')) {
+        var sid = $("#hdStudentID").val();
+        var parm = { StudentID: sid, TSMID: 0, TryoutState: 0, PayMoney: 0, PayState: 0, PKID: 0, TryoutMoney: 0, coachID: coachid };
+        $.ajax({
+            type: "POST",
+            url: ApiUrl + "/Student/ApplyTryout",//BuyCurriculum(int StudentID,int CoachID,int number)
+            contentType: "application/json",
+            data: JSON.stringify(parm),
+            success: function (data, status) {
+                if (status == "success") {
+                    if (data.Code == 1001) {
+                        $(obj).attr("data-type", "1");
+                        $(obj).css({ 'background-color': '#C0C0C0' });
+                        //model_alert("申请试课提交成功，快去支付吧");
+                       // jQuery('#qrcode').qrcode("http://www.baitour.qunar.com");
+                        $('#my-confirm').modal();
+
+                    }
+                    else {
+                        model_alert("申请试课失败，再操作一次吧。");
+                    }
+                }
+                else {
+                    model_alert("申请试课失败，再操作一次吧");
+                }
+            }
+        });
+    }
+            }
+
+
+
+function dateformat(date) {
+    var myDate = new Date(date);
+    return myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate();
+}
+
+function NewDateTime(str) {
+    str = str.replace("-", "/").replace("-", "/");
+    var arr = str.split(' ');
+
+    var strY = arr[0].split('/');
+    var date = new Date();
+    date.setFullYear(Number(strY[0]));
+    date.setMonth(Number(strY[1]) - 1);
+    date.setDate(Number(strY[2]));
+    if (arr.length > 1) {
+        var strH = arr[1].split(':');
+        date.setHours(Number(strH[0]));
+        date.setMinutes(Number(strH[1]));
+        date.setSeconds(Number(strH[2]));
+        date.setMilliseconds(0);
+    } else {
+        date.setHours(0, 0, 0, 0);
+    }
+    return date;
+}
+
+function nextPagePlus() {
+    var iPindex = parseInt($("#hdPageIndex").val()) + 1;
+    $("#hdPageIndex").val(iPindex);
+}
+
+
+$(function () {
+
+    $(".o").hide();
+    $(".o").first().show();
+
+    $("#hdPageIndex").val("0");
+   
+    LoadMyCurriculum();
+   
+    $("#more").on("click", function () {
+        setTimeout(function () {
+            LoadMyCurriculum();
+            //myscroll.refresh();
+        }, 100)
+    });
+ 
+
+})

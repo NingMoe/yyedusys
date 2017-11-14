@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en" style="overflow: auto;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>留言回复</title>
+    <link rel="stylesheet" href="/Content/amazeui.min.css" />
+    <link rel="stylesheet" href="/Content/admin.css">
+    <link rel="stylesheet" href="/Content/Coachindex.css">
+    <link rel="stylesheet" href="/Content/iconfont.css">
+    <link rel="stylesheet" href="/font/iconfont.woff">
+    <link rel="stylesheet" href="/font/iconfont.eot">
+    <link rel="stylesheet" href="/font/iconfont.svg">
+    <link rel="stylesheet" href="/font/iconfont.ttf">
+</head>
+<body>
+    @Html.Action("Default", "Base")
+    <div class="_REMARK">
+        <!-- 头部导航 -->
+        <header data-am-widget="header" class="am-header am-header-default am-no-layout">
+            <div class="am-header-left am-header-nav">
+                <a href="javascript:history.back()" class="">
+                    <i class="am-header-icon am-icon-arrow-left"></i>
+                </a>
+            </div>
+            <h1 class="am-header-title">
+                <a href="javascript:void(0);" class="">详细信息</a>
+            </h1>
+            <div class="am-header-right am-header-nav">
+                <a href='@Url.Action("Index","Student")' class=""><i class="icon am-icon-home iconfont textAlign"></i></a>
+            </div>
+        </header>
+
+        <!-- 内容部分 -->
+        <div class="_remarkCon">
+            <div data-am-widget="tabs" class="am-tabs am-tabs-default">
+
+                <div>
+
+                    <div data-tab-panel-1 class="am-tab-panel ">
+                        <p class="_rem_stroy "></p>
+                        <!-- 阶段总结 -->
+                        <div class="_CD_NOTsc">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="hdNoticeID" name="hdNoticeID" value="@ViewBag.DetailID" />
+
+    @*<script src="/Scripts/amazeui.min.js"></script>*@
+    <script src="/Scripts/app.js"></script>
+    <script src="/Scripts/Notice/Detail.js"></script>
+    <script type="text/javascript"> LoadNoticeDetail()</script>
+</body>
+</html>

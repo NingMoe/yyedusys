@@ -1,0 +1,139 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" style="overflow: auto;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title></title>
+    <link rel="stylesheet" href="/Content/amazeui.min.css" />
+    <link href="~/Content/style_me.css" rel="stylesheet" />
+    <link href="~/Content/iscrollstyle.css" rel="stylesheet" />
+
+</head>
+<body class="bgcolor">
+    @Html.Action("Default", "Base")
+    @*<div class="_Course_D">*@
+    <!-- 头部导航 -->
+    <header data-am-widget="header" class="am-header am-header-default am-no-layout">
+        <div class="am-header-left am-header-nav">
+            <a href="javascript:history.back()" class="">
+                <i class="am-header-icon am-icon-arrow-left"></i>
+            </a>
+        </div>
+        <h1 class="am-header-title">
+            <a href="javascript:void(0);" class="">购买课时</a>
+        </h1>
+        <div class="am-header-right am-header-nav">
+            <a href='@Url.Action("Index","Student")' class=""><i class="icon am-icon-home iconfont textAlign"></i></a>
+        </div>
+    </header>
+    <!-- 搜索框 -->
+    <div class="courseSearh">
+        <div class="am-col col-lg-6">
+            <div class="am-input-group">
+                <input type="text" class="am-form-field" id="seach">
+                <span class="am-input-group-btn">
+                    <button class="am-btn am-btn-default" type="button" id="btnSel" onclick="btnSel()"><span class="am-icon-search"></span></button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <ul class="order orderNew2">
+        <li class="current" id="tab01"><a href="javascript:void(0);">离我最近</a></li>
+        <li id="tab02">
+            <select  id="SelType" style="height:40px;width:80px;border:0;border:none;">
+                <option value="0" selected>项目类型</option>
+                <option value="1">乒乓球</option>
+                <option value="2">羽毛球</option>
+                <option value="3">篮球</option>
+            </select>
+        </li>
+        <li id="tab03"><a href="javascript:void(0);">人均最高</a></li>
+        <li id="tab04"><a href="javascript:void(0);">老师等级</a></li>
+
+    </ul>
+    <div id="wrapper01" class="o">
+        <div class="scroller" id="scroller">
+            <ul id="panel0" class="order-list"></ul>
+            @*<div class="more" id="more"><i class="pull_iconx" id="pull_icon"></i><span>点击加载...</span></div>*@
+        </div>
+    </div>
+
+
+    <div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
+        <div class="am-modal-dialog">
+            <div class="am-modal-bd" id="qrcode">
+               
+            </div>
+            <div class="am-modal-hd">
+               快来支付吧
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" data-am-modal-cancel>关闭</span>                
+            </div>
+        </div>
+    </div>
+    
+    <input type="hidden" id="hdType" value="" />
+    <input type="hidden" id="hdclassType" value="0" />
+    <input type="hidden" id="hdStudentID" value="@ViewBag.StudentID" />
+    <input type="hidden" id="hdVenueID" value="@ViewBag.VenueID" />
+    <input type="hidden" id="hdFullName" value="@ViewBag.FullName" />
+
+    <script src="/Scripts/Jquery_Extention.js"></script>
+    <script src="/Scripts/Student/BuyHourClass.js"></script>
+    <script src="~/Scripts/jquery.serializejson.min.js"></script>
+    <script src="~/Scripts/jquery.qrcode.min.js"></script>
+    <script>
+
+        $(function () {
+            $(".o").hide();
+            $(".o").first().show();
+            $("#hdType").val("1");
+            LoadCoach();
+            //LoadCoachMore();
+
+            //$("#more").on("click", function () {
+            //    setTimeout(function () {
+            //        LoadCoach();
+            //    }, 100)
+            //});
+
+            //$("#more02").on("click", function () {
+            //    setTimeout(function () {
+            //        LoadCoachMore();
+            //    }, 100)
+            //});
+
+            $(".order li").on('click', function () {
+                $(".order li").removeClass('current');
+                $(this).addClass('current');
+                var vtype = $(this).attr("id").replace("tab", "");
+                // $("#wrapper" + $(this).attr("id").replace("tab", "")).show();
+                $("#hdType").val(vtype);
+                if (vtype != 2) {
+                    LoadCoach();
+                }
+            });
+
+            $("#SelType").change(function () {
+                $("#hdclassType").val($(this).val());
+                LoadCoach();
+            });
+
+          
+
+        });
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>

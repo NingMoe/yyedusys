@@ -56,6 +56,7 @@ pc端
 测试录入多个教练的工资
 添加学生请假状态
 
+前端页面返回
 调用数字键盘
 学生留言没有加载出来
 学生端评价页面跑偏
@@ -70,9 +71,9 @@ pc端
 一对一
     约课、上课完成、发工资流程 done
     学生请假 done
-    老师请假
+    老师请假 done
     学校停课(未约课) done
-    学校停课(约课)
+    学校停课(约课) done
 
 一对多
     约课、上课完成、发工资流程
@@ -81,6 +82,23 @@ pc端
     学校停课(未约课)
     学校停课(约课)
 
+
+归总一下（含细节）：
+1、校区编辑，城市那有小错误；
+2、学生流失的，没法恢复；
+3、学生列表留下（编号、头像、用户名、姓名、家长姓名、操作-其他信息放入编辑中）
+4、老师列表留下（编号、头像、用户名、姓名、一对一/多工资、状态、操作-其他信息放入查看中，其他不变）
+5、老师详情增加编辑功能（含上传照片、介绍等）或者暂时删除，以后添加
+6、排课列表留下（编号、学校、校区、老师、课程名称、日期、上下课时间、类型、状态、操作），上课完成、学生老师请假比照列明
+7、公告列表留下（编号、类型-有些错误、标题、内容、通知范围、发送时间、状态）
+8、反馈列表留下（编号、学生、内容、时间、状态、操作）
+9、涉及金额的，第一排没有合计总额
+10、学生总量、老师总量、历史收入、历史支出；
+本月新增学生、本学流失学生、本月新增收入、
+本月应付工资；今日约课、今日结课
+
+城市的编辑功能吧；
+另外老师管理那，增加编辑功能，可以编辑老师简介、上传老师照片获奖信息等；
 
 学生
 购买课时（成功）
@@ -101,3 +119,40 @@ pc端
 学生请假
 场馆停课
 学校消息
+
+后台去掉编号
+购买成功通知
+9vuVc0Rw2gH3C86x1ul8Klijsv3vMuEabVRPJ9hIZpQ
+商品信息：{{name.DATA}}
+{{remark.DATA}}
+
+预约课程开始提醒
+eDskwPBHQ2kQStjgo0QsgNbkSiW9q9Kpe6prbmnW2oI
+{{first.DATA}}
+课程名称：{{keyword1.DATA}}
+开始时间：{{keyword2.DATA}}
+{{remark.DATA}}
+
+绑定成功通知
+wu2SvgeLjAJKixWlXpvj_UKGMjOlnVZdftqe5oQFpy0
+{{first.DATA}}
+微信ID：{{keyword1.DATA}}
+绑定账号：{{keyword2.DATA}}
+开通功能：{{keyword3.DATA}}
+{{remark.DATA}}
+
+绑定成功通知
+wzffjOy7VehKlTTqrzao5ubNf8m-irlW79Ctpj4IcXE
+{{first.DATA}}
+绑定帐号：{{keyword1.DATA}}
+绑定状态：{{keyword2.DATA}}
+绑定时间：{{keyword3.DATA}}
+{{remark.DATA}}
+
+绑定成功通知
+xbupesKm2Cg3StKcvG7TnsAbgwSUEj4xbuKOmdFgXyM
+{{first.DATA}}
+用户名：{{keyword1.DATA}}
+用户类型：{{keyword2.DATA}}
+绑定时间：{{keyword3.DATA}}
+{{remark.DATA}}

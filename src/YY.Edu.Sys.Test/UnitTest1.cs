@@ -10,6 +10,8 @@ using System.Data;
 using Senparc.Weixin.MP.AdvancedAPIs.TemplateMessage;
 using Senparc.Weixin.MP.AdvancedAPIs;
 using Senparc.Weixin.MP.Containers;
+using YY.Edu.Sys.Comm.Helper;
+using Newtonsoft.Json.Linq;
 
 namespace YY.Edu.Sys.Test
 {
@@ -230,10 +232,35 @@ namespace YY.Edu.Sys.Test
         [TestMethod]
         public void TestMethod5()
         {
-            string query = @"{""VenueID"":""1"",""WorkDate"":""2017-08"",""CoachID"":""-1"",""CurriculumBeginTime"":""2017-08"",""CurriculumId"":[""2"",""1""]}";
+            //string query = @"{""VenueID"":""1"",""WorkDate"":""2017-08"",""CoachID"":""-1"",""CurriculumBeginTime"":""2017-08"",""CurriculumId"":[""2"",""1""]}";
 
-            CreateCoachWageRequest oData = Newtonsoft.Json.JsonConvert.DeserializeObject<CreateCoachWageRequest>(query);
+            //CreateCoachWageRequest oData = Newtonsoft.Json.JsonConvert.DeserializeObject<CreateCoachWageRequest>(query);
 
+            HttpRequestHelper RequestHelper = new HttpRequestHelper();
+
+            //检查输入项
+            string apiUrl = "http://localhost:53262/api";
+            string url = string.Format("{0}/WxUserInfo/SetPosition", apiUrl);
+
+            RequestHelper.Create(url);
+            RequestHelper.WebRequest.ContentType = "application/json;charset=UTF-8";
+            RequestHelper.WebRequest.Headers.Add("Accept-Encoding: gzip, deflate");
+            RequestHelper.WebRequest.AutomaticDecompression = System.Net.DecompressionMethods.Deflate;
+
+            Sys.Models.WxUserInfo userInfo = new Models.WxUserInfo()
+            {
+                OpenId = "ozLW4wHYTcApj55HIUT0o8Qdet6U",
+                Latitude = 2222,
+                Longitude = 333,
+            };
+            string jsonStr = JsonHelper.ToJsonStringByNewtonsoft(userInfo);
+
+            string result = RequestHelper.PostString(jsonStr);
+
+
+            JObject jo = JObject.Parse(result);
+            if (Convert.ToBoolean(jo["Error"].ToString()))
+                throw new Comm.YYException.YYException(jo["Msg"].ToString());
 
         }
     }

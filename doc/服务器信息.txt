@@ -15,4 +15,24 @@ AppID： wxc4e7d155648eaee4
 AppSecret： bf47c7eea1c982e73842f8aee8f16d8f
 EncodingAESKey :8FoZDbSN6383CtcrUd5SAlyGNF51JiAzLWLkZRbivEx
 
-90服务器开工具
+修复意见征集工资
+
+课程管理这，我们要不将“查看”改为“编辑”，增加学校上传课程教案，填写课后总结，这样比手机输入方便
+老赵，PC端我们还是加上城市的编辑功能吧；
+另外老师管理那，增加编辑功能，可以编辑老师简介、上传老师照片获奖信息等；
+学生端，点击老师，会有老师的简介
+老师的离职处理
+
+ID9vuVc0Rw2gH3C86x1ul8Klijsv3vMuEabVRPJ9hIZpQ
+您好，您已购买成功。
+
+商品信息：{{name.DATA}}
+{{remark.DATA}}
+
+
+PuNnT-gYWf--_4eegRrYIWK0z13MvLrMAiUI8iHOFnM
+{{first.DATA}}
+
+支付金额：{{orderMoneySum.DATA}}
+商品信息：{{orderProductName.DATA}}
+{{Remark.DATA}}

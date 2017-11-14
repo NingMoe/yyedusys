@@ -1,0 +1,127 @@
+﻿
+jQuery.support.cors = true;
+function LoadNotice() {
+    nextPagePlus();
+    var requestPrm = " { PageIndex: " + $("#hdPageIndex").val() + ", PageSize:" + $("#hdPageSize").val() + ",SearchCondition:{StudentID: " + $("#hdStudentID").val() + "}}";
+
+    $.ajax({
+        type: "get",
+        url: ApiUrl + "/VenueNotice/GetMyNotice/",
+        dataType: "json",
+        async: false,
+        data: { query: requestPrm },
+        //beforeSend: function () {
+        //},
+        success: function (data) {
+      
+            var str = "";
+            var dataCu = data.data;
+        //	4	NoticeType			int	4	10	0			公告类型 1公告 2活动 3微信消息 4短信消息 5提醒
+            //	11	source			int	4	10	0		((1))	来源，1场馆，2运营平台，3场馆老师 
+            $.each(dataCu, function (i, c) {
+            
+                var NoticeType = "";
+                switch (c.NoticeType)
+                {
+                    case 1:
+                        NoticeType = "公告";
+                        break;
+                    case 2: NoticeType = "活动";
+                        break;
+                    case 3: NoticeType = "微信推广";
+                        break;
+                    case 4: NoticeType = "短信推广";
+                        break;
+                    case 5: NoticeType = "提醒";
+                        break;
+                }
+                var source = "";
+                switch (c.source) {
+                    case 1:
+                        source = "场馆";
+                        break;
+                    case 2: source = "运营平台";
+                        break;
+                    case 3: source = "老师";
+                        break;
+                }
+             
+                         str += '  <li>';
+                str += '  <p class="time">【' + source + '】' + NoticeType + '</p>';
+                str += '  <p class="address"><i class="iconfont">&#xe612;</i>' + c.NoticeTitle + '</p>';
+                str += '  <p class="cx"><i class="iconfont">&#xe615;</i>' + dateformat(c.SendTime, "yyyy-MM-dd HH:mm:ss") + '</p>';
+                str += '  </li>';
+                str += ' </div>';
+            
+
+            });
+
+            //if (str == "") {
+            //    $('#btnMore a').text("没有消息啦");
+            //} else { $('#btnMore a').text("更多消息 »"); }
+   
+            //$(".newsCon").append(str);
+            $("#panel0").append(str);
+        }
+    });
+}
+
+
+
+function nextPagePlus() {
+    var iPindex = parseInt($("#hdPageIndex").val()) + 1;
+    $("#hdPageIndex").val(iPindex);
+}
+$("#more").on("click", function () {
+    setTimeout(function () {
+        LoadNotice();
+        //myscroll.refresh();
+    }, 100)
+});
+
+function dateformat(date, strgs) {
+    var myDate = new Date(date);
+   
+    if (strgs == "yyyy-MM-dd") {
+        return myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate();
+    }
+    else {
+        return myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate() + " " + myDate.getHours() + ":" + myDate.getMinutes() +":" + myDate.getSeconds();  //获取系统时，
+    }
+}
+
+function NewDateTime(str) {
+    str = str.replace("-", "/").replace("-", "/");
+    var arr = str.split(' ');
+
+    var strY = arr[0].split('/');
+    var date = new Date();
+    date.setFullYear(Number(strY[0]));
+    date.setMonth(Number(strY[1]) - 1);
+    date.setDate(Number(strY[2]));
+    if (arr.length > 1) {
+        var strH = arr[1].split(':');
+        date.setHours(Number(strH[0]));
+        date.setMinutes(Number(strH[1]));
+        date.setSeconds(Number(strH[2]));
+        date.setMilliseconds(0);
+    } else {
+        date.setHours(0, 0, 0, 0);
+    }
+    return date;
+}
+
+
+
+$('#btnMore a').bind('click', function () {
+    //hdPageIndex
+    var iPindex = parseInt($("#hdPageIndex").val()) + 1;
+    $("#hdPageIndex").val(iPindex);
+    LoadNotice();
+    //hdPageSize
+});
+
+
+function Detail(NoticeId) {
+    location.href = "http://localhost:37396/Notice/Detail/?NoticeId=" + NoticeId;
+}

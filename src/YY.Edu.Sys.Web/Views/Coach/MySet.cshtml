@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="en" style="overflow: auto;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>个人设置</title>
+    <link rel="stylesheet" href="/Content/amazeui.min.css" />
+    <link rel="stylesheet" href="/Content/admin.css">
+    <link rel="stylesheet" href="/Content/CoachIndex.css">
+    <link rel="stylesheet" href="/Content/share.min.css">
+    <style>
+        aside.slide-wrapper {
+            position: absolute;
+            z-index: 4;
+            left: 0;
+            top: 0;
+            width: 100%;
+            -webkit-transform: translate3d(100%, 0, 0);
+            -moz-transform: translate3d(100%, 0, 0);
+            -ms-transform: translate3d(100%, 0, 0);
+            -o-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
+            -webkit-transition: all 0.3s ease-out;
+            -moz-transition: all 0.3s ease-out;
+            -ms-transition: all 0.3s ease-out;
+            -o-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+        }
+
+            aside.slide-wrapper > div {
+                background-color: #343434;
+                min-height: 100%;
+            }
+
+                aside.slide-wrapper > div > div {
+                    padding: 0 10px;
+                    height: 45px;
+                }
+
+                    aside.slide-wrapper > div > div strong {
+                        height: 45px;
+                        line-height: 45px;
+                        font-size: 18px;
+                        color: #ffffff;
+                        font-weight: normal;
+                    }
+
+            aside.slide-wrapper.moved {
+                -webkit-transform: translate3d(0, 0, 0);
+                -moz-transform: translate3d(0, 0, 0);
+                -ms-transform: translate3d(0, 0, 0);
+                -o-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+
+            aside.slide-wrapper li > a {
+                padding: 15px 10px;
+                border-top: 1px solid #4d4d4d;
+                border-bottom: 1px solid #262626;
+                font-size: 15px;
+                display: block;
+                color: #fff;
+            }
+
+            aside.slide-wrapper li.current > a {
+            }
+    </style>
+</head>
+<body>
+    @Html.Action("Default", "Base")
+    <div class="_otherSet">
+        <!-- 头部导航 -->
+        <header data-am-widget="header" class="am-header am-header-default">
+            <div class="am-header-left am-header-nav ">
+                <a href="javascript:history.back()" class="">
+                    <i class="am-header-icon am-icon-arrow-left"></i>
+                </a>
+            </div>
+            <h1 class="am-header-title">
+                <a href="#title-link" class="">个人设置</a>
+            </h1>
+            <div class="am-header-right am-header-nav">
+                <a href='@Url.Action("Index","Coach")' class=""><i class="icon am-icon-home iconfont textAlign"></i></a>
+                <a href="#right-link" class="" id="spEdit">编辑</a>
+            </div>
+            
+        </header>
+        <!-- 内容部分 -->
+        <div class="_otherSeT_con">
+            <ul>
+                <div class="person_Img">
+                    <img id="imgH" src="" alt="" class="am-circle">
+                </div>
+                <li class="am-g">
+                    <a href="#">
+                        <p class="am-u-sm-5 am-u-md-5 am-u-lg-5">昵称</p>
+                        <span  class="am-u-sm-7 am-u-md-7 am-u-lg-7" style="text-align:right"  id="spNC"></span>
+                    </a>
+                </li>
+                <li class="am-g">
+                    <a href="#">
+                        <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">姓名</p>
+                        <span  class="am-u-sm-7 am-u-md-7 am-u-lg-7" style="text-align:right"  id="spName"></span>
+                    </a>
+                </li>
+                <li class="am-g">
+                    <a href="#">
+                        <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">手机号</p>
+                        <span class="am-u-sm-7 am-u-md-7 am-u-lg-7" style="text-align:right" id="spMobile"></span>
+                    </a>
+                </li>
+                <li class="am-g">
+                    <a href="#">
+                        <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">住址</p>
+                        <span  class="am-u-sm-7 am-u-md-7 am-u-lg-7" style="text-align:right"  id="spAddress"></span>
+                    </a>
+                </li>
+                <li class="am-g">
+                    <a href="#">
+                        <p class="am-u-sm-3 am-u-md-3 am-u-lg-3">性别</p>
+                        <span  class="am-u-sm-7 am-u-md-7 am-u-lg-7" style="text-align:right"  id="spSex"></span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <aside class="slide-wrapper">
+        <div class="_phone" style="background-color:#FFFFFF">
+            <!-- 头部导航 -->
+            <header data-am-widget="header" class="am-header am-header-default">
+                <div class="am-header-left am-header-nav ">
+                    <a href="#left-link">
+                        <i class="am-header-icon am-icon-arrow-left" id="leftMenu"></i>
+                    </a>
+                </div>
+                <h1 class="am-header-title">
+                    <a href="#title-link" class="">个人设置修改</a>
+                </h1>
+                <div class="am-header-right am-header-nav">
+                    <a href="#right-link" class="" id="SaveMobile">完成</a>
+                </div>
+            </header>
+            <!-- 内容部分 -->
+            <div class="am-form">
+                <div class="am-form-group">
+                    <p class="am-u-sm-4 am-u-md-4 am-u-lg-4">昵  称：</p>
+                    <input type="text" class="" id="txtNC" placeholder="请输入昵称">
+                </div>
+                <div class="am-form-group">
+                    <label for="doc-ipt-email-1">手机号：</label>
+                    <input type="tel" id="tMobile" placeholder="请输入手机号">
+                </div>
+                <div class="am-form-group">
+                    <label for="doc-ipt-email-1">地址：</label>
+                    <input type="text"  id="txtAddress" placeholder="请输入地址">
+                </div>
+                <div class="am-form-group">
+                    <label for="doc-ipt-email-1">姓别：</label>
+                    <p></p>
+                    &nbsp;&nbsp; <input type="radio" name="x" value="1" id="rN">男 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="x" id="rNV" value="0">女
+                </div>
+            </div>
+    </aside>
+
+    <input type="hidden" id="hdCoachID" name="hdCoachID" value="@ViewBag.CoachID" />
+
+    <script src="/Scripts/Jquery_Extention.js"></script>
+   
+
+    <script src="/Scripts/Coash/MySet.js"></script>
+    
+</body>
+
+</html>
