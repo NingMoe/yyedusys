@@ -1,0 +1,190 @@
+﻿@{
+    ViewBag.Title = "场馆系统";
+    ViewBag.SubTitle = "订单管理";
+    Layout = "~/Views/Shared/_HeaderPartial.cshtml";
+}
+
+<link href="~/AdminLTE/plugins/datatables/css/dataTables.bootstrap.css" rel="stylesheet" />
+
+@Html.Action("Default", "Base")
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">查询条件</h3>
+            </div>
+            <form id="classHoursOrderfrom" class="form-horizontal">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="StudentID" class="col-sm-1 control-label">选择学生</label>
+                        <div class="col-sm-3">
+                            <select id="StudentID" name="StudentID" class="form-control"></select>
+                        </div>
+                        <label for="CoachID" class="col-sm-1 control-label">选择老师</label>
+                        <div class="col-sm-3">
+                            <select id="CoachID" name="CoachID" class="form-control"></select>
+                        </div>
+                        <label for="PayState" class="col-sm-1 control-label">状态</label>
+                        <div class="col-sm-2">
+                            <select id="PayState" name="PayState" class="form-control">
+                                <option value="-1" selected>全部状态</option>
+                                <option value="0">支付中</option>
+                                <option value="1">支付成功</option>
+                                <option value="2">支付失败</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="FullName" class="col-sm-1 control-label">学生手机号</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="StudentMobile" name="StudentMobile" placeholder="学生手机号">
+                        </div>
+                        <label for="ParentFullName" class="col-sm-1 control-label">家长手机号</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="StudentParentMobile" name="StudentParentMobile" placeholder="家长手机号">
+                        </div>
+                        <label for="ParentMobile" class="col-sm-1 control-label">老师手机号</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="CoachMobile" name="CoachMobile" placeholder="老师手机号">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="ChannelOrderID" class="col-sm-1 control-label">订单编号</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="ChannelOrderID" name="ChannelOrderID" placeholder="订单编号">
+                        </div>
+                        <label for="StartAddTime" class="col-sm-1 control-label">支付时间</label>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="date" class="form-control" id="StartAddTime" name="StartAddTime">
+                                <span class="input-group-addon">到</span>
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="date" class="form-control" id="EndAddTime" name="EndAddTime">
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-info pull-right" onclick="return bind_data();">查询</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-body" id="demo">
+                <table id="classHoursOrdertable" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>订单编号</th>
+                            <th>订单类别</th>
+                            <th>支付订单号</th>
+                            <th>学生</th>
+                            <th>课程数</th>
+                            <th>支付金额</th>
+                            <th>老师</th>
+                            <th>支付状态</th>
+                            <th>支付时间</th>
+                            <th>备注</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="~/Scripts/SysManage/LoadData.js"></script>
+
+<script>
+
+    $(function () {
+
+        showCoach(VenueID);
+        showStudent(VenueID);
+
+        var ddd = new Date();
+        var day = ddd.getDate();
+
+        var month = ddd.getMonth() + 1;
+        if (month < 10) {
+            var month = "0" + (ddd.getMonth());
+        }
+
+        if (ddd.getDate() < 10) {
+            day = "0" + ddd.getDate();
+        }
+
+        var datew = ddd.getFullYear() + "-" + month + "-" + day;
+        var datew = datew.toString();
+        $("#StartAddTime").val(datew);
+        $("#EndAddTime").val(datew);
+
+        bind_data();
+    })
+
+    function bind_data() {
+
+        columns_data = [
+        { "data": "OrderID" },
+        {
+            "data": "OrderType", "render": function (data, type, full, meta) {
+                if (data == 1) {
+                    var edithtml = '<span class="btn btn-xs btn-success">课时订单</span>';
+                } else if (data == 2) {
+                    var edithtml = '<span class="btn btn-xs btn-info">退课订单</span>';
+                } else {
+                    var edithtml = '';
+                }
+                return edithtml;
+            }
+        },
+        { "data": "ChannelOrderID" },
+        { "data": "StudentFullName" },
+        { "data": "HoursNum" },
+        { "data": "PayMoney" },
+        { "data": "CoachFullName" },
+        {
+            "data": "PayState", "render": function (data, type, full, meta) {
+                if (data == 1) {
+                    var edithtml = '<span class="btn btn-xs btn-success">支付成功</span>';
+                } else if (data == 2) {
+                    var edithtml = '<span class="btn btn-xs btn-info">支付失败</span>';
+                } else {
+                    var edithtml = '<span class="btn btn-xs btn-info">支付中</span>';
+                }
+                return edithtml;
+            }
+        },
+        {
+            "data": "AddTime", "render": function (data, type, full, meta) {
+                var dataStr = Date.parse(data);
+                return new Date(dataStr).Format("yyyy-MM-dd hh:mm:ss");
+            }
+        },
+        { "data": "Remark" }
+        ];
+
+        bindTable('classHoursOrdertable', 'classHoursOrderfrom', 'api/ClassHoursOrder/Page4Venue', columns_data, false);
+
+    }
+
+</script>
