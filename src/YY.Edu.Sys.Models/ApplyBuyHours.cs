@@ -75,6 +75,5 @@ namespace YY.Edu.Sys.Models
         /// 教练姓名
         /// </summary>
         public string CoachFullName { get; set; }
-        
     }
 }

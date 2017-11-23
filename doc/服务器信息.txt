@@ -8,11 +8,47 @@ svn https://47.93.191.129/svn/yyedusys/
 主机 47.93.191.129  administrator/Yiyukeji-2017
 
 微信公众号: yiyust@163.com  ganni419
-
 917 712 777
-
 AppID： wxc4e7d155648eaee4 
 AppSecret： bf47c7eea1c982e73842f8aee8f16d8f
 EncodingAESKey :8FoZDbSN6383CtcrUd5SAlyGNF51JiAzLWLkZRbivEx
 
-修复意见征集工资
+微信支付预留信息 yiyust.pay
+mac_id:1492022412
+api密钥:iH74rNLrL8OCza7HwtBJL7nsTDNevXWp
+支付密码:eSYOaFCr0pT2pCW!
+
+select task_source,channel_id,SUM(click_count) as click_count 
+		from (
+			select task_source,channel_id,COUNT(wk_u.id) as click_count 
+			from wk_users_receive_articles as wk_u INNER JOIN wk_receive_articles as wk_a
+			on wk_u.receive_article_id=wk_a.id and wk_a.created_at>=1510588800 and wk_a.created_at<1510761600
+			where wk_u.created_at>=1510675200 and wk_u.created_at<1510761600
+            and task_source=1 and channel_id=1
+			
+			UNION ALL
+			select task_source,channel_id,COUNT(wk_u.id) as click_count 
+			from wk_users_receive_articles as wk_u INNER JOIN history_order as wk_a
+			on wk_u.receive_article_id=wk_a.id and wk_a.created_at>=1510588800 and wk_a.created_at<1510761600
+			where wk_u.created_at>=1510675200 and wk_u.created_at<1510761600
+			 and task_source=1 and channel_id=1
+		) as t1 GROUP BY task_source,channel_id
+
+
+
+
+        select task_source,channel_id,SUM(click_count) as click_count 
+		from (
+			select task_source,channel_id,COUNT(wk_u.id) as click_count 
+			from wk_users_receive_articles as wk_u INNER JOIN wk_receive_articles as wk_a
+			on wk_u.receive_article_id=wk_a.id
+			where wk_u.created_at>=1510675200 and wk_u.created_at<1510761600
+        and task_source=1 and channel_id=1
+			UNION ALL
+			select task_source,channel_id,COUNT(wk_u.id) as click_count 
+			from wk_users_receive_articles as wk_u INNER JOIN history_order as wk_a
+			on wk_u.receive_article_id=wk_a.id
+			where wk_u.created_at>=1510675200 and wk_u.created_at<1510761600
+			 and task_source=1 and channel_id=1
+		) as t1 GROUP BY task_source,channel_id
+        

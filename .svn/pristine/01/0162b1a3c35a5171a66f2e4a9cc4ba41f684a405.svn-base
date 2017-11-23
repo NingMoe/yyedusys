@@ -1,0 +1,261 @@
+﻿@{
+    ViewBag.Title = "场馆系统";
+    ViewBag.SubTitle = "个人风采";
+    Layout = "~/Views/Shared/_HeaderPartial.cshtml";
+}
+
+
+@Html.Action("Default", "Base")
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">个人风采</h3>
+            </div>
+
+            <form id="coachfrom" class="form-horizontal">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="Introduce" class="col-sm-2 control-label">个人简介</label>
+                        <div class="col-sm-3">
+                            <textarea name="Introduce" id="Introduce" rows="5" cols="35"></textarea>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-info pull-left" onclick="return edit();">保存</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <input type="hidden" name="CoachID" id="CoachID" value="@ViewBag.CoachID" />
+                        <label for="UserName" class="col-sm-2 control-label">个人简介</label>
+                        <div class="col-sm-2">
+                            <img src="" id="pic" style="width:100px;height:100px"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="Specialty" class="col-sm-2 control-label">个人简介</label>
+                        <div class="col-sm-5">
+                            <video src="movie.ogg" controls="controls" id="vio" style="width:250px;height:300px">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="Specialty" class="col-sm-2 control-label">个人简介(图片)</label>
+                        <div class="col-sm-5">
+                            <input type="file" id="filePicture" name="filePicture" accept=".jpg,.jpeg,.png,.bmp" onchange="filePictureChange()" />
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="Specialty" class="col-sm-2 control-label">个人简介(视频)</label>
+                        <div class="col-sm-5">
+                            <input type="file" id="fileVideo" name="fileVideo" accept=".mp4,.flv,.avi" onchange="fileVideoChange()" />
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <a href="@Url.Action("Index", "Coach")" class="btn btn-default">返回</a>&nbsp;&nbsp;
+                </div>
+            </form>
+
+            <form id="coachPresencePicFrom">
+                <input type="hidden" name="Title" value="个人简介(图片)" />
+                <input type="hidden" name="FCType" value="1" />
+                <input type="hidden" name="CoachID" value="@ViewBag.CoachID" />
+            </form>
+
+            <form id="coachPresenceVideoFrom">
+                <input type="hidden" name="Title" value="个人简介(视频)" />
+                <input type="hidden" name="FCType" value="2" />
+                <input type="hidden" name="CoachID" value="@ViewBag.CoachID" />
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/SysManage/ajaxfileupload.js"></script>
+
+<script>
+
+    $(function () {
+
+        $.ajax({
+            type: "GET",
+            url: ApiUrl + "api/Coach/GetCoachingPresence?venueid=1&CoachID=" + $("#CoachID").val() + "&FCType=1",
+            contentType: "application/json",
+            success: function (data, status) {
+                if (status == "success") {
+                    if (!data.Error) {
+                        $.each(data.data, function (i, v) {
+
+                            if (v.FCState == 0)
+                                return true;//false时相当于break, 如果return true 就相当于continure。
+
+                            $("#pic").prop("src", v.FCUrl);
+                            return false;
+                        });
+                    }
+                }
+            },
+            error: function (e) {
+            },
+            complete: function () {
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: ApiUrl + "api/Coach/GetCoachingPresence?venueid=1&CoachID=" + $("#CoachID").val() + "&FCType=2",
+            contentType: "application/json",
+            data: null,
+            success: function (data, status) {
+                if (status == "success") {
+                    if (!data.Error) {
+                        $.each(data.data, function (i, v) {
+
+                            if (v.FCState == 0)
+                                return true;//false时相当于break, 如果return true 就相当于continure。
+                            $("#vio").prop("src", v.FCUrl);
+                            return false;
+                        });
+                    }
+                }
+            },
+            error: function (e) {
+            },
+            complete: function () {
+            }
+        });
+
+        $.ajax({
+            type: "get",
+            url: ApiUrl + "api/coach/get/" + $("#CoachID").val(),
+            data: {},
+            success: function (data, status) {
+                if (status == "success" && !data.Error) {
+                    $("#Introduce").html(data.Info.Introduce);
+                }
+            },
+            error: function (e) {
+            },
+            complete: function () {
+            }
+        });
+
+    })
+
+    function edit() {
+
+        $.ajax({
+            type: "post",
+            url: ApiUrl + "api/coach/SetIntroduce",
+            contentType: 'application/json',
+            data: JSON.stringify({ CoachID: $("#CoachID").val(), Introduce: $("#Introduce").val() }),
+            success: function (data, status) {
+                if (data.Error) {
+                    alert(data.Msg);
+                } else {
+                    location.href = "/Coach/Index";
+                }
+            },
+            error: function (e) {
+            },
+            complete: function () {
+
+            }
+        });
+    }
+
+    var filePictureChange = function () {
+        $.ajaxFileUpload({
+            type: "post",                          //请求类型：post或get,当要使用data提交自定义参数时一定要设置为post
+            url: "/Coach/AjaxUpload",                 //文件上传的服务器端请求地址
+            secureuri: false,                      //是否启用安全提交，一般默认为false就行，不用特殊处理
+            fileElementId: "filePicture",          //文件上传控件的id   <input type="file" id="filePicture" name="filePicture" accept=".jpg,.jpeg,.png,.bmp" onchange="filePictureChange()" />
+            dataType: "json",                      //返回值类型，一般设置为json，还支持html\xml\script类型
+            data: { "id": "1", "name": "test" },   //用于post请求提交自定义参数
+            success: function (data, status) {     //服务器成功响应处理函数
+                console.log(data.FilePath);
+
+                var parm = $('#coachPresencePicFrom').serializeJSON();
+                parm['VenueID'] = VenueID;
+                parm['FCState'] = 1;
+                parm['FCUrl'] = data.FilePath;
+
+                $.ajax({
+                    type: "POST",
+                    url: ApiUrl + "api/Coach/AddCoachingPresence",
+                    contentType: "application/json",
+                    data: JSON.stringify(parm),
+                    success: function (data, status) {
+                        if (status == "success") {
+                            if (data.Code == 1001) {
+                                location.href = "/Coach/Index";
+                            }
+                            else { alert('添加失败'); }
+                        }
+                    },
+                    error: function (e) {
+                        alert('添加出错了，再来一次吧');
+                    },
+                    complete: function () {
+
+                    }
+                });
+
+            },
+            error: function (data, status, e) {    //服务器响应失败处理函数
+            }
+        });
+    }
+
+    var fileVideoChange = function () {
+        $.ajaxFileUpload({
+            type: "post",                          //请求类型：post或get,当要使用data提交自定义参数时一定要设置为post
+            url: "/Coach/AjaxUpload",                 //文件上传的服务器端请求地址
+            secureuri: false,                      //是否启用安全提交，一般默认为false就行，不用特殊处理
+            fileElementId: "fileVideo",          //文件上传控件的id   <input type="file" id="filePicture" name="filePicture" accept=".jpg,.jpeg,.png,.bmp" onchange="filePictureChange()" />
+            dataType: "json",                      //返回值类型，一般设置为json，还支持html\xml\script类型
+            data: { "id": "1", "name": "test" },   //用于post请求提交自定义参数
+            success: function (data, status) {     //服务器成功响应处理函数
+
+                var parm = $('#coachPresenceVideoFrom').serializeJSON();
+                parm['VenueID'] = VenueID;
+                parm['FCState'] = 1;
+                parm['FCUrl'] = data.FilePath;
+
+                $.ajax({
+                    type: "POST",
+                    url: ApiUrl + "api/Coach/AddCoachingPresence",
+                    contentType: "application/json",
+                    data: JSON.stringify(parm),
+                    success: function (data, status) {
+                        if (status == "success") {
+                            if (data.Code == 1001) {
+                                location.href = "/Coach/Index";
+                            }
+                            else { alert('添加失败'); }
+                        }
+                    },
+                    error: function (e) {
+                        alert('添加出错了，再来一次吧');
+                    },
+                    complete: function () {
+
+                    }
+                });
+            },
+            error: function (data, status, e) {    //服务器响应失败处理函数
+            }
+        });
+    }
+
+</script>

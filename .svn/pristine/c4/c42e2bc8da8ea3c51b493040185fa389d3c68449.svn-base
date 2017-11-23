@@ -1,0 +1,303 @@
+﻿@{
+    ViewBag.Title = "场馆系统";
+    ViewBag.SubTitle = "个人风采";
+    Layout = "~/Views/Shared/_HeaderPartial.cshtml";
+}
+
+
+@Html.Action("Default", "Base")
+
+<style>
+
+    .uploadbox {
+        float: left;
+        width: 115px;
+        height: 115px;
+        background-color: #eeeeee;
+        margin-right: 10px;
+        color: white;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+        display: none;
+    }
+    .uploadbox:hover {
+        background-color: #b4b4b4;
+    }
+    .stt {
+        font-size: xx-small;
+        display: block;
+    }
+    .add {
+        vertical-align: baseline;
+        display: block;
+        height: auto;
+        font-size: 8em;
+        height: 40px;
+        padding: 10px;
+        margin-top: 30px;
+    }
+    .imgcontainer {
+        width: 100%;
+        height: 100%;
+    }
+    .imgcontainer img {
+        max-height: 115px;
+        max-width: 115px;
+    }
+    .inputdiv {
+        clear: both;
+        display: block;
+        padding-top: 10px;
+    }
+    #Remark {
+        width: 478px;
+    }
+    .infospan {
+        display: none;
+        height: 20px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        background-color: #00bfff;
+        z-index: 1;
+        clear: both;
+        opacity: 0.8;
+    }
+    .closespan {
+        display: none;
+        position: absolute;
+        right: -7px;
+        top: -7px;
+        width: 14px;
+        height: 14px;
+        border-radius: 7px;
+        background-color: white;
+        border: 1px gainsboro solid;
+        color: gray;
+        font-weight: bold;
+        font-size: medium;
+        line-height: 16px;
+    }
+    .closespan:hover {
+        color: red;
+    }
+    #imgupload form {
+        display: none;
+    }
+    .imguploadmessage {
+        font-size: small;
+        color: green;
+        float: left;
+        margin-left: 10px;
+    }
+    .carclose {
+        cursor: pointer;
+        background-color: white;
+        opacity: 1;
+        position: absolute;
+        z-index: 99;
+        top: 0px;
+        right: -40px;
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        text-align: center;
+        line-height: 40px;
+        font-size: 2em;
+        color: gray;
+    }
+    .carclose:hover {
+        color: green;
+        background-color: #eeeeee;
+    }
+
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">个人风采</h3>
+            </div>
+
+            <form id="coachfrom" class="form-horizontal">
+                <div class="box-body">
+                    <div class="form-group">
+                        <input type="hidden" id="CoachID" name="CoachID" value="@ViewBag.CoachID" />
+                        @*<label for="UserName" class="col-sm-2 control-label">手机号</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="UserName" name="UserName" placeholder="手机号" disabled>
+                        </div>*@
+                    </div>
+                </div>
+               
+                <div class="box-footer">
+                    <button type="button" class="btn btn-info pull-right" id="upload" >上传图片</button>
+                </div>
+            </form>
+
+            <div id="imgupload" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4>上传图片</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="uploadbox" data-count="0" style="display: inline;">
+                        <span class="closespan" title="删除照片">&times;</span>
+                        <div class="imgcontainer">
+                            <div class="add">+</div>
+                            <div class="stt">点击上传</div>
+                        </div>
+                        <span class="infospan">
+                            <img src='../../Content/Photos/loading.gif' />正在上传...
+                        </span>
+                    </div>
+                    <div class="uploadbox" data-count="0">
+                        <span class="closespan" title="删除照片">&times;</span>
+                        <div class="imgcontainer">
+                            <div class="add">+</div>
+                            <div class="stt">点击上传</div>
+                        </div>
+                        <span class="infospan"> <img src='../../Content/Photos/loading.gif' />正在上传...</span>
+                    </div>
+                    <div class="uploadbox" data-count="0">
+                        <span class="closespan" title="删除照片">&times;</span>
+                        <div class="imgcontainer">
+                            <div class="add">+</div>
+                            <div class="stt">点击上传</div>
+                        </div>
+                        <span class="infospan"> <img src='../../Content/Photos/loading.gif' />正在上传...</span>
+                    </div>
+                    <div class="uploadbox" data-count="0">
+                        <span class="closespan" title="删除照片">&times;</span>
+                        <div class="imgcontainer">
+                            <div class="add">+</div>
+                            <div class="stt">点击上传</div>
+                        </div>
+                        <span class="infospan"> <img src='../../Content/Photos/loading.gif' />正在上传...</span>
+                    </div>
+                    <div class="inputdiv"><input type="text" disabled="disabled" id="Remark" name="Remark" placeholder="补充说明下~" /></div>
+                </div>
+                <div class="modal-footer">
+                    上传大小在8k-10M之间 <span class="imguploadmessage"></span>
+                    <button class="btn btn-success " disabled="disabled" id="imgsubmit">发布</button>
+                    <form action="/User/UpLoadPhoto" method="POST" enctype="multipart/form-data" name="ImgForm" id="ImgForm">
+                        <input type="file" name="file" id="imgFlie" required="required" />
+                        <input type="submit" name="subt" value="上传图片" />
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/SysManage/Coach.js"></script>
+<script>
+
+    $("#upload").on('click', function () {
+        $("#imgupload").modal('show');
+    });
+
+    var imgbox = {};//用来获取当前点击的 uploadbox 
+    var childs = $(".imgcontainer:eq(0)").html();// 先保存内部元素，上传完成之后方便恢复到最初状态
+    $(".uploadbox").click(function () {
+        var tag = $(this).attr("data-count");//用来判断是否已经含有照片
+        if (tag == "1") return false;
+        $("#imgFlie").click();
+        imgbox = $(this);
+        var stm1 = setInterval(function () {
+            var imgstr = $("#imgFlie").val(); //检测file元素是否已经含有文件
+            if (imgstr != "") {
+                clearInterval(stm1);
+                $("#ImgForm input[type='submit']").click();
+            }
+        }, 500);
+        return false;
+    });
+
+    // 取消照片
+    $(".closespan").click(function (e) {
+        e.stopPropagation();
+        var sum = $(".uploadbox img").length;
+        // 保证有一个框可以让用户再次选择 需要显示childs 设置data-count属性 必要的再隐藏
+        var imgsrc = $(this).next().find("img").attr("src");
+        $(this).next().html("").append(childs);
+        // 隐藏关闭和成功提示
+        $(this).hide();
+        $(this).siblings(".infospan").hide();
+        $(this).parent().attr("data-count", 0).insertBefore($(".inputdiv"));;
+
+        if (sum < 4) {//说明此时是有一个再准备状态，这个可以直接做删除处理 
+            // 设置data-count 并隐藏父级
+            $(this).parent().hide();
+            //需要移位 保证准备状态的总是在最后一个  
+        }
+        // 清除session 减少一个字符串
+        if (imgsrc != undefined) {
+            $.post("/User/DeleteImg", { str: imgsrc }, function () {
+
+            });
+        }
+        if (sum == 1) {
+            $('#Remark,#imgsubmit').attr("disabled", "disabled");// 说明这个时候还没有图片上传，所以要禁止发布键和描述框
+        }
+
+    });
+
+    //----------上传图片---------------------------------------------
+    $("#imgsubmit").click(function () {
+        var imgcontent = $.trim($("#Remark").val());
+        $.post("/User/SaveImgs", { content: imgcontent }, function (data) {
+            if (data == 1) {
+                //清除content
+                $(".imgcontainer").html(childs);
+                //隐藏进度条和关闭键
+                $(".closespan,.infospan").hide();
+                $(".imguploadmessage").html("上传成功!");
+                //禁止输入框和提交按钮
+                $('#Remark,#imgsubmit').attr("disabled", "disabled");
+                //去掉data-count 属性 显示第一个；
+                $(".uploadbox").attr("data-count", 0).hide().eq(0).show();
+                //清空
+                $("#Remark").val("");
+                var stt = setTimeout(function () {
+                    $("#imgupload").modal('hide');
+                    $(".imguploadmessage").html("");
+                    clearTimeout(stt);
+                }, 1000);
+            }
+        });
+    });
+
+    $('#ImgForm').ajaxForm({//用到form.js 提交form 
+        beforeSend: function () {
+            imgbox.find(".infospan").show();//显示正在上传...
+        },
+        success: function (data) {
+            $("#imgFlie").val("");//
+            imgbox.find(".imgcontainer").html(data);//.hide()
+            var img = imgbox.find(".imgcontainer").find("img").attr("src");
+            if (img != undefined) {//表示上传成功
+                //解禁
+                $('#Remark').removeAttr("disabled");
+                $('#imgsubmit').removeAttr("disabled");
+                imgbox.find(".infospan,.closespan").show();
+                imgbox.find(".infospan").html("上传成功！");
+                //显示下一个
+                //imgbox.next().show();
+                $(".uploadbox:hidden").eq(0).show();
+
+                imgbox.attr("data-count", "1");
+            } else {
+                imgbox.find(".infospan,.closespan").hide();
+            }
+            // alert(img);
+        }, complete: function (xhr) {
+            $("#imgFlie").val("");
+        }
+    });
+
+</script>

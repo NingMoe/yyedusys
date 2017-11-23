@@ -1,0 +1,28 @@
+﻿@using YY.Edu.Sys.Web.Models
+@using YY.Edu.Sys.Models;
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>支付</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK" />
+    <script src="~/Scripts/jquery.min.js"></script>
+    <link rel="stylesheet" href="/Content/amazeui.min.css" />
+    <link href="~/Content/style_me.css" rel="stylesheet" />
+    <link href="~/Content/iscrollstyle.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+
+</head>
+<body>
+    @Html.Action("Default", "Base")
+    <header data-am-widget="header" class="am-header am-header-default header-green1">
+        <div class="am-header-left am-header-nav ">
+            <a href="javascript:history.back()" style="color: #fff;"><i class="am-icon-chevron-left"></i></a>
+        </div>
+        <h1 class="am-header-title" style="color: #fff;">订单支付成功</h1>
+    </header>
+    <div class="jl"></div>
+</body>
+</html>

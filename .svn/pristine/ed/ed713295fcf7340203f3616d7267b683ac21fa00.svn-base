@@ -1,0 +1,157 @@
+﻿@{
+    ViewBag.Title = "场馆系统";
+    ViewBag.SubTitle = "编辑老师";
+    Layout = "~/Views/Shared/_HeaderPartial.cshtml";
+}
+
+
+@Html.Action("Default", "Base")
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">编辑老师</h3>
+            </div>
+            <form id="coachfrom" class="form-horizontal">
+                <div class="box-body">
+                    <div class="form-group">
+                        <input type="hidden" id="CoachID" name="CoachID" value="@ViewBag.CoachID" />
+                        <input type="hidden" id="State" name="State" value="" />
+                        <label for="UserName" class="col-sm-2 control-label">手机号</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="UserName" name="UserName" placeholder="手机号" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="FullName" class="col-sm-2 control-label">姓名</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="FullName" name="FullName" placeholder="姓名">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="Address" class="col-sm-2 control-label">住址</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="Address" name="Address" placeholder="住址">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="CanTry" class="col-sm-2 control-label">能否试课</label>
+                        <div class="col-sm-2">
+                            <input type="checkbox" id="CanTry" name="CanTry" />
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="StarLevel" class="col-sm-2 control-label">星级</label>
+                        <div class="col-sm-1">
+                            <select id="StarLevel" name="StarLevel" class="form-control" required>
+                                <option value="1" selected>一级</option>
+                                <option value="2">二级</option>
+                                <option value="3">三级</option>
+                                <option value="4">四级</option>
+                                <option value="5">五级</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="Seniority" class="col-sm-2 control-label">教龄</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="Seniority" name="Seniority" placeholder="教龄">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="Specialty" class="col-sm-2 control-label">特长</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="Specialty" name="Specialty" placeholder="特长">
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="Specialty" class="col-sm-2 control-label">个人简介</label>
+                        <div class="col-sm-5">
+                            <input type="file" id="filePicture" name="filePicture" accept=".jpg,.jpeg,.png,.bmp" onchange="filePictureChange()" />
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <a href="@Url.Action("Index", "Coach")" class="btn btn-default">返回</a>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-info pull-right" onclick="return edit();">编辑</button>
+                </div>
+            </form>
+            <form id="coachPresenceFrom">
+                <input type="hidden" name="Title" value="个人简介" />
+                <input type="hidden" name="FCType" value="1" />
+                <input type="hidden" name="FCUrl" id="FCUrl" value="" />
+                <input type="hidden" name="CoachID" value="" />
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/SysManage/Coach.js"></script>
+<script src="~/Scripts/SysManage/ajaxfileupload.js"></script>
+<script>
+
+    $(function () {
+
+        var coachid = $("#CoachID").val();
+
+        $.ajax({
+            type: "get",
+            url: ApiUrl + "api/coach/get/" + coachid,
+            data: {},
+            success: function (data, status) {
+                if (status == "success") {
+                    if (data.Info == null) {
+                        alert('老师未绑定');
+                    } else {
+                        $("#CoachID").val(data.Info.CoachID);
+                        $("#FullName").val(data.Info.FullName);
+                        $("#UserName").val(data.Info.UserName);
+                        $("#Address").val(data.Info.Address);
+                        $("#StarLevel").val(data.Info.StarLevel);
+                        $("#Specialty").val(data.Info.Specialty);
+                        $("#Seniority").val(data.Info.Seniority);
+                        if (data.Info.CanTry == 1)
+                            $("#CanTry").prop('checked',true);
+                    }
+                }
+            },
+            error: function (e) {
+            },
+            complete: function () {
+
+            }
+        });
+    })
+
+    var filePictureChange = function () {
+        $.ajaxFileUpload({
+            type: "post",                          //请求类型：post或get,当要使用data提交自定义参数时一定要设置为post
+            url: "/Coach/AjaxUpload",                 //文件上传的服务器端请求地址
+            secureuri: false,                      //是否启用安全提交，一般默认为false就行，不用特殊处理
+            fileElementId: "filePicture",          //文件上传控件的id   <input type="file" id="filePicture" name="filePicture" accept=".jpg,.jpeg,.png,.bmp" onchange="filePictureChange()" />
+            dataType: "json",                      //返回值类型，一般设置为json，还支持html\xml\script类型
+            data: { "id": "1", "name": "test" },   //用于post请求提交自定义参数
+            success: function (data, status) {     //服务器成功响应处理函数
+                console.log(data.FilePath);
+                $("#FCUrl").val(data.FilePath);
+            },
+            error: function (data, status, e) {    //服务器响应失败处理函数
+            }
+        });
+    }
+
+</script>
